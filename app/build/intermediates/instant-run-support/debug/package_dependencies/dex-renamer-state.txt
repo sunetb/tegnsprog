@@ -1,0 +1,16 @@
+#Tue Mar 14 20:50:03 CET 2017
+renamed.4=classes.dex
+renamed.3=classes2.dex
+renamed.2=classes3.dex
+renamed.1=classes4.dex
+base.4=/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_af3554c6d352eec925d30732a9d48f136e0d69ff
+renamed.0=classes5.dex
+base.3=/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d819644497389081c83765e8934d4f09045fc9be
+base.2=/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.0.1_7aa42222fa4e8a1057db7bb199d0e25c8fdf35f1
+base.1=/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.0.0_4ce3a8c1dd020ef3a7561a6fe7e5f7fb3b57bee9
+base.0=/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e1d2e55c1eff8a3cc6ceefb14fea2851ff209f1c
+file.4=/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_af3554c6d352eec925d30732a9d48f136e0d69ff/classes.dex
+file.3=/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d819644497389081c83765e8934d4f09045fc9be/classes.dex
+file.2=/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.0.1_7aa42222fa4e8a1057db7bb199d0e25c8fdf35f1/classes.dex
+file.1=/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.0.0_4ce3a8c1dd020ef3a7561a6fe7e5f7fb3b57bee9/classes.dex
+file.0=/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e1d2e55c1eff8a3cc6ceefb14fea2851ff209f1c/classes.dex

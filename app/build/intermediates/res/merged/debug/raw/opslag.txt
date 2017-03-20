@@ -1,0 +1,5498 @@
+ i tirsdags	2458
+ i torsdags	2459
+-agtigt	266
+-bakke	609
+-behandler	1843
+-borg	244
+-hed	1712
+-idiot	1159
+-inde	83
+-kasse	609
+-kollegium	111
+-løs	263
+-mester	497
+-passer	1248
+-posten	312
+-s	77;1365;1711
+-side	1791
+-sikring	533;2958
+-værk	948
+1	669
+1.	765;1224
+10	1400
+100	1122;1390
+1000	1323
+1000000	213
+1000000000	211
+11	1401
+12	1388;1451;2454
+13	1389;1452;2455
+14	1416;1435
+15	1418;1434
+16	1419;1466
+17	1420;1467
+18	1421;1468
+19	1422;1469
+2	485;573;1498
+20	1236
+200	1527
+21	1481;1482
+22	1402
+23	1483;1484
+24	1485;1486
+25	1487;1488;1599
+26	1577
+27	1584
+28	1570
+29	1563
+3	1195
+3.	1183
+30	1497
+300	1528
+31	1540;1541
+32	1590
+33	1489
+34	1554
+35	1548
+36	1576
+37	1582
+38	1568
+39	1560
+4	1165
+4.	1741
+40	1496
+400	1534
+41	1536
+42	1586
+43	1593
+44	1490
+45	1544
+46	1572
+47	1579
+48	1564
+49	1557
+5	1162
+5.	1851
+50	1492
+500	1529
+51	1539
+52	1589
+53	1596
+54	1553
+55	1491
+56	1575
+57	1581
+58	1567
+59	1559
+6	1463
+6.	1852
+60	1423
+600	1530
+61	1542
+62	1591
+63	1597
+64	1555
+65	1549
+66	1403
+67	1583
+68	1569
+69	1562
+7	1464
+7.	1853
+70	1493
+700	1531
+71	1538
+72	1588
+73	1595
+74	1552
+75	1546;1547
+76	1574
+77	1404
+78	1566
+79	1558
+8	1465
+8.	1854
+80	1494
+800	1532
+81	1598
+82	1585
+83	1592
+84	1550
+85	1543
+86	1571
+87	1578
+88	1405
+89	1556
+9	1412
+9.	1855
+90	1495
+900	1533
+91	1537
+92	1587
+93	1594
+94	1551
+95	1545
+96	1573
+97	1580
+98	1565
+99	1417
+Afrika	1522
+Albertslund	1693
+Amerika	679
+Amsterdam	1639
+Asien	1523
+Athen	1638
+Australien	1657;1658
+Bangkok	1655
+Bangladesh	1621
+Belfast	1643
+Belgien	1500
+Berlin	1650
+Bornholm	1008
+Brasilien	1622
+Bruxelles	1635
+Budapest	1651
+Bulgarien	1603;1604
+CI	2177
+Canada	1623;1624
+Ctrl-tast (på en computer)	996
+Danmark	172
+Dublin	1640
+England	484
+Enhedslisten	1034206;1080004
+Esbjerg	1659
+Estland	1605
+Etiopien	1625
+Europa	1166
+Filippinerne	1628
+Finland	1501
+Folketinget	1101903;1204004
+Frankrig	536
+Fredericia	1660
+Frederiksberg	1689
+Frederikshavn	1661
+Fyn	1081
+Færøerne	1502
+Gentofte	1690
+Gladsaxe	1691
+Glostrup	1692
+Greve	1679
+Grækenland	1503
+Grønland	1629;1630
+Gud	480;1524
+Haderslev	1680
+Helsingfors	743
+Helsingør	1683
+Helsinki	743
+Herning	1681
+Herren	497
+Hillerød	1682
+Holland	1504
+Hviderusland	2411
+Hvidovre	1694
+I	76
+Indien	1515
+Indonesien	1520
+Iran	1516
+Irland	2179
+Island	1505
+Italien	1506;1507
+Japan	1517
+Jerusalem	1653
+Jorden	188;435
+Jylland	1167
+Kina	1518
+Kolding	1684
+Kroatien	1606
+København	743
+Køge	1664
+Letland	1607
+Litauen	1608
+London	1648
+Luxembourg	1609
+Madrid	1647
+Mexico	1521
+Mexico City	2414
+Moskva	1646
+Nigeria	1631
+Nordirland	2412
+Norge	1508
+Næstved	1685
+Nørrebro	1676
+Odense	1667
+Oslo	1644;1645
+Pakistan	1632
+Paris	1636
+Polen	1509;2180
+Portugal	2460
+Prag	1649
+Randers	1668
+Reykjavik	1641
+Ringsted	1204302
+Rom	1642
+Roskilde	1669
+Rumænien	1612;1613
+Rusland	957
+Rødovre	1695
+Schweiz	1614
+Serbien	1615
+Silkeborg	1686
+Sjælland	1211
+Skive	1687
+Slagelse	1670
+Slovakiet	1616
+Slovenien	1617
+Socialdemokratiet	1003703;1113803
+Sovjet	957
+Sovjetunionen	957
+Spanien	1510
+Stockholm	743
+Storbritannien	2413
+Sverige	1511
+Taastrup	1688
+Thailand	1633;1634
+Thorshavn	1637
+Tjekkiet	1618
+Tokyo	1654
+Tornerose	1053405
+Tyrkiet	1519
+Tyskland	1512
+Tårnby	1696
+USA	679
+Ukraine	1619
+Ungarn	1513
+Valby	1678
+Vejle	1671
+Vesterbro	1677
+Viborg	1672
+Washington	1656
+Wien	1652
+a	883;2365
+abe	299
+abonnement	513
+abort	1717
+abortere	1717
+absolut	436
+acceptere	639
+addere	712
+adgang	768
+adlyde	1256
+administration	667
+administrere	667
+adoptere	676
+adoption	676
+adoptiv-	676
+adresse	1266;1833
+adskille	566;1149
+advare	341
+advarsel	341
+advent	1193;1716
+adventskrans	1193;1716
+advokat	41
+af	856;1697;1697
+af med	1459
+afbryde	398;624
+afbud	3009
+afdeling	92
+affald	836;2093
+afføring	762
+afgang	298;1775
+afgangselev	1055302;1068904
+afgift	242
+afgjort	436
+afgå	1775
+afgøre	436
+afhandling	382
+afholde	560
+afhænge af	763;1377
+afhængig	1377
+afhængig af	763
+afhøre	1328
+afkræfte	796
+aflang	2325
+aflevere	431;836
+aflive	2103
+aflyse	764
+aflægge ed	1057
+aflæse	989
+afrikaner	1522
+afrikansk	1522
+afrunde	618
+afskaffe	179
+afskedige	985
+afsky	3014
+afslag	1459
+afslapning	148
+afslappet	148
+afslutning	355
+afslutte	355;666
+afslå	1459
+afsløre	2165
+afsnit	92
+afspændings-	148
+aftage	263
+aftale	722;922;922
+aften	330;331
+aftes	330;331
+afvige	45;979
+afviger	979
+afviger (person)	45
+afvise	1179;1459
+agurk	1890;1891
+aha	741
+akkord	606
+akkurat	436
+aktion	81
+aktiv	690
+aktivitet	690;1140
+al	433
+alarm	571
+albue	1995
+albuestød	183
+alder	138
+aldrig	150
+alene	800
+alfabet	1366
+alkohol	668;987
+alkoholiker	668
+alle	433;682
+alle mulige	959
+alle sammen	433;682
+allerede	149
+alligevel	151
+almindelig	356;662;2432
+almægtig	551
+alt muligt	959
+alternativ	198;827
+altid	131;775;2156
+altså	266
+alvor	572
+alvorlig	572
+amatør	389
+amatøragtig	389
+ambassade	962
+ambassadør	962
+ambition	2163
+ambitiøs	2163
+ambulance	1298
+ambulant	1761
+amen	436
+amerikaner	679
+amerikansk	679
+amt	963
+analyse	819
+analysere	819
+anbefale	683
+anbefaling	683
+and	1208;1243
+andel	92
+anden	485
+anden etage	1275
+anden sal	1275
+anderledes	530;979
+andet	573
+andre	680
+anerkende	779
+angre	145
+angreb	873
+angribe	873
+angst	423
+angående	1312
+anholde	442;443
+anhænger	1377
+ankel	3126
+anklage	1141;1270
+ankomme	574
+ankomst	574
+anlæg (park)	135
+anmelde	210;1306
+anmeldelse	1306;1306
+anmelder	1306
+anmode om	863
+annonce	440;513;1046;1720
+annullere	764
+anonym	951
+ansat	676
+ansatte	1449
+ansigt	577;3102
+anslå	2980
+ansvar	578
+ansvarlig	578
+ansætte	676
+ansøge	71
+ansøgning	71
+antage	672
+antal	1066
+anti-	927
+anvende	589
+anvende mundhåndsystem	1828
+apanage	685
+aparte	3001
+apostel	792
+apotek	2041
+apparat	948
+appelsin	511
+applaus	1010
+april	1182;1396
+aprilsnar	1182
+ar	373;1721
+arbejde	80
+arbejde over	1008006;1086008
+arbejdsløs	349
+areal	135
+argument	683
+argumentere	683
+arm	1996
+armbåndsur	715
+arrangement	228
+arrangere	228
+arrogant	153
+art	266
+artikel	1046
+arv	745;745
+arve	745
+arvelig	745
+asiat	1523
+asiatisk	1523
+asparges	2329
+assistent	525
+assurandør	2958
+atletik	674;859;1131
+atmosfære	98;3064;3183
+atten	1421;1468
+auditorium	2040
+august	155;156
+aula	2040
+australier	1657;1658
+australsk	1657;1658
+autentisk	21
+autograf	1201
+automatisk	620
+autoritet	640
+av	569
+avance	604
+avanceret	311
+avis	158;677
+avle	353
+b	883;2366
+babser	591
+baby	62;307;461
+bad	474;475
+bade	140;474;475
+badebukser	1981
+badedragt	1982
+badehætte	1749
+bag	448
+bag ved	448
+bagage	943
+bagagevogn	1367
+bagatel	767
+bagdel	1997
+bage	160
+bagefter	641;1042
+bager	160
+bageri	160
+baggrund	448
+bagmand	1044806;1064803
+bagtale	477
+bagud	1042
+bajer	2931
+bakke	1048;1722
+bakterie	276
+bal	1744
+balance	2936
+balancere	2936
+ballade	1040;1040
+banan	1892
+band	111
+bande	111;3018
+bane	1210
+banegård	469
+bang	907
+bange	423
+bangladesher	1621
+bangladeshisk	1621
+bank	678;1038
+banke (slå)	1038
+bar	954;3044;3188
+barbere	459
+barberkniv	459
+barberskraber	459
+bare	858;877;878
+bare (kun)	767
+bare den mindste	767
+bare fødder	1385
+bare ikke	49
+barmhjertig	1021
+barn	62;307;307
+barndom	112
+barnedåb	1035;1237
+barnevogn	1367
+barrikade	3063
+barsel	1110
+barsk	486
+base	135
+basis	135
+batteri	183
+beboelse	63
+beboer	63
+bede	407
+bede at tage det roligt	1006
+bede om	407;863
+bede tage det med ro	1006
+bedrage	424
+bedrageri	424
+bedre	53;632;765
+bedrøvet	638
+bedst	53;632;765;1125
+bedste	1065
+bedstefar	1061;1091
+bedsteforældre	1101
+bedstemor	744;1058
+bedømme	397;640
+bedøve	2937
+bedøvelse	2937
+befale	464
+befale nogen til at gå til	1818
+befinde sig	824
+befolkning	1019;1449
+befordring	1761
+begavet	329;1817
+begge to	485
+begivenhed	81
+begrave	425
+begravelse	425
+begreb	1231;1601
+begynde	346;1334
+begynde (på et hold eller i en klasse)	750
+begå en fejl	915
+begær	1318
+behagelig	540;633
+behandle	1843
+behandling	838;1843
+beherske sig	1053
+beherske tegnsprog flydende	1382
+beholde	3019
+beholder (med håndtag i siderne)	1722
+beholdning	3098
+behov	379
+behøve	1075
+bekendt	2939
+bekendtgøre	835
+beklage	406;1054
+bekræfte	779
+bekvem	633
+bekymret	638
+belaste	286
+belgier	1500
+belgisk	1500
+belægge	1004
+beløb	360
+belønning	685
+bemærke	719;719;737
+bemærke (observere)	760
+bemærke (opdage)	186
+bemærkning	719
+ben	1305
+benzin	2072;2159
+benægte	796;1179
+beretning	481
+berettige	955
+berolige	583;1006
+beruset	988
+berømt	2934;2939
+berøre (røre ved)	15
+besejre	2212
+besidde	432;824
+besked	210
+beskidt	285;285
+beskrive	180;382
+beskrivelse	180;382
+beskytte	837
+beskyttelse	837
+besparelse	713
+bestemme	436
+bestemt	436;436
+bestige	1830
+bestik	3073
+bestille	80;447
+bestyrelse	667;1138
+bestyrer	667
+bestå	839
+besvare	992
+besvarelse	992
+besvime	1098;1246
+besværlig	286;286
+besynderlig	979;3001
+besætte	731
+besøg	293
+besøge	60;293
+betale	365;659
+betale med betalingskort	2042
+betale sig	161
+betalingskort	2042
+betingelse	1096
+betjening	792
+beton	393
+betræk	3020
+betvivle	2980
+betyde	16;17;17;17
+betydning	17
+betændelse	2940
+bevare	473
+bevidst	2998
+bevidsthed	2998
+bevilge	779
+bevilling	659;779
+bevis	683
+bevise	683
+bevæge	840
+bevæge mus (it)	2408
+bevæge sig	840
+bevægelse	840
+beværtning	3044;3188
+bh	1983;1984
+bibliotek	1094;1095
+bid	1093
+bide	1093
+bide i sig	18
+bifalde	1010
+biker	1702
+bikini	1985
+bil	579
+bille	1076
+billede	634;634
+billet	440
+billig	631;631;3088
+binde	812;841
+binde noget om halsen	1986
+binde sig til noget	841
+bindende	841
+bindestreg	1250
+binding	841
+bio-	1783
+biograf	310
+biolog	1783
+biologi	1003;1783
+biologisk	1783
+bip	907
+bip-spil	1414
+bistand	1808
+bitter	254
+bjerg	1032
+blad	294;580
+blande	429
+blande sig i noget	1042903
+blande sig udenom	1286
+blandet med (noget der slører eller forstyrrer)	1332
+blandt andet	795
+blank	430;522
+blanket	275;275;3092
+blind	581;581
+blink	1298;1326
+blinke	1326;3021
+blinke (alarm)	1298
+blinklys	3021
+blive	198;473;582;827
+blive CI-opereret	2177
+blive afhængig af	443
+blive afsløret	1146
+blive chokeret	961
+blive dårligere (til noget)	2162
+blive døv	96
+blive forbavset	1856
+blive færdig	2976
+blive gammel	483
+blive god til noget	399
+blive gravid	1110
+blive grebet (af noget)	443
+blive hjemme	582
+blive i lang tid	1850
+blive medlem	90;750
+blive meget overrasket	961
+blive mindre	874
+blive mørk	331
+blive optaget (f.eks. på en uddannelse)	768
+blive skuffet	1793
+blive stille	583
+blive stirret på	1304
+blive student	239;2110
+blive syg	132;2924
+blive taget i	442
+blive taget på fersk gerning	737
+blive til noget	698
+blive tilbage	582
+blive uvenner	535
+blive ved	403
+blive væk	263
+blod	584
+blodskam	1041403;1058402
+blokade	3063
+blokere	3063
+blomkål	1893
+blomme	1894
+blomst	534;1408
+blot	858;877
+blunde	1043
+bluse	1052
+blyant	465;1160
+blå	510
+blåøjet	2996
+blæse	109
+blød	451;451
+bløde	584
+bo	63
+bog	294
+bogstaver	1366
+boks	609;1844
+bold	520;721;2335
+bolig	63
+bolle	1947
+bolle udenom	448
+bolsje	1911
+bombe	1239;1406
+bonde	136
+bondsk	136
+bonus	604;797
+booke	731
+bor	2941
+bord	587
+bordet fanger	443;1044305
+bordtennisbold	2335
+bore	2941
+boremaskine	2941
+borg	279
+borger	1019;1449
+borgmester	497;1838
+bornholmer	1008
+bornholmsk	1008
+bort	263
+bortvise	985
+botanik	534
+botanisk	534
+bouillonterning	2324
+brand	778
+brasilianer	1622
+brasiliansk	1622
+bravo	1010
+bred	52;568
+bremse	1007;2942
+brev	440
+briller	303
+bringe	1186
+brite	2413
+britisk	2413
+bro	588
+brochure	362
+brokke sig	1141
+brombær	3135
+bror	259
+brug	589
+bruge	589
+bruge håndalfabet	1366
+bruge joystick	1413
+bruge mange penge	1255
+bruge tegnsprog	1382
+bruger	589
+brun	386
+bruse over (om væske)	1526
+brusebad	475
+bruser	475
+brutto	433
+bryde	398
+bryde sammen	3090
+bryde sig om	1205
+brygge (sb.)	701
+bryllup	107;958
+bryst	590;590
+bryster	591
+brystholder	1983;1984
+brystsvømning	140
+brædder	2326
+brække	398
+brække (noget)	398
+brække sig	944
+brænde	778;1180
+brændevin	274
+bræt	587;2326
+brød	103
+brøle	1034
+bud	210
+budding	1904
+budget	1005;3022
+buk	1971
+bukser	635
+bulgarer	1603;1604
+bulgarsk	1603;1604
+bum	907
+bunke (sb.)	1341
+bur	1154
+burde	969
+bureau	514;2034
+bureaukrati	2034
+burger	3140
+bus	570;1433
+busk	2943
+butik	426
+by	165
+bygge	344
+bygning	344;458
+byld	2940
+bytte	198;827;1698
+båd	322
+både og	12
+bål	778
+bånd	460;2107
+bånd (videobånd)	7
+båndoptager	2107
+bæ	762
+bæger	108
+bæk	1303
+bælg	2329
+bælt	1303
+bælte	592
+bær	3182
+bære	1839;2294;2295
+bære ørering	2050
+bøde	1772
+bøf	3138
+bøfsandwich	3140
+bøje	1840
+bøje sig (for)	1256
+bøjning (grammatik)	1840
+bølge	2118
+bølgegang	2118
+bøn	407
+bønne	998;2329
+børn	773
+børste	2046
+børste tænder	1196
+bøvs	2944
+bøvse	2944
+c	2367
+cafeteria	167
+café	167
+camping	1377;1746
+campingvogn	1377
+canadier	1623;1624
+canadisk	1623;1624
+celle	998
+cement	2038
+censor	996
+center	924
+centiliter	3104
+centimeter	1116
+central	924;924
+centrifuge	1029
+centrifugere	1029
+centrum	924;924
+certifikat	1821
+champagne	1526
+champignon	2013
+chance	970
+charme	2945
+charmerende	2945
+chauffør	579
+chef	169;1372
+chili	254
+chips	1909
+chok	961;2404
+chokeret	2404
+chokolade	171
+ciffer	680;1066
+cigaret	736
+cirka	636;2932
+cirkel	1368
+cirkle om	1368
+cirkus	2105
+citron	1897;1948
+civil	654
+civilbetjent	1083402;1095104
+cl	3104
+cm	1116
+cochlear implant	2177
+cola	3137
+computer	1107
+cookies	463
+cornflakes	1898
+creme	1743
+cykel	593;687
+cykle	593;687
+d	886;895;2368
+da (konj.)	615
+dag	323
+dagen efter	141
+dagen før	336
+dagen inden	336
+daglig	637
+dagligstue	1816
+dal	3023
+dam	2021
+dame	83
+damp	1944;2946
+dankort	2042
+dans	1744
+danse	1744
+danser	1744
+dansk	172
+dansker	172
+datalogi	1107
+datamaskine	1107
+datamatik	1107
+dato	594;681;2401
+datter	94
+dav	3077
+de	76
+deafpower	1009602;1055103
+debat	478
+december	1206
+deciliter	1953
+dej	160
+dejlig	633;2971
+dekoration	1734
+dekorere	1734
+del	92;940
+dele	92;940;2111
+dele (en gruppe)	1149
+delegeret	1164
+deltage	750
+dem	76
+dementere	796
+demokrat	1138
+demokrati	1138
+demonstration	966
+den	76
+den anden	485;573
+den anden (i kongenavn)	485
+den attende	1421;1468
+den elvte	1401
+den femte	1851
+den femte (dato)	1162
+den femte (i kongenavn)	1162
+den femtende	1418;1434
+den fjerde	1741
+den fjerde (dato)	1165
+den fjerde (i kongenavn)	1165
+den fjortende	1416;1435
+den første (af flere)	1224
+den første (dato)	669
+den første (i kongenavn)	669
+den mindste smule	767
+den niende	1855
+den niende (dato)	1412
+den niende (i kongenavn)	1412
+den nittende	1422;1469
+den ottende	1854
+den ottende (dato)	1465
+den ottende (i kongenavn)	1465
+den sekstende	1419;1466
+den sjette	1852
+den sjette (dato)	1463
+den sjette (i kongenavn)	1463
+den syttende	1420;1467
+den syvende	1853
+den syvende (dato)	1464
+den syvende (i kongenavn)	1464
+den tiende (dato)	1400
+den tolvte	1388;1451
+den tredje	1183
+den tredje (dato)	1195
+den tredje (i kongenavn)	1195
+den trettende	1389;1452
+den var god (om noget smart eller morsomt)	1065
+dengang	363
+denne	76
+depositum	841
+der er ikke mere (af noget)	1077
+derefter	641
+deres	77
+derfor	17;710;948
+derhjemme	774;1827
+dermed basta	666
+derop	804
+derudover	712
+design	770
+designer	770
+desinficere	1330
+dessert	718
+desværre	406;479;617;638
+det	76
+det behøves  ikke	878
+det berører mig ikke	3008
+det er	595
+det er bare ærgerligt	406
+det er da også rigtigt	657
+det er dumt (af nogen)	2162
+det er for meget! (udbrud)	278
+det er for sent	443
+det er klogt	1125
+det er løgn	1108
+det gør at	17
+det hele	433
+det hemmelige politi	1083402;1095104
+det kolde bord	1051505;1058704
+det må jeg sige	1010
+det ser sødt ud	540
+det siger mig ikke noget	3008
+det var tæt på	611
+det ved jeg godt	702
+det vil jeg blæse på	3008
+det vil sige	17;404
+det viser at	17
+detalje	92
+detaljeret	1137
+dette	76
+dialog	723
+diamant	430
+diarre	2930
+difference	530
+dig	76;654
+din	76;77
+diplom	275;388
+direkte	844;1025
+direktør	1372
+dirigent	378;2078
+dirigere (et kor eller orkester)	2078
+dis	1944
+discipel	792
+disciplin	2974
+disk	587
+diskrimination	1732
+diskriminere	1732
+diskussion	478
+diskutere	478
+diskvalificere	985
+disse	76
+distrikt	1336
+dit	76
+diverse	959
+dividere	2111
+division	2111
+djævel	328
+dl	1953
+dobbelt	1238
+dobbeltaftale	1754
+dobbeltmoral	1123802;1216403
+dog (i modsætning til)	49
+doktor	994
+dokument	275;275
+dokumentar	683
+dokumentation	683
+dokumentere	683
+dom	640
+dominere	253
+dommer	640
+domstol	41
+domæne	1336
+dosis	3098
+dot	1956
+doven	909
+drab	1027
+dragt	1052
+drama	661;661;1039
+dramatisk	661
+drastisk	278
+dreje sig om	2182;1012904;1042603
+dreng	173
+dreng (søn)	88;91
+drenget	173
+dressing	1889;1941;1942
+drift	403
+drik	108
+drikke	108;668
+drikke af kop	1017
+drikke af krus	1357
+drikke fuld	181
+drikke igennem	668
+drikke under bordet	181
+drille	343
+drinks	108
+dronning	340
+droppe	2030;2030
+drukne	1260
+drysse	1801;1916
+dræbe	1027
+dræbt	1736
+dræbte	1736
+drøm	348;348
+drømme	348;348
+drømme om	814
+drømme om (ønske sig)	548
+du	76
+du får ret og jeg får fred	383
+duft	1114;1737
+dufte	1114;1737
+dug	3020
+dug (fugt)	1944
+dukke	1135
+dum	329;329;392
+dum til	3130
+dumme sig	2162
+dummy	1159
+dumpe	971
+dvd	2108
+dyb	1137
+dybde	1137
+dybfryser	225;1022504;1113706
+dybt	21
+dydsmønster	407
+dygtig	253;596
+dygtig (kunstner eller sportsudøver)	1787
+dynamik	2163
+dynamisk	2163
+dyne	487;1267
+dyppe	1088
+dyr	621;1003
+dyrke	690;3050
+dåb	1035;1237
+dårlig	735;735
+dårlig (ikke god)	971
+dårlig klædt	1315
+dårlig vane	1153
+dåse	2330
+dække	1004
+dæmpe	1006
+dø	597;618
+døbe	1035;1237
+død	597;618
+døgn	217
+dømme	640
+dør	457
+døv	96;405;405
+e	883;2369
+e-mail	312;1016
+e-post	1016
+edderkop	1076
+eddike	254
+efter	359;641
+efterabe	359;1220
+eftergivende	451
+efterhånden	2948
+efterligne	1220
+efterligning (af person)	1220
+efterlyse	69
+eftermiddag	926
+efternøler	1064102;1091702
+efterspørgsel	1036603;1064103
+efterår	155;881
+egen	432
+egentlig	21;238
+egn	932
+egnet	1342
+egoistisk	432
+eje	432;824
+ejendom	432;458;1602
+ejendoms-	432
+ejer	432
+eksamen	2949
+eksempel	795
+eksemplar	795
+eksistere	69;824
+ekskludere	985
+ekskrementer	762
+ekspansion	3070
+ekspedient	426
+eksperiment	1155
+eksperimentere	1155
+ekspert	1739;1755;2457
+eksplodere	1239
+eksplosion	1239
+eksport	866
+ekspres	830
+ekstra	797;3055
+el	183
+elastik	1124
+elastisk	1124
+elefant	1967
+elektricitet	183
+elektriker	183
+elektrisk	183
+element	776
+elementær	135
+elendig	735
+elendig til	3002
+elev	553
+eller	198;1525
+elleve	1401
+elske	105;105;2031
+emne	531
+empati	186
+empatisk	186
+en	669
+en (art.)	76
+en (person)	654
+en dag senere	141
+en fjerdedel	2113
+en gang imellem	861
+en kvart	2113
+en lille	307
+en lille smule	767
+en måned	1347
+en skuffelse	1793
+en slags	266
+en smule overvægtig	278
+en stor portion	1341
+en time	1478
+en tredjedel	2115
+ende	355
+ende med	355;975
+endelig	355
+enden	355
+endnu	1253
+endnu (stadig)	403
+endnu ikke have	575
+energi	1140
+energisk	1140
+eneste	669
+eng	135
+engagement	2163
+engageret	2163
+engang	363
+engel	428
+engelsk	484
+englænder	484
+enhver	605
+enig	642
+enke	800
+enkel	402
+enlig	800
+enogfirs	1598
+enogfyrre	1536
+enoghalvfems	1537
+enoghalvfjerds	1538
+enoghalvtreds	1539
+enogtredive	1540;1541
+enogtres	1542
+enogtyve	1481;1482
+enorm	1450
+ens	16;17;1082
+ensformig	16
+ensom	800
+enten eller	12
+entusiasme	2163
+entusiastisk	2163
+episode	81
+er	595;1764;1764
+er ikke	598
+er ofte	2156
+erfaring	1002;1755
+erhverv	2089
+erkende	1169
+erkendelse	1169
+erobre	731
+erstatning	3048
+erstatte (med penge)	659
+esbjergenser	1659
+esbjergensisk	1659
+essay	703
+estisk	1605
+estlænder	1605
+et	669
+et (art.)	76
+et eller andet	12
+et hundrede	1122
+et stykke tid	1823
+et år	333
+et øjeblik	693
+etablere	1202
+etage	1296
+etc.	959
+etik	2164
+etiopier	1625
+etiopisk	1625
+etisk	2164
+etnisk	3069
+etymologi	703
+europæer	1166
+europæisk	1166
+evakuere	1268
+evaluere	397
+eventuel	771;795
+eventuelt	771
+eventyr	176;703;813
+evig	403
+evne	1342
+evolution	3070
+f	884;2370
+fabrik	948
+facit	975
+facon	1269
+fader	306
+fag	347
+faglig	347
+fair	656;1082
+fakta	436
+faktisk	21;238;266;436
+falde	1098
+falde for (nogen eller noget)	3074
+falde om	1098
+falde til	583
+falde til ro	583
+faldende (om antal)	1258
+fallit	790
+falme	547
+falsk	116;116
+familie	816;1288
+fandeme	3018
+fandens	3018
+fange	442;443;742
+fange (vb.)	742
+fantasere	176
+fantasi	176
+fantastisk	315;828
+fantastisk god	255
+fantastisk meget	828
+far	306
+fare	934;935
+farfar	1091
+farlig	934;935
+farm	368
+farmor	744;1360
+fart	298
+farve	980;981;981
+farvel	1299
+fast	131;131
+faste	338
+fastelavn	1706
+faster	1958
+fastholde	131
+fattig	402
+favorit	255
+feber	973
+februar	1191;2951
+fed	772;974;2971
+fedt	772;843;1065
+fedt (godt)	1813
+fedte for	401
+fedtet	905
+feje	1294;2060
+fejl	915
+fejre	400;517
+felt	135;135;440
+fem	1162
+fem dage efter	1440
+fem dage før	1437
+fem dage inden	1437
+fem dage senere	1440
+fem hundrede	1529
+fem måneder	1351
+fem timer	1473
+fem år	1309
+femogfirs	1543
+femogfyrre	1544
+femoghalvfems	1545
+femoghalvfjerds	1546;1547
+femoghalvtreds	1491
+femogtredive	1548
+femogtres	1549
+femogtyve	1487;1488;1599
+femte	1162
+femte etage	1278
+femte sal	1278
+femten	1418;1434
+ferie	599
+fersk	256
+fest	400
+feste	400
+festival	517
+fiasko	2162
+figur	1168;1168;1168
+fikst	1065
+filial	92
+filippiner	1628
+filippinsk	1628
+film	310
+filme	310
+filter	1154
+fin	600;600;600;1065
+finans-	360
+finansiere	659
+finde	146
+finde interessant	709
+finde på	176
+finde sig i	639
+finde sjovt	709
+finde spændende	709
+finde sted	81
+finde ud af	69;737;760;1837
+findes	69
+findes (eksistere)	824
+finger	1998
+finne	1501
+finsk	1501
+fint	268
+fire	1165
+fire dage efter	1439
+fire dage før	1436
+fire dage inden	1436
+fire dage senere	1439
+fire hundrede	1534
+fire måneder	1350
+fire timer	1472
+fire år	1442
+fireogfirs	1550
+fireogfyrre	1490
+fireoghalvfems	1551
+fireoghalvfjerds	1552
+fireoghalvtreds	1553
+fireogtredive	1554
+fireogtres	1555
+fireogtyve	1485;1486
+firewall	1077803;1103002
+firkant	275;440
+firkantet	275
+firkantet (3-dimensional)	609
+firkantet form	1844
+firma	948
+firs	1494
+fisk	364
+fiske	1078
+fisker	1078
+fiskeri	1078
+fisse	3177;3178
+fjeld	1032
+fjende	535;561
+fjerde	1165
+fjerde etage	1277
+fjerde sal	1277
+fjerkræ	358
+fjern	127
+fjernbetjening (f.eks. til en legetøjsbil)	1414
+fjerne	179;1459
+fjernstyre noget	1414
+fjernsyn	869;2065
+fjols	1159
+fjord	1303
+fjorten	1416;1435
+fjæs	3102
+flad	783
+flad fornemmelse	3003
+fladfisk	1935
+flag	518
+flage	518
+flamme	778;778
+flaske	986;2931
+fleksibel	1124
+flere	680;749
+flest	680
+flink	540
+flip	1992
+flirte	1338
+flise	440
+flittig	991
+flod	1303
+flodhest	3109
+flok	111
+flot	223;821;1120
+flov	414
+flue	1968
+flugt	1214
+fly	1163
+flygte	1214
+flygtning	1214
+flynder	1935
+flytte	733;1268;3097
+flyve	1147;1163
+flyve (om insekt)	1968
+flyvemaskine	1163
+fløde	1895;1896
+flødebolle	1947
+flødeis	1212
+flødeskum	1899
+fod	1385;1386;1386
+fodbold	2952
+foder	181;301
+fodled	3126
+fodre	181
+folder	362
+folk	1019;1449
+fond	1341;3098
+for	1364;1364;1364;1364
+for (konj.)	615
+for at være på den sikre side	533;771
+for det andet	573
+for det femte	1851
+for det fjerde	1741
+for det første	1224
+for det niende	1855
+for det ottende	1854
+for det sjette	1852
+for det syvende	1853
+for det tredje	1183
+for eksempel	795
+for en sikkerheds skyld	533;771
+for fanden	3018
+for fem dage siden	1437
+for fire dage siden	1436
+for lidt	100;693
+for lille	307;780;1310
+for længst	363
+for mange år siden	363
+for meget	586
+for morskabs skyld	709
+for nylig	704
+for sent	603;643
+for sig selv	238
+for sjov	308;709
+for smal	1310
+for små	1310
+for tiden	626;1814
+for tidligt	295
+for to dage siden	1129
+for tre dage siden	1447
+for tæt	929
+for øjeblikket	1814
+for-	910
+foran	1000;2953
+forandre	198;827
+forarget	415
+forbavse	741
+forbedring	632
+forbeholdt sig selv	432
+forberede	491
+forbi	602;666
+forbier	602;1793
+forbindelse	817;817;817;999;1312
+forbløffe	741
+forbløffet	1156
+forbrug	589;1255
+forbruger	589
+forbudt	831
+fordel	604
+fordele	92
+fordeling	92
+fordi	615;710;1189
+fordoble	1238
+fordom	640
+fordømme	640
+forebygge	837
+foredrag	3027
+foregive	310
+foregå	81
+forekomme	399
+forekomme anderledes	1856
+forelske sig	105;106
+forelske sig i (nogen eller noget)	3074
+foreløbig	897
+forening	2954
+foreslå	683
+forestille	898
+forestille sig	348;672
+forestilling	310;1039
+foretage	80
+foretrække	2992
+forfatter	382
+forfra	130;740
+forfulgt af (uheld e.l.)	390
+forfærdelig	1018;1153;1240
+forføre	2955
+forgiftning	952
+forgude	2031
+forgæves	1793
+forhandle	723
+forhandling	723
+forhindret	927
+forhindring	927
+forhold	2956;2956
+forhøre sig	117
+forkaste	985
+forkert	915;2947
+forklare	180
+forklaring	180
+forkynde	439
+forkælet	838
+forkølelse	1083
+forkølet	1083
+forlade	1337
+forlag	513
+forlange	875
+forlig	642
+forloren	116
+forlovet	2044
+forlænge	3070
+forlængelse	3070
+forløb	403;2994
+form	1168;1168;1168
+formand	1372;2079
+formel	1073;1366
+formiddag	324
+formindske	1258
+formue	912;925
+formular	3092
+formål	755
+formørkelse	331
+fornuftig	329
+fornærmet	415
+fornøjelse	308
+forpustet	267;1841
+forrest	1000
+forretning	426;426
+forråd	3098
+forsamling	111;111
+forside	1791
+forsikre	2958
+forsikring	2958
+forsinket	603;643
+forske	819
+forskel	530
+forskellig	530;532
+forskellige	660;959
+forskellige slags	660
+forskellige typer	660
+forskning	819
+forskrækket	2404
+forslag	683
+forsorg	181
+forstuvet	398;3070
+forstuvning	3070
+forstyrre	906
+forstå	444
+forstørre	3070
+forstørrelse	3070
+forsvare	837
+forsvarer	837;837
+forsvinde	263
+forsøge	232
+forsømme	1732
+forsørge	181
+forsørger	181
+fortjene	604
+fortjeneste	604
+fortjeneste (profit)	604
+fortov	1210
+fortrolig	383;951
+fortryde	145
+fortsætte	403
+fortvivlet	976
+fortælle	404;481
+fortælle mig	2183
+forudsætning	270
+forum	3058
+forurene	285
+forurening	285
+forvalte	667
+forvalter	667
+forvaltning	667
+forvente	557
+forventning	557
+forvirret	699;799;1825
+forår	882
+forældet	483
+forældre	325
+forære	431
+forøge	3070
+fotograf	738
+fotografere	738;2487
+fotografiapparat	738;2487
+foundation	1743
+fra	856
+fradrag	422
+fragt	1761
+frakke	1302;3013
+fransk	536
+franskbrød	103;1010302;1053602
+franskmand	536
+fred	416
+fredag	85
+fredericianer	1660
+fredericiansk	1660
+frederikshavner	1661
+frederikshavnsk	1661
+frelse	345
+frelseren	525
+frem og tilbage	1761
+fremgang	1001
+fremgangsmåde	2994
+fremme (ikke skjult)	1073
+fremmed	352
+fremover	417
+fremskridt	1001
+fremstille	80
+fremtid	417
+fri	86;349;441;1339
+fri for	1228
+fri fugl	1008602;1035803
+frikadelle	3148
+frikvarter	349
+frimærke	1379
+frisere	2046
+frisk	256;256;256
+frist	965
+friste	2955
+frisure	1121
+frisør	2036
+frokost	182
+fromage	1904
+frost	225
+fru	83
+frugt	284
+frygt	423
+frygte	423
+frygtelig	1240
+fryse	418;515
+fryser	225
+fræk	1128
+frø	998;1969;1970
+frøken	83
+fugl	358
+fugtig	905
+fuld	726;726;988;1301;1301;1301
+fuldføre	664
+fuldmagt	1055105;1055106;1055107;1055505;1072603;1072603;1130107
+fuldstændig	433;1301
+fundament	135
+fundere	348
+fundet (en kæreste)	983
+fungere	948
+funktion	948
+fup	1084
+fuppe	1084
+fylde	726;1301
+fylde op (optage meget plads)	903
+fyldt	726
+fyldt af siddende mennsker	2040
+fynbo	1081
+fynsk	1081
+fyre	985;2052
+fyrre	1496
+fyrtøj	2123
+fyrværkeri	1708
+fysik	183;184;1155
+fysisk	184
+få	427;431;521;607
+få (adj.)	402
+få af	1459
+få at vide	1824;2292
+få en ide	444
+få en lang næse	1793
+få fat i	737
+få fat i (nogen)	442
+få fat på	737
+få forbindelse med	1312
+få lavet et hul i øret	2050
+få lov	623
+få medalje	472
+få nogen til at falde ned	1006
+få nogens opmærksomhed	1346
+få nok	555
+få problemer	1264
+få studenterhuen på	2110
+fået nok	554
+får	367
+fælde tårer	479
+fælles	1312
+fælles-	111
+fængsel	742;1832
+fængsle	742;1832
+fænomen	776
+færdig	664;666;666
+færdsel	822
+færge	322;537
+færing	1502
+færre	874;1258
+færøsk	1502
+fætter	1161;1375
+fødder	1385;1387
+føde	301;353
+fødekæde	1030104;1081707
+fødsel	353
+fødselsdag	185
+føjelig	451
+føl	357
+føle	186;186
+føle sig bundet	763
+føle sig utilpas	1856
+følge	359;359;499
+følge efter	359
+følge med	359
+følges ad	499
+følsom	186;186
+før	363;645;910
+føre	1000;1171
+føre (nogen til et sted)	1171
+først	765;1224
+første	669
+første etage	1274
+første sal	1274
+g	889;896;2371
+gab	3028
+gabe	3028
+gade	272
+gadekryds (dyr)	1754
+gaffel	1020
+gal	1097
+galge	1750
+gammel	483
+gammel (adj.)	1173
+gammel (sb.)	1173
+gang	272;1192;1458;2153
+gange	1458
+garantere	779;2291
+garanteret	1345
+garanti	779;2291
+garderobe	528
+gardin	3029
+garn	460
+gas	3030
+gasse op	3131
+gave	609
+gavn	604
+gavne	604;1813
+ged	1971
+gemme	304;938;3095
+gemmeleg	1093802
+gen-	130
+general	169
+generation	1103
+generator	1029
+genere	1175
+generel	356
+genert	1845
+gengæld	2960
+gennem	698;698;698
+gennemføre	698
+gennemgående	253;845
+gennemsnit	845
+gennemsnitlig	845
+genstand	776
+geografi	188
+gesandt	962
+gevinst	388
+gevær	523
+gid	877
+gide	576
+gide ikke	576
+gift	107;952
+gifte sig	107
+giftig	952
+gilde	400
+giraf	66
+gitter	1154
+give	431;431;521
+give besked	210
+give karantæne	985
+give problemer	927;1264
+give sig god tid	1812
+giver ikke mening	1825
+glad	195;746
+glas	8;108;1233;2397
+glat	782
+glemme	191;265
+glemsom	191
+glide	782
+glimre	430
+glippe	1792
+glo	1028
+globus	188
+glose	1197;1849
+glæde	195;746
+glæde sig	746
+glædelig	746
+god	53;53;55;55;540;600;1065;2971
+god (til noget)	596
+god til tegnsprog	1382
+godkende	779
+godt	268;633
+godt (af høj kvalitet)	685
+godt kunne lide	1205
+godtroende	2996
+golfkugle	2335
+grad	1949;1949
+grafik	513;770
+grafiker	513;770
+grafisk	513;770
+gram	471
+grammatik	817
+grantræ	1207
+gratis	1228
+grave	371
+graviditet	1110
+gren	3031
+gribe	737
+gribe chancen for	737
+gribe ind	873
+grill	3151
+grille	3151
+grim	1134
+grim (alvorlig)	1153
+grine	1009
+gris	285
+gro	399
+grov	1128
+gruble	948
+grund	135;135;135;615;1189
+grundig	1137
+grundlag	135
+gruppe	111
+grus	1782
+grusom	1018
+gryde	1722;2085
+gryn	998
+grå	113
+græde	479;1152
+græker	1503
+grænse	1024;1024;1287;1287
+græs	826
+græshoppe	1969
+græsk	1503
+grød	1904
+grøft	3023
+grøn	507
+grønlandsk	1629;1630
+grønlænder	1629;1630
+grøntsag	1022
+gud	480;1524
+gud ske lov	728
+gud, ja	657
+gudskelov	309
+gudstjeneste	199
+guide	1171
+guide (vb.)	1171
+gul	13
+guld	430;3099
+gulerod	1900
+gulv	1092
+gummi	1124
+gyldig	436
+gymnasium	239
+gymnast	2962
+gymnastik	2962
+gå	298;519;549;550;550;1775
+gå et stykke tid	403
+gå fint	197
+gå fra hinanden	563
+gå glip af	1792;1793
+gå godt	197
+gå hjem	519
+gå i byen	319
+gå i gang med	690
+gå i opfyldelse	1454
+gå i orden	197
+gå i ring	1368
+gå i stykker	984
+gå i stå	753
+gå ind	768
+gå meget op i	2031
+gå ned	802
+gå op (om snor e.l.)	1109
+gå op for (nogen)	760
+gå op i detaljer	92
+gå ud over	1055003;1086010
+gåde	176
+gågade	822
+gård	135;368
+gås	1208
+gælde	436
+gær	1902
+gæsling	1208
+gæst	293
+gætte	176
+gør ikke noget	627
+gøre	80;80;80
+gøre det samme	359
+gøre gymnastik	2962
+gøre karriere	399
+gøre noget i ro og mag	1812
+gøre noget på forhånd	491
+gøre ofte	991
+gøre ondt	569
+gøre opmærksom på	210
+gøre rede for	180
+gøre rent	717
+gøre sig klart	760
+gøre sig umage med	690
+h	884;2372
+habit	1302
+hade	1049;1240;3014
+haderslever	1680
+hage	1999
+hakkebøf	3138
+hal	458
+hale	2122
+halm	2333
+hals	1127;1371
+halskæde	2045
+halstørklæde	1986
+halv	92;940;940
+halvanden	2117
+halvfems	1495
+halvfjerds	1493
+halvtreds	1492
+ham	76;654
+hamburger	3140
+hammer	2087
+hamre	2087
+hamster	1972
+han	76;648;654;2267
+han (køn)	498
+handel	426
+handicap	2099
+handicappet	2099
+handle	426;1222
+handle om	1012904;1042603
+handske	462
+hane	1973;1974
+hans	77
+happening	81
+har	289
+har haft	289
+har ikke	598
+har normalt	2156
+hare	1975
+haste	606
+hastighed	298;606
+hat	1064
+hav	327
+havde	289
+havde haft	289
+have	135
+have (vb.)	824
+have afføring	762
+have besluttet sig	436
+have besøgt	15
+have brug for	589
+have det fint	197
+have det godt	197
+have en affære	448
+have en fejl	915
+have et godt tegnsprog	1382
+have fornemmelse af	186
+have forskellige meninger	1754
+have fremgang	1001
+have god tid	192
+have godt af (gavne)	540
+have hjerte	1150
+have lovet	2291
+have lukket	208
+have lyst	1104
+have mistanke om	548
+have planer om	1714
+have problemer	1264
+have prøvet	15
+have på fornemmelsen	186
+have på hovedet	1749
+have set	1316
+have svært ved at beslutte sig	412
+have svært ved at få det til at løbe rundt	1284
+have svært ved noget	286
+have tid	714
+have til hensigt	1714
+have været	15
+havn	701
+havregryn	1903;1904
+hedde	110
+heftig	278
+hej	3077
+hel	433
+helbred	184
+held og lykke	1430
+heldig	309
+heldigvis	309;611;728
+hele	1319
+hele tiden	1319
+helikopter	2076
+hellere	765
+hellig	1945
+helsingoraner	1683
+helst ville	2992
+helt	1261
+helvede	328
+hemmelig	951
+hende	76;654
+hendes	77
+hensigt	755
+hensyn	724
+hente	761
+henvende	1819
+henvende sig til (en gruppe mennesker)	755
+henvendelse	1819
+henvise	1818;1819
+henvisning	1819
+heppe	1311
+her	1070
+herlig	1065
+herre	497;498
+hest	357
+hidse sig op	1780
+hidsig	1780
+hidtil	3087
+hik	2944
+hikke	2944
+hilse	3032
+hilsen	3032
+himmel	98
+hinanden	485
+hindbær	1905
+hindre	927
+hindre nogen i	1264
+hindring	927
+hingst	357
+historie	703;703;703
+historisk	703
+hjelm	369
+hjem	194;194;519;982;2166
+hjemme	774;1827
+hjemme-	774
+hjemmearbejde	3046
+hjemmebane	774
+hjerne	329
+hjerte	1067;1150
+hjertelig	1150
+hjerter	1150
+hjort	3110
+hjul	1752
+hjælp (udtryk for overraskelse)	1071
+hjælpe	525
+hjørne	2067
+hof	337
+hold	97;111
+hold da op (udtryk for overraskelse)	1071
+hold kæft	1776
+hold mund	1776
+hold op	1090
+holdbar	288
+holdbarhed	288
+holde	131;288;560
+holde af	1205
+holde fast	131
+holde fast (i sit)	977
+holde for sig selv	1145
+holde hemmelig	1145
+holde ind til siden	1297
+holde kæft	1333
+holde længe	288
+holde med	131
+holde mund	1333
+holde nogen for nar	1084
+holde noget for sig selv	432
+holde op	624;753;878;1090;2030
+holde sig beskæftiget	80
+holde sig udenfor	1286
+holde sin kæft	383
+holde ud	18;288
+holde udenfor	1459
+holde øje	1316
+holdning	2164
+hollandsk	1504
+hollænder	1504
+honorar	685
+hooligan	1040
+hoppe	357;1071
+hoppe (om små dyr)	1969
+hoppe (som en frø)	1970
+horisont	1766
+hos	60
+hospital	791;946;947
+hoste	420
+hotel	1748;3044;3188
+hoved	329;329;577
+hoved-	577
+hovedbanegård	1046902;1057703
+hovedpine	1343
+hovedvej	1027206;1057704
+hud	394;1393
+hue	1064;1749;2110
+hugge (med en økse)	2092
+hugge (stjæle)	903
+hukommelse	196
+humor	308
+humør	746;1342
+hun	76;83;654;2267
+hund	482;688
+hundrede	1390
+hunger	338
+hurra	195;517
+hurtig	606;830
+hurtigt	149
+hus	458
+huske	196
+hvad	352
+hvad er klokken	714
+hvad koster	360;925
+hvad nu hvis	672
+hvad tid	714
+hvem	512
+hver	605
+hver dag	637
+hver gang	1829
+hverken eller	1001203;1079602
+hvid	300
+hviderusser	2411
+hviderussisk	2411
+hvile	147
+hvilken	352
+hvis	771;3185
+hvis (konj.)	672;2409
+hvis nu	771
+hviske	2964
+hvor	1227
+hvor er det sødt	540
+hvor gammel	138
+hvor heldigt	611
+hvor lang tid	692
+hvor længe	692
+hvor mange	526;649;680
+hvor meget	586
+hvor morsomt	1065
+hvor pudsigt	436
+hvor skal du hen?	319
+hvordan	696
+hvorefter	641
+hvorfor	351
+hvorfor ikke prøve	163
+hvorhen	319
+hvornår	1118
+hyggelig	633
+hygiejne	1330
+hygiejnisk	1330
+hylde	517;2061
+hyre (vb.)	676
+hyrevogn	787
+hytte	458
+håbe	1204;1430
+håbløs til	3002
+hånd	1409
+hånd-	1409
+håndalfabet	1366
+håndbremse	1007
+håndled	3126
+håndvask	2085
+håndværker	2089
+hår	1121
+hård	278;278;486;486;486
+hårde stoffer	1027807;1069403
+hæder	1751
+hædre	1751
+hæfteplaster	2101
+hælde	2063;2159
+hælde (med en ske)	1941
+hælde (noget ud af en beholder)	1889
+hænde	81
+hænde mange gange	2156
+hænge	528;1750
+hænge på noget	763
+hænge sammen	1312;1377
+hær	3061
+hæslig	1049
+hæve	398
+hævn	2965
+hævne	2965
+høflig	1751
+høj	65;65;65;66;1048
+højest	1301
+højre	1229
+højre hånd	1409
+høne	358;1973;1974
+høre	114;114;117
+høre efter	1256
+høre en fugl synge	1011404;1011405;1035804;1035805;1117202
+høre til	1312
+høreapparat	2097
+hørehæmmet	1600
+hørende	114;1245;1259
+høvding	497
+høvl	538
+høvle	538
+i	76;684;768;883;2373
+i aften	330;331
+i alt	433
+i begyndelsen af	346
+i dag	323;626
+i eftermiddag	926
+i en fart	830
+i en periode	1823
+i et stykke tid	1823
+i fald	672
+i fjor	2921
+i forbindelse med	1312
+i forgårs	1129
+i forvejen	645;910
+i gamle dage	1036303;1048302
+i går	336
+i hjemmet	1827
+i hvert fald	436
+i modsætning til	561
+i morgen	141
+i opposition	561
+i opposition til	927
+i orden	223;695
+i overmorgen	1102
+i princippet	2977
+i seng	487
+i slutningen af	355
+i stedet for	198;827;2960
+i stykker	398
+i tilfælde af	771
+i torsdags	777
+i træk	1377
+i år	766
+i øjeblikket	626;1814
+ide	444
+ideel	255
+identificere	3007
+identitet	3007
+idiot	1159
+idol	255
+idræt	1130;1131
+ifølge	359;455
+igen	130
+igen og igen	775
+igennem	698
+ignorere	3034
+ikke	263;796;1869
+ikke (afvisning)	1179
+ikke (benægtelse)	625
+ikke ane	370
+ikke behøve	1204
+ikke bryde sig om	1049;1144
+ikke det samme	530
+ikke du	2947
+ikke dygtig	389
+ikke fatte	1825
+ikke finde	69
+ikke forhaste sig	1812
+ikke forstå	1332;1826
+ikke fungere	597
+ikke gide	619
+ikke have	575
+ikke have begreb skabt om	3002
+ikke have det så godt	1219
+ikke have forstand på	3002;3130
+ikke have gjort	575
+ikke koste meget	3088
+ikke kunne enes	561
+ikke kunne fordrage	1049;3014
+ikke kunne klare (f.eks. pga. træthed)	666
+ikke kunne lide	1049
+ikke lykkes	1793
+ikke længe	874
+ikke længere	598
+ikke mange	607
+ikke meget	607
+ikke meget af	402
+ikke mere	598
+ikke mere (end)	1811
+ikke orke mere	267
+ikke passe	2947
+ikke passe (sammen)	1754
+ikke ret meget	767;3011
+ikke rigtig klog	329
+ikke sige mere	383
+ikke skænke noget en tanke	3016
+ikke så godt	1219
+ikke tale om (forbud)	831
+ikke tilladt	625
+ikke vide	370
+ikke være	263;575
+ikke være bange for	3008
+ikke være god til	1219
+ikke være så god mere	2162
+ikke være vant til	1856
+ild	778
+ilt	133
+imellem	920
+imitation	1220
+imitere	1220
+immun	837
+immunforsvar	837;1461
+imod	927
+imponerende	315
+imponeret	315
+improvisation	176
+improvisere	176
+inaktiv	597
+incest	414
+ind	768
+indadvendt	208
+indbrud	903
+indbyde	644
+indbydelse	644
+indbygger	1019;1449
+indbyrdes	485
+inde i	768
+indeholde	684;2443
+inden	645;910
+inden døre	768
+indenfor	684;684
+indeni	1013
+inder	1515
+indflydelse	1014
+indgang	768
+indgriben	873
+indgående	1137
+indhente	2293
+indhente (noget forsømt)	1056;2293
+indhold	684;684;2443;2443
+indisk	1515
+individuel	800
+indkalde	644;1726
+indkaldelse	644
+indkomst	604
+indkøb	1222
+indkøbsvogn	1367
+indlægge	946
+indlæse (et betalingskort)	2042
+indoneser	1520
+indonesisk	1520
+indre	768;1013
+indrømme	972;1169
+indse	760
+indsprøjtning	2095;2103
+indtil	1250
+indtil nu	3087
+indtryk	218;3035
+indtægt	604
+industri	948
+indvandre	1054904;1076802
+indvandrer	1054904;1076802
+indvendig	684;768;1013
+indvie	958
+indvielse	958
+indviklet	799
+indvirke	15
+influenza	1083
+influere	1014
+information	1136
+informere	835
+ingen	456
+ingen er	263
+ingen problemer	197
+ingeniør	968
+ingenting	456
+injektion	2095
+insekt	1076;1968
+inspektør	1372
+inspiration	1136
+inspirere	1136
+institut	3036
+institution	3036
+instrument	776;948
+instrument (musikinstrument)	1218
+integration	3037
+integrere	3037
+intellekt	329
+intellektuel	329
+intelligens	329;1817
+intelligent	329;1817
+interessant	646
+interesse	646;1308
+interessere sig for	646
+interesseret	646
+interesseret i	1308
+international	1023
+internet	1392;1455;1456
+interview	366
+interviewe	366
+intet	456;1869
+intet er	263
+intim	929
+invalid	2099
+invitere	644
+iraner	1516
+iransk	1516
+irer	2179
+irritabel	1780
+irritere	752;1175
+irriterende	752
+irriteret	752
+irsk	2179
+is	1051;1212
+islam	1773
+islamisk	1773
+islandsk	1505
+islænder	1505
+islænding	1505
+især	75
+italiener	1506;1507
+italiensk	1506;1507
+itu	398
+iværksætte	690
+iværksætter	690
+j	2374
+ja	879
+jage	359
+jakke	1302;3013
+januar	1151;2966
+japaner	1517
+japansk	1517
+jaså	741
+jeg	2209
+jeg er ligeglad	3008
+jehovas vidne	407
+jer	76
+jeres	77
+jern	393
+jernbane	820
+jo	879
+job	80
+jogge	674
+jomfru	83
+jord	135;1916
+jordbær	1906
+jordemor	1030502;1035302
+jordskælv	3039
+journal	275;275;382
+journalist	382
+journalistisk	382
+joystick	1413
+jubel	195
+jubilæum	517
+juble	195
+juice	511
+jul	1206
+julenisse	3101
+juletræ	1207
+juli	1300;1411;1431;2453
+juni	781;1148;1397
+jura	41
+jurist	41
+just	436
+jyde	1167
+jysk	1167
+jæger	523
+jævn	356
+jævnligt	131
+jøde	527
+jødedom	527
+jødisk	527
+k	890;2375
+kabel	460;2331;2336
+kaffe	386
+kage	463
+kaj	701
+kakao	171
+kakkel	440
+kalde	1726;1726
+kalkun	3113
+kalv	1918;3114
+kalvekød	3114
+kam	2046;2047
+kamel	3115
+kamera	738;2487
+kammer	609;647
+kammerat	139
+kamp	936
+kan	622
+kan ikke	801
+kan ikke vente	606
+kan tænke sig	548
+kande	2063
+kandidat	654
+kane	3045
+kanin	1975
+kantine	167
+kaos	799
+kapitalisme	360;912
+kapitalist	360;912
+kapsel	2082
+kar	2085
+karakter	3051
+karakteristisk	2156;2934
+karl	792
+karriere	399
+kartoffel	1907
+kasket	2110
+kasse	609;609;1844
+kassere	985
+kasserer	609
+kasserolle	2055
+kassettebånd	2107
+kaste	836
+kaste bort	1241
+kaste op	944
+kat	1479
+katalog	362
+katastrofe	2967
+ked af	638;976
+ked af det	479
+kede sig	818;1028
+kedel	2063
+kedelig	818;3008
+kejsersnit	1033705
+kemi	1155
+kemikalie	1155
+kemiker	1155
+kende	902
+kendetegnende	2934
+kendt	2934;2939;2939
+kerne	998
+ketchup	1889;1943
+kidnappe	903
+kigge rundt	2039
+kiks	1909
+kilde	1136
+kilo	397
+kilogram	397
+kilometer	705
+kind	2000
+kineser	1518
+kinesisk	1518
+kiosk	1119
+kirke	199
+kirurg	373
+kittel	1302
+kjole	1242;2452
+klage	1141;1141
+klam	905
+klap i	1776
+klappe	1010
+klar	870;870;870
+klar over	930
+klare	667
+klare op	1143
+klart	870
+klasse	708;708;708
+klatre	1830
+klementin	2335
+klemme (vb.)	3052
+klik	907
+klike	111
+klima	98;133
+klinik	458;947
+klippe	393;449;1786;2074
+klippe (et klippekort)	2073
+klippekort	2073;2074
+klistermærke	1379
+klistre	993
+klistret	905
+kloak	2331
+klodset	1159
+klog	329;1817
+klokken	714
+klokken er mange	715
+klub	97
+klæbe	993
+klæbrig	905
+klæde sig på	1315
+kløft	3023
+km	705
+knald	1239
+knallert	1376
+knap	2335
+knibe	3042
+kniv	1031
+knogle	2024
+knop	2940
+knude	841;2940
+knuse	984;1903
+knuse (f.eks. peber eller salt)	1932
+knyttet til	999
+knæ	2002;2003
+knække	398
+knæle	441
+ko	1918
+koble på	1312
+kode	951
+koge	200
+kogebog	1020002;1029402
+kognition	329
+kognitiv	329
+kok	2035
+kold	225;515
+koldingenser	1684
+kollega	317;2398
+kollektiv	111
+kolon	3107
+koloni	731;1746
+kolonisere	731
+kolossal	1450
+kom	1726
+kom an	1726
+kom så	1726
+kombination	817
+kombinere	817
+komedie	308
+komfur	2065
+komite	2968
+komma	1954
+kommando	464
+komme	574;574
+komme (i noget)	836
+komme bag på	741
+komme bagfra	2293
+komme fra	856;1057403;1085602
+komme først	1000
+komme i knibe	1264
+komme i kontakt med	1312
+komme ind	768
+komme myldrende (om insekter o.l.)	1076
+komme op at skændes	535
+komme ud på et sidespor	45
+kommentar	719
+kommentere	719
+kommet over	860
+kommission	3058
+kommune	47
+kommunikation	723;748
+kommunikere	748
+kompensation	2960
+kompensere	2960
+kompetence	1342
+kompliceret	286;799
+komponist	1218
+koncentration	201
+koncentrere	201;201
+koncept	1231;1601
+koncert	1218;2078
+kondition	1841
+kondom	1124
+kone	83;107
+konfekt	1911
+konference	202;723
+konfirmation	494
+konfirmere	494
+konflikt	535
+konge	337
+kongelig	337
+konklusion	975
+konkret	436
+konkurrence	1131
+konkurrere	1131
+konkurs	790
+konsekvens	1079
+konsekvent	1079
+konservativ	1713
+konsonant	3106
+konstatere	879
+konstruktion	968
+konsultation	723
+kontakt	999;1312
+kontaktlinser	2096
+kontanter	925
+kontinent	135
+kontor	2034
+kontrakt	1201
+kontrol	996
+kontrollere	996
+konvention	1201
+konvertere	198;827
+konvolut	440
+koordinere	817
+kop	1017
+kopi	1220;1221
+kopiere	1221
+kopiere (person)	1220
+kor	1172
+kordegn	407
+korn	998
+korn (f.eks. sandkorn)	998
+korps	111
+korrekt	436
+korrektur	1778
+korrigere	1778
+korrupt	424
+korruption	424
+kort	275;440;440;874
+korte bukser	1990
+kortspil	251
+kortærmet	2023
+kost	301;1294
+kostbar	621
+koste	360;925
+kostume	1315
+kraftig	278;278;974
+krage	358
+kranie	329
+krav	875
+kravle	3043
+kreativ	176;2431
+krebinet	3138
+kreds	1336
+kredsløb	1368
+kridt	1160
+krig	1292
+krimi	951
+kriminal-	951
+kriminalitet	903;904
+krise	799
+kristen	494
+kristendom	494
+kriterium	270
+kritik	1289
+kritisere	1289
+kro	3044;3188
+kroat	1606
+kroatisk	1606
+krone	337;337;337
+krone (en konge, kejser e.l.)	337
+kronisk	403
+kronprins	337
+kronraget	2121
+krop	184
+krus	1357
+krybe	1310
+krydderi	254;1801
+krydre	1801
+krydret	254
+kryds	1117
+krydse	1754
+krydse fingre	1430
+krydse hinanden	1754
+krydsning	1754
+krydsogtværs	3092
+krydsord	3092
+krydstogt	1754
+krympe	1310
+krystal	8;1233
+kræft	1272
+kræfter	1190
+krænke	398
+kræve	875
+kuffert	943
+kugle	520;2335
+kugleformet	520
+kuglepen	1012;1139;1160
+kultur	314
+kun	767;858;1811
+kunne	622
+kunne godt tænke sig	163
+kunne tænke sig	814
+kunst	1011
+kunstig	116
+kunstmaler	1011
+kunstner	1011
+kursus	396;950
+kusine	1959;1960
+kusse	3177;3178
+kuvert	440
+kvadratmeter	2020
+kvalifikation	784;1342
+kvalitet	784
+kvalme	2969;2969
+kvart i	1177
+kvart over	1178
+kvarter	932;1177
+kvik	1817
+kvinde	83
+kvitte	2030
+kvittering	1201
+kværn	1932
+kylling	358
+kyndig	1755
+kys	1187
+kysse	1187
+kyst	1380
+kæde	817;817
+kælder	802
+kæle	838
+kælen	838
+kælk	3045
+kæmpe	243
+kæmpe med sig selv	243
+kæmpe sig gennem	698
+kæmpestor	1450
+kære	540
+kæreste	854
+kæreste (vb.)	854
+kærlighed	105
+kærnemælk	1025404;1194003
+kærtegn	838
+kø	2075
+købe	360;925
+købe ind	1222
+købmand	426
+kød	394
+køkken	716
+køleskab	1041803;1045703
+kølig	515
+køn	823
+køre	298;403;579;1453;1758;2107
+køre (med en barnevogn, græsslåmaskine e.l.)	1367
+køre (om en husholdningsmaskine e.l.)	1029
+køre (om en maskine e.l.)	948
+køre (om tog)	820
+køre fremad	1453
+køre igennem (en kortlæser)	2042
+køre på knallert	1376
+køre på motorcykel	1376
+køre stærkt	298
+køre under jorden (om tog)	1701
+kørekort	2069
+kørsel	1453
+l	893;1060;1265;2376
+labber i sig	401
+laborant	1155
+laboratorium	1155
+lad	909
+lad mig prøve	163
+lade som om	310
+lade til	898
+lade være	878
+lade være med	625
+lagen	3020
+lagkage	1038502;1046302
+lagre	304
+lakrids	1911
+laks	2018
+lam	367;1156;1156
+lampe	120;121
+lamslået	1156
+land	135;135
+landbrug	1013604;1058904
+lande	1703
+landet (uden for byerne)	136
+landsdækkende	1013608;1100402
+landshold	1011103;1013603
+landskamp	1013606;1093602
+landsmøde	1013605;1044602
+lang	52;52;127
+lang tid	692
+lang tynd genstand	2334
+langfredag	1005204;1008502
+langsom	692;1089
+langsomt forsvinde	547
+langt	127;2923
+langt borte	519
+lap	1379
+lappe (en cykelslange)	1379
+larm	907
+larme	907;1040
+larve	1978
+last (dårlig egenskab)	1153
+lastbil	1433
+latter	1009
+latterlig	1009
+lav	100;102;102
+lave	80
+lave (mad)	200
+lave ballade	1040
+lave fis med	1084
+lave lort	762
+lave mad	467
+lave om	198;827;1698
+lede	1171
+lede efter	69
+leder	1171
+ledig	349;349
+ledning	460
+ledsager	1171
+legal	1096
+legat	1341;3098
+lege	204;271
+legeme	184
+legetøj	1020402;1066302
+legitimation	1821
+legitimere sig	1821
+leje	732
+lejlighed	933
+lejr	1746
+lektie	3046
+lem	3049
+let	939;939;939
+letlandsk	1607
+letmælk	1093905;1194002
+lette	1607
+lettelse	939
+lettere overvægtig	278
+lettet	939
+lettet (om følelse)	728
+lettisk	1607
+leve	466
+levende lys	120
+leverandør	1186
+levere	1186
+licens	1821
+lide	406;1205
+lide (pines)	502
+lide af rengøringsvanvid	1330
+liderlig	1318
+lidt	607;693
+lidt efter lidt	2948
+lige	704;1025;1082;1082
+lige (uafgjort)	1340
+lige før	929
+lige meget	627
+lige nu	626
+lige ud	844;1025
+lige ved	832
+ligeglad	1050
+ligegyldig	627
+ligeledes	16
+ligesom	16;17;266
+ligestilling	1082
+ligge	147
+ligge i sengen	487
+ligge stille	597
+lighter	2123
+ligne	17;17;898;898
+lilje	534
+lilla	509
+lille	102;307;780;1310;3011
+lille aflangt stykke	2329
+lille firkant	2324
+lille kugle	998
+lillebitte	3011
+lim	993
+line	460
+linje	1250;1287
+liste	342
+litauer	1608
+litauisk	1608
+liter	1060;1265
+litteratur	382
+liv	466
+live	466
+livlig	2922
+livrem	592
+lodtrækning	2970
+loft	1373;1373;1374
+loft (øverste grænse)	1301
+logi	63
+logo	2119;2120
+lokal	135;1336
+lokale	609;647
+lokke	2955
+lokum	762
+lomme	1987
+lommetørklæde	1083
+loppe	1969
+lort	762;762;2930;2930
+lotteri	2970
+lov	342
+love	880;1057;2291
+lovlig	1096
+lovprise	3081
+luft	133
+lufthavn	1163;1703
+lugt	1114;1737
+lugte	734;1114;1737
+lukke	208;208;3084
+lukke op (med en øloplukker)	2082
+lukke øjnene	1043
+lukket	208
+luksus	311
+lumsk	116
+lunge	3129
+lungebetændelse	1015
+lunken	920
+lyd	114
+lyde	114
+lygte-	120
+lykkelig	1317
+lykkes	611
+lyn	361
+lyne	361
+lynlås	3122
+lys	119;119;120;120
+lyse	121
+lyse op	121
+lyserød	3057
+lysne	119
+lyst	1104
+lytte	117
+lyve	1105
+låge	457
+lån	292
+låne	292
+lår	1305;2005
+lås	1757
+låse	1757
+låst	1796
+læbe	2007
+læder	394
+læge	994
+lægge	147;836
+lægge bag sig	3016
+lægge mærke til	186;719
+lægge sammen	2080
+lægge til	712
+lækker	1120;1262;2971;2971
+lækker (om person)	1120
+længde	52
+længe	692
+længe om	692
+længe siden	363
+længes efter	548;606
+lænke	817
+lære	396;1106
+lære af	1069
+lærer	759;1106
+lærling	786;1106
+læse	434
+løb	674
+løbe	674;859
+løbe tør	263
+løbende	403
+løfte	880;1057
+løfte (noget)	2294
+løg	1912
+løgn	1105
+løkke	1750
+løn	685
+lørdag	809
+løse	1109
+løse op	1109
+løsning	1109
+løve	1756
+m	885;2377
+mad	301
+mager	470
+magt	551
+magte	288
+magtsyg	1013202;1055104
+mail	312;1016
+maj	882;1427
+majs	1913
+makker	1377
+maks.	1301
+male	372;993;1903
+male byen rød	2081
+maler	372
+maleri	275;1011
+maling	372
+mand	107;648;648
+mandag	806
+mandarin	2335
+mandat	654
+mande sig op	18
+mandel	1914
+mange	526;649;680
+mangel	411
+mangle	411;559;598
+manifest	1201
+manipulation	1778
+manipulere	1778
+mappe	362;943
+maraton	674
+margarine	1777
+mark	135
+marked	135;135
+markere	719
+markør	719
+marmelade	1777
+marsvin	1976
+marts	547;1395
+mase	3052
+maske	3102
+maskine	948
+masse	649
+masser af	55;526;649;912;1341
+matche	846;1312
+matematik	1223
+materiale	945;945;2451;2451
+mave	1394
+mayonnaise	2051
+med	236;711;711
+med akklamation	1010
+med det samme	290
+med flere	530;660
+med hjertet	1150
+med jævne mellemrum	131
+med tiden	2948
+med tålmodighed	868
+med vilje	529
+medalje	388;472
+medarbejder	1008008;1071103
+meddele	210;835
+medføre	948;975
+medgive	1169
+medicin	949
+medlem	90
+medlidenhed	1021
+meget	21;586;649
+meget (forstærkende)	278;2923
+meget god	843
+meget kort	3011
+meget lidt	3011
+meget varm	2485
+mekaniker	2037
+mel	1916
+melde afbud	3009
+melde fra	3009
+melde sig ind	750
+mellem	920
+men	49
+mene	348;567
+menighed	407
+mening	348;567
+menneske	1019;1019
+menneskelig	1019
+mennesker	1449
+mens	134
+mental	329
+mentalitet	1342
+menu	342;342
+menukort	362
+mere	749
+mere eller mindre	3079
+messe	966
+mest	438
+mester	390;497
+mesterskab	390
+metafor	634
+metal	393
+meter	453
+metode	1269
+metro	1700;1701
+mexicaner	1521
+mexicansk	1521
+middag	1194
+middagsmad	1194
+midlertidig	897
+midt	707;707;924
+mig	1113;2209
+migræne	1343
+militær	3061
+miljø	697;932
+milliard	211
+millimeter	1176
+million	213
+millionær	912
+min	2209;2210
+minde	196
+minde om	16;17
+mindre	100;102;102;1310
+mindre (ikke stor)	780
+mindretal	1258
+mindst	100;102
+mini	780
+minister	1111
+minoritet	1258
+minus	422;1249;1249;1250;1251;1251;1251
+minut	64;134
+mis	1479
+misbrug	2973;2973
+misforstå	1291;1754
+misforståelse	1291
+mislykkes	1793
+misser	1793
+mission	407
+missionær	407
+miste	689
+mistænke	548
+misunde	1842
+misundelig	1842
+mit	2209;2210
+mixed	799
+mobil	1044
+mobiltelefon	1044
+mod	927;927;927
+mode	921
+model	1168;1168;1168
+moden	451;451
+moderne	921
+modgang	927
+modig	1261
+modsat	561
+modsige	561
+modsætning	561
+modtage	431;1026
+monarki	337
+monitor	275
+montør	2037
+mor	305
+mor og far	325
+moral	2164
+moralsk	2164
+mord	1027
+more sig	709
+morfar	1091;1359
+morgen	720
+mormon	407
+mormor	744
+morsom	308
+mos	451
+mose	905
+moster	215;1958
+motel	1748
+motion	840
+motor	948;1029
+motorcykel	1376;1702
+motorvej	1027205;1102904;1102906
+mulig	771
+mulighed	771
+muligvis	771;931
+multiplicere	1458
+mund	2006
+mundaflæse	216;989
+mundaflæsning	989
+mundhåndsystem	1828
+mur	1030
+murer	2038
+mus	1759;2402;2403;2408
+museum	966
+musik	1218;2078
+muskel	1190
+muskuløs	974
+muskuløs (om person)	974
+muslim	1773
+muslimsk	1773
+mut	572
+myldre-	822
+myndighed	640
+myrde	1027
+myre	1076
+mystisk	650
+myte	703
+mytologi	703
+må	623;969
+må hellere	1125
+må ikke	625;831
+må selv bestemme	1059
+må selv gøre	1059
+må selv klare	1059
+må selv om	1059
+må være	969
+måde	1269
+mål	755
+måle	453;454
+målgruppe	755
+målløs	1156
+måltid	301
+måne	1209
+måned	651
+måske	931
+mægler	426
+mælk	1940
+mærke	186;1379
+mærkelig	650;979;3001
+mærkværdig	3001
+mæt	554;555
+møbler	769
+møde	445;445;446;446
+møde (en kæreste)	983
+møg	762;2930
+mølle	2090
+møller	2090
+mønt	998
+mørk	331
+n	888;2378
+nabo	1080;1763
+naiv	2996
+narko	2095
+narkoman	2095
+narkose	2937
+narkotika	2095
+nasse (på nogen)	421
+nat	217
+nattøj	1052;3179
+natur	697
+naturel	697;1286
+naturlig	697
+naturligvis	628
+navn	110
+ned	802
+nederdel	1988
+nederlag	971
+nedlægge	3084
+nedskære	624
+negativ	1249;1249;1251;1251
+neger	1522
+negl	2012
+nej	625;796;1179
+nem	747;939
+nemt at køre om hjørner med	631
+nemt klare	631
+nervøs	1285
+net	1154
+netop	436
+netop (for nylig)	704
+netværk	1213
+neutral	1286;1286;1286
+nevø	1362
+ng	891
+ni	1412
+ni hundrede	1533
+ni måneder	1355
+ni timer	1477
+ni år	1446
+niece	1448
+niende	1412
+niende etage	1282
+niende sal	1282
+nigerianer	1631
+nigeriansk	1631
+niks	1869
+niogfirs	1556
+niogfyrre	1557
+nioghalvfems	1417
+nioghalvfjerds	1558
+nioghalvtreds	1559
+niogtredive	1560
+niogtres	1562
+niogtyve	1563
+nisse	3101
+nissemand	3101
+nitten	1422;1469
+nive	3042
+niveau	1296
+nogen	680
+nogenlunde	2932
+nogenlunde (ikke godt)	1219
+noget	680
+noget andet	573
+nogle	680
+nogle gange	861
+nok	555;1301;1301
+nord	804
+nord-	804
+nordirer	2412
+nordirsk	2412
+nordlig	804
+nordmand	1508
+nordpå	804
+norm	270
+normal	356;662
+norsk	1508
+notat	382
+note	382
+notere	382
+notits	440
+novelle	703
+november	1157;1429
+nu	626
+nuance	532
+nudist	954
+nul	1869
+nul (forbud)	831
+nummer	865
+numse	1997
+nuttet	540
+nuværende	626
+ny	493
+nybegynder	232;1034603;1049302
+nyde	814
+nyhed	1834
+nysgerrig	152
+nyt	1834
+nytte (gavne)	525
+nytår	1708
+nytårsaften	1708
+nå	222;741
+nå (nogen)	2293
+nå (noget)	2293
+nåde	1945
+når	771
+når (konj.)	672
+nægte	1179
+nær	832;929
+nær (i rum)	128
+næring	301
+nærme sig	929
+nærmere	929;929
+nærmest	266;832
+nærmest (omtrent)	3079
+nærmeste	929
+næse	2157
+næsehorn	3116
+næste	652;653
+næste dag	141
+næste år	652
+næsten	629;832
+nævn	3058
+nød	1831;1915
+nød-	1264
+nødt til	1075
+nødvendig	803;1075
+nøgen	954
+nøgle	917
+nøjagtig	436
+o	883;2379
+oberst	169
+objekt	776
+objektiv	1286
+obligatorisk	464
+odenseaner	1667
+odenseansk	1667
+offensiv	873
+offentlig	1073
+offentliggøre	1073
+officer	169
+officiel	1073
+ofte	131;1185
+og	573;712;1183;1741;1851
+og (for det niende)	1855
+og (for det ottende)	1854
+og (for det sjette)	1852
+og (for det syvende)	1853
+og lignende	959
+og meget mere	959
+og så videre	530;660;959
+også	16;17
+ok	695
+okay	695
+okse	1918
+oktober	867;1063
+oldboy	1173
+oldeforældre	1358
+olie	2071;2072;2159
+om	129;129;130;740
+om aftenen	331
+om dagen	323
+om eftermiddagen	926
+om fem dage	1440
+om fire dage	1439
+om forladelse	1054
+om lidt	693
+om tre dage	1438
+om året	333
+omgang	729
+omgivelser	932
+omgående	290;626
+omkring	2932
+område	932;932
+omsorg	838
+omtale	477
+omtrent	2932
+omtåget	988
+omvendt	198;827;1698
+ond	1133
+ondskab	1133
+ondskabsfuld	1133
+ondt i	569
+onkel	1961;1962
+onsdag	808
+op	804
+op (helt væk, f.eks. spist op)	1077
+op til	1301
+opbevare	304;473
+opbygning	344
+opdage	186;737;737;760
+opdigte	176
+opdrage	2974
+opdragelse	2974
+opdrætte	3070
+operation	373
+operere	373
+opfatte	218;3035
+opfattelse	218;3035
+opfinde	444
+opfindelse	444
+opfordre	271
+opfylde	1454
+opgave	872
+opgive	878;2030
+opgør	535
+ophæve	398
+ophøre	3084
+opkald	1726
+opkalde	1726
+opkræve	3048
+oplagt	256
+opleve	219
+oplevelse	219
+oplukker	2082
+oplyse	1136
+oplysning	1136
+oplæg	683
+oprette	1202
+oprør	535
+opskrift	342;382;975
+opsparing	304
+opstand	535
+opstå (f.eks. ide)	399
+opstå uro	799
+opsyn	996
+optage	7;983;1221
+optaget	220
+optræde	310;1039
+opvarme	450;450
+opvarmning	450;450
+opvask	2058
+opvaskemaskine	1029;1102905
+opvisning	871;966
+orange	511
+ord	404;1197;1849
+orden	1226
+ordentlig	53;223
+ordentlig person	1226
+ordinær	2432
+ordne	235;235;1226;1370;1731;3190
+ordne (tage sig af)	69
+ordning	1226
+ordre	464;1306
+orientere	835
+original	21;979
+orlov	147
+orm	1978
+os	2209
+ost	1767
+ostehøvl	1767
+otte	1465
+otte hundrede	1532
+otte måneder	1354
+otte timer	1476
+otte år	1445
+ottende	1465
+ottende etage	1281
+ottende sal	1281
+otteogfirs	1405
+otteogfyrre	1564
+otteoghalvfems	1565
+otteoghalvfjerds	1566
+otteoghalvtreds	1567
+otteogtredive	1568
+otteogtres	1569
+otteogtyve	1570
+ovenpå	718;804
+over	860;860;860;860;860
+over (på grund af noget)	615
+over for	927
+overblik	1766
+overdrive	797;2975
+overdøve	2212
+overenskomst	642
+overfald	923
+overføre	3097
+overførsel	3097
+overgang	198;827
+overgreb	923
+overhale	602
+overhovedet ikke	1090
+overleve	2993
+overnatte	63;1043
+overraske	741
+overraskende	650
+overrasket	1156;2404
+overskud	604;604
+overskue	1766
+overspille	3097
+overstå	2976
+oversætte	198;320;3097;1001710
+oversættelse	320
+overtage	731;873;1225
+overtale	723;1048103;1086011
+overveje	348;412;1215
+overvåge	996
+overvægtig	974
+ovn	2052
+p	884;2380
+pagt	1201
+pakistaner	1632
+pakistansk	1632
+pakke	609;609;2080
+pande	2008;2053;2054;2055
+pandekage	3139
+pap	945;2451
+papir	275;945;2451
+par	3078;3078;3078
+paradoks	561
+parameter	454
+paraply	1378
+parasol	1378
+parentes	1955
+park	135
+parkere	1297
+parkering	1297
+parlament	2040
+parti	111
+partikel	998
+partner	1377
+paryk	1749
+passager	654
+passe	657;815;846;1248
+passe (være til nogens fordel)	1813
+passe på	341;1248
+passe sammen	1312
+passe til	815
+passere	602
+passiv	147
+pasta	1919
+pastor	50
+patient	132
+pause	147
+pc	1107
+peber	1801;1932
+pejs	778
+pen	1160
+pendle	1761
+penge	360;925
+pengeinstitut	678
+pengemangel	360
+penis	3049
+pension	301;1188
+pensionist	1188
+per person	1065405
+perfekt	255;846
+periode	1823
+perle	998
+permanent	403
+perron	1210
+person	654
+personale	1449
+personlig	1113
+personlighed	1113;2156
+pervers	285
+pibe	907
+pig	3083
+pige	83;84
+pige (datter)	94
+pik	3049
+pille	998
+pilskaldet	2121
+pind	2334
+pindsvin	3117
+pine	502
+pingvin	3118
+pink	3057
+pinlig	1293
+pinse	1704
+pippe	358
+pizza	1922;1923;1924
+pjat	227
+pjatte	227
+pjece	362
+placere	730
+placering	730
+plade	275
+plads	730;730
+plads (torv)	135
+plage	1846
+plan	228;1296;1296
+planet	188;435
+planlægge	228
+plantage	3050
+plante	534;534;3050;3050
+planteske	371
+plast	945;2451
+plaster	2101;2102
+plastik	945;2451
+playstation	1414
+please	407
+pleje	775;838
+pleje (at gøre noget bestemt)	2156
+plet	1956
+pligt	464
+pludselig	231
+plus	712
+point	3051
+pokkers	3018
+polak	1509;2180
+politi	834
+politibetjent	834
+politik	1045
+politiker	1045
+politisk	1045
+polsk	1509;2180
+polterabend	2081
+populær	255
+porcelæn	1233
+porno	954
+pornografi	954
+porre	2336
+portion	3098
+porto	1379;2488
+portugiser	2460
+portugisisk	2460
+portør	1367
+pose	1391
+positiv	712;712
+post	312
+postkasse	1031202;1184403
+pr.	605
+pr. næse	1215702
+praktik	2089
+prale	350
+premiere	739
+pres	3052
+presse	513;3052;3052
+prik	1956
+primitiv	402
+primær	765;1224
+princip	2977
+principiel	2977
+prins	337;1957
+prinsesse	1957
+pris	360;925
+privat	432;432
+problem	725
+problemregning	1072503;1100505
+procedure	2994
+procent	1770
+proces	2994
+producer	2154
+producere	2154
+produkt	2154
+produktion	2154
+professionel	685;685;1335;1335
+profit	604
+program	342;342;342;342;342
+projekt	228
+propel (på en helikopter)	2076
+proptrækker	376
+protektor	837
+protest	927
+protestere	927
+provenu	604
+provinsen	136
+provokation	927
+provokere	927
+provst	50
+præ-	910
+præcis	436;436
+præcision	436
+prædike	439
+præmie	388
+præsentation	966
+præsentere	966
+præsident	1111
+præst	50
+prævention	837
+prøve	232;232;232
+prøve sig frem	232
+psyke	1342
+psykisk	1342
+psykolog	1755
+psykologi	1755
+pubertet	2990
+publikum	2039;2040
+pudder	1801
+pudse	381
+pudsig	308
+pulje	111;1341;3098
+pulver	1916
+pung	1847
+punkt	707;2206
+punktere	3083
+punktum	1956;1956
+punktum finale	666
+pusher	866
+puslespil	143
+putte (i noget)	836
+pyjamas	1052;1315;3179
+pynt	1734
+pynte	1734
+pyroman	377
+pyromani	377
+pyt med det	627
+på	56;56;56;56;76
+på betingelse af	1096
+på gensyn	1324
+på grund af	615;1189
+på nær	422
+på plads	730
+på skrift	382
+på tide	1005608;1013405
+på vej	272
+på vrangen	827
+påbud	640
+påbyde	640
+påføre tandpasta	2051
+pågribe	442;737
+påhængs-	1377
+påklædning	1315
+pålægge	640
+påske	616;1232
+påvirke	15
+påvirket (af f.eks. spiritus)	2104
+pædagog	233
+pædagogik	233
+pædagogisk	233
+pæn	223;223;823
+pære	1925;1925
+pøj pøj	1430
+pølse	1926
+q	2381
+r	894;2382
+rabarber	3147
+rabat	422
+radiator	2062
+radio	2065;2176
+radio-	3054;3054
+radiostyret	3054
+ramme	1038;1038
+ramme ved siden af	1793
+randrusianer	1668
+randrusiansk	1668
+rapport	975
+rar	540;540
+rasende	2991
+rask	256
+rask (livlig)	256
+re-	130
+realisme	21
+realist	21
+realistisk	21;436
+reb	2336
+redaktion	382
+redaktør	382
+redde	345;345
+redder	345
+rede	235
+rede (hår)	2046
+redigere	1778
+reducere	874;1258
+referat	975
+regel	342
+regelmæssig	131;1226;1829
+regelrytter	342
+regent	667
+regere	667
+regering	667
+region	1336
+regn	452
+regne	1005
+regne (om vejret)	452
+regne med	1005
+regne ud	1005
+regning	1005;1005
+regnskab	1005
+reje	1928;1929
+rejer	1928;1929
+rejse	234;234
+rejse (et telt e.l.)	344
+rejse sig	1798
+reklamation	1141
+reklame	683
+reklamere (over noget)	1141
+rektangel	440
+relation	1377
+relation (mellem mennesker)	2956
+relevant	1377
+religion	407
+religiøs	407
+remis	1340
+remoulade	2051
+ren	655;655;655
+rengøring	717
+renlig	1330
+renovation	2154
+renovere	1778;2154
+rense	1760
+rente	3091
+reparation	2154
+reparere	2154
+reparere (med værktøj)	2037
+repræsentation	1164
+repræsentere	1164
+reservat	135
+reserve	3055
+reservere	731
+resolution	1201
+rest	422
+restance	1042
+restaurant	1194
+resultat	975
+resumé	975
+ret	41;301;436;657;955
+retfærdig	656;1082
+retsvidenskab	41
+rette	1778
+rettighed	955
+retur	1761
+revalidering	2099
+revidere	3100
+revision	3100
+revisor	3100
+revne	3056
+revnet	3056
+revolution	535
+ribben	2025
+ribs	3134
+ridder	357
+ride	357
+riffel	523
+rig	912;912
+rig (på noget, kendetegnet ved noget)	1301
+rige	932
+rigelig	55
+rigtig	21;21;436;436;657;657
+rimelig	656;657
+ring	1368;2043;2044
+ringe	571;916;1426
+ringe efter	1426
+ringe med mobiltelefon	1044
+ris	1930;1931
+risikere	934;935
+risiko	934;935
+riste	200
+ritual	403;1103
+rive	380;380
+rive (f.eks. jord eller græs)	2060
+rod	429;799
+rode	429;799
+roderi	429;799
+rodet	799
+rolig	416
+roligt finde sig i noget	868
+rolle	310;310
+rom	3144
+roman	703
+romantik	105;106
+romantisk	105;106
+ros	3081
+rosa	3057
+rose	534;3081
+rose (vb.)	1010
+rosin	1933
+rotere	1029
+rotte	1977
+royal	337
+rubrik	440;440
+rude	8
+rugbrød	103;1327;2396
+rullekrave	3124;3125
+rullekravesweater	3124;3125
+rum	609;647
+rumæner	1612;1613
+rumænsk	1612;1613
+rund	729;1368
+runde af	618
+rundstykke	1934;1947
+russer	957
+russisk	957
+rutine	131
+ry	1200
+rydde op	235;1370
+ryg	2009;2010
+ryge	736;2946
+rygning	736
+rygte	1200
+rygterne svirrer	1200
+rygtet siger at	1200
+rykke frem	1001
+ryste	3082
+rytter	357
+rå	2432
+råbe	375;1034
+råd	683;3058
+rådden	905
+råde (nogen til noget)	683
+rådgiver	683
+rådhus	47
+rækkefølge	2994
+rækkehus	1045804
+ræv	1980
+røbe	404;972
+rød	14
+rødspætte	1935
+røg	736;2946
+røge	2946
+røgeri	2946
+røget	2946
+rør	2331;2336
+røre	15
+røre nogen på skulderen (for at påkalde opmærksomhed)	1346
+røre sig	840
+rørt	186
+røv	1997
+røve	903
+røver	903;904
+røveri	903;904
+s	892;2383
+s-tog	2070
+saft	1937
+saftevand	1936
+saftig	1937
+sag	872
+saga	703
+sagfører	41
+sagn	703
+saks	449
+sal	609;647;1296
+salat	1938
+salg	866
+salme	1172
+salt	1801;1916
+salær	685
+samarbejde	3085
+samfund	111
+samle	1802
+samme	16;17
+sammen	111;236
+sammen med	236
+sammenbrud	3090
+sammenhæng	1377
+sammenkomst	111
+sammenligne	960
+sammenstød	1038
+sammenstød (uenighed)	1754
+samt	712
+samtale	723
+samtidig	16
+samvittighed	1329
+samvær	111
+sand	21;1782;1916
+sandal	237
+sandhed	1057
+sandsynligvis	931
+sang	1172;1218
+sankthans	781
+sans	186
+sanse	186
+sauce	1941
+sav	2091
+save	2091
+savne	411
+savnet	411
+scene	587
+schweizer	1614
+schweizisk	1614
+score	3051
+score (en person)	737
+score (point)	737
+se	79;79;79;79
+se alvorlig ud	572
+se med egne øjne	466;1316
+se op til	2031
+se sort ud	1007912;1050803;1050803;1086202
+se ud	1007908;1086204
+se ud (som om)	79
+se ud som	898
+se ud som om	898
+seddel	440
+sejle	322
+sejr	410
+sejre	410
+sekretariat	2034
+sekretær	382;2034
+seks	1463
+seks hundrede	1530
+seks måneder	1352
+seks timer	1474
+seks år	1443
+seksogfirs	1571
+seksogfyrre	1572
+seksoghalvfems	1573
+seksoghalvfjerds	1574
+seksoghalvtreds	1575
+seksogtredive	1576
+seksogtres	1403
+seksogtyve	1577
+seksten	1419;1466
+seksualitet	1789
+seksuel	1789
+sekund	64;134
+sekundær	573
+selskab	514;514
+selv	238
+selv om	627;2167
+selv om (på trods af)	151
+selvangivelse	1023804;1027510
+selvfølgelig	628
+selvstændig	1023803;1045503
+seminarium	239
+sende	864
+sende (nogen et sted hen)	1818
+senere	643
+senest	355
+seng	487;1184
+sennep	1941
+sent	603;643
+separat	566
+separation	563
+separeret	563
+september	881;914;1398;1415
+serber	1615
+serbisk	1615
+serie	817;817
+seriøs	572
+servere	1186
+servering	1186
+service	792;1186
+ses	1324
+sex	1789
+sexet	1789
+sfære	932
+sgu	3018
+shampoo	2048
+shorts	1990
+show	310;1039
+sidde	908;2407
+sidde hårdt i det	1284
+sidde i møde	446
+side	1790;1790;1790;1790;1791
+siden	363
+siden (konj.)	615
+sidst	355
+sidste	355;363
+sidste år	2921
+sige	404;404
+sige på gebrokkent tegnsprog	855
+sightseeing	2039
+signal	2119
+signalere	2119
+sigte	1270
+sigte mod (have til hensigt)	1714
+sikker	436;533
+sikkerhed	533
+sikkert	436;1345
+sild	1939
+silke	900
+silkeborgenser	1686
+simre	200
+sin	77
+sind	1342
+sindssyg	329
+single	800;800
+sit	77
+situation	1062
+sjap	905
+sjette	1463
+sjette etage	1279
+sjette sal	1279
+sjofel	285
+sjov	308
+sjovt nok	436
+sjusk	3060
+sjuske	3060
+sjæl	1342
+sjælden	419
+sjællandsk	1211
+sjællænder	1211
+skab	457
+skabe (vb.)	1202
+skabsdør	457
+skade	398
+skaffe	737;737
+skaft	2336
+skak	143
+skal have	875
+skal ikke	625
+skal ikke tænke på	878
+skaldet	954;2121
+skam	414;617
+skandale	1040
+skarp	326;326
+skat	166;242;540
+ske	81;1806
+skede	3177;3178
+skel	566
+skelet	2024
+skelne	566
+skema	3092;3092
+skepsis	2980
+skeptisk	2980
+ski	476
+skib	322
+skibonit	1687
+skide	762;2930;2930
+skideballe	810
+skifte	198;827;1698
+skiftende	532
+skik	1103
+skikkelse	1168
+skille ad	566
+skilsmisse	563
+skilt	275;440;563
+skind	394
+skinne	430;630
+skive	2057
+skjorte	1991;1992
+skjul	1093802
+skjule	938;3095
+sko	612;1381
+skole	434
+skomager	539
+skov	670
+skovl	371
+skrap	326;342;486
+skrap (til noget)	253;596
+skrift	382
+skriftlig	382
+skrige	375;1034
+skrive	382;455;1160
+skrubbe (gulv)	2060
+skrue	2088
+skruetrækker	2088
+skrækkelig	1018
+skrælle	1907
+skrælle en banan	1892
+skrællekniv	1907
+skræmmende	934
+skubbe ud (afvise)	1459
+skuespil	310;310
+skuespiller	310
+skuespillerinde	310
+skuffe	1792;2056
+skuffe (vb.)	1793
+skuffelse	1792
+skuffet	1792;3003
+skulder	2011
+skulle	658
+skummetmælk	1042704;1194005
+sky	1951
+skyde	523
+skyde på (gætte)	186
+skydning	523
+skyld	80
+skylde	659
+skyldig	80
+skylle	1087;1760
+skynd dig	606
+skynde sig	606
+skål	1952;2085
+skåle (vb.)	1952
+skæg	308
+skælde ud	810
+skældud	810
+skændes	1036
+skære	2057
+skære ost	1767
+skærm	275
+skærmbillede	275
+skøn	2980
+skøn (adj.)	633;823
+skønne	186;2980
+skønt (på trods af)	151
+skør	264;1037
+sladder	2981
+sladre	404;477;2981
+slags	266
+slagsmål	243
+slagte	2033
+slagter	2033
+slagteri	2033
+slank	470
+slappe af	147;148;583
+slave	812
+slem	1153
+slet ikke	1090
+slette	1459
+slidt	953;953
+slik	1911
+slikke	401
+slikke på et frimærke og sætte det på	1379
+slippe for	86
+slips	1993
+slot	244
+slovak	1616
+slovakisk	1616
+slovener	1617
+slovensk	1617
+sludder	227
+sludre	700
+sludre (på tegnsprog)	245
+slukke	1776
+slukke for	753
+slut	355;666;666
+slutning	355
+slutte	355
+slå	2212
+slå (om bølger)	2118
+slå en paraply op	1378
+slå en parasol op	1378
+slå i (med en hammer)	2087
+slå op på en side i en avis	677
+slås	243
+slæde	3045
+slægt	816;1288
+sløjd	538
+sløret	1332
+sløse	3060
+smadre	984
+smadret	984
+smag	785;785
+smage	785
+smage godt	1120;1262
+smage stærkt	254
+smage surt	254
+smal	1310
+smart	811;821
+smed	2089
+smelte	547
+smerte	406;502;569
+smide	836
+smide bort	836
+smide ud	836;1241
+smide væk	836;1241
+smidig	1124
+smil	1112
+smile	1112
+smitte	276
+smuk	823
+smutte	298
+smutter	1793
+smykke	2045;2049
+små	307;780;3011
+småkager	463
+småkæreste (vb.)	854
+småsove	1043
+småting	767
+smør	1777
+smøre	1777
+smøre noget på brød	1777
+smørepålæg	1777
+smørrebrød	182
+snabel	1967
+snakke	700
+snakke (på tegnsprog)	245
+snakke med	700
+snaps	274
+snart	629;3015
+snavs	285
+snavset	285
+sne	1314
+sne (sb.)	1314
+snedker	538
+snob	153
+snobbet	153
+snor	460
+snuppe	737
+snyd	1084;1115
+snyde	1084;1115
+snøfte	1083
+social	37
+socialcenter	1003704;1092404
+sodavand	1526
+sofa	2068
+sogn	1336
+sok	1381
+sol	630;1384;3180
+solbær	3135;3136
+soldat	3061
+solskin	630
+som	16;17;17
+som om	16;17
+som regel	845;2156
+sommer	450
+sommetider	861
+sorg	638;976
+sort	508
+sort (med mørk hud)	1522
+sort arbejde	1008007;1050802
+sort skærm	1332
+souvenir	196
+sove	63;1043;1043;2410
+sove dybt	1006304;1104305;1113704;1113705
+sove over sig	1006303;1086007;1086012;1104304
+sovs	1941
+spade	371
+spadsere	549;550
+spaghetti	1919
+spand	943
+spanier	1510
+spaniol	1510
+spansk	1510
+spare	304;713
+spark	2952
+sparke	2952
+speaker	247
+speciale	92
+specialist	92
+specialitet	75
+speciel	75;530;979
+specielt	75
+spegepølse	3149;3150
+spejl	1086
+spejlæg	248
+spektakel	1040
+spekulere	348;948
+spil	144;251
+spild	249
+spille	142;143;144;251;251;310;1218
+spille bip-spil	1414
+spille spil med joystick	1413
+spille teater	310;1039
+spiller (på f.eks. et håndboldhold)	142
+spindelvæv	1154
+spion	904
+spiritus	987
+spirituskørsel	1057903;1098702
+spise	301
+spise en majskolbe	1913
+splintre	984
+spole	2107
+spolere	398
+sponsor	659
+spontan	291
+spor	1210
+sport	1130;1131
+springe	1071
+springe i luften	1239
+sprint	298
+sprinte	298
+sprit	987
+spritbilist	1057903;1098702
+sprog	260;313
+sprøjte	1526;2095;2103
+spytte	1784
+spædbarn	461
+spændende	661
+spændt på (noget nyt)	163
+spærre	3063
+spøg	308
+spørge	366
+spørgsmål	366
+spørgsmålstegn	725
+ssh	383
+stad	165
+stadig	403;1253
+stadigvæk	403;1253
+stakkels	1021
+stamme (fra)	1057403;1085602
+standse	624;753
+stang	2326;2336
+stank	1114;1737
+start	1334
+starte	346;1334
+stat	1785;1785
+station	469
+stationcar	1433
+statistik	3022
+statue	1168
+stave	1366
+stearinlys	120
+sted	707
+stege	200
+stegepande	2053;2054;2055
+stel	303
+stemme	1371
+stemme (passe)	846
+stemme blankt	522
+stemme overens med	846
+stemning	3064;3183
+stemningen forsvinder	583
+sten	393;1786
+stereo	2176
+stereoanlæg	2065
+sti	1210
+stifte	1202
+stikke	3083
+stikke af	1214
+stikke hul (i noget)	3083
+stikke med kniv	1027
+stikke sig	3083
+stil	266;703
+stille	99;416
+stille (noget et sted)	836
+stimulere	271
+sting	387
+stinke	734;1114;1737
+stirre	1028;1304
+stjerne	1787;1787
+stjålet	903
+stjæle	903;903
+stof	453;694;694;900;901
+stol	908;2407
+stole på	1263
+stolt	798
+stop	1090
+stoppe	355;624;753;1007;1090;2030
+stor	52;52;65;112;1450
+storm	109
+stort set	3079
+stortude	1152
+straf	1772
+straffe	1772;1772
+straks	290;626
+stram	841
+stramme	841
+strand	1380
+strategi	228
+streg	1250;1287
+strejke	790
+streng	486
+streng (adj.)	342
+strikke	3080
+strimmel	2329
+struktur	1213
+strå	2333
+strålings-	3054
+strø	1801
+strø sukker	1782
+strøg	822
+strøm	183
+strømpe	1381
+student	239;2110
+studere	1069
+studere (undersøge)	819
+studerende	239
+studse (over noget)	1856
+stue	135;647;1296;1816
+stum	383;1333
+styre	667;667;667
+styrelse	667;1138
+styrke	1190
+stå	455;455
+stå (i en avis e.l.)	404
+stå fast	131
+stå fast (på sit)	977
+stå for døren	1781
+stå i vejen for	927
+stå op	1798
+stå på ski	476
+stå sammen	111
+stål	393
+stædig	486;977
+stærk	253;253;278
+stærk (i noget)	253
+stærk (smag)	254
+stævne	1131;1728
+stød	183
+støj	907
+støje	907
+størrelse	1123
+største	1450
+støtte	525;525;1808
+støvle	1381
+støvsuge	2060
+støvsuger	2060
+subjektiv	1113
+subtrahere	1250
+subtraktion	1250
+succes	255
+sukker	1782
+sulten	338
+sum	975
+summa summarum	975
+sump	905
+sund	256;256
+sundhed	256
+supermarked	426
+suppe	3141
+suppeterning	2324
+supplere	797
+sur	673;673
+surdej	1016002;1067303
+svag	1460
+svamp	905;2013;2013
+svangerskab	1110
+svar	992
+svare	992
+svare til	198;827;992
+svede ud	265
+svensk	1511
+svensker	1511
+sveske	1894
+sviger-	1963;1964;1965;1966
+svigerinde	1964
+svimmel	2104
+svin	285
+svinde ind	263
+svindle	424
+svineri	285
+svinge (variere)	530;532
+svoger	1964;1966
+svulst	2940
+svær	286
+sværge	1057
+svært at forstå	1332
+svømme	140
+svømme (om fisk)	364
+svømning	140
+sweater	1052
+sy	387
+syd	802
+syd-	802
+sydlig	802
+sydligst	802
+sydpå	802
+syerske	387
+syg	132;2924
+sygdom	132;994
+sygehus	791;946;947
+sygeplejerske	1158
+symbol	2119;2120
+symbolisere	2119;2120
+sympati	1021
+symptom	719
+syn	79;79;79;724
+synd	1021
+syne	724
+synes	567;902
+synge	1172;1218
+syning	387
+synlig (ikke skjult)	1073
+synspunkt	1007910;1070706
+synsvinkel	1007911
+syntaks	817
+syre	254
+syrlig	254;673
+system	228;968
+sytten	1420;1467
+syv	1464
+syv hundrede	1531
+syv måneder	1353
+syv timer	1475
+syv år	1444
+syvende	1464
+syvende etage	1280
+syvende sal	1280
+syvogfirs	1578
+syvogfyrre	1579
+syvoghalvfems	1580
+syvoghalvfjerds	1404
+syvoghalvtreds	1581
+syvogtredive	1582
+syvogtres	1583
+syvogtyve	1584
+så (konj.)	710
+så er det noget andet	530
+så som så	1219
+sådan	1835
+såfremt	672;2409;3185
+sår	373
+såre	326
+sæbe	374;1244
+sædvanlig	775
+sæk	1391
+sælge	866
+sælger	866
+sær	75;979
+sætte CI på	2177
+sætte af	836
+sætte i ovnen	2052
+sætte noget på plads	836
+sætte plaster på	2102
+sætte punktum for noget	1956
+sætte på (en opgave)	676
+sætte sig	908
+sætte spørgsmålstegn ved	725
+sætte tape på	2102
+sø	2021
+sød	540;540
+sødmælk	1054007;1194004
+søge	69;71
+sølv	430;3075
+søm	2087
+søn	88;91;173
+søndag	488;1361;2400
+sønder-	802
+sørge	976
+sørge for	69;235;1226;1731;3190
+sørgelig	479;638
+søskende	259
+søster	259
+søvn	1043
+søvnig	489
+t	887;2384
+t-shirt	2023
+tabe	689;689;689;971
+tablet	998
+tabu	383;951
+tag	1746
+tage	737;761;761;761;761;761;761;761
+tage (f.eks. på ferie)	298
+tage (plads)	903
+tage CI på	2177
+tage af sted	298;519
+tage brusebad	475
+tage chancen	3086
+tage det stille og roligt	1812
+tage et billede	738;2487
+tage et brusebad	474
+tage fejl	915;2162
+tage handske på	462
+tage hjem	298;2166
+tage imod	1026
+tage initiativ til	690
+tage kasket på	2110
+tage kontaktlinser på	2096
+tage kort tid	874
+tage lang tid	1089
+tage op	321
+tage på	797
+tage på (f.eks. en skjorte, frakke eller jakke)	3013
+tage på (i vægt)	974
+tage på hovedet (f.eks. en hat)	1749
+tage sig sammen	18
+tage til	574
+tage til efterretning	1002
+tage tøj på	1315
+tak	613
+takke	613
+taktik	228
+tal	680;1066
+tale	260;481;481;700
+tale (f.eks. ved en fest på tegnsprog)	1382
+tale i telefon	916
+tale med	700
+tale om	477;723
+tale på tegnsprog	855
+tale tegnsprog	1382
+talkum	1801
+tallerken	385
+tam	540
+tand	1142
+tandbørste	1196
+tandlæge	2032
+tandpasta	2051
+tanke op	2159
+tante	1383
+tape	2102
+tapper	1261
+tarvelig	552
+taske	943
+tavle	275
+tavs	383;572;1333
+taxa	787
+taxi	787
+te	2014
+teater	1039
+teenager	2990
+tegn	855
+tegne	770
+tegning	770
+tegnsprog	262
+teknik	228;968
+tekniker	968
+teknisk	228;968
+teknologi	968
+telefon	916
+telt	1746
+tema	531
+temperament	1780
+temperatur	454
+tempo	298;830
+teori	1170
+terapeut	838
+terapi	838
+termometer	454;973
+ternet	3092
+terror	279
+tertiær	1183
+test	232;2949
+testamente	1201
+thailandsk	1633;1634
+thailænder	1633;1634
+ti	1400
+tid	134;714;715
+tiden går hurtigt	149
+tiden nærmer sig	3015
+tidlig	295
+tidligere	363;645
+tidsfordriv	709
+tidsplan	3092
+tidspunkt	714
+tie	383;1333
+tie stille	383;1333
+tiende	1400
+tiger	3111
+tigge	421
+til	354;354;1250
+til andre tider	861
+til ende	664
+til ens held	345
+til gode	55
+til sidst	355
+til stede	1070
+tilbage	422;740;740
+tilberede (mad)	200
+tilbud	683
+tilfreds	1322
+tilfredsstillet	554
+tilfældig	829
+tilfældigvis	829
+tilføje	797
+tilgive	764;1337
+tilgængelig	349
+tilkalde	1726
+tilknytning	999
+tillade	623
+tilladelse	623
+tillid	1263
+tillidsmand	1064806;1126303
+tillidsrepræsentant	1116402;1126302
+tillukket	208
+tillæg	797
+tilmelde	1306
+tilmelding	1306
+tilsidesætte	3034
+tilskud	659
+tilskuer	2039
+tilstrækkelig	55;555
+tilsyn	996
+tiltrække (folk)	468
+tilværelse	466
+time	1174
+ting	776
+tinnitus	907
+tirsdag	807
+tis	1074
+tisse	1074
+tissemand	3049
+tit	1185
+tjekke	996;1618
+tjekkisk	1618
+tjene	604
+tjene godt	604
+tjener	792
+tjeneste	792
+tjenestemand	1064804;1079204
+to	485;573;1498
+to dage efter	1102
+to dage før	1129
+to dage inden	1129
+to dage senere	1102
+to hundrede	1527
+to måneder	1480
+to timer	1470
+to tredjedele	2116
+to år	1348
+toastmaster	1049703
+tog	820
+togkort	1821
+toilet	833;1074
+tolk	320
+tolke	320
+tolkning	320
+tolv	1388;1451;2454
+tom	263;1077
+tomat	2461
+tomhjernet	392
+toogfirs	1585
+toogfyrre	1586
+tooghalvfems	1587
+tooghalvfjerds	1588
+tooghalvtreds	1589
+toogtredive	1590
+toogtres	1591
+toogtyve	1402
+torden	361
+tordenvejr	361
+tordne	361
+torn	3083
+torsdag	777
+torsk	2015
+torv	135
+tosset	264
+total	433;1301
+tov	2336
+tradition	1103
+trafik	822
+trailer	1377
+traktor	2077
+transmission	3097
+transmittere	3097
+transplantation	3097
+transport	1761
+trappe	918
+travl	606;690
+tre	1195
+tre dage efter	1438
+tre dage før	1447
+tre dage inden	1447
+tre dage senere	1438
+tre fjerdedele	2114
+tre hundrede	1528
+tre måneder	1349
+tre timer	1471
+tre år	1441
+tredive	1497
+tredje	1195
+tredje etage	1276
+tredje sal	1276
+trekant	1320
+trekantet	1320
+trekantsforhold	1119502;1132003
+trendy	921
+treogfirs	1592
+treogfyrre	1593
+treoghalvfems	1594
+treoghalvfjerds	1595
+treoghalvtreds	1596
+treogtredive	1489
+treogtres	1597
+treogtyve	1483;1484
+tres	1423
+tretten	1389;1452;2455
+triatlon	1320
+triviel	3008
+tro	567;902;1799
+tro (vb.)	548
+tro på	902;1090203
+tropper	3061
+true	1273
+trumf (kortspil)	410
+trussel	1273
+trusser	1981
+tryg	751
+tryghed	751
+trykke	409;513;3052
+trykke noget ud af en tube	2051
+trykker	513
+trykkeri	513
+tråd	460
+træ	1180;1217
+træde på speederen	3131
+træde sømmet i bund (uformelt)	3131
+træde tilbage	2030
+træf	445
+trække	468
+trække (i et reb e.l.)	468
+trække fra	422
+trække fra (matematik)	1250
+trække frisk luft	133
+trække op (med en proptrækker)	376
+trække på smilebåndet	1112
+trække sig fra en diskussion	383
+trække vejret	1841
+træls	617
+træne	786
+træner	396
+trænge til	411
+træning	786
+træt	524;524
+træt af	555
+trøste	838;1006
+tube	2051
+tuberkulose	1015
+tude	375;479
+tudse	1969;1970
+tung	413;413;413;413;413
+tunge	2026
+tunghør	1600
+tur	942;1099;1100
+tur retur	1761
+turbine	1029
+turde	1261
+turisme	2039;2081
+turist	2039;2081
+turnering	1131;1728
+tusch	1160
+tusind	1323
+tv	869;2065
+tvilling	1771
+tvinge	464
+tvivle	412
+tydelig	870
+tydeligt (nemt)	747
+tyk	568;974
+tykmælk	1056802;1194006
+tyktarm	1056803
+tynd	427
+tynd (f.eks. tilslutning)	427
+tynd mave	1042703;1139402
+type	266
+typisk	390;1072;2156;2934
+tyrk	1519
+tyrker	1519
+tyrkisk	1519
+tys	383
+tysk	1512
+tysker	1512
+tyv	904
+tyve	1236
+tyvstarte	1090404;1090404;1133402
+tå	2029
+tåge	1944
+tåget (om syn)	1332
+tålmodig	868
+tålmodighed	868
+tåre	479
+tæer	1385
+tælle	680;1066
+tænde	377
+tændstik	377
+tænke	348
+tænke over	1034806;1086009
+tænke på	1005606;1034804;1034805
+tæt (om en jævnbyrdig kamp)	2936
+tæt på	832;832;929
+tæt ved	832
+tæt ved (i rum)	128
+tæv	1038
+tø	547
+tøj	663;1315
+tømme	1077
+tømrer	1180
+tør	1068
+tør ikke	1068
+tørklæde	1986
+tørre af (opvask)	2058
+tørstig	118
+u	883;2385
+u-	1710
+uafgjort	1340
+uanset	627
+uartig	1230
+uartig (anstødelig, f.eks. pornografisk)	1230
+ubehandlet	2432
+ud	519;862
+udadvendt	492
+udbygge	3070
+udbytte	604
+uddanne	396
+uddannelse	950
+uddybe	1137
+ude	519;862
+ude (i byen)	319
+ude af øje, ude af sind	3016
+udebane	862
+udefra	706
+udelukke	1459
+uden	263;456;2178
+uden tvivl	436
+udenfor	706;706;862
+udenlandsk	3069
+udenom	448;3068
+udgangspunkt	1034602;1070705
+udgift	1255
+udholde	1053
+udklædning	1315
+udkørt	267
+udland	3069
+udlænding	3069
+udmattet	267
+udmærket	53;268;600
+udnytte	589
+udpege	1270
+udsalg	866
+udsigt	1766
+udskifte	198;827;1698
+udskyde	1001
+udsolgt	598;866
+udstilling	966
+udsætte	1001
+udtage	983
+udtale	481
+udtryk	972
+udtrykke	972
+udtænke	228
+udvalg	2954;2968
+udvandre	1054905;1086203
+udvandrer	1054905;1086203
+udvide	3070
+udvidelse	3070
+udvikle	3070
+udvikling	3070
+udvise	1818
+udvisning	1818
+udvælge	983
+uegnet	2947
+uforfalsket	21
+uforskammet	1128;1230
+uge	269
+ugidelig	909
+uheld	788;788
+uheldig	788;1146
+uheldigvis	788;1146
+uklar	1332
+ukrainer	1619
+ukrainsk	1619
+ulv	1980
+ulykke	788;1038
+ulykkelig	976
+ulækker	1049
+umulig	286;825;2449
+umulig til	3002
+under	1181;1181;1181;1181
+underbukser	1981
+underholde	271
+underlig	650;979;3001
+underretning	1306
+underrette	210;1306
+underskrift	1201
+underskrive	1201
+underskud	1199
+understøttelse	1808
+undersøge	69;819
+undersøgelse	69
+undertiden	861
+undertøj	1994
+undervise	396
+underviser	396
+undervisning	950
+undgå	1321;1732;3068
+undre sig	650
+undskyld	1054
+undskylde	406;1054
+undtagelse	422
+undtagen	49
+undtaget	422
+undvige	448;3068
+ung	990
+ungarer	1513
+ungarsk	1513
+ungdom	990
+unge	62
+ungkarl	800
+uniform	1052
+universet	98
+universitet	239
+uorden	799
+ups	657
+ur	714;715
+urin	1074
+uro	799
+urokkelig	977
+urolig	661
+usand	116
+usandt	2947
+usikker	412
+uskyldig	978
+usædvanlig	3001
+utrolig	315;828
+utålmodig	606
+v	883;2386
+vable	2940
+vaccination	2296
+vaccinere	2296
+vagina	3177;3178
+vagt	57;58
+vakle mellem (flere muligheder)	412
+valg	754;754
+valse	1903
+valuta	360;925
+vand	805;1235
+vande	2159
+vandre	549
+vandrehistorie	1054906;1070305
+vandrehjem	1019402;1054903
+vandrepokal	1054902
+vane	403
+vanskelig	286;286
+var	1764;1764
+vare (vb.)	761
+vare et øjeblik	874
+varevogn	1433
+variere	530;532
+varig	403
+varm	450;2485
+varme	450
+varsel	341
+vaske	381;1244;2048;2060
+vaske hænder	374
+vaske op	2058
+vaskemaskine	1029
+ve	502
+ved	832
+ved (f.eks. ved juletid)	76
+ved (sted)	76
+vedligeholde	473;1330
+vedrørende	1312
+vedtage	754
+vedtægt	342
+vegetabilsk	826;2406
+vegetar	826;2406
+vegetarisk	826;2406
+vej	272
+veje	397
+vejleder	1171
+vejledning	1171
+vejlenser	1671
+vejlensisk	1671
+vejr	98
+veksle	198;532;827;1698
+velhavende	912
+velklædt	1315
+velkommen	1186
+velsigne	958;1945
+velsignelse	958;1945
+ven	139
+veninde	1363
+venlig	540
+venstre	1747
+venstre hånd	1747
+vent lidt	693
+vente	557
+venteliste	1034207;1055703
+verden	188;435
+vest	1302
+veteran	1173
+vi	485;2209
+vi ses	1324
+vi to	485
+via	698
+viborgenser	1672
+vide	702;902
+vide meget om	1755
+videnskab	1755;1817
+video	7;2107
+videobånd	7;2107
+videre	403
+vidne	779;779;1316
+vie	958
+vielse	107;958
+vigtig	857
+vil	876;1204
+vil gerne	814;1204
+vil gerne have	548
+vil have	814;875;1204
+vil ikke	789;1179
+vil være	1204
+vild	316;316;316
+vilje	529
+vilkår	270
+villa	458
+vin	274
+vin (plante)	2016
+vind	109;133
+vinde	410;941;2212
+vinder	410
+vindrue	2016
+vindue	8;275;275
+vinger	1147
+vingummi	3146
+vinke	1299
+vinkel	2067
+vinter	225;515
+violet	509
+virke	948
+virkelig	21;21;436;436;828
+virkelighed	21
+virksomhed	948
+virus	276
+visa	2042
+visdom	329
+visdomstand	1032906;1114202
+vise	871
+vise sig	871
+vitamin	2100
+vits	308;703;842
+vittighed	308;703;842
+vodka	3143
+vogn	1758
+vokal	3105
+vokse	399;3070
+vokse op	112
+voksen	65;65
+vold	923
+voldsom	278
+voldtage	923
+voldtægt	923
+vores	2209;2210
+vorte	2940
+vove	1261
+vrage	985
+vred	1097
+vræle	375;1152
+vrøvl	227
+vrøvle	227
+vuggestue	461
+vurdere	397;2980
+vurdering	2980
+våben	279
+våd	905
+vågne	287
+væbne sig med tålmodighed	868
+væddeløb	1131
+væg	1030
+vægt	397
+væk	179
+vække	671;1346
+vækkeur	571
+vækst	399;3050
+vælge	754
+vælger	754
+væmmelig	1049;1240
+værd	621
+værdi	621
+være	824
+være bedre end	2212
+være bundet	812
+være bundet (af noget)	763
+være fan af	131
+være fraværende	2410
+være fri for	86
+være gravid	1110
+være grund til	710
+være halvvejs	940
+være heldig	604;611;611
+være i centrum	924
+være i knibe	1264;1831
+være i lang tid	1850
+være i tvivl	243;412
+være lige om hjørnet	1781
+være lige ved at	629
+være medlem	750
+være nysgerrig (overfor noget nyt)	163
+være nødsaget til	803
+være nødt til	803
+være opmærksom	287
+være oppe i tiden (omtalt i medierne)	477
+være optaget af	201
+være på den	1264;1831
+være på spanden	1264
+være rigtig god til	390
+være skuffet	1793
+være stille (om gruppe eller person der er i dårligt humør)	583
+være syg	2924
+være syg med	995;2031
+være til	69;824
+være tæt på	629
+være uopmærksom	2410
+være usikker	412
+være utilpas	1856
+være utro	448
+være uvenner	561
+være velkommen til	1186
+være vild med	995;2031
+være villig til	1204
+være væk	263
+være ødsel	1255
+værelse	609;647
+værkfører	497
+værksted	2089
+værktøj	2089
+værn	837
+værne	837
+værne-	3061
+værre	126
+værtshus	3044;3188
+w	2387
+wc	1074
+weekend	318
+whisky	3142
+whist	251
+whiteboard	275
+x	2388
+y	883;2389
+yderligere	797
+ymer	2017
+yndig	823
+yndling	105
+yngre	102
+yngst	102
+yoghurt	2017
+z	1810
+zoologisk have	1013506;1196702
+Ålborg	1673
+Århus	1674
+Ægypten	1626;1627
+Østerbro	1675
+Østrig	1620
+å	883;1303;2392
+åben	384;384;492;492;492
+åbent hus	1045805;1049205
+åbne	384
+åbne (med en proptrækker)	376
+åbne øjnene	287
+åh nej	1146
+ål	2019
+ålborgenser	1673
+ålborgensisk	1673
+ånd	408;1342
+ånde	1841
+åndedræt	1841
+åndssvag	264;329
+år	138;333
+århusianer	1674
+århusiansk	1674
+årsag	1189
+æ	883;2390
+æble	284
+æg	616;1232
+ægte	21
+ægteskab	107
+ægypter	1626;1627
+ægyptisk	1626;1627
+ækel	1049
+ældre	483;1173;1173
+ældst	765;2405
+ælling	1208;1243
+ændre	198;827;1698
+ære	1751;1751
+ærgerlig	617
+ærgre sig over	976
+ærlig	1057
+ært	998
+æske	609
+ø	883;1768;2391
+ødelægge	398;398;984
+øge	3070
+øje	1316
+øjeblik	134;1326
+økologi	2094
+økologisk	2094
+økonomisk	1284
+økonomisk trængt	1284
+økse	2092
+øl	937;2931
+ølkasse	1722
+øloplukker	2082
+ønske	1203
+ønske (sub.)	1203
+ønske sig	548;814
+ør	2104
+øre	1774;2158
+ørering	2050
+øse	1941
+østriger	1620
+østrigsk	1620
+øv	617
+øve	786
+øvelse	786
+øverst	765
+

@@ -1,0 +1,28 @@
+[
+    {
+        "outputFile": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hdpi-v4/values-hdpi-v4.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 6,
+                    "endColumn": 13,
+                    "endOffset": 327
+                },
+                "from": {
+                    "file": "/home/sune/.android/build-cache/f08bf2e7f4b51d058981a37d19fd0045f5eb3c34/output/res/values-hdpi/values-hdpi.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 282,
+                        "endLine": 8,
+                        "endColumn": 13,
+                        "endOffset": 554
+                    }
+                }
+            }
+        ]
+    }
+]

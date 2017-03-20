@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/home/sune/.android/build-cache/f08bf2e7f4b51d058981a37d19fd0045f5eb3c34/output/res/drawable-v21/abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/home/sune/.android/build-cache/f08bf2e7f4b51d058981a37d19fd0045f5eb3c34/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
+    }
+]
