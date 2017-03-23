@@ -2,6 +2,7 @@ package dk.stbn.testts;
 
 import android.app.*;
 import android.os.*;
+import android.text.Html;
 import android.widget.*;
 
 import java.io.BufferedInputStream;
@@ -25,24 +26,25 @@ import android.os.AsyncTask;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-public class MainActivity extends Activity implements OnClickListener, com.google.android.exoplayer2.ui.PlaybackControlView.VisibilityListener, OnLongClickListener {
+public class MainActivity extends Activity implements OnClickListener, com.google.android.exoplayer2.ui.PlaybackControlView.VisibilityListener, OnLongClickListener, Runnable{
 	Appl a;
 	ArrayList<Fund> søgeresultat = new ArrayList();
 	//ArrayList<Indgang> søgeindeks = new ArrayList<>();
 	SimpleExoPlayer player;
 	SimpleExoPlayerView v;
-	Button søg;
+	Button søgeknap;
 
-	TextView resultat;
-
+	TextView resultat, loop;
+	CheckBox loopcb;
 	EditText søgefelt;
+
 
 	String søgeurl1 = "http://tegnsprog.dk/#|tegn|386|soeg|/'tekst/'";
 	String søgeurl2 = "%7Cresultat%7C10%7Ctrestjerner%7C1";
 
     String glosseurl = "http://tegnsprog.dk/indeks/aekvivalent_hel.js";
 	String baseUrlVideo = "http://tegnsprog.dk/video/t/"; //+" t_"+vNr+".mp4"		kaffe = 317
-	String baseUrlArtikler ="http://tegnsprog.dk/artikler/"; //+artNr+".htm"		kaffe = 386
+	String baseUrlArtikler ="http://m.tegnsprog.dk/artikler/"; //+artNr+".htm"		kaffe = 386
 	String baseUrlBillede = "http://tegnsprog.dk/billede_t/"; //+"f_"+bNr+".jpg"	kaffe = 314
 	
 	String kaffe  = baseUrlVideo +"t_317.mp4";
@@ -54,18 +56,22 @@ public class MainActivity extends Activity implements OnClickListener, com.googl
 	String dansk = "t_131.mp4";
 	String tegnsprog = "t_205.mp4";
 
-	boolean intro = true;
+	String tabel = "<TABLE><TR style=\"vertical-align:top;\"><TD>1. </TD><TD>brun</TD></TR><TR style=\"vertical-align:top;\"><TD>2. </TD><TD>kaffe</TD></TR></TABLE>";
+
+
+
+	boolean intro = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+	/*	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 			getActionBar().setElevation(0);
-		}
-		getActionBar().setIcon(R.drawable.tsikon);
-        setContentView(R.layout.main);
-		a = Appl.a;
+		}*/
+		setContentView(R.layout.main);
+		//getActionBar().setIcon(R.drawable.logo);
+        a = Appl.a;
 		v = (SimpleExoPlayerView) findViewById(R.id.mainVideoView);
 		player = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector(new AdaptiveVideoTrackSelection.Factory(new DefaultBandwidthMeter())), new DefaultLoadControl());
 		//player.setVideoListener(n
@@ -76,53 +82,150 @@ public class MainActivity extends Activity implements OnClickListener, com.googl
 		//v.setContro
 		//v.setVideoURI(url);
 
+		søgeknap = (Button) findViewById(R.id.mainButton);
 
-		søg = (Button) findViewById(R.id.mainButton);
-
-		søg.setOnClickListener(this);
-		søg.setOnLongClickListener(this);
+		søgeknap.setOnClickListener(this);
+		søgeknap.setOnLongClickListener(this);
+		søgeknap.setEnabled(false);
+		//sæt lytter
+		a.main = this;
 		resultat = (TextView) findViewById(R.id.resultat);
 		søgefelt = (EditText) findViewById(R.id.søgefelt);
-		//if (intro) lavintro();
-		
+		søgefelt.setOnClickListener(this);
+		loop = (TextView) findViewById(R.id.looptv);
+		loop.setOnClickListener(this);
+		loopcb = (CheckBox) findViewById(R.id.loopcb);
+		loopcb.setOnClickListener(this);
+
+		if (intro) lavintro();
+		velkommen();
+
+		p("onCreate færdig");
 
     }
+
+
 
 	@Override
 	public void onClick(View klikket)
 	{
-		v.setControllerShowTimeoutMs(1200);
-		skjulTastatur();
-		String søgeordet = søgefelt.getText().toString();
-		søgefelt.setText("");
-		if (søgeordet.equals("")) søgeordet = søgefelt.getHint().toString();
-		
-		søgefelt.setHint(søgeordet);
-		
-		if (søgefelt.getText().toString().equals("")) return;
-		søg(søgeordet); 
-		
-		switch (søgeresultat.size()) {
-		   case 0 : resultat.setText("Din søgning gav ingen reultater"); return;
-		   case 1 : {
-			   		final Fund f = søgeresultat.get(0);
+		if (klikket == søgeknap) {
+			v.setControllerShowTimeoutMs(1200); /// tiden før knapperne skjules automatisk
+			skjulTastatur();
+			String søgeordet = søgefelt.getText().toString().toLowerCase();
+			p("OnCliclk søgeord: " + søgeordet);
 
-					   MediaSource ms = lavLoopKilde(f.videourl);
+			søgefelt.setText("");
+			if (søgeordet.equals("")) søgeordet = søgefelt.getHint().toString();
 
-					   player.prepare(ms);
-					   player.setPlayWhenReady(true);
-					   resultat.setText("");
-					   for (String dkOrd : f.ord) resultat.append(dkOrd + "\n\n");
+			søgefelt.setHint(søgeordet);
 
-		   }
+			if (søgefelt.getText().toString().equals(søgefelt.getHint().toString())) return;
+			søgeresultat.clear();
+			final String søgeordF = søgeordet.toLowerCase();
+			søgeknap.setEnabled(false);
+
+			new AsyncTask() {
+
+				@Override
+				protected Object doInBackground(Object[] params) {
+					if (!søg(søgeordF)) {
+
+						p("Fejl " + søgeordF + " ikke fundet");
+						return false;
+					} else {
+
+						//a.hentArtikel(baseUrlArtikler+søgeordF+".html");
+					}
+
+					return true;
+				}
+
+				@Override
+				protected void onPostExecute(Object returtat) {
+					//t("Artikel hentet");
+					p("Artikel hentet");
+
+					boolean tomSøgning = !(boolean) returtat;
+
+					søgeknap.setEnabled(true);
+
+					if (tomSøgning) {
+						resultat.setText("Din søgning gav ikke noget resultat");
+						player.stop();
+						player.prepare(null);
+					} else {
+
+
+						///HER HÅNDTERES FLERE RESULTATER MED EN for (Fund f : søgeresultat) ...
+						Fund f = søgeresultat.get(0);
+						ArrayList<String> ord = f.ordliste;
+
+						String resultatStreng = "Søgeord:      \"" + f.nøgle + "\"\n\n";
+						for (String s : ord)
+							resultatStreng += s + "\n";
+						resultat.setText(resultatStreng);
+
+						MediaSource ms1 = lavLoopKilde(søgeresultat.get(0).videourl);
+						player.prepare(ms1);
+						player.setPlayWhenReady(true);
+					}
+
+
+				}
+
+			}.execute();
 		}
-		//getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-		//søgefelt.clearFocus();
+		else if (klikket == loop || klikket == loopcb) ts("Ikke implementeret..");
+		else if (klikket == søgefelt) søgefelt.setText("");
+		
+	}
+
+
+	void velkommen (){
+		søgeknap.setEnabled(false);
+
+		new AsyncTask() {
+
+			@Override
+			protected Object doInBackground(Object[] params) {
+				if (!søg("velkommen")){
+
+					p("Ordet "+velkommen + " ikke fundet");
+					return null;
+				}
+				else{
+
+					//a.hentArtikel(baseUrlArtikler+søgeordF+".html");
+				}
+
+				return null;
+			}
+
+			@Override
+			protected void onPostExecute(Object returtat){
+				//t("Artikel hentet");
+				p("Artikel hentet");
+				søgeknap.setEnabled(true);
+				skjulTastatur();
+				ArrayList <String> ord = søgeresultat.get(0).ordliste;
+				resultat.setText("");
+				for (String s : ord)
+					resultat.append(s+"\n");
+				MediaSource ms1 = lavLoopKilde(søgeresultat.get(0).videourl);
+				player.prepare(ms1);
+				player.setPlayWhenReady(true);
+
+
+			}
+
+		}.execute();
+
+
 
 
 
 	}
-
 
 	//Åbner test-/debug-aktivitet
 	@Override
@@ -138,32 +241,40 @@ public class MainActivity extends Activity implements OnClickListener, com.googl
 		return false;
 	}
 	
-	
-	boolean søg (String søgeord){
-		søg.setEnabled(false);
+	//kaldes fra baggrund
+	boolean søg (String søgeordInd){
+		p("Søg("+søgeordInd+")");
+		String søgeord = søgeordInd;
+		if (søgeord.substring(0,1).equalsIgnoreCase(" ")) søgeord = søgeord.substring(1); //Burde være rekursiv
+		if (søgeord.equalsIgnoreCase("igår")) return søg("i går"); //Ikke pænt :)
+		if (søgeord.equalsIgnoreCase("i torsdags")) søgeord = " i torsdags";
 
+
+		//Kan helt klart optimeres!
 		Indgang fundet = null;
 		for (int i = 0; i < a.søgeindeks.size(); i++){
 			fundet = a.søgeindeks.get(i);
 			if (søgeord.equalsIgnoreCase(fundet.søgeord)) break;
 			
 		}
-		if (fundet == null) return false;
+		if (!fundet.søgeord.equalsIgnoreCase(søgeord)) return false;
 		else {
+			p("ordet: "+søgeord+ " blev fundet i søgeindeks");
 			
 			for (String s : fundet.index){
-				
-				Uri u = lavUrl(baseUrlArtikler+s);
-				/////////kodsnnvioadsj
-				Fund f = new Fund(u, );
-				
+				p("   index: "+s);
+				Fund f= a.hentArtikel(baseUrlArtikler+s+".html");
+				f.nøgle = fundet.getSøgeord();
+				søgeresultat.add(f);
+
 			}
 			
 		}
-		søg.setEnabled(true);
 
+		p("Tjekker søgeresultat: ");
+		for (Fund f : søgeresultat) p(f);
 		return true;
-		//søgeresultat.add(lavTestfund());
+
 	}
 
 	void skjulTastatur(){
@@ -177,7 +288,7 @@ public class MainActivity extends Activity implements OnClickListener, com.googl
 	}
 
 
-	MediaSource lavKilde (String s){
+	MediaSource lavKilde (Uri s){
 
 		HttpDataSource.Factory kilde = new DefaultHttpDataSourceFactory("mig", new TransferListener<DataSource>() {
 			@Override
@@ -197,7 +308,7 @@ public class MainActivity extends Activity implements OnClickListener, com.googl
 
 
 		MediaSource ms = new ExtractorMediaSource(
-				Uri.parse(s),
+				s,
 				kilde,
 				new DefaultExtractorsFactory(), null, null);
 
@@ -216,122 +327,6 @@ public class MainActivity extends Activity implements OnClickListener, com.googl
 		return new LoopingMediaSource(ms);
 	}
 
-	void lavintro () {
-		søg.setEnabled(false);
-		ConcatenatingMediaSource intro =
-				new ConcatenatingMediaSource(
-						lavKilde(baseUrlVideo+velkommen)
-						//lavKilde(baseUrl+til),
-						//lavKilde(baseUrl+ord),
-						//lavKilde(baseUrl+bog),
-						//lavKilde(baseUrl+dansk), lavKilde(baseUrl+tegnsprog)
-				);
-
-		player.prepare(intro);
-		player.setPlayWhenReady(true);
-		søgefelt.setText("velkommen");
-		resultat.setText("velkommen");
-		
-		new Handler().postDelayed(new Runnable() {
-				@Override
-				public void run() {
-					søgefelt.setText("");
-					søg.setEnabled(false);
-					new Handler().postDelayed(new Runnable() {
-							@Override
-							public void run() {
-								søgefelt.setText("k");
-								søgefelt.setSelection(1);
-								new Handler().postDelayed(new Runnable() {
-										@Override
-										public void run() {
-											søgefelt.setText("ka");
-											søgefelt.setSelection(2);
-											new Handler().postDelayed(new Runnable() {
-													@Override
-													public void run() {
-														søgefelt.setText("kaf");
-														søgefelt.setSelection(3);
-														new Handler().postDelayed(new Runnable() {
-																@Override
-																public void run() {
-																	søgefelt.setText("kaff");
-																	søgefelt.setSelection(4);
-																	new Handler().postDelayed(new Runnable() {
-																			@Override
-																			public void run() {
-																				søgefelt.setText("kaffe");
-																				søgefelt.setSelection(5);
-																				søg.setEnabled(true);
-																				new Handler().postDelayed(new Runnable() {
-																						@Override
-																						public void run() {																						
-																							søg.setEnabled(false);
-																							new Handler().postDelayed(new Runnable() {
-																									@Override
-																									public void run() {
-																										søg.setEnabled(true);
-																										new Handler().postDelayed(new Runnable() {
-																												@Override
-																												public void run() {
-																													søg.setEnabled(false);
-																													new Handler().postDelayed(new Runnable() {
-																															@Override
-																															public void run() {
-																																søg.setEnabled(true);
-																																new Handler().postDelayed(new Runnable() {
-																																		@Override
-																																		public void run() {
-																																			søg.setEnabled(false);
-																																			new Handler().postDelayed(new Runnable() {
-																																					@Override
-																																					public void run() {
-																																						søg.setEnabled(true);
-																																					}
-																																				}, 500);
-																																		}
-																																	}, 500);
-																															}
-																														}, 500);
-																												}
-																											}, 500);
-																									}
-																								}, 500); 
-																						}
-																					}, 1000); 
-																			}
-																		}, 500); 
-																}
-															}, 500); 
-													}
-												}, 500); 
-										}
-									}, 500); 
-							}
-						}, 500); 
-					
-				}
-			}, 3500); 
-	}
-
-
-
-	private Fund lavTestfund (){
-
-		ArrayList a = new ArrayList();
-		a.add("brun");
-		a.add("kaffe");
-		return new Fund(lavUrl(kaffe), a);
-	}
-
-
-	
-
-	private Uri lavUrl (String s){
-
-		return Uri.parse(s);
-	}
-	
 	@Override
 	public void onVisibilityChange(int p1)
 	{
@@ -353,7 +348,116 @@ public class MainActivity extends Activity implements OnClickListener, com.googl
 	}
 
 	void t (String s){
-		
+
 		Toast.makeText(this, s, Toast.LENGTH_LONG).show();
+	}
+
+	void ts (String s){
+
+		Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
+	}
+
+	void lavintro () {
+		søgeknap.setEnabled(false);
+		ConcatenatingMediaSource intro =
+				new ConcatenatingMediaSource(
+						lavKilde(Uri.parse(baseUrlVideo+velkommen))
+						//lavKilde(baseUrl+til),
+						//lavKilde(baseUrl+ord),
+						//lavKilde(baseUrl+bog),
+						//lavKilde(baseUrl+dansk), lavKilde(baseUrl+tegnsprog)
+				);
+
+		player.prepare(intro);
+		player.setPlayWhenReady(true);
+		søgefelt.setText("velkommen");
+		resultat.setText("velkommen");
+
+		new Handler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				søgefelt.setText("");
+				søgeknap.setEnabled(false);
+				new Handler().postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						søgefelt.setText("s");
+						søgefelt.setSelection(1);
+						new Handler().postDelayed(new Runnable() {
+							@Override
+							public void run() {
+								søgefelt.setText("sø");
+								søgefelt.setSelection(2);
+								new Handler().postDelayed(new Runnable() {
+									@Override
+									public void run() {
+										søgefelt.setText("søg");
+										søgefelt.setSelection(3);
+										new Handler().postDelayed(new Runnable() {
+											@Override
+											public void run() {
+												søgefelt.setText("søg");
+												søgefelt.setSelection(4);
+												new Handler().postDelayed(new Runnable() {
+													@Override
+													public void run() {
+														søgefelt.setText("søge");
+														søgefelt.setSelection(5);
+														søgeknap.setEnabled(true);
+														new Handler().postDelayed(new Runnable() {
+															@Override
+															public void run() {
+																søgeknap.setEnabled(false);
+																new Handler().postDelayed(new Runnable() {
+																	@Override
+																	public void run() {
+																		søgeknap.setEnabled(true);
+																		new Handler().postDelayed(new Runnable() {
+																			@Override
+																			public void run() {
+																				søgeknap.setEnabled(false);
+																				new Handler().postDelayed(new Runnable() {
+																					@Override
+																					public void run() {
+																						søgeknap.setEnabled(true);
+																						new Handler().postDelayed(new Runnable() {
+																							@Override
+																							public void run() {
+																								søgeknap.setEnabled(false);
+																								new Handler().postDelayed(new Runnable() {
+																									@Override
+																									public void run() {
+																										søgeknap.setEnabled(true);
+																										søgeknap.performClick();
+																									}
+																								}, 500);
+																							}
+																						}, 500);
+																					}
+																				}, 500);
+																			}
+																		}, 500);
+																	}
+																}, 500);
+															}
+														}, 1000);
+													}
+												}, 500);
+											}
+										}, 500);
+									}
+								}, 500);
+							}
+						}, 500);
+					}
+				}, 500);
+
+			}
+		}, 3500);
+	}
+
+	@Override
+	public void run() {
+		søgeknap.setEnabled(true);
 	}
 }

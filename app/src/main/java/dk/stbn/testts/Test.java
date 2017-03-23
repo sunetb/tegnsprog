@@ -36,8 +36,8 @@ public class Test extends Activity {
 				return v;
 			}
 		};
-		;
 		
+		lv.setAdapter(ar);
 		
 		//t("Textview id: "+ testTv.getId());
 		
@@ -51,7 +51,7 @@ public class Test extends Activity {
 		
 		testTv.setText(udtekst);
 		
-		*/
+		
 		
 		new AsyncTask() {
 
@@ -73,7 +73,7 @@ public class Test extends Activity {
 			}
 
 		}.execute();
-		
+		*/
 	}
 	
 	void p (Object o){

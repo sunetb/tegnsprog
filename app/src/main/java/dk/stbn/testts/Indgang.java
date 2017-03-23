@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Indgang {
 
-	String søgeord;
-	ArrayList<String> index;
+	 String søgeord;
+	 ArrayList<String> index;
 	
 	public Indgang (){}
 	public Indgang (String ord, ArrayList<String> ix){
@@ -17,9 +17,15 @@ public class Indgang {
 	public String toString () {
 
 		String udskriv = søgeord;
-		for (String s : index) udskriv += "-"+s;
+		for (String s : index) udskriv += "|"+s;
 		return udskriv;
 
 	}
+
+
+	public String getSøgeord () {
+		return søgeord;
+	}
+
 	
 }

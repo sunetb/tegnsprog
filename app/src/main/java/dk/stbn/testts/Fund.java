@@ -9,15 +9,17 @@ import java.util.ArrayList;
  */
 
 class Fund {
-
+    String nøgle;
     Uri videourl;
-    Uri billedurl;
+    //Uri billedurl;
+    ArrayList<String>  ordliste;
 
-    ArrayList<String> ord;
-
-    public Fund(Uri vurl, Uri burl, ArrayList <String> a){
+    //public Fund(Uri vurl, Uri burl, String ord){
+    public Fund(Uri vurl, ArrayList<String>  ord){
         videourl=vurl;
-        billedurl = burl;
-        ord = a;
+        //billedurl = burl;
+        ordliste = ord;
     }
+
+    public String toString () {return "Fund: "+videourl +"\n"+ ordliste.toString();}
 }
