@@ -12,18 +12,19 @@
 	/>
 	<View
 		android:layout_width="match_parent"
-		android:layout_height="0px" 
-		android:layout_weight="1"/>
+		android:layout_height="2px"
+		android:background="@android:color/black"/>
+
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="0px"
-		android:layout_weight="2"
+		android:layout_weight="1.5"
 		android:gravity="center"
 		android:orientation="horizontal"
 		android:layout_margin="10dp"
 		>
 	    <EditText
-        android:text="Kaffe"
+        android:text="søge"
         android:layout_width="0px"
         android:layout_height="match_parent" 
 		android:layout_weight="1"
@@ -31,36 +32,61 @@
 	    <View
 			android:layout_width="0px"
         	android:layout_height="match_parent" 
-			android:layout_weight="1"/>
+			android:layout_weight="0.3"/>
 		<Button
 			android:layout_width="0px"
-			android:layout_height="match_parent"
+			android:layout_height="wrap_content"
 			android:layout_weight="1"
 			android:text="søg"
 			android:id="@+id/mainButton"/>
 		
 	</LinearLayout>
-	
 
 	<View
 		android:layout_width="match_parent"
-		android:layout_height="0px" 
-		android:layout_weight="1"/>
-	
-	<com.google.android.exoplayer2.ui.SimpleExoPlayerView  
+
+		android:layout_height="0px"
+		/>
+
+
+	<com.google.android.exoplayer2.ui.SimpleExoPlayerView
 		android:id="@+id/mainVideoView"
 		android:layout_width="match_parent"
-        android:layout_height="0px"
-		android:layout_weight="10"
-		android:layout_margin="10dp"
-		
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="5dp"
+		android:layout_marginRight="5dp"
+
+
 		/>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="0px"
+		android:layout_weight="0.8"
+		android:gravity="right">
+		<CheckBox
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/loopcb"/>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginRight="7dp"
+			android:text="Loop video"
+			android:id="@+id/looptv"
+			/>
+	</LinearLayout>
 	<TextView
 		android:id="@+id/resultat"
-		android:layout_height="0px"
+		android:layout_height="0dp"
+		android:layout_weight="5"
 		android:layout_width="match_parent"
-		android:gravity="center_horizontal"
-		android:layout_weight="2"
+		android:gravity="left"
+		android:layout_gravity="center_vertical"
+		android:layout_margin="5dp"
 		/>
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="0px"
+		android:layout_weight="0.5"/>
 
 </LinearLayout>
