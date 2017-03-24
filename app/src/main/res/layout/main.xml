@@ -2,7 +2,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="top"
-	android:orientation="vertical">
+	android:orientation="vertical"
+	android:background="@android:color/white">
 	<ImageView
 		android:layout_margin="15dp"
 		android:layout_width="match_parent"
@@ -22,6 +23,7 @@
 		android:gravity="center"
 		android:orientation="horizontal"
 		android:layout_margin="10dp"
+		android:background="@android:color/white"
 		>
 	    <EditText
         android:text="søge"
@@ -55,6 +57,8 @@
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="5dp"
 		android:layout_marginRight="5dp"
+		android:visibility="invisible"
+        android:background="@android:color/white"
 
 
 		/>

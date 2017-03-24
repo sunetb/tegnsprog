@@ -9,7 +9,8 @@ import java.util.*;
 
 public class Appl extends Application
 {
-
+	/// Aide
+	/// As x
 	
 	public static Appl a;
 	ArrayList<Indgang> søgeindeks = new ArrayList<>();
@@ -223,7 +224,9 @@ public class Appl extends Application
 					.replaceAll("<TR style=\"vertical-align:top;\">", "")
 					.replaceAll("</TR>", "")
 					.replaceAll("</TD>", "ønskernylinie")
-					.replaceAll("<TD>", "");
+					.replaceAll("<TD>", "")
+					.replaceAll("<BR>","\n")
+				.replaceAll("<BR/>","\n");
 
 			//Erstat html-koder for danske vokaler
 			//æ: &aelig;

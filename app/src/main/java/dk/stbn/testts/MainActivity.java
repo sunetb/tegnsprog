@@ -25,8 +25,9 @@ import android.view.ActionProvider.*;
 import android.os.AsyncTask;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
+import android.support.v7.app.*;
 
-public class MainActivity extends Activity implements OnClickListener, com.google.android.exoplayer2.ui.PlaybackControlView.VisibilityListener, OnLongClickListener, Runnable{
+public class MainActivity extends AppCompatActivity implements OnClickListener, com.google.android.exoplayer2.ui.PlaybackControlView.VisibilityListener, OnLongClickListener, Runnable{
 	Appl a;
 	ArrayList<Fund> søgeresultat = new ArrayList();
 	//ArrayList<Indgang> søgeindeks = new ArrayList<>();
@@ -96,6 +97,7 @@ public class MainActivity extends Activity implements OnClickListener, com.googl
 		loop.setOnClickListener(this);
 		loopcb = (CheckBox) findViewById(R.id.loopcb);
 		loopcb.setOnClickListener(this);
+		loopcb.setChecked(true);
 
 		if (intro) lavintro();
 		velkommen();
@@ -109,6 +111,7 @@ public class MainActivity extends Activity implements OnClickListener, com.googl
 	@Override
 	public void onClick(View klikket)
 	{
+
 		if (klikket == søgeknap) {
 			v.setControllerShowTimeoutMs(1200); /// tiden før knapperne skjules automatisk
 			skjulTastatur();
@@ -157,7 +160,7 @@ public class MainActivity extends Activity implements OnClickListener, com.googl
 					} else {
 
 
-						///HER HÅNDTERES FLERE RESULTATER MED EN for (Fund f : søgeresultat) ...
+						///HER SKAL HÅNDTERES FLERE RESULTATER MED EN for (Fund f : søgeresultat) ...
 						Fund f = søgeresultat.get(0);
 						ArrayList<String> ord = f.ordliste;
 
@@ -167,6 +170,7 @@ public class MainActivity extends Activity implements OnClickListener, com.googl
 						resultat.setText(resultatStreng);
 
 						MediaSource ms1 = lavLoopKilde(søgeresultat.get(0).videourl);
+						v.setVisibility(View.VISIBLE);
 						player.prepare(ms1);
 						player.setPlayWhenReady(true);
 					}
@@ -176,7 +180,14 @@ public class MainActivity extends Activity implements OnClickListener, com.googl
 
 			}.execute();
 		}
-		else if (klikket == loop || klikket == loopcb) ts("Ikke implementeret..");
+		else if (klikket == loopcb) {
+			if (loopcb.isChecked())
+				player.setPlayWhenReady(true);
+				else
+				player.setPlayWhenReady(false);
+
+			ts("Stadig ikke implementeret. Nu kan den pause/resume");
+		}
 		else if (klikket == søgefelt) søgefelt.setText("");
 		
 	}
@@ -215,6 +226,7 @@ public class MainActivity extends Activity implements OnClickListener, com.googl
 				MediaSource ms1 = lavLoopKilde(søgeresultat.get(0).videourl);
 				player.prepare(ms1);
 				player.setPlayWhenReady(true);
+				v.setVisibility(View.VISIBLE);
 
 
 			}
