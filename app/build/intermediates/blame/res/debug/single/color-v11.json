@@ -1,10 +1,10 @@
 [
     {
         "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
-        "source": "/home/sune/.android/build-cache/180fc10159b58e373b2e2ff773f4302e9e69eb50/output/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
+        "source": "/home/sune/.android/build-cache/47c9d1d04e02b935ee76245525dfabfe8c288199/output/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
     },
     {
         "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
-        "source": "/home/sune/.android/build-cache/180fc10159b58e373b2e2ff773f4302e9e69eb50/output/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
+        "source": "/home/sune/.android/build-cache/47c9d1d04e02b935ee76245525dfabfe8c288199/output/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
     }
 ]

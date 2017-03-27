@@ -7,6 +7,7 @@ import android.widget.*;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.*;
 import android.net.*;
 import android.view.View.*;
@@ -134,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 			if (søgefelt.getText().toString().equals(søgefelt.getHint().toString())) return;
 			søgeresultat.clear();
+
 			final String søgeordF = søgeordet.toLowerCase();
 			søgeknap.setEnabled(false);
 
@@ -141,31 +143,31 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 				@Override
 				protected Object doInBackground(Object[] params) {
-					if (!søg(søgeordF)) {
+
+					boolean resultat = søg(søgeordF);
+
+					if (!resultat) {
 
 						p("Fejl " + søgeordF + " ikke fundet");
-						return false;
-					} else {
 
-						//a.hentArtikel(baseUrlArtikler+søgeordF+".html");
+
 					}
 
-					return true;
+					return resultat;
 				}
 
 				@Override
-				protected void onPostExecute(Object returtat) {
+				protected void onPostExecute(Object retursultat) {
 					//t("Artikel hentet");
 					p("Artikel hentet");
 
-					boolean tomSøgning = !(boolean) returtat;
+					boolean tomSøgning = !(boolean) retursultat;
 
 					søgeknap.setEnabled(true);
 
 					if (tomSøgning) {
 						resultat.setText("Din søgning gav ikke noget resultat");
-						player.stop();
-						player.prepare(null);
+						player.setPlayWhenReady(false);
 					} else {
 
 
@@ -174,14 +176,21 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 						ArrayList<String> ord = f.ordliste;
 
 						String resultatStreng = "Søgeord:      \"" + f.nøgle + "\"\n\n";
+
 						for (String s : ord)
 							resultatStreng += s + "\n";
-						resultat.setText(resultatStreng);
 
-						MediaSource ms1 = lavLoopKilde(søgeresultat.get(0).videourl);
-						v.setVisibility(View.VISIBLE);
-						player.prepare(ms1);
-						player.setPlayWhenReady(true);
+						resultat.setText(resultatStreng);
+						try {
+							MediaSource ms1 = lavLoopKilde(søgeresultat.get(0).videourl);
+							v.setVisibility(View.VISIBLE);
+							player.prepare(ms1);
+							player.setPlayWhenReady(true);
+						}
+						catch (Exception e){
+							e.printStackTrace();
+							resultat.setText("Fejl: "+e.getMessage());
+						}
 					}
 
 
@@ -233,20 +242,24 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 				p("Artikel hentet");
 				søgeknap.setEnabled(true);
 				skjulTastatur();
-				ArrayList <String> ord = søgeresultat.get(0).ordliste;
-				resultat.setText("");
-				for (String s : ord)
-					resultat.append(s+"\n");
-				MediaSource ms1 = lavLoopKilde(søgeresultat.get(0).videourl);
-				player.prepare(ms1);
-				player.setPlayWhenReady(true);
-				new Handler().postDelayed(new Runnable() {
-											  @Override
-											  public void run() {
-					v.setVisibility(View.VISIBLE);
-					}
-				}, 1000);
-
+				if (søgeresultat.size() > 0) {
+					ArrayList<String> ord = søgeresultat.get(0).ordliste;
+					resultat.setText("");
+					for (String s : ord)
+						resultat.append(s + "\n");
+					MediaSource ms1 = lavLoopKilde(søgeresultat.get(0).videourl);
+					player.prepare(ms1);
+					player.setPlayWhenReady(true);
+					new Handler().postDelayed(new Runnable() {
+						@Override
+						public void run() {
+							v.setVisibility(View.VISIBLE);
+						}
+					}, 1000);
+				}
+				else{
+					resultat.setText("Intet resultat");
+				}
 			}
 
 		}.execute();
@@ -261,14 +274,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	@Override
 	public boolean onLongClick(View p1)
 	{
-		// TODO: Implement this method
-		//a.søgeindeks = søgeindeks; // til test
 		Intent i = new Intent(this, Test.class);
 		startActivity(i);
-		//resultat.setText("" + a.søgeindeks.get(8).toString());
+
 		
-		
-		return false;
+		return true;
 	}
 	
 	//kaldes fra baggrund
@@ -287,13 +297,19 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			if (søgeord.equalsIgnoreCase(fundet.søgeord)) break;
 			
 		}
-		if (!fundet.søgeord.equalsIgnoreCase(søgeord)) return false;
+		if ( fundet == null || !fundet.søgeord.equalsIgnoreCase(søgeord)) {
+			p("søg() fundet var null || søgeordet var det samme");
+			return false;
+		}
 		else {
 			p("ordet: "+søgeord+ " blev fundet i søgeindeks");
-			
+			p("Indgang fundet: "+ fundet);
 			for (String s : fundet.index){
 				p("   index: "+s);
-				Fund f= a.hentArtikel(baseUrlArtikler+s+".html");
+
+                //s= "1186";
+
+				Fund f= a.hentArtikel(s);//baseUrlArtikler+s+".html");
 				f.nøgle = fundet.getSøgeord();
 				søgeresultat.add(f);
 
@@ -303,7 +319,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		p("Tjekker søgeresultat: ");
 		for (Fund f : søgeresultat) p(f);
-		return true;
+
+		return (søgeresultat.size() > 0);
 
 	}
 

@@ -21,8 +21,8 @@ ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:5:5-
 		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:5:22-64
 application
 ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:7:3-26:19
-MERGED from [com.android.support:appcompat-v7:23.0.0] /home/sune/.android/build-cache/180fc10159b58e373b2e2ff773f4302e9e69eb50/output/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.0.0] /home/sune/.android/build-cache/38ff327e344957ea075f2f268c83a3697b8884c4/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.0.0] /home/sune/.android/build-cache/47c9d1d04e02b935ee76245525dfabfe8c288199/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.0.0] /home/sune/.android/build-cache/bb8e668d8d0e5bace69ab4f4ac65f199f06bbea7/output/AndroidManifest.xml:22:5-20
 	android:label
 		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:10:9-34
 	android:allowBackup
@@ -57,8 +57,8 @@ ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:25:3
 		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:25:13-33
 uses-sdk
 INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [com.android.support:appcompat-v7:23.0.0] /home/sune/.android/build-cache/180fc10159b58e373b2e2ff773f4302e9e69eb50/output/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.0.0] /home/sune/.android/build-cache/38ff327e344957ea075f2f268c83a3697b8884c4/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.0.0] /home/sune/.android/build-cache/47c9d1d04e02b935ee76245525dfabfe8c288199/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.0.0] /home/sune/.android/build-cache/bb8e668d8d0e5bace69ab4f4ac65f199f06bbea7/output/AndroidManifest.xml:20:5-43
 MERGED from [com.google.android.exoplayer:exoplayer:r2.2.0] /home/sune/.android/build-cache/0627d20c2e88de8d2d0bda837915d088a34f7ddc/output/AndroidManifest.xml:21:5-23:41
 	android:targetSdkVersion
 		INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
