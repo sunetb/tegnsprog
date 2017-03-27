@@ -4,13 +4,14 @@
     android:gravity="top"
 	android:orientation="vertical"
 	android:background="@android:color/white">
+
 	<ImageView
-		android:layout_margin="15dp"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		android:layout_margin="15dp"
 		android:src="@drawable/logo"
-		
-	/>
+
+		/>
 	<View
 		android:layout_width="match_parent"
 		android:layout_height="2px"
@@ -19,37 +20,34 @@
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="0px"
-		android:layout_weight="1.5"
-		android:gravity="center"
-		android:orientation="horizontal"
 		android:layout_margin="10dp"
+		android:layout_weight="3.2"
 		android:background="@android:color/white"
-		>
-	    <EditText
-        android:text="søge"
-        android:layout_width="0px"
-        android:layout_height="match_parent" 
-		android:layout_weight="1"
-		android:id="@+id/søgefelt"/>
-	    <View
+		android:gravity="center"
+		android:orientation="horizontal">
+
+		<EditText
+			android:id="@+id/søgefelt"
 			android:layout_width="0px"
-        	android:layout_height="match_parent" 
-			android:layout_weight="0.3"/>
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+			android:imeOptions="actionSearch"
+			android:inputType="text"
+			android:text="søge" />
+
+		<View
+			android:layout_width="0px"
+			android:layout_height="match_parent"
+			android:layout_weight="0.3" />
+
 		<Button
+			android:id="@+id/mainButton"
 			android:layout_width="0px"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
-			android:text="søg"
-			android:id="@+id/mainButton"/>
-		
+			android:text="søg" />
+
 	</LinearLayout>
-
-	<View
-		android:layout_width="match_parent"
-
-		android:layout_height="0px"
-		/>
-
 
 	<com.google.android.exoplayer2.ui.SimpleExoPlayerView
 		android:id="@+id/mainVideoView"
@@ -57,27 +55,29 @@
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="5dp"
 		android:layout_marginRight="5dp"
-		android:visibility="invisible"
-        android:background="@android:color/white"
+		android:layout_weight="2"
+		android:background="@android:color/white"
 
 
-		/>
+		android:visibility="invisible" />
+
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="0px"
-		android:layout_weight="0.8"
+		android:layout_weight="1.5"
 		android:gravity="right">
+
 		<CheckBox
+			android:id="@+id/loopcb"
 			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:id="@+id/loopcb"/>
+			android:layout_height="wrap_content" />
+
 		<TextView
+			android:id="@+id/looptv"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginRight="7dp"
-			android:text="Loop video"
-			android:id="@+id/looptv"
-			/>
+			android:text="Loop video" />
 	</LinearLayout>
 	<ScrollView
 		android:layout_width="match_parent"

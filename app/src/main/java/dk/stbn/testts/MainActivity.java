@@ -98,7 +98,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		loopcb = (CheckBox) findViewById(R.id.loopcb);
 		loopcb.setOnClickListener(this);
 		loopcb.setChecked(true);
-
+		søgefelt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+				@Override
+				public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+					if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+						;søgeknap.performClick();
+						return true;
+					}
+					return false;
+				}
+			});
 		if (intro) lavintro();
 		velkommen();
 
@@ -115,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		if (klikket == søgeknap) {
 			v.setControllerShowTimeoutMs(1200); /// tiden før knapperne skjules automatisk
 			skjulTastatur();
-			String søgeordet = søgefelt.getText().toString().toLowerCase();
+			String søgeordet = søgefelt.getText().toString().toLowerCase().trim();
 			p("OnCliclk søgeord: " + søgeordet);
 
 			søgefelt.setText("");
@@ -193,6 +202,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	}
 
 
+	void håndterSøg(String s){
+		
+		
+	}
+	
 	void velkommen (){
 		søgeknap.setEnabled(false);
 
@@ -226,8 +240,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 				MediaSource ms1 = lavLoopKilde(søgeresultat.get(0).videourl);
 				player.prepare(ms1);
 				player.setPlayWhenReady(true);
-				v.setVisibility(View.VISIBLE);
-
+				new Handler().postDelayed(new Runnable() {
+											  @Override
+											  public void run() {
+					v.setVisibility(View.VISIBLE);
+					}
+				}, 1000);
 
 			}
 

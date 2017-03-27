@@ -1,7 +1,4 @@
-#Fri Mar 24 22:13:49 CET 2017
-base.0=/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_2a7a9a6435c7b461299798d3177f41b2c3fee461
-renamed.1=classes2.dex
+#Mon Mar 27 11:26:02 CEST 2017
+base.0=/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
 renamed.0=classes.dex
-file.1=/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_c6b7ca097c1b1f102d53a0f8044f5810494fe297/classes.dex
-base.1=/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_c6b7ca097c1b1f102d53a0f8044f5810494fe297
-file.0=/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_2a7a9a6435c7b461299798d3177f41b2c3fee461/classes.dex
+file.0=/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

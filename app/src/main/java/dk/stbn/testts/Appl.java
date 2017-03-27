@@ -9,8 +9,8 @@ import java.util.*;
 
 public class Appl extends Application
 {
-	/// Aide
-	/// As x
+	/// Aide x
+	/// As 
 	
 	public static Appl a;
 	ArrayList<Indgang> søgeindeks = new ArrayList<>();
