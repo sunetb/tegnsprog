@@ -298,7 +298,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			
 		}
 		if ( fundet == null || !fundet.søgeord.equalsIgnoreCase(søgeord)) {
-			p("søg() fundet var null || søgeordet var det samme");
+			if (fundet == null ) p("fundet var null");
+			else p("søgning var tom: "+fundet.søgeord);
 			return false;
 		}
 		else {

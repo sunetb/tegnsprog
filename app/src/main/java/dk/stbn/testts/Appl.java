@@ -70,13 +70,23 @@ public class Appl extends Application
 			byte[] contents = new byte[1024];
 			String heleIndholdet = "";
 			int bytesRead = 0;
+
 			//bytesRead = is.read(contents); //skipper første linie
 			//bytesRead = is.read(contents); //skipper anden linie
 
 			//--Først hentes al tekst ind i én stor streng
 
 			while((bytesRead = is.read(contents)) != -1) {
-				String linie = new String(contents, 0, bytesRead);
+
+
+				String linie =  new String(contents, 0, bytesRead, "iso-8859-1");
+				char [] chars = linie.toCharArray();
+				/*for (int i = 0; i < chars.length; i++){
+					char c = chars[i];
+					p(linie.substring(i,i+1)+ " : "+ Character.getNumericValue(c)+ " : " +contents[i]);
+				}*/
+
+				//String linie =  new String(contents, "UTF-8");
 				heleIndholdet += linie;
 				//p("\nLinie_______________________________: "+linie);
 
@@ -87,20 +97,28 @@ public class Appl extends Application
 			//p("Array længde: "+linjesplit.length);
 			for (int i = 0; i < linjesplit.length; i++){
 				String indgangS = linjesplit[i];
-				p("Ind__"+indgangS);
+				//p("Ind__"+indgangS);
 				String [] indgangSA = indgangS.split("\t");
 				String søgeordet = indgangSA[0];
 				String [] ix = indgangSA[1].split(";");
-				p("Array længde: "+ix.length);
+				//p("Array længde: "+ix.length);
 				ArrayList<String> ix2 = new ArrayList();
-				for (String s : ix) ix2.add(s.trim());
-				p("Ud1___"+søgeordet+ " "+ix2);
+				String temp= "";
+				for (int j = 0; j < ix.length; j++) {
+					String gammel = "";					//tjek for dubletter
+					if (j>0) gammel = ix[j-1].trim();
+
+					String s = ix[j].trim();
+
+					if(!gammel.equalsIgnoreCase(s)) ix2.add(s); // add kun hvis den ikke findes i forvejen
+				}
+				//p("Ud1___"+søgeordet+ " "+ix2);
 				Indgang indgang = new Indgang(søgeordet.trim(), ix2);
 				søgeindeks.add(indgang);
-				p("Ud2___"+indgang);
-
+				//p("Ud2___"+indgang);
 
 			}
+
 /*
 
 
