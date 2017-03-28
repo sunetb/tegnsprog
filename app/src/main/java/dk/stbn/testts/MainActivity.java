@@ -28,7 +28,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 import android.support.v7.app.*;
 
-public class MainActivity extends AppCompatActivity implements OnClickListener, com.google.android.exoplayer2.ui.PlaybackControlView.VisibilityListener, OnLongClickListener, Runnable{
+public class MainActivity extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener, com.google.android.exoplayer2.ui.PlaybackControlView.VisibilityListener, OnLongClickListener, Runnable{
 	Appl a;
 	ArrayList<Fund> søgeresultat = new ArrayList();
 	//ArrayList<Indgang> søgeindeks = new ArrayList<>();
@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 	TextView resultat, loop;
 	CheckBox loopcb;
-	EditText søgefelt;
-
+	AutoCompleteTextView søgefelt;
+	ArrayAdapter ar;
 
 	String søgeurl1 = "http://tegnsprog.dk/#|tegn|386|soeg|/'tekst/'";
 	String søgeurl2 = "%7Cresultat%7C10%7Ctrestjerner%7C1";
@@ -92,8 +92,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		//sæt lytter
 		a.main = this;
 		resultat = (TextView) findViewById(R.id.resultat);
-		søgefelt = (EditText) findViewById(R.id.søgefelt);
+		søgefelt = (AutoCompleteTextView) findViewById(R.id.søgefelt);
 		søgefelt.setOnClickListener(this);
+
+		ar = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, a.tilAutoComplete);
+		søgefelt.setAdapter(ar);
 		loop = (TextView) findViewById(R.id.looptv);
 		loop.setOnClickListener(this);
 		loopcb = (CheckBox) findViewById(R.id.loopcb);
@@ -109,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 					return false;
 				}
 			});
+
 		if (intro) lavintro();
 		velkommen();
 
@@ -507,5 +511,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	@Override
 	public void run() {
 		søgeknap.setEnabled(true);
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+		TextView t = (TextView) view;
+		søg(t.getText().toString());
 	}
 }
