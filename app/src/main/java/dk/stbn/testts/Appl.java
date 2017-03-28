@@ -21,6 +21,8 @@ public class Appl extends Application
 	boolean dataKlar = false;
 
 	Runnable main;
+
+	ArrayList<String> tilAutoComplete = new ArrayList();
 	
 	
 	
@@ -115,6 +117,7 @@ public class Appl extends Application
 				//p("Ud1___"+søgeordet+ " "+ix2);
 				Indgang indgang = new Indgang(søgeordet.trim(), ix2);
 				søgeindeks.add(indgang);
+				tilAutoComplete.add(søgeordet);
 				//p("Ud2___"+indgang);
 
 			}
