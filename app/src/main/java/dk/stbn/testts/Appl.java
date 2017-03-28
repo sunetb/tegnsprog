@@ -9,8 +9,8 @@ import java.util.*;
 
 public class Appl extends Application
 {
-	/// Aide x
-	/// As 
+	/// Aide
+	/// As x
 	
 	public static Appl a;
 	ArrayList<Indgang> søgeindeks = new ArrayList<>();
@@ -47,15 +47,21 @@ public class Appl extends Application
 			protected void onPostExecute(Object resultat){
 				//t("Data hentet");
 				p("Data hentet");
-				if (!(main == null)) main.run();
+				if (!(main == null)) {
+					main.run();
+
+				}
 				else {
-					t("Main fandtes ikke da den skulle opdateres");
+					t("FEJL Main fandtes ikke da den skulle opdateres");
 					new Handler().postDelayed(new Runnable() {
 						@Override
 						public void run() {
 
-							if (!(main == null)) main.run();
-							else t("Main fandtes ikke da den skulle opdateres II");
+							if (!(main == null)) {
+								main.run();
+								dataKlar = true;
+							}
+							else t("FEJL Main fandtes ikke da den skulle opdateres II");
 
 						}
 						}, 1150);

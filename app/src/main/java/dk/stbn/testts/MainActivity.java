@@ -52,13 +52,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	String kaffe  = baseUrlVideo +"t_317.mp4";
 
 	String velkommen = "t_2079.mp4";
-	String til = "t_500.mp4";
-	String ord = "t_2066.mp4";
-	String bog = "t_236.mp4";
-	String dansk = "t_131.mp4";
-	String tegnsprog = "t_205.mp4";
-
-	String tabel = "<TABLE><TR style=\"vertical-align:top;\"><TD>1. </TD><TD>brun</TD></TR><TR style=\"vertical-align:top;\"><TD>2. </TD><TD>kaffe</TD></TR></TABLE>";
 
 
 
@@ -74,6 +67,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		setContentView(R.layout.main);
 		//getActionBar().setIcon(R.drawable.logo);
         a = Appl.a;
+		a.main = this; //registrerer aktiviteten som lytter
+		
 		v = (SimpleExoPlayerView) findViewById(R.id.mainVideoView);
 		player = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector(new AdaptiveVideoTrackSelection.Factory(new DefaultBandwidthMeter())), new DefaultLoadControl());
 		//player.setVideoListener(n
@@ -86,8 +81,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		søgeknap.setOnLongClickListener(this);
 		søgeknap.setEnabled(false);
 
-		a.main = this; //registrerer aktiviteten som lytter
-
+		
 		resultat = (TextView) findViewById(R.id.resultat);
 
 		søgefelt = (AutoCompleteTextView) findViewById(R.id.søgefelt);
@@ -101,19 +95,25 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 				@Override
 				public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 					if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-						;søgeknap.performClick();
+						søgeknap.performClick();
 						return true;
 					}
 					return false;
 				}
 			});
 		søgefelt.setOnItemClickListener(this);
-
+		skjulTastatur();
 		if (intro) lavintro();
-		velkommen();
 
+
+
+		if (savedInstanceState != null) {
+			//t("Kalder run()");
+			this.run();
+			
+		}
+		else velkommen();
 		p("onCreate færdig");
-
     }
 
 
@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         v.setControllerShowTimeoutMs(1200); /// tiden før knapperne skjules automatisk
         skjulTastatur();
         String søgeordet = søgefelt.getText().toString().toLowerCase().trim();
-        p("OnCliclk søgeord: " + søgeordet);
+        p("forberedSøgning søgeord: " + søgeordet);
 
         søgefelt.setText("");
         if (søgeordet.equals("")) søgeordet = søgefelt.getHint().toString();
@@ -212,7 +212,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		Intent i = new Intent(this, Test.class);
 		startActivity(i);
 
-		
 		return true;
 	}
 	
@@ -331,7 +330,38 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		// TODO: Implement this method
 		super.onDestroy();
 		player.release();
+		a.main = null; // afregistrerer lytter
+		
 	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState)
+	{
+		
+		String s = søgefelt.getHint().toString();
+		//t("onsaveinstancestate: "+ s);
+		outState.putString("søgeord", s);
+		super.onSaveInstanceState(outState);
+		
+	}
+
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState)
+	{
+		super.onRestoreInstanceState(savedInstanceState);
+		String s = savedInstanceState.getString("søgeord");
+		if ("Skriv søgeord her".equalsIgnoreCase(s) || "Søg her".equalsIgnoreCase(s))
+			s=  "velkommen";
+		søgefelt.setHint(s);
+		//t("obrestore... "+ s);
+		forberedSøgning();
+		søg(s);
+		
+		
+	}
+	
+	
+	
 
 	void p (Object o){
 		Utill.p("Main."+o);
