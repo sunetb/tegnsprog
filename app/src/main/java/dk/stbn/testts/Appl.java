@@ -48,7 +48,20 @@ public class Appl extends Application
 				//t("Data hentet");
 				p("Data hentet");
 				if (!(main == null)) main.run();
-				//else !!!! todo
+				else {
+					t("Main fandtes ikke da den skulle opdateres");
+					new Handler().postDelayed(new Runnable() {
+						@Override
+						public void run() {
+
+							if (!(main == null)) main.run();
+							else t("Main fandtes ikke da den skulle opdateres II");
+
+						}
+						}, 1150);
+				}
+
+
 			}
 
 		}.execute();

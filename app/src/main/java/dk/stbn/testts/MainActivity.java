@@ -92,8 +92,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		søgefelt = (AutoCompleteTextView) findViewById(R.id.søgefelt);
 		søgefelt.setOnClickListener(this);
-		ar = new ArrayAdapter(this,android.R.layout.simple_list_item_1, a.tilAutoComplete);
-		søgefelt.setAdapter(ar);
 		loop = (TextView) findViewById(R.id.looptv);
 		loop.setOnClickListener(this);
 		loopcb = (CheckBox) findViewById(R.id.loopcb);
@@ -451,6 +449,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	@Override
 	public void run() {
 		søgeknap.setEnabled(true);
+		ar = new ArrayAdapter(this,android.R.layout.simple_list_item_1, a.tilAutoComplete);
+		søgefelt.setAdapter(ar);
+
 	}
 
 	@Override
