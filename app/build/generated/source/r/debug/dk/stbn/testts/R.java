@@ -1647,10 +1647,23 @@ containing a value of this type.
         public static final int exo_controls_previous=0x7f020042;
         public static final int exo_controls_rewind=0x7f020043;
         public static final int ic_launcher=0x7f020044;
-        public static final int kaffef314=0x7f020045;
-        public static final int logo=0x7f020046;
-        public static final int notification_template_icon_bg=0x7f020048;
-        public static final int tsikon=0x7f020047;
+        public static final int ic_magnify_black_18dp=0x7f020045;
+        public static final int ic_magnify_black_24dp=0x7f020046;
+        public static final int ic_magnify_black_36dp=0x7f020047;
+        public static final int ic_magnify_black_48dp=0x7f020048;
+        public static final int ic_magnify_grey600_18dp=0x7f020049;
+        public static final int ic_magnify_grey600_24dp=0x7f02004a;
+        public static final int ic_magnify_grey600_36dp=0x7f02004b;
+        public static final int ic_magnify_grey600_48dp=0x7f02004c;
+        public static final int ic_magnify_white_18dp=0x7f02004d;
+        public static final int ic_magnify_white_24dp=0x7f02004e;
+        public static final int ic_magnify_white_36dp=0x7f02004f;
+        public static final int ic_magnify_white_48dp=0x7f020050;
+        public static final int kaffef314=0x7f020051;
+        public static final int logo=0x7f020052;
+        public static final int magnify=0x7f020053;
+        public static final int notification_template_icon_bg=0x7f020055;
+        public static final int tsikon=0x7f020054;
     }
     public static final class id {
         public static final int action0=0x7f0c006c;

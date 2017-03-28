@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	//ArrayList<Indgang> søgeindeks = new ArrayList<>();
 	SimpleExoPlayer player;
 	SimpleExoPlayerView v;
-	Button søgeknap;
+	ImageButton søgeknap;
 
 	TextView resultat, loop;
 	CheckBox loopcb;
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		v.setControllerShowTimeoutMs(1);
 		v.setControllerVisibilityListener(this);
 
-		søgeknap = (Button) findViewById(R.id.mainButton);
+		søgeknap = (ImageButton) findViewById(R.id.mainButton);
 		søgeknap.setOnClickListener(this);
 		søgeknap.setOnLongClickListener(this);
 		søgeknap.setEnabled(false);
@@ -108,8 +108,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 
 		if (savedInstanceState != null) {
-			//t("Kalder run()");
-			this.run();
+
+			this.run(); p("Startet ved skærmvending. Initialiserer autocomplete-listen (sæt adapter)");
 			
 		}
 		else velkommen();

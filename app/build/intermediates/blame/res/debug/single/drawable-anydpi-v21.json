@@ -22,5 +22,9 @@
     {
         "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/exo_controls_next.xml",
         "source": "/home/sune/.android/build-cache/0627d20c2e88de8d2d0bda837915d088a34f7ddc/output/res/drawable-anydpi-v21/exo_controls_next.xml"
+    },
+    {
+        "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/magnify.xml",
+        "source": "/home/sune/Dropbox/aapps/TestTs/app/build/generated/res/pngs/debug/drawable-anydpi-v21/magnify.xml"
     }
 ]
