@@ -120,11 +120,11 @@
         "source": "/home/sune/.android/build-cache/47c9d1d04e02b935ee76245525dfabfe8c288199/output/res/drawable-xxxhdpi/abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
-        "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-xxxhdpi/abc_btn_switch_to_on_mtrl_00012.9.png",
-        "source": "/home/sune/.android/build-cache/47c9d1d04e02b935ee76245525dfabfe8c288199/output/res/drawable-xxxhdpi/abc_btn_switch_to_on_mtrl_00012.9.png"
-    },
-    {
         "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-xxxhdpi/ic_magnify_black_48dp.png",
         "source": "/home/sune/Dropbox/aapps/TestTs/app/src/main/res/drawable-xxxhdpi/ic_magnify_black_48dp.png"
+    },
+    {
+        "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-xxxhdpi/abc_btn_switch_to_on_mtrl_00012.9.png",
+        "source": "/home/sune/.android/build-cache/47c9d1d04e02b935ee76245525dfabfe8c288199/output/res/drawable-xxxhdpi/abc_btn_switch_to_on_mtrl_00012.9.png"
     }
 ]
