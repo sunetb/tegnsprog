@@ -11,15 +11,30 @@ import java.util.ArrayList;
 class Fund {
     String nøgle;
     Uri videourl;
-    //Uri billedurl;
-    ArrayList<String>  ordliste;
+    Uri billedurl;
+    ArrayList<String> ordliste;
 
-    //public Fund(Uri vurl, Uri burl, String ord){
+    public Fund(Uri vurl, Uri burl, ArrayList<String> ord){
+        videourl=vurl;
+        billedurl = burl;
+        ordliste = ord;
+}
     public Fund(Uri vurl, ArrayList<String>  ord){
         videourl=vurl;
-        //billedurl = burl;
         ordliste = ord;
     }
 
-    public String toString () {return "Fund: "+videourl +"\n"+ ordliste.toString();}
+    public String getTekst(){
+        String resultatStreng = "";//"Søgeord:      \"" + nøgle + "\"\n\n";
+
+        for (String s : ordliste)
+            resultatStreng += s + "\n";
+
+        return resultatStreng;
+    }
+
+    public String toString () {
+        if (ordliste == null) return nøgle;
+        return getTekst();
+    }
 }

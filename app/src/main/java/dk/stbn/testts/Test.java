@@ -66,8 +66,8 @@ public class Test extends Activity {
 
 			@Override
 			protected void onPostExecute(Object resultat){
-				lv.setAdapter(ar);
-				ar.notifyDataSetChanged();
+				lv.setAdapter(autoSuggest);
+				autoSuggest.notifyDataSetChanged();
 				t("liste skrevet");
 				p("liste skrevet");
 			}

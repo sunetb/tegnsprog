@@ -88,21 +88,17 @@
             android:layout_marginRight="7dp"
             android:text="Langsom" />
 	</LinearLayout>
-	<ScrollView
-		android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:layout_marginRight="5dp"
-		android:layout_marginLeft="5dp"
-		android:layout_weight="5">
-		<TextView
-			android:id="@+id/resultat"
-			android:layout_height="wrap_content"
+
+		<ListView
 			android:layout_width="match_parent"
-			android:gravity="left"
+			android:layout_height="0px"
+			android:layout_weight="5"
+			android:id="@+id/fundliste"
+			android:fadeScrollbars="false">
+
+		</ListView>
 
 
-			/>
-	</ScrollView>
 
 	<View
 		android:layout_width="match_parent"

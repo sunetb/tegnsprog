@@ -16,6 +16,8 @@
 
         android:visibility="invisible" />
 
+
+
 	<LinearLayout
 		android:layout_width="0px"
 		android:layout_height="match_parent"
@@ -45,7 +47,8 @@
 			android:layout_weight="2"
 			android:orientation="horizontal"
 			android:layout_gravity="center_vertical">
-				<AutoCompleteTextView
+
+			<AutoCompleteTextView
 					android:id="@+id/søgefelt"
 					android:layout_width="0px"
 					android:layout_height="wrap_content"
@@ -62,9 +65,6 @@
 
 					android:src="@drawable/ic_magnify_white_36dp"  />
 		</LinearLayout>
-
-
-
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="0px"
@@ -96,22 +96,15 @@
 				android:text="½ hast." />
 		</LinearLayout>
 
-		<ScrollView
+		<ListView
 			android:layout_width="match_parent"
-			android:layout_height="0dp"
-			android:layout_marginLeft="5dp"
-			android:layout_marginRight="5dp"
-			android:layout_weight="5">
+			android:layout_height="0px"
+			android:layout_weight="5"
+			android:id="@+id/fundliste"
+			android:fadeScrollbars="false">
 
-			<TextView
-				android:id="@+id/resultat"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:gravity="left"
+		</ListView>
 
-
-				/>
-		</ScrollView>
 
 		<View
 			android:layout_width="match_parent"

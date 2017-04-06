@@ -1,14 +1,11 @@
 package dk.stbn.testts;
 
-import android.app.*;
+import android.content.res.Resources;
 import android.os.*;
-import android.text.Html;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.widget.*;
 
-import java.io.BufferedInputStream;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.*;
 import android.net.*;
 import android.view.View.*;
 import android.view.*;
@@ -22,11 +19,11 @@ import com.google.android.exoplayer2.util.*;
 import com.google.android.exoplayer2.extractor.*;
 import com.google.android.exoplayer2.source.*;
 import java.util.*;
-import android.view.ActionProvider.*;
+
 import android.os.AsyncTask;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserFactory;
 import android.support.v7.app.*;
+
+
 
 public class MainActivity extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener, com.google.android.exoplayer2.ui.PlaybackControlView.VisibilityListener, OnLongClickListener, Runnable{
 	Appl a;
@@ -36,10 +33,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	SimpleExoPlayerView v;
 	ImageButton søgeknap;
 
-	TextView resultat, loop;
+	TextView  loop;
 	CheckBox loopcb;
+	ListView resultatliste;
 	AutoCompleteTextView søgefelt;
-	ArrayAdapter ar;
+
+	ArrayAdapter autoSuggest, resultaterListeAdapter;
+
 
 	String søgeurl1 = "http://tegnsprog.dk/#|tegn|386|soeg|/'tekst/'";
 	String søgeurl2 = "%7Cresultat%7C10%7Ctrestjerner%7C1";
@@ -52,10 +52,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	String kaffe  = baseUrlVideo +"t_317.mp4";
 
 	String velkommen = "t_2079.mp4";
+	ArrayList<String> testliste = new ArrayList();
 
 
 
-	boolean intro = false;
+	boolean tomsøg = true;
+
+	boolean liggendeVisning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -81,8 +84,51 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		søgeknap.setOnLongClickListener(this);
 		søgeknap.setEnabled(false);
 
-		
-		resultat = (TextView) findViewById(R.id.resultat);
+		liggendeVisning = liggendeVisning();
+		resultatliste = (ListView) findViewById(R.id.fundliste);
+
+		int listelayout = R.layout.listelayout;
+
+		if (liggendeVisning) listelayout = R.layout.listelayout_land;
+
+		resultaterListeAdapter = new ArrayAdapter(this, listelayout, R.id.tekst, søgeresultat){
+
+
+			@NonNull
+			@Override
+			public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
+				View rod = super.getView(position, convertView, parent);
+
+				p("getview resultatlisteadapter pos"+position);
+
+
+					ImageView iv = (ImageView) rod.findViewById(R.id.billede);
+					iv.setImageResource(R.drawable.kaffef314);
+					TextView t = (TextView) rod.findViewById(R.id.tekst);
+					t.setText(søgeresultat.get(position).toString());//søgeresultat.get(position).getTekst());
+
+				return rod;
+			}
+
+			@Override
+			public int getCount() {
+				return søgeresultat.size();
+			}
+		};
+		p("Arrayadapter: " + resultaterListeAdapter.getCount() );
+
+
+
+		resultatliste.setAdapter(resultaterListeAdapter);
+		resultatliste.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				opdaterUI(false, true, søgeresultat.get(position).nøgle, position);
+			}
+		});		//hmm samme lytter!? Måske hellere lave en anonym
+
+		//resultat = (TextView) findViewById(R.id.resultat);
 
 		søgefelt = (AutoCompleteTextView) findViewById(R.id.søgefelt);
 		søgefelt.setOnClickListener(this);
@@ -103,9 +149,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			});
 		søgefelt.setOnItemClickListener(this);
 		skjulTastatur();
-		if (intro) lavintro();
-
-
 
 		if (savedInstanceState != null) {
 
@@ -116,6 +159,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		p("onCreate færdig");
     }
 
+	private boolean liggendeVisning() {
+		int højde = Resources.getSystem().getDisplayMetrics().heightPixels;
+		int bredde = Resources.getSystem().getDisplayMetrics().widthPixels;
+
+		return (højde<bredde);
+
+	}
 
 
 	@Override
@@ -126,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			String søgeordF = forberedSøgning();
 			boolean søgeResultat = søg(søgeordF);
             if (!søgeResultat) {
-                resultat.setText("Ordet \""+søgeordF+ "\" findes ikke i ordbogen");
+                //resultat.setText("Ordet \""+søgeordF+ "\" findes ikke i ordbogen");
             }
 		}
 		else if (klikket == loopcb) {
@@ -161,37 +211,38 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	}
 
 
-	void opdaterUI (boolean tomSøgning, boolean loop){
+	void opdaterUI (boolean tomSøgning, boolean loop, String søgeordInd, int pos){
 
+
+		p("opdaterUI kaldt! Var søgningen tom?  "+ tomSøgning);
+		tomsøg = tomSøgning;
         if (tomSøgning) {
-            resultat.setText("Din søgning gav ikke noget resultat");
+			tomsøgning(søgeordInd);
             player.setPlayWhenReady(false);
-        } else {
 
 
-            ///HER SKAL HÅNDTERES FLERE RESULTATER MED EN for (Fund f : søgeresultat) ...
-            Fund f = søgeresultat.get(0);
-            ArrayList<String> ord = f.ordliste;
+        }
+        else {
 
-            String resultatStreng = "Søgeord:      \"" + f.nøgle + "\"\n\n";
+///HER SKAL HÅNDTERES FLERE RESULTATER MED EN for (Fund f : søgeresultat) ...
 
-            for (String s : ord)
-                resultatStreng += s + "\n";
 
-            resultat.setText(resultatStreng);
+			resultaterListeAdapter.notifyDataSetChanged();
+
             try {
 				MediaSource ms1;
 				if (loop)
-                ms1 = lavLoopKilde(søgeresultat.get(0).videourl);
+                ms1 = lavLoopKilde(søgeresultat.get(pos).videourl);
 				else
-				ms1 = lavKilde(søgeresultat.get(0).videourl);
-                v.setVisibility(View.VISIBLE);
+				ms1 = lavKilde(søgeresultat.get(pos).videourl);
                 player.prepare(ms1);
                 player.setPlayWhenReady(true);
-            }
+				v.setVisibility(View.VISIBLE);
+
+			}
             catch (Exception e){
                 e.printStackTrace();
-                resultat.setText("Fejl: "+e.getMessage());
+                //resultat.setText("Fejl: "+e.getMessage());
             }
         }
 		søgeknap.setEnabled(true);
@@ -219,13 +270,19 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	boolean søg (String søgeordInd){
 		p("Søg("+søgeordInd+")");
 		final String søgeord = søgeordInd.trim();
+		if (søgeord.equalsIgnoreCase("skriv søgeord her") || søgeord.equalsIgnoreCase("Søg her")) {
+			tomsøgning(søgeord);
+			return true;
+		}
 
         new AsyncTask() {
 
             @Override
             protected Object doInBackground(Object[] params) {
                 //Kan helt klart optimeres!
-                Indgang fundet = null;
+                boolean tomsøgning = true;
+
+				Indgang fundet = null;
                 for (int i = 0; i < a.søgeindeks.size(); i++) {
                     fundet = a.søgeindeks.get(i);
                     if (søgeord.equalsIgnoreCase(fundet.søgeord)) break;
@@ -234,8 +291,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 if (fundet == null || !fundet.søgeord.equalsIgnoreCase(søgeord)) {
                     if (fundet == null) p("fundet var null");
                     else p("søgning var tom: " + fundet.søgeord);
-                    return false;
+                    return tomsøgning;
                 } else {
+					tomsøgning = false;
                     p("ordet: " + søgeord + " blev fundet i søgeindeks");
                     p("Indgang fundet: " + fundet);
                     for (String s : fundet.index) {
@@ -244,25 +302,40 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                         //s= "1186";
 
                         Fund f = a.hentArtikel(s);//baseUrlArtikler+s+".html");
-                        f.nøgle = fundet.getSøgeord();
+                        f.nøgle =fundet.getSøgeord();
                         søgeresultat.add(f);
                     }
                 }
-                return true;
+                return tomsøgning;
             }
 
             @Override
             protected void onPostExecute(Object o) {
                 super.onPostExecute(o);
-                opdaterUI(!(boolean) o, true);
+
+				boolean tomsøgning2 = (boolean) o;
+
+                opdaterUI(tomsøgning2, true, søgeord, 0);
                 p("Tjekker søgeresultat: ");
-                for (Fund f : søgeresultat) p(f);
+                if (!tomsøgning2) for (Fund f : søgeresultat) p(f);
+
             }
         }.execute();
 
 
 
 		return (søgeresultat.size() > 0);
+
+	}
+
+	void tomsøgning (String søgeord){
+
+		søgeresultat.clear();
+		Fund tom = new Fund(null,null);
+		tom.nøgle = "Din søgning gav ikke noget resultat";
+		søgeresultat.add(tom);
+		resultaterListeAdapter.notifyDataSetChanged();
+
 
 	}
 
@@ -377,113 +450,15 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
 	}
 
-	void lavintro () {
-		søgeknap.setEnabled(false);
-		ConcatenatingMediaSource intro =
-				new ConcatenatingMediaSource(
-						lavKilde(Uri.parse(baseUrlVideo+velkommen))
-						//lavKilde(baseUrl+til),
-						//lavKilde(baseUrl+ord),
-						//lavKilde(baseUrl+bog),
-						//lavKilde(baseUrl+dansk), lavKilde(baseUrl+tegnsprog)
-				);
-
-		player.prepare(intro);
-		player.setPlayWhenReady(true);
-		søgefelt.setText("velkommen");
-		resultat.setText("velkommen");
-
-		new Handler().postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				søgefelt.setText("");
-				søgeknap.setEnabled(false);
-				new Handler().postDelayed(new Runnable() {
-					@Override
-					public void run() {
-						søgefelt.setText("s");
-						søgefelt.setSelection(1);
-						new Handler().postDelayed(new Runnable() {
-							@Override
-							public void run() {
-								søgefelt.setText("sø");
-								søgefelt.setSelection(2);
-								new Handler().postDelayed(new Runnable() {
-									@Override
-									public void run() {
-										søgefelt.setText("søg");
-										søgefelt.setSelection(3);
-										new Handler().postDelayed(new Runnable() {
-											@Override
-											public void run() {
-												søgefelt.setText("søg");
-												søgefelt.setSelection(4);
-												new Handler().postDelayed(new Runnable() {
-													@Override
-													public void run() {
-														søgefelt.setText("søge");
-														søgefelt.setSelection(5);
-														søgeknap.setEnabled(true);
-														new Handler().postDelayed(new Runnable() {
-															@Override
-															public void run() {
-																søgeknap.setEnabled(false);
-																new Handler().postDelayed(new Runnable() {
-																	@Override
-																	public void run() {
-																		søgeknap.setEnabled(true);
-																		new Handler().postDelayed(new Runnable() {
-																			@Override
-																			public void run() {
-																				søgeknap.setEnabled(false);
-																				new Handler().postDelayed(new Runnable() {
-																					@Override
-																					public void run() {
-																						søgeknap.setEnabled(true);
-																						new Handler().postDelayed(new Runnable() {
-																							@Override
-																							public void run() {
-																								søgeknap.setEnabled(false);
-																								new Handler().postDelayed(new Runnable() {
-																									@Override
-																									public void run() {
-																										søgeknap.setEnabled(true);
-																										søgeknap.performClick();
-																									}
-																								}, 500);
-																							}
-																						}, 500);
-																					}
-																				}, 500);
-																			}
-																		}, 500);
-																	}
-																}, 500);
-															}
-														}, 1000);
-													}
-												}, 500);
-											}
-										}, 500);
-									}
-								}, 500);
-							}
-						}, 500);
-					}
-				}, 500);
-
-			}
-		}, 3500);
-	}
-
 	@Override
 	public void run() {
 		søgeknap.setEnabled(true);
-		ar = new ArrayAdapter(this,android.R.layout.simple_list_item_1, a.tilAutoComplete);
-		søgefelt.setAdapter(ar);
+		autoSuggest = new ArrayAdapter(this,android.R.layout.simple_list_item_1, a.tilAutoComplete);
+		søgefelt.setAdapter(autoSuggest);
 
 	}
 
+	//-- Kun til autocomplete
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		TextView t = (TextView) view;
