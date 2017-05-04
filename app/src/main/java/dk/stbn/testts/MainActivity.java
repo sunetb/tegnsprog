@@ -269,7 +269,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			//derBlevSøgt = false;
 			
 			resultaterListeAdapter.notifyDataSetChanged();
-			if (a.antalSøgninger < 2 || a.søgeresultat.size() < 2) mere.setAlpha(0);
+			if (a.søgeresultat.size() < 2) mere.setAlpha(0);
 
 			else	mere.setAlpha(100);
 
@@ -314,7 +314,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 	boolean søg (String søgeordInd){
 		p("Søg("+søgeordInd+")");
-		a.antalSøgninger++; // Bruges til at tjekke om onScroll er blevet kaldt når lytteren sættes eller om brugeren rent faktisk har scrollet (alternativ til onTouch)
+		//a.antalSøgninger++; // Bruges til at tjekke om onScroll er blevet kaldt når lytteren sættes eller om brugeren rent faktisk har scrollet (alternativ til onTouch)
 		final String søgeord = søgeordInd.trim();
 		if (søgeord.equalsIgnoreCase("skriv søgeord her") || søgeord.equalsIgnoreCase("Søg her")) {
 			tomsøgning(søgeord);

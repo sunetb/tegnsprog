@@ -26,7 +26,7 @@ public class Appl extends Application
 
 	ArrayList<Fund> søgeresultat = new ArrayList();
 	
-	int antalSøgninger = 0;
+	//int antalSøgninger = 0;
 
 	@Override
 	public void onCreate()
