@@ -88,17 +88,27 @@
             android:layout_marginRight="7dp"
             android:text="Langsom" />
 	</LinearLayout>
-
+	<FrameLayout
+		android:layout_width="match_parent"
+	android:layout_height="0px"
+	android:layout_weight="5"
+		>
 		<ListView
 			android:layout_width="match_parent"
-			android:layout_height="0px"
-			android:layout_weight="5"
+			android:layout_height="match_parent"
 			android:id="@+id/fundliste"
 			android:fadeScrollbars="false">
 
 		</ListView>
 
+	<ImageView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:id="@+id/mere"
+		android:src="@drawable/ic_keyboard_arrow_down_black_48dp">
 
+	</ImageView>
+	</FrameLayout>
 
 	<View
 		android:layout_width="match_parent"

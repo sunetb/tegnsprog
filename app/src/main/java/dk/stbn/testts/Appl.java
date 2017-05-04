@@ -23,9 +23,11 @@ public class Appl extends Application
 	Runnable main;
 
 	ArrayList<String> tilAutoComplete = new ArrayList();
+
+	ArrayList<Fund> søgeresultat = new ArrayList();
 	
-	
-	
+	int antalSøgninger = 0;
+
 	@Override
 	public void onCreate()
 	{
@@ -52,7 +54,7 @@ public class Appl extends Application
 
 				}
 				else {
-					t("FEJL Main fandtes ikke da den skulle opdateres");
+					p("FEJL Main fandtes ikke da den skulle opdateres");
 					new Handler().postDelayed(new Runnable() {
 						@Override
 						public void run() {
@@ -101,7 +103,7 @@ public class Appl extends Application
 
 
 				String linie =  new String(contents, 0, bytesRead, "iso-8859-1");
-				char [] chars = linie.toCharArray();
+				//char [] chars = linie.toCharArray();
 				/*for (int i = 0; i < chars.length; i++){
 					char c = chars[i];
 					p(linie.substring(i,i+1)+ " : "+ Character.getNumericValue(c)+ " : " +contents[i]);
@@ -141,67 +143,7 @@ public class Appl extends Application
 
 			}
 
-/*
 
-
-			//-- Så konverteres strengen (oprindeligt et javascript-array med elementer af formen: "kaffe|386|1093")
-			//p("Efter while: " + (System.currentTimeMillis() - ms));
-			String [] temp = heleIndholdet.split(",");
-			boolean begynd = false;
-			for (String s : temp) {
-				//s = s.replaceAll("\"", "");
-
-				//-- Først skal vi finde søgeordet:
-				int ixStreg = s.indexOf("|");
-				//p("IND: " + s);
-				String søgeord ="";
-				if (ixStreg > 0) {
-					søgeord = s.substring(2,ixStreg);
-					//p("Søgeord: "+søgeord);
-
-					s = s.substring(ixStreg+1,s.length());
-
-					//--- Så skal vi finde indeksnumrene
-					ArrayList<String> index = new ArrayList<>();
-
-					//String [] udarray = s.split("|"); //-- Virker af en eller anden grund ikke. Heller ikke med escape\
-					String indeksnummer ="";
-
-					for (int i = 0; i < s.length(); i++) {
-						String tegn = s.substring(i,i+1);
-						if ((tegn != null)) {
-							//p(str+ " _ "+ str.codePointAt(0));
-							if (tegn.codePointAt(0) == 124 || tegn.codePointAt(0) == 34){ // | eller "
-								index.add(indeksnummer);
-								indeksnummer = "";
-								if (tegn.codePointAt(0) == 34) break;
-							}
-
-							else indeksnummer += tegn;
-
-						}
-					}
-					//p("Efter for indre: " + (System.currentTimeMillis() - ms));
-
-					Indgang indgang = new Indgang(søgeord, index);
-					a.søgeindeks.add(indgang);
-					//p("UD:  " + indgang.toString());
-				}
-			}
-			//p("Efter for ydre " + (System.currentTimeMillis() - ms));
-
-			Indgang første = søgeindeks.get(0);
-			p("________tjekker første indgang "+første);
-			første.søgeord = første.søgeord.substring(34);
-			p(første);
-
-			//tjekIndgang("i tirsdags");
-			//tjekIndgang("kaffe");
-
-			//--Tjek Indgang i søgenindeks
-//p("--------------------tjekker---søgeindeks---------------------");
-			//for (Indgang i : søgeindeks) p(i);
-*/
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			p(ex);
@@ -338,7 +280,7 @@ public class Appl extends Application
 			} else {
 				is.reset();
 			}
-			p("######## hentArtikel() =#=#=#=#=#=#=#=#=#=#=#=");
+			p("#=#=#=#=#=#=#=#= hentArtikel() =#=#=#=#=#=#=#=#=#=#=#");
 			byte[] contents = new byte[1024];
 			String heleIndholdet = "";
 			int bytesRead = 0;
@@ -358,6 +300,7 @@ public class Appl extends Application
 
 
 			//-- Vi finder video-urlen
+
 			int startindeks = heleIndholdet.indexOf("src=\"");
 			String tempUrl = heleIndholdet.substring(startindeks+5);
 			int slutIndeks= tempUrl.indexOf("\" type='video/mp4'>Your browser does not support the video tag.");

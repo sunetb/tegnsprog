@@ -2,6 +2,7 @@ package dk.stbn.testts;
 
 import android.content.res.Resources;
 import android.os.*;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.widget.*;
@@ -22,24 +23,28 @@ import java.util.*;
 
 import android.os.AsyncTask;
 import android.support.v7.app.*;
+import android.graphics.drawable.*;
+import android.widget.AbsListView.*;
 
 
 
 public class MainActivity extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener, com.google.android.exoplayer2.ui.PlaybackControlView.VisibilityListener, OnLongClickListener, Runnable{
+
 	Appl a;
-	ArrayList<Fund> søgeresultat = new ArrayList();
+
 	//ArrayList<Indgang> søgeindeks = new ArrayList<>();
 	SimpleExoPlayer player;
 	SimpleExoPlayerView v;
 	ImageButton søgeknap;
 
 	TextView  loop;
-	CheckBox loopcb;
+	CheckBox loopcb, langsomcb;
 	ListView resultatliste;
 	AutoCompleteTextView søgefelt;
+	ImageView mere;
 
 	ArrayAdapter autoSuggest, resultaterListeAdapter;
-
+	SharedPreferences sp;
 
 	String søgeurl1 = "http://tegnsprog.dk/#|tegn|386|soeg|/'tekst/'";
 	String søgeurl2 = "%7Cresultat%7C10%7Ctrestjerner%7C1";
@@ -52,26 +57,29 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	String kaffe  = baseUrlVideo +"t_317.mp4";
 
 	String velkommen = "t_2079.mp4";
-	ArrayList<String> testliste = new ArrayList();
 
 
+	boolean loopaktiveret = true;
 
 	boolean tomsøg = true;
 
 	boolean liggendeVisning;
 
+	int viserposition = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-	/*	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-			getActionBar().setElevation(0);
-		}*/
+
 		setContentView(R.layout.main);
-		//getActionBar().setIcon(R.drawable.logo);
         a = Appl.a;
 		a.main = this; //registrerer aktiviteten som lytter
-		
+		sp = PreferenceManager.getDefaultSharedPreferences(this);
+
+		loopaktiveret = sp.getBoolean("loop", true);
+
+
 		v = (SimpleExoPlayerView) findViewById(R.id.mainVideoView);
 		player = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector(new AdaptiveVideoTrackSelection.Factory(new DefaultBandwidthMeter())), new DefaultLoadControl());
 		//player.setVideoListener(n
@@ -91,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		if (liggendeVisning) listelayout = R.layout.listelayout_land;
 
-		resultaterListeAdapter = new ArrayAdapter(this, listelayout, R.id.tekst, søgeresultat){
+		resultaterListeAdapter = new ArrayAdapter(this, listelayout, R.id.tekst, a.søgeresultat){
 
 
 			@NonNull
@@ -106,14 +114,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 					ImageView iv = (ImageView) rod.findViewById(R.id.billede);
 					iv.setImageResource(R.drawable.kaffef314);
 					TextView t = (TextView) rod.findViewById(R.id.tekst);
-					t.setText(søgeresultat.get(position).toString());//søgeresultat.get(position).getTekst());
+					t.setText(a.søgeresultat.get(position).toString());//søgeresultat.get(position).getTekst());
 
 				return rod;
 			}
 
 			@Override
 			public int getCount() {
-				return søgeresultat.size();
+				return a.søgeresultat.size();
 			}
 		};
 		p("Arrayadapter: " + resultaterListeAdapter.getCount() );
@@ -124,19 +132,47 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		resultatliste.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				opdaterUI(false, true, søgeresultat.get(position).nøgle, position);
+				if (position != viserposition) {
+					viserposition = position;
+					sp.edit().putInt("position", position).commit();
+					opdaterUI(false, true, a.søgeresultat.get(position).nøgle, position);
+					//derBlevSøgt = true;
+				}
 			}
-		});		//hmm samme lytter!? Måske hellere lave en anonym
+		});
 
 		//resultat = (TextView) findViewById(R.id.resultat);
+		mere = (ImageView) findViewById(R.id.mere);
+		mere.setAlpha(0);
+		resultatliste.setOnScrollListener(new OnScrollListener(){
 
+				@Override
+				public void onScrollStateChanged(AbsListView p1, int p2)
+				{
+					if(p2 == OnScrollListener.SCROLL_STATE_TOUCH_SCROLL){
+						mere.setAlpha(0);
+					}
+				}
+
+				@Override
+				public void onScroll(AbsListView p1, int p2, int p3, int p4)
+				{
+
+					//Denne metod bliver kaldt hele tiden, dvs ikke kun når brugeren scroller
+				}
+				
+			
+		});
 		søgefelt = (AutoCompleteTextView) findViewById(R.id.søgefelt);
 		søgefelt.setOnClickListener(this);
 		loop = (TextView) findViewById(R.id.looptv);
 		loop.setOnClickListener(this);
 		loopcb = (CheckBox) findViewById(R.id.loopcb);
 		loopcb.setOnClickListener(this);
-		loopcb.setChecked(true);
+		loopcb.setChecked(loopaktiveret);
+		langsomcb = (CheckBox) findViewById(R.id.langsomcb);
+		langsomcb.setOnClickListener(this);
+
 		søgefelt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 				@Override
 				public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -147,13 +183,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 					return false;
 				}
 			});
-		søgefelt.setOnItemClickListener(this);
+		søgefelt.setOnItemClickListener(this); //kun til autocomplete
 		skjulTastatur();
 
 		if (savedInstanceState != null) {
 
 			this.run(); p("Startet ved skærmvending. Initialiserer autocomplete-listen (sæt adapter)");
-			
+			viserposition = sp.getInt("position", 0);
+
+			p("Viser position: "+viserposition);
+
 		}
 		else velkommen();
 		p("onCreate færdig");
@@ -162,7 +201,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	private boolean liggendeVisning() {
 		int højde = Resources.getSystem().getDisplayMetrics().heightPixels;
 		int bredde = Resources.getSystem().getDisplayMetrics().widthPixels;
-
 		return (højde<bredde);
 
 	}
@@ -173,20 +211,25 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	{
 
 		if (klikket == søgeknap) {
+			viserposition = 0;
 			String søgeordF = forberedSøgning();
 			boolean søgeResultat = søg(søgeordF);
             if (!søgeResultat) {
                 //resultat.setText("Ordet \""+søgeordF+ "\" findes ikke i ordbogen");
             }
 		}
-		else if (klikket == loopcb) {
-			if (loopcb.isChecked())
-				player.setPlayWhenReady(true); //Virker rigtig dårligt!!!!
-				else
-				player.setPlayWhenReady(false);
+		else if (klikket == loopcb ) {
 
-			ts("Stadig ikke implementeret. Nu kan den pause/resume");
+			sp.edit().putBoolean("loop", loopcb.isChecked()).commit();
+
+			if (loopcb.isChecked())
+				opdaterUI(false, true, "whatever", viserposition);
+				//player.setPlayWhenReady(true); //Virker rigtig dårligt!!!!
+			else
+				opdaterUI(false, false, "whatever", viserposition);
+				//player.setPlayWhenReady(false);
 		}
+		else if (klikket == langsomcb)ts("Ikke implementeret endnu");
 		else if (klikket == søgefelt) søgefelt.setText("");
 		
 	}
@@ -206,14 +249,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
         if (søgefelt.getText().toString().equals(søgefelt.getHint().toString())) return "";
         søgeknap.setEnabled(false);
-        søgeresultat.clear();
+        a.søgeresultat.clear();
         return søgeordet.toLowerCase();
 	}
 
 
 	void opdaterUI (boolean tomSøgning, boolean loop, String søgeordInd, int pos){
 
-
+		
 		p("opdaterUI kaldt! Var søgningen tom?  "+ tomSøgning);
 		tomsøg = tomSøgning;
         if (tomSøgning) {
@@ -223,18 +266,20 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
         }
         else {
-
-///HER SKAL HÅNDTERES FLERE RESULTATER MED EN for (Fund f : søgeresultat) ...
-
-
+			//derBlevSøgt = false;
+			
 			resultaterListeAdapter.notifyDataSetChanged();
+			if (a.antalSøgninger < 2 || a.søgeresultat.size() < 2) mere.setAlpha(0);
+
+			else	mere.setAlpha(100);
+
 
             try {
 				MediaSource ms1;
 				if (loop)
-                ms1 = lavLoopKilde(søgeresultat.get(pos).videourl);
+                ms1 = lavLoopKilde(a.søgeresultat.get(pos).videourl);
 				else
-				ms1 = lavKilde(søgeresultat.get(pos).videourl);
+				ms1 = lavKilde(a.søgeresultat.get(pos).videourl);
                 player.prepare(ms1);
                 player.setPlayWhenReady(true);
 				v.setVisibility(View.VISIBLE);
@@ -269,6 +314,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 	boolean søg (String søgeordInd){
 		p("Søg("+søgeordInd+")");
+		a.antalSøgninger++; // Bruges til at tjekke om onScroll er blevet kaldt når lytteren sættes eller om brugeren rent faktisk har scrollet (alternativ til onTouch)
 		final String søgeord = søgeordInd.trim();
 		if (søgeord.equalsIgnoreCase("skriv søgeord her") || søgeord.equalsIgnoreCase("Søg her")) {
 			tomsøgning(søgeord);
@@ -303,7 +349,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
                         Fund f = a.hentArtikel(s);//baseUrlArtikler+s+".html");
                         f.nøgle =fundet.getSøgeord();
-                        søgeresultat.add(f);
+                        a.søgeresultat.add(f);
                     }
                 }
                 return tomsøgning;
@@ -315,25 +361,25 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 				boolean tomsøgning2 = (boolean) o;
 
-                opdaterUI(tomsøgning2, true, søgeord, 0);
+                opdaterUI(tomsøgning2, loopaktiveret, søgeord, viserposition);
                 p("Tjekker søgeresultat: ");
-                if (!tomsøgning2) for (Fund f : søgeresultat) p(f);
+                if (!tomsøgning2) for (Fund f : a.søgeresultat) p(f);
 
             }
         }.execute();
 
 
 
-		return (søgeresultat.size() > 0);
+		return (a.søgeresultat.size() > 0);
 
 	}
 
 	void tomsøgning (String søgeord){
 
-		søgeresultat.clear();
+		a.søgeresultat.clear();
 		Fund tom = new Fund(null,null);
 		tom.nøgle = "Din søgning gav ikke noget resultat";
-		søgeresultat.add(tom);
+		a.søgeresultat.add(tom);
 		resultaterListeAdapter.notifyDataSetChanged();
 
 
@@ -410,10 +456,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	@Override
 	protected void onSaveInstanceState(Bundle outState)
 	{
-		
 		String s = søgefelt.getHint().toString();
 		//t("onsaveinstancestate: "+ s);
 		outState.putString("søgeord", s);
+		outState.putInt("position", viserposition);
 		super.onSaveInstanceState(outState);
 		
 	}
@@ -422,15 +468,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	protected void onRestoreInstanceState(Bundle savedInstanceState)
 	{
 		super.onRestoreInstanceState(savedInstanceState);
+		//////////////////////   TJEK FOR OM TOM SØGNING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 		String s = savedInstanceState.getString("søgeord");
+		viserposition = savedInstanceState.getInt("position");
 		if ("Skriv søgeord her".equalsIgnoreCase(s) || "Søg her".equalsIgnoreCase(s))
 			s=  "velkommen";
 		søgefelt.setHint(s);
-		//t("obrestore... "+ s);
-		forberedSøgning();
-		søg(s);
-		
-		
+		opdaterUI(false, loopaktiveret, s, viserposition);
+		resultatliste.setSelection(viserposition);
 	}
 	
 	
@@ -461,9 +506,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	//-- Kun til autocomplete
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		TextView t = (TextView) view;
-		String s = forberedSøgning();
-		p("onItemClick: fra TV: "+t.getText().toString()+ "  |  Fra forbered: "+s);
-		søg(t.getText().toString());
+
+			TextView t = (TextView) view;
+			String s = forberedSøgning();
+			p("onItemClick: fra TV: " + t.getText().toString() + "  |  Fra forbered: " + s);
+			søg(t.getText().toString());
+
+
 	}
 }
