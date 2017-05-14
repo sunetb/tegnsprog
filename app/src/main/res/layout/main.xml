@@ -32,7 +32,8 @@
 			android:layout_weight="2"
 			android:imeOptions="actionSearch"
 			android:inputType="text"
-			android:text="Skriv søgeord her" />
+			android:text="Skriv søgeord her" 
+			/>
 
 		<View
 			android:layout_width="0px"

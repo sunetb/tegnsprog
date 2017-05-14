@@ -30,55 +30,47 @@ import android.widget.AbsListView.*;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener, com.google.android.exoplayer2.ui.PlaybackControlView.VisibilityListener, OnLongClickListener, Runnable{
 
-	Appl a;
-
-	//ArrayList<Indgang> søgeindeks = new ArrayList<>();
+	// -- Views mm
 	SimpleExoPlayer player;
 	SimpleExoPlayerView v;
 	ImageButton søgeknap;
-
 	TextView  loop;
 	CheckBox loopcb, langsomcb;
 	ListView resultatliste;
 	AutoCompleteTextView søgefelt;
 	ImageView mere;
-
 	ArrayAdapter autoSuggest, resultaterListeAdapter;
+
+	// -- Sys
+	Appl a;
 	SharedPreferences sp;
 
+	// -- Data
+	String baseUrlVideo = "http://tegnsprog.dk/video/t/"; //+" t_"+vNr+".mp4"		kaffe = 317
 	String søgeurl1 = "http://tegnsprog.dk/#|tegn|386|soeg|/'tekst/'";
 	String søgeurl2 = "%7Cresultat%7C10%7Ctrestjerner%7C1";
-
     String glosseurl = "http://tegnsprog.dk/indeks/aekvivalent_hel.js";
-	String baseUrlVideo = "http://tegnsprog.dk/video/t/"; //+" t_"+vNr+".mp4"		kaffe = 317
 	String baseUrlArtikler ="http://m.tegnsprog.dk/artikler/"; //+artNr+".htm"		kaffe = 386
 	String baseUrlBillede = "http://tegnsprog.dk/billede_t/"; //+"f_"+bNr+".jpg"	kaffe = 314
-	
 	String kaffe  = baseUrlVideo +"t_317.mp4";
-
 	String velkommen = "t_2079.mp4";
 
-
+	// - Tilstand
 	boolean loopaktiveret = true;
-
 	boolean tomsøg = true;
-
 	boolean liggendeVisning;
-
 	int viserposition = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.main);
         a = Appl.a;
 		a.main = this; //registrerer aktiviteten som lytter
 		sp = PreferenceManager.getDefaultSharedPreferences(this);
 
 		loopaktiveret = sp.getBoolean("loop", true);
-
 
 		v = (SimpleExoPlayerView) findViewById(R.id.mainVideoView);
 		player = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector(new AdaptiveVideoTrackSelection.Factory(new DefaultBandwidthMeter())), new DefaultLoadControl());
@@ -115,7 +107,19 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 					iv.setImageResource(R.drawable.kaffef314);
 					TextView t = (TextView) rod.findViewById(R.id.tekst);
 					t.setText(a.søgeresultat.get(position).toString());//søgeresultat.get(position).getTekst());
+					Button b = (Button) rod.findViewById(R.id.knap);
+				b.setOnClickListener(new OnClickListener(){
 
+						@Override
+						public void onClick(View p1)
+						{
+							// TODO: Implement this method
+							Intent i = new Intent (MainActivity.this, FuldArtikel_akt.class);
+							startActivity(i);
+						}
+						
+						
+					});
 				return rod;
 			}
 
@@ -137,9 +141,21 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 					sp.edit().putInt("position", position).commit();
 					opdaterUI(false, true, a.søgeresultat.get(position).nøgle, position);
 					//derBlevSøgt = true;
+					t("onItemclick");
 				}
 			}
 		});
+		resultatliste.setOnItemLongClickListener(new OnItemLongClickListener(){
+
+				@Override
+				public boolean onItemLongClick(AdapterView<?> p1, View p2, int p3, long p4)
+				{
+					// TODO: Implement this method
+					Intent i = new Intent (MainActivity.this, FuldArtikel_akt.class);
+					startActivity(i);
+					return false;
+				}
+			});
 
 		//resultat = (TextView) findViewById(R.id.resultat);
 		mere = (ImageView) findViewById(R.id.mere);
@@ -184,8 +200,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 				}
 			});
 		søgefelt.setOnItemClickListener(this); //kun til autocomplete
-		skjulTastatur();
-
+		//søgefelt.setFocusable(false);
 		if (savedInstanceState != null) {
 
 			this.run(); p("Startet ved skærmvending. Initialiserer autocomplete-listen (sæt adapter)");
@@ -193,8 +208,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 			p("Viser position: "+viserposition);
 
+
 		}
 		else velkommen();
+
+		skjulTastatur();
+
 		p("onCreate færdig");
     }
 
@@ -230,7 +249,21 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 				//player.setPlayWhenReady(false);
 		}
 		else if (klikket == langsomcb)ts("Ikke implementeret endnu");
-		else if (klikket == søgefelt) søgefelt.setText("");
+		else if (klikket == søgefelt) {
+			p("søågefelt klikket");
+			//søgefelt.setFocusable(true);
+			//søgefelt.setFocusableInTouchMode(true);
+
+			//søgefelt.requestFocus();
+			søgefelt.setText("");
+
+
+			//søgefelt.setFocusable(true);
+			//søgefelt.setFocusableInTouchMode(true);
+
+			//søgefelt.requestFocus();
+			//søgefelt.setText("");
+		}
 		
 	}
 
@@ -389,12 +422,30 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		// Check if no view has focus:
 		View view = this.getCurrentFocus();
+		if (view == null) {
+			p("skjulTastatur(), view var null");
+			søgefelt.requestFocus();
+			view = søgefelt;
+
+		}
+
+			InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+			imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
+
+
+	}
+
+	void skjulTastaturoriginal(){
+
+		// Check if no view has focus:
+		View view = this.getCurrentFocus();
 		if (view != null) {
 			InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
 			imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 		}
-	}
 
+	}
 
 	MediaSource lavKilde (Uri s){
 

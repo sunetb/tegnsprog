@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_gravity="center_vertical">
+    android:layout_gravity="center_vertical"
+	>
 
 
     <ImageView
@@ -22,5 +23,14 @@
         android:layout_weight="10"
         android:text="tekst"
         android:layout_gravity="center_vertical"/>
+	<Button
+		android:id="@+id/knap"
+        android:layout_width="0px"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"
+        android:text="mere"
+		android:layout_gravity="center_vertical"
+		android:focusable="false"
+		/>
 
 </LinearLayout>

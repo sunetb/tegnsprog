@@ -48,6 +48,10 @@
         "source": "/home/sune/Dropbox/aapps/TestTs/app/src/main/res/drawable-mdpi/ic_magnify_white_18dp.png"
     },
     {
+        "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-mdpi/ic_keyboard_arrow_down_black_24dp.png",
+        "source": "/home/sune/Dropbox/aapps/TestTs/app/src/main/res/drawable-mdpi/ic_keyboard_arrow_down_black_24dp.png"
+    },
+    {
         "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-mdpi/ic_magnify_white_24dp.png",
         "source": "/home/sune/Dropbox/aapps/TestTs/app/src/main/res/drawable-mdpi/ic_magnify_white_24dp.png"
     },
@@ -178,6 +182,10 @@
     {
         "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-mdpi/ic_magnify_white_36dp.png",
         "source": "/home/sune/Dropbox/aapps/TestTs/app/src/main/res/drawable-mdpi/ic_magnify_white_36dp.png"
+    },
+    {
+        "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-mdpi/down.png",
+        "source": "/home/sune/Dropbox/aapps/TestTs/app/src/main/res/drawable-mdpi/down.png"
     },
     {
         "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-mdpi/abc_ic_menu_moreoverflow_mtrl_alpha.png",
