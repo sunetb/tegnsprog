@@ -19,11 +19,9 @@ import com.google.android.exoplayer2.upstream.*;
 import com.google.android.exoplayer2.util.*;
 import com.google.android.exoplayer2.extractor.*;
 import com.google.android.exoplayer2.source.*;
-import java.util.*;
 
 import android.os.AsyncTask;
 import android.support.v7.app.*;
-import android.graphics.drawable.*;
 import android.widget.AbsListView.*;
 
 
@@ -77,11 +75,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		//player.setVideoListener(n
 		v.setPlayer(player);
 		v.setControllerShowTimeoutMs(1);
-		v.setControllerVisibilityListener(this);
+		//v.setControllerVisibilityListener(this);
 
 		søgeknap = (ImageButton) findViewById(R.id.mainButton);
-		søgeknap.setOnClickListener(this);
-		søgeknap.setOnLongClickListener(this);
 		søgeknap.setEnabled(false);
 
 		liggendeVisning = liggendeVisning();
@@ -128,79 +124,20 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 				return a.søgeresultat.size();
 			}
 		};
-		p("Arrayadapter: " + resultaterListeAdapter.getCount() );
-
-
-
 		resultatliste.setAdapter(resultaterListeAdapter);
-		resultatliste.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				if (position != viserposition) {
-					viserposition = position;
-					sp.edit().putInt("position", position).commit();
-					opdaterUI(false, true, a.søgeresultat.get(position).nøgle, position);
-					//derBlevSøgt = true;
-					t("onItemclick");
-				}
-			}
-		});
-		resultatliste.setOnItemLongClickListener(new OnItemLongClickListener(){
 
-				@Override
-				public boolean onItemLongClick(AdapterView<?> p1, View p2, int p3, long p4)
-				{
-					// TODO: Implement this method
-					Intent i = new Intent (MainActivity.this, FuldArtikel_akt.class);
-					startActivity(i);
-					return false;
-				}
-			});
 
-		//resultat = (TextView) findViewById(R.id.resultat);
 		mere = (ImageView) findViewById(R.id.mere);
 		mere.setAlpha(0);
-		resultatliste.setOnScrollListener(new OnScrollListener(){
 
-				@Override
-				public void onScrollStateChanged(AbsListView p1, int p2)
-				{
-					if(p2 == OnScrollListener.SCROLL_STATE_TOUCH_SCROLL){
-						mere.setAlpha(0);
-					}
-				}
-
-				@Override
-				public void onScroll(AbsListView p1, int p2, int p3, int p4)
-				{
-
-					//Denne metod bliver kaldt hele tiden, dvs ikke kun når brugeren scroller
-				}
-				
-			
-		});
 		søgefelt = (AutoCompleteTextView) findViewById(R.id.søgefelt);
-		søgefelt.setOnClickListener(this);
 		loop = (TextView) findViewById(R.id.looptv);
-		loop.setOnClickListener(this);
 		loopcb = (CheckBox) findViewById(R.id.loopcb);
-		loopcb.setOnClickListener(this);
 		loopcb.setChecked(loopaktiveret);
 		langsomcb = (CheckBox) findViewById(R.id.langsomcb);
-		langsomcb.setOnClickListener(this);
 
-		søgefelt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-				@Override
-				public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-					if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-						søgeknap.performClick();
-						return true;
-					}
-					return false;
-				}
-			});
-		søgefelt.setOnItemClickListener(this); //kun til autocomplete
-		//søgefelt.setFocusable(false);
+		sætLyttere();
+
 		if (savedInstanceState != null) {
 
 			this.run(); p("Startet ved skærmvending. Initialiserer autocomplete-listen (sæt adapter)");
@@ -216,14 +153,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		p("onCreate færdig");
     }
-
-	private boolean liggendeVisning() {
-		int højde = Resources.getSystem().getDisplayMetrics().heightPixels;
-		int bredde = Resources.getSystem().getDisplayMetrics().widthPixels;
-		return (højde<bredde);
-
-	}
-
 
 	@Override
 	public void onClick(View klikket)
@@ -302,9 +231,15 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			//derBlevSøgt = false;
 			
 			resultaterListeAdapter.notifyDataSetChanged();
-			if (a.søgeresultat.size() < 2) mere.setAlpha(0);
+			if (a.søgeresultat.size() < 2 || !a.visPil) {
+				mere.setAlpha(0);
 
-			else	mere.setAlpha(100);
+			}
+
+			else	{
+				mere.setAlpha(100);
+				a.visPil = false;
+			}
 
 
             try {
@@ -346,6 +281,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	
 
 	boolean søg (String søgeordInd){
+		a.visPil = true;
 		p("Søg("+søgeordInd+")");
 		//a.antalSøgninger++; // Bruges til at tjekke om onScroll er blevet kaldt når lytteren sættes eller om brugeren rent faktisk har scrollet (alternativ til onTouch)
 		final String søgeord = søgeordInd.trim();
@@ -475,6 +411,78 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	}
 
 
+	void sætLyttere(){
+
+		søgeknap.setOnClickListener(this);
+		søgeknap.setOnLongClickListener(this);
+		loopcb.setOnClickListener(this);
+		langsomcb.setOnClickListener(this);
+		søgefelt.setOnClickListener(this);
+		loop.setOnClickListener(this);
+
+		//-- Søgeknappen på soft-keyboardet
+		søgefelt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+			@Override
+			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+				if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+					søgeknap.performClick();
+					return true;
+				}
+				return false;
+			}
+		});
+
+		søgefelt.setOnItemClickListener(this); //kun til autocomplete
+
+		resultatliste.setOnScrollListener(new OnScrollListener(){
+
+			@Override
+			public void onScrollStateChanged(AbsListView p1, int p2)
+			{
+				if(p2 == OnScrollListener.SCROLL_STATE_TOUCH_SCROLL){
+					mere.setAlpha(0);
+				}
+			}
+
+			@Override
+			public void onScroll(AbsListView p1, int p2, int p3, int p4)
+			{
+
+				//Denne metod bliver kaldt hele tiden, dvs ikke kun når brugeren scroller
+			}
+		});
+
+		resultatliste.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				if (position != viserposition) {
+					viserposition = position;
+					sp.edit().putInt("position", position).commit();
+					a.visPil = false;
+					opdaterUI(false, true, a.søgeresultat.get(position).nøgle, position);
+					//derBlevSøgt = true;
+					t("onItemclick visPil = "+a.visPil);
+
+				}
+			}
+		});
+
+		resultatliste.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> p1, View p2, int p3, long p4)
+			{
+				// TODO: Implement this method
+				Intent i = new Intent (MainActivity.this, FuldArtikel_akt.class);
+				startActivity(i);
+				return false;
+			}
+		});
+
+
+
+	}
+
 	LoopingMediaSource lavLoopKilde (Uri u){
 
 		DataSource.Factory kilde = new DefaultDataSourceFactory(this, Util.getUserAgent(this, "TsTest"), null);
@@ -485,6 +493,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		return new LoopingMediaSource(ms);
 	}
+
+	private boolean liggendeVisning() {
+		int højde = Resources.getSystem().getDisplayMetrics().heightPixels;
+		int bredde = Resources.getSystem().getDisplayMetrics().widthPixels;
+		return (højde<bredde);
+
+	}
+
 
 	@Override
 	public void onVisibilityChange(int p1)

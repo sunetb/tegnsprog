@@ -80,12 +80,12 @@
         "source": "/home/sune/.android/build-cache/47c9d1d04e02b935ee76245525dfabfe8c288199/output/res/drawable-mdpi/abc_btn_switch_to_on_mtrl_00001.9.png"
     },
     {
-        "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-mdpi/abc_list_longpressed_holo.9.png",
-        "source": "/home/sune/.android/build-cache/47c9d1d04e02b935ee76245525dfabfe8c288199/output/res/drawable-mdpi/abc_list_longpressed_holo.9.png"
-    },
-    {
         "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-mdpi/ic_keyboard_arrow_down_black_48dp.png",
         "source": "/home/sune/Dropbox/aapps/TestTs/app/src/main/res/drawable-mdpi/ic_keyboard_arrow_down_black_48dp.png"
+    },
+    {
+        "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-mdpi/abc_list_longpressed_holo.9.png",
+        "source": "/home/sune/.android/build-cache/47c9d1d04e02b935ee76245525dfabfe8c288199/output/res/drawable-mdpi/abc_list_longpressed_holo.9.png"
     },
     {
         "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-mdpi/abc_popup_background_mtrl_mult.9.png",
@@ -96,12 +96,12 @@
         "source": "/home/sune/.android/build-cache/47c9d1d04e02b935ee76245525dfabfe8c288199/output/res/drawable-mdpi/abc_btn_check_to_on_mtrl_015.png"
     },
     {
-        "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-mdpi/abc_ic_menu_share_mtrl_alpha.png",
-        "source": "/home/sune/.android/build-cache/47c9d1d04e02b935ee76245525dfabfe8c288199/output/res/drawable-mdpi/abc_ic_menu_share_mtrl_alpha.png"
-    },
-    {
         "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-mdpi/abc_btn_rating_star_off_mtrl_alpha.png",
         "source": "/home/sune/.android/build-cache/47c9d1d04e02b935ee76245525dfabfe8c288199/output/res/drawable-mdpi/abc_btn_rating_star_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-mdpi/abc_ic_menu_share_mtrl_alpha.png",
+        "source": "/home/sune/.android/build-cache/47c9d1d04e02b935ee76245525dfabfe8c288199/output/res/drawable-mdpi/abc_ic_menu_share_mtrl_alpha.png"
     },
     {
         "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-mdpi/abc_btn_switch_to_on_mtrl_00012.9.png",
@@ -180,12 +180,12 @@
         "source": "/home/sune/.android/build-cache/47c9d1d04e02b935ee76245525dfabfe8c288199/output/res/drawable-mdpi/abc_ic_ab_back_mtrl_am_alpha.png"
     },
     {
-        "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-mdpi/ic_magnify_white_36dp.png",
-        "source": "/home/sune/Dropbox/aapps/TestTs/app/src/main/res/drawable-mdpi/ic_magnify_white_36dp.png"
-    },
-    {
         "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-mdpi/down.png",
         "source": "/home/sune/Dropbox/aapps/TestTs/app/src/main/res/drawable-mdpi/down.png"
+    },
+    {
+        "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-mdpi/ic_magnify_white_36dp.png",
+        "source": "/home/sune/Dropbox/aapps/TestTs/app/src/main/res/drawable-mdpi/ic_magnify_white_36dp.png"
     },
     {
         "merged": "/home/sune/Dropbox/aapps/TestTs/app/build/intermediates/res/merged/debug/drawable-mdpi/abc_ic_menu_moreoverflow_mtrl_alpha.png",

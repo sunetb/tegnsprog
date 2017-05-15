@@ -27,6 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name="dk.stbn.testts.Test" />
+        <activity android:name="dk.stbn.testts.FuldArtikel_akt" />
     </application>
 
 </manifest>

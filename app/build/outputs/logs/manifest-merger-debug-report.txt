@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-28:12
+ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-29:12
 	package
 		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:4:5-29
 		INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
@@ -20,7 +20,7 @@ ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:5:5-
 	android:name
 		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:5:22-64
 application
-ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:7:3-26:19
+ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:7:3-27:19
 MERGED from [com.android.support:appcompat-v7:23.0.0] /home/sune/.android/build-cache/47c9d1d04e02b935ee76245525dfabfe8c288199/output/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.0.0] /home/sune/.android/build-cache/bb8e668d8d0e5bace69ab4f4ac65f199f06bbea7/output/AndroidManifest.xml:22:5-20
 	android:label
@@ -55,6 +55,10 @@ activity#dk.stbn.testts.Test
 ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:25:3-35
 	android:name
 		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:25:13-33
+activity#dk.stbn.testts.FuldArtikel_akt
+ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:26:3-46
+	android:name
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:26:13-44
 uses-sdk
 INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.0.0] /home/sune/.android/build-cache/47c9d1d04e02b935ee76245525dfabfe8c288199/output/AndroidManifest.xml:20:5-43

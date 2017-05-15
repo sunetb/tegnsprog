@@ -11,20 +11,29 @@ public class Appl extends Application
 {
 	/// Aide
 	/// As x
-	
+
+
+
+	//-- System
 	public static Appl a;
+	static long ms;
+	Runnable main;
+
+
+	//-- Data
 	ArrayList<Indgang> søgeindeks = new ArrayList<>();
 	String glosseurl = "http://tegnsprog.dk/indeks/aekvivalent_hel.js";
 	String nyUrl = "http://tegnsprog.dk/m/app-indeks/app-indeks.csv";
-	static long ms;
-
-	boolean dataKlar = false;
-
-	Runnable main;
-
 	ArrayList<String> tilAutoComplete = new ArrayList();
-
 	ArrayList<Fund> søgeresultat = new ArrayList();
+
+
+	//-- Tilstand
+	boolean dataKlar = false;
+	boolean visPil = true;
+
+
+
 	
 	//int antalSøgninger = 0;
 
