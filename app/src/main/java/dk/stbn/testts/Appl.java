@@ -1,7 +1,9 @@
 package dk.stbn.testts;
 import android.app.*;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.*;
+import android.preference.PreferenceManager;
 import android.widget.*;
 import java.io.*;
 import java.net.*;
@@ -12,7 +14,12 @@ public class Appl extends Application
 	/// Aide
 	/// As x
 
-
+	//-- Tilstand
+	boolean dataKlar = false;
+	boolean visPil = true;
+	boolean loop = true;
+	boolean slowmotion = false;
+	String aktueltSøgeord = "";
 
 	//-- System
 	public static Appl a;
@@ -21,31 +28,24 @@ public class Appl extends Application
 
 
 	//-- Data
+	SharedPreferences sp;
 	ArrayList<Indgang> søgeindeks = new ArrayList<>();
 	String glosseurl = "http://tegnsprog.dk/indeks/aekvivalent_hel.js";
 	String nyUrl = "http://tegnsprog.dk/m/app-indeks/app-indeks.csv";
 	ArrayList<String> tilAutoComplete = new ArrayList();
 	ArrayList<Fund> søgeresultat = new ArrayList();
 
-
-	//-- Tilstand
-	boolean dataKlar = false;
-	boolean visPil = true;
-
-
-
-	
 	//int antalSøgninger = 0;
 
 	@Override
-	public void onCreate()
-	{
-		// TODO: Implement this method
+	public void onCreate() {
 		super.onCreate();
 		a=this;
 		ms = System.currentTimeMillis();
 		Utill.debugbesked = new ArrayList<>();
-		
+		sp= PreferenceManager.getDefaultSharedPreferences(this);
+		loop = sp.getBoolean("loop", true);
+
 		new AsyncTask() {
 
             @Override
@@ -56,11 +56,9 @@ public class Appl extends Application
 
 			@Override
 			protected void onPostExecute(Object resultat){
-				//t("Data hentet");
 				p("Data hentet");
 				if (!(main == null)) {
 					main.run();
-
 				}
 				else {
 					p("FEJL Main fandtes ikke da den skulle opdateres");

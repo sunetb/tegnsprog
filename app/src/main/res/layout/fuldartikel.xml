@@ -1,24 +1,30 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical">
+	android:layout_height="fill_parent"
+	tools:layout_editor_absoluteX="0dp"
+	tools:layout_editor_absoluteY="25dp">
+
 
 	<TextView
 
+		android:id="@+id/textView"
 		android:layout_width="wrap_content"
-		android:layout_height="0px"
+		android:layout_height="53dp"
 		android:layout_weight="1"
-		android:text="\n\n...ikke implementeret. Her skal al info om tegnet vises. F.eks.:"/>
-
-
+		android:text="\n\n...ikke implementeret. Her skal al info om tegnet vises. F.eks.:"
+		tools:layout_editor_absoluteX="4dp"
+		tools:layout_editor_absoluteY="0dp" />
 
 	<ImageView
 		android:id="@+id/imageView2"
 		android:layout_width="match_parent"
-		android:layout_height="0px"
+		android:layout_height="0dp"
 		android:layout_weight="8"
-		android:src="@drawable/fuldartikeleks" />
+		android:src="@drawable/fuldartikeleks"
+		app:layout_constraintTop_toBottomOf="@+id/textView"
+		tools:layout_editor_absoluteX="1dp" />
 
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

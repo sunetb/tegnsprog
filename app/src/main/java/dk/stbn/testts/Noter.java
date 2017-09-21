@@ -14,7 +14,7 @@ Videafspilning
 -slowmo
 -sløjt i stående visning
 
-
+MEddelelese ved manglende internetforbindelse
 
 
 

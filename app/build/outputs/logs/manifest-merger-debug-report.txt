@@ -1,34 +1,50 @@
 -- Merging decision tree log ---
 manifest
 ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-29:12
+INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-29:12
+INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-29:12
+INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-29:12
+MERGED from [com.android.support:appcompat-v7:23.0.0] /home/sune/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.0.0.aar/310e7afbf51b8225ff5c97cb61dcb8e2/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:support-v4:23.0.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-v4-23.0.0.aar/f331f28b4c674d91798f77f49640e880/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer:r2.2.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-r2.2.0.aar/7e11201ec9dd7887867bc9c84205e8b8/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/060179f575633f6ae35a3a01b04f77a7/AndroidManifest.xml:2:1-11:12
+INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-29:12
+INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-29:12
+INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-29:12
 	package
 		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:4:5-29
 		INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
 		INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-29:12
 		INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
 	xmlns:tools
 		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:3:5-51
-	xmlns:android
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:11-69
 	android:versionCode
 		INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-29:12
 		INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
 ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:5:5-67
 	android:name
 		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:5:22-64
 application
 ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:7:3-27:19
-MERGED from [com.android.support:appcompat-v7:23.0.0] /home/sune/.android/build-cache/47c9d1d04e02b935ee76245525dfabfe8c288199/output/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.0.0] /home/sune/.android/build-cache/bb8e668d8d0e5bace69ab4f4ac65f199f06bbea7/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.0.0] /home/sune/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.0.0.aar/310e7afbf51b8225ff5c97cb61dcb8e2/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.0.0] /home/sune/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.0.0.aar/310e7afbf51b8225ff5c97cb61dcb8e2/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.0.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-v4-23.0.0.aar/f331f28b4c674d91798f77f49640e880/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.0.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-v4-23.0.0.aar/f331f28b4c674d91798f77f49640e880/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/060179f575633f6ae35a3a01b04f77a7/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/060179f575633f6ae35a3a01b04f77a7/AndroidManifest.xml:9:5-20
 	android:label
 		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:10:9-34
-	android:allowBackup
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:8:9-35
 	android:icon
 		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:9:9-40
+	android:allowBackup
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:8:9-35
 	android:theme
 		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:11:9-40
 	android:name
@@ -61,12 +77,23 @@ ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:26:3
 		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:26:13-44
 uses-sdk
 INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [com.android.support:appcompat-v7:23.0.0] /home/sune/.android/build-cache/47c9d1d04e02b935ee76245525dfabfe8c288199/output/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.0.0] /home/sune/.android/build-cache/bb8e668d8d0e5bace69ab4f4ac65f199f06bbea7/output/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.exoplayer:exoplayer:r2.2.0] /home/sune/.android/build-cache/0627d20c2e88de8d2d0bda837915d088a34f7ddc/output/AndroidManifest.xml:21:5-23:41
+INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
+INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:appcompat-v7:23.0.0] /home/sune/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.0.0.aar/310e7afbf51b8225ff5c97cb61dcb8e2/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.0.0] /home/sune/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.0.0.aar/310e7afbf51b8225ff5c97cb61dcb8e2/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.0.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-v4-23.0.0.aar/f331f28b4c674d91798f77f49640e880/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.0.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-v4-23.0.0.aar/f331f28b4c674d91798f77f49640e880/AndroidManifest.xml:20:5-43
+MERGED from [com.google.android.exoplayer:exoplayer:r2.2.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-r2.2.0.aar/7e11201ec9dd7887867bc9c84205e8b8/AndroidManifest.xml:21:5-23:41
+MERGED from [com.google.android.exoplayer:exoplayer:r2.2.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-r2.2.0.aar/7e11201ec9dd7887867bc9c84205e8b8/AndroidManifest.xml:21:5-23:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/060179f575633f6ae35a3a01b04f77a7/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/060179f575633f6ae35a3a01b04f77a7/AndroidManifest.xml:5:5-7:41
+INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
+INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion
 		INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
 		INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
 		INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
 		INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
