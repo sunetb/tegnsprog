@@ -161,8 +161,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		else if (klikket == loopcb ) {
 			p("Loop-checkbox klikket");
 			sp.edit().putBoolean("loop", loopcb.isChecked()).commit();
-
-			if (loopcb.isChecked())
+			a.loop = loopcb.isChecked();
+			if (a.loop)
 				opdaterUI(false, "whatever", viserposition);
 				//player.setPlayWhenReady(true); //Virker rigtig dårligt!!!!
 			else
@@ -514,8 +514,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	//Åbner test-/debug-aktivitet
 	@Override
 	public boolean onLongClick(View p1) {
-		Intent i = new Intent(this, Test.class);
-		startActivity(i);
+		//Intent i = new Intent(this, Test.class);
+		//startActivity(i);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1) {
+			v.animate().scaleX(0.5f).scaleY(0.5f);
+		}
 
 		return true;
 	}
