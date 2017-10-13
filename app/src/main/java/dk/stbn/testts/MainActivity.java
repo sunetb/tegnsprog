@@ -69,6 +69,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		sp = PreferenceManager.getDefaultSharedPreferences(this);
 
 		v = (SimpleExoPlayerView) findViewById(R.id.mainVideoView);
+		/*
+		DefaultBandwidthMeter BANDWIDTH_METER = new DefaultBandwidthMeter();
+		AdaptiveTrackSelection.Factory videoTrackSelectionFactory = new AdaptiveTrackSelection.Factory(BANDWIDTH_METER);
+		DefaultTrackSelector trackSelector = new DefaultTrackSelector(videoTrackSelectionFactory);
+		player = ExoPlayerFactory.newSimpleInstance(this, trackSelector, new DefaultLoadControl(),null);
+		//player = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector(), new DefaultLoadControl());
+		*/
 		player = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector(new AdaptiveVideoTrackSelection.Factory(new DefaultBandwidthMeter())), new DefaultLoadControl());
 		v.setPlayer(player);
 		v.setControllerShowTimeoutMs(1);
