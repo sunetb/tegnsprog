@@ -1,6 +1,7 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
+			  android:orientation="vertical"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
 	tools:layout_editor_absoluteX="0dp"
@@ -10,21 +11,16 @@
 	<TextView
 
 		android:id="@+id/textView"
-		android:layout_width="wrap_content"
+		android:layout_width="match_parent"
 		android:layout_height="53dp"
-		android:layout_weight="1"
 		android:text="\n\n...ikke implementeret. Her skal al info om tegnet vises. F.eks.:"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"/>
+/>
 
 	<ImageView
 		android:id="@+id/imageView2"
 		android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:layout_weight="8"
-		android:src="@drawable/fuldartikeleks"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/textView"/>
+		android:layout_height="wrap_content"
+		android:src="@drawable/fuldartikeleks"/>
 
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
