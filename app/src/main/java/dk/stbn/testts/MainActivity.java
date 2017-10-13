@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		}
 		else if (klikket == langsomcb){
 			ts("Ikke implementeret endnu");
-			player.setP
+
 		}
 		else if (klikket == søgefelt) {
 			p("søgefelt klikket");
