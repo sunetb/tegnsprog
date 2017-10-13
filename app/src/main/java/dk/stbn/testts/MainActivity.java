@@ -1,6 +1,7 @@
 package dk.stbn.testts;
 
 import android.content.res.Resources;
+import android.media.PlaybackParams;
 import android.os.*;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -69,14 +70,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		sp = PreferenceManager.getDefaultSharedPreferences(this);
 
 		v = (SimpleExoPlayerView) findViewById(R.id.mainVideoView);
-		/*
+
 		DefaultBandwidthMeter BANDWIDTH_METER = new DefaultBandwidthMeter();
-		AdaptiveTrackSelection.Factory videoTrackSelectionFactory = new AdaptiveTrackSelection.Factory(BANDWIDTH_METER);
+		AdaptiveVideoTrackSelection.Factory videoTrackSelectionFactory = new AdaptiveVideoTrackSelection.Factory(BANDWIDTH_METER);
 		DefaultTrackSelector trackSelector = new DefaultTrackSelector(videoTrackSelectionFactory);
 		player = ExoPlayerFactory.newSimpleInstance(this, trackSelector, new DefaultLoadControl(),null);
 		//player = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector(), new DefaultLoadControl());
-		*/
-		player = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector(new AdaptiveVideoTrackSelection.Factory(new DefaultBandwidthMeter())), new DefaultLoadControl());
+
+		//player = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector(new AdaptiveVideoTrackSelection.Factory(new DefaultBandwidthMeter())), new DefaultLoadControl());
 		v.setPlayer(player);
 		v.setControllerShowTimeoutMs(1);
 
@@ -176,15 +177,39 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 				opdaterUI(false, "whatever", viserposition);
 				//player.setPlayWhenReady(false);
 		}
-		else if (klikket == langsomcb)ts("Ikke implementeret endnu");
+		else if (klikket == langsomcb){
+			ts("Ikke implementeret endnu");
+			player.setP
+		}
 		else if (klikket == søgefelt) {
 			p("søgefelt klikket");
 			søgefelt.setText("");
 		}
 		
 	}
-
-
+/*
+	public void setPlaybackSpeed(float speed) {
+		if (Build.VERSION.SDK_INT >= 23) {
+			PlaybackParams params = new PlaybackParams();
+			params.setSpeed(speed);
+			ExoPlayer.ExoPlayerMessage[] messages = new ExoPlayer.ExoPlayerMessage[renderers.length];
+			for (int i = 0; i < renderers.length; i++) {
+				messages[i] = new ExoPlayer.ExoPlayerMessage(renderers[i], C.MSG_SET_PLAYBACK_PARAMS, params);
+			}
+			try {
+				sendMessagesInternal(messages);
+			} catch (ExoPlaybackException e) {
+				e.printStackTrace();
+			}
+		} else {
+			this.speed = speed;
+			standaloneMediaClock.setPlaybackSpeed(speed);
+			if (rendererMediaClock != null) {
+				rendererMediaClock.setPlaybackSpeed(speed);
+			}
+		}
+	}
+*/
 	private String forberedSøgning(){
 
         v.setControllerShowTimeoutMs(1200); /// tiden før knapperne skjules automatisk
