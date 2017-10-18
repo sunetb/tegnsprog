@@ -45,7 +45,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	SharedPreferences sp;
 
 	// -- Data
-	String baseUrlVideo = "http://tegnsprog.dk/video/t/"; //+" t_"+vNr+".mp4"		kaffe = 317
+	//String baseUrlVideo = "http://tegnsprog.dk/video/t/"; //+" t_"+vNr+".mp4"		kaffe = 317
+
+	String baseUrlVideo = "http://m.tegnsprog.dk/video/mobil/t-webm/";
 	String søgeurl1 = "http://tegnsprog.dk/#|tegn|386|soeg|/'tekst/'";
 	String søgeurl2 = "%7Cresultat%7C10%7Ctrestjerner%7C1";
     String glosseurl = "http://tegnsprog.dk/indeks/aekvivalent_hel.js";
@@ -72,14 +74,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		v = (SimpleExoPlayerView) findViewById(R.id.mainVideoView);
 
 		DefaultBandwidthMeter BANDWIDTH_METER = new DefaultBandwidthMeter();
-		AdaptiveVideoTrackSelection.Factory videoTrackSelectionFactory = new AdaptiveVideoTrackSelection.Factory(BANDWIDTH_METER);
+		AdaptiveTrackSelection.Factory videoTrackSelectionFactory = new AdaptiveTrackSelection.Factory(BANDWIDTH_METER);
 		DefaultTrackSelector trackSelector = new DefaultTrackSelector(videoTrackSelectionFactory);
 		player = ExoPlayerFactory.newSimpleInstance(this, trackSelector, new DefaultLoadControl(),null);
 		//player = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector(), new DefaultLoadControl());
 
 		//player = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector(new AdaptiveVideoTrackSelection.Factory(new DefaultBandwidthMeter())), new DefaultLoadControl());
 		v.setPlayer(player);
-		v.setControllerShowTimeoutMs(1);
+		//v.setControllerShowTimeoutMs(1);
 
 		søgeknap = (ImageButton) findViewById(R.id.mainButton);
 		søgeknap.setEnabled(false);
@@ -256,7 +258,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 ms1 = lavLoopKilde(a.søgeresultat.get(pos).videourl);
 				else
 				ms1 = lavKilde(a.søgeresultat.get(pos).videourl);
-                player.prepare(ms1);
+				p(ms1);
+                p("Videoformat: "+ player.getVideoFormat());
+
+				player.prepare(ms1);
+				player.setPlaybackSpeed(0.5f);
                 player.setPlayWhenReady(true);
 				v.setVisibility(View.VISIBLE);
 
@@ -438,7 +444,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			@Override
 			public void onScroll(AbsListView p1, int p2, int p3, int p4)
 			{
-				//Denne metod bliver kaldt hele tiden, dvs ikke kun når brugeren scroller
+				//Denne metode bliver kaldt hele tiden, dvs ikke kun når brugeren scroller
 			}
 		});
 

@@ -13,6 +13,7 @@
     <application
         android:name="dk.stbn.testts.Appl"
         android:allowBackup="true"
+        android:debuggable="true"
         android:icon="@drawable/tsikon"
         android:label="Tegnsprog"
         android:theme="@style/AppTheme" >

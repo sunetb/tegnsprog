@@ -312,6 +312,18 @@ public class Appl extends Application
 			String tempUrl = heleIndholdet.substring(startindeks+5);
 			int slutIndeks= tempUrl.indexOf("\" type='video/mp4'>Your browser does not support the video tag.");
 			vUrl = tempUrl.substring(0,slutIndeks);
+			p("videourl::::::::::::::::::::::::::::::::"+vUrl);
+			///////////////Eksperiment med webm
+			int underscore = vUrl.lastIndexOf("_")+1;
+			int sidstepunktum = vUrl.lastIndexOf(".");
+
+			String indeksnr = vUrl.substring(underscore,sidstepunktum);
+			p("indeksnr: "+indeksnr);
+			vUrl = "http://m.tegnsprog.dk/video/mobil/t-webm/t_"+indeksnr+".webm";
+			p(vUrl);
+
+
+
 
 			//-- Vi finder de danske ord
 
