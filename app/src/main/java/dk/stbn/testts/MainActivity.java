@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	String kaffe  = baseUrlVideo +"t_317.mp4";
 	String velkommen = "t_2079.mp4";
 
+	//Eksempel: http://www.tegnsprog.dk/video/t/t_2079.mp4
+
 	// - Tilstand
 	boolean tomsøg = true;
 	boolean liggendeVisning;
@@ -72,12 +74,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		sp = PreferenceManager.getDefaultSharedPreferences(this);
 
 		v = (SimpleExoPlayerView) findViewById(R.id.mainVideoView);
-
+/*
 		DefaultBandwidthMeter BANDWIDTH_METER = new DefaultBandwidthMeter();
 		AdaptiveTrackSelection.Factory videoTrackSelectionFactory = new AdaptiveTrackSelection.Factory(BANDWIDTH_METER);
 		DefaultTrackSelector trackSelector = new DefaultTrackSelector(videoTrackSelectionFactory);
 		player = ExoPlayerFactory.newSimpleInstance(this, trackSelector, new DefaultLoadControl(),null);
-		//player = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector(), new DefaultLoadControl());
+
+		*/
+		player = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector(), new DefaultLoadControl());
 
 		//player = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector(new AdaptiveVideoTrackSelection.Factory(new DefaultBandwidthMeter())), new DefaultLoadControl());
 		v.setPlayer(player);
@@ -181,6 +185,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		}
 		else if (klikket == langsomcb){
 			ts("Ikke implementeret endnu");
+			player.setPlaybackParameters(new PlaybackParameters(0.25f, 1));
 
 		}
 		else if (klikket == søgefelt) {
@@ -262,7 +267,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 p("Videoformat: "+ player.getVideoFormat());
 
 				player.prepare(ms1);
-				player.setPlaybackSpeed(0.5f);
+				//player.setPlaybackSpeed(0.5f);
                 player.setPlayWhenReady(true);
 				v.setVisibility(View.VISIBLE);
 

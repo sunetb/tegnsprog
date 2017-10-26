@@ -16,6 +16,7 @@
         android:debuggable="true"
         android:icon="@drawable/tsikon"
         android:label="Tegnsprog"
+        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
             android:name="dk.stbn.testts.MainActivity"
@@ -29,6 +30,10 @@
         </activity>
         <activity android:name="dk.stbn.testts.Test" />
         <activity android:name="dk.stbn.testts.FuldArtikel_akt" />
+
+        <meta-data
+            android:name="android.support.VERSION"
+            android:value="25.4.0" />
     </application>
 
 </manifest>

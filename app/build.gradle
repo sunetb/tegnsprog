@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 25
     buildToolsVersion '26.0.2'
 
     defaultConfig {
@@ -20,10 +20,10 @@ android {
 }
 
 dependencies {
-	compile 'com.android.support:support-v4:23.0.0'
-	compile 'com.android.support:appcompat-v7:23.0.0'
+	compile 'com.android.support:support-v4:25.4.0'
+	compile 'com.android.support:appcompat-v7:25.4.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
-	//compile 'com.google.android.exoplayer:exoplayer:r2.2.0'
+	compile 'com.google.android.exoplayer:exoplayer:r2.4.0'
     //exoplayer bibliotek med variabel hastighed:
-    compile project(':ExoPlayer-bibliotek')
+    //compile project(':ExoPlayer-bibliotek')
 }

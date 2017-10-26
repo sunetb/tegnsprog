@@ -314,13 +314,13 @@ public class Appl extends Application
 			vUrl = tempUrl.substring(0,slutIndeks);
 			p("videourl::::::::::::::::::::::::::::::::"+vUrl);
 			///////////////Eksperiment med webm
-			int underscore = vUrl.lastIndexOf("_")+1;
-			int sidstepunktum = vUrl.lastIndexOf(".");
+			//int underscore = vUrl.lastIndexOf("_")+1;
+			///int sidstepunktum = vUrl.lastIndexOf(".");
 
-			String indeksnr = vUrl.substring(underscore,sidstepunktum);
-			p("indeksnr: "+indeksnr);
-			vUrl = "http://m.tegnsprog.dk/video/mobil/t-webm/t_"+indeksnr+".webm";
-			p(vUrl);
+			//String indeksnr = vUrl.substring(underscore,sidstepunktum);
+			//p("indeksnr: "+indeksnr);
+			//vUrl = "http://m.tegnsprog.dk/video/mobil/t-webm/t_"+indeksnr+".webm";
+			//p(vUrl);
 
 
 
