@@ -107,15 +107,15 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 25 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="exoplayer-r2.4.0" level="project" />
-    <orderEntry type="library" name="exoplayer-hls-r2.4.0" level="project" />
-    <orderEntry type="library" name="exoplayer-smoothstreaming-r2.4.0" level="project" />
-    <orderEntry type="library" name="exoplayer-dash-r2.4.0" level="project" />
+    <orderEntry type="library" name="exoplayer-r2.5.0" level="project" />
+    <orderEntry type="library" name="exoplayer-smoothstreaming-r2.5.0" level="project" />
+    <orderEntry type="library" name="exoplayer-hls-r2.5.0" level="project" />
+    <orderEntry type="library" name="exoplayer-dash-r2.5.0" level="project" />
     <orderEntry type="library" name="support-core-ui-25.4.0" level="project" />
     <orderEntry type="library" name="support-v4-25.4.0" level="project" />
     <orderEntry type="library" name="support-media-compat-25.4.0" level="project" />
-    <orderEntry type="library" name="exoplayer-core-r2.4.0" level="project" />
-    <orderEntry type="library" name="exoplayer-ui-r2.4.0" level="project" />
+    <orderEntry type="library" name="exoplayer-core-r2.5.0" level="project" />
+    <orderEntry type="library" name="exoplayer-ui-r2.5.0" level="project" />
     <orderEntry type="library" name="support-annotations-25.4.0" level="project" />
     <orderEntry type="library" name="appcompat-v7-25.4.0" level="project" />
     <orderEntry type="library" name="support-vector-drawable-25.4.0" level="project" />

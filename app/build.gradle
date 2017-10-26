@@ -23,7 +23,7 @@ dependencies {
 	compile 'com.android.support:support-v4:25.4.0'
 	compile 'com.android.support:appcompat-v7:25.4.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
-	compile 'com.google.android.exoplayer:exoplayer:r2.4.0'
+	compile 'com.google.android.exoplayer:exoplayer:r2.5.0'
     //exoplayer bibliotek med variabel hastighed:
     //compile project(':ExoPlayer-bibliotek')
 }

@@ -176,17 +176,27 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			p("Loop-checkbox klikket");
 			sp.edit().putBoolean("loop", loopcb.isChecked()).commit();
 			a.loop = loopcb.isChecked();
-			if (a.loop)
-				opdaterUI(false, "whatever", viserposition);
+			if (a.loop){
+				player.setRepeatMode(Player.REPEAT_MODE_ONE);
+				pauseVideo(false);
+				player.setPlayWhenReady(true);
+
+				p(player.getRepeatMode());
+
+			}
+				//opdaterUI(false, "whatever", viserposition);
+
 				//player.setPlayWhenReady(true); //Virker rigtig dårligt!!!!
-			else
-				opdaterUI(false, "whatever", viserposition);
+			else player.setRepeatMode(Player.REPEAT_MODE_OFF);
+			pauseVideo(true);
+				//opdaterUI(false, "whatever", viserposition);
 				//player.setPlayWhenReady(false);
 		}
 		else if (klikket == langsomcb){
-			ts("Ikke implementeret endnu");
-			player.setPlaybackParameters(new PlaybackParameters(0.25f, 1));
-
+			p(player.getPlaybackParameters());
+			a.slowmotion = !a.slowmotion;
+			float hast =  (a.slowmotion) ? 0.25f : 1.0f;
+			player.setPlaybackParameters(new PlaybackParameters(hast, 1));
 		}
 		else if (klikket == søgefelt) {
 			p("søgefelt klikket");
@@ -194,29 +204,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		}
 		
 	}
-/*
-	public void setPlaybackSpeed(float speed) {
-		if (Build.VERSION.SDK_INT >= 23) {
-			PlaybackParams params = new PlaybackParams();
-			params.setSpeed(speed);
-			ExoPlayer.ExoPlayerMessage[] messages = new ExoPlayer.ExoPlayerMessage[renderers.length];
-			for (int i = 0; i < renderers.length; i++) {
-				messages[i] = new ExoPlayer.ExoPlayerMessage(renderers[i], C.MSG_SET_PLAYBACK_PARAMS, params);
-			}
-			try {
-				sendMessagesInternal(messages);
-			} catch (ExoPlaybackException e) {
-				e.printStackTrace();
-			}
-		} else {
-			this.speed = speed;
-			standaloneMediaClock.setPlaybackSpeed(speed);
-			if (rendererMediaClock != null) {
-				rendererMediaClock.setPlaybackSpeed(speed);
-			}
-		}
-	}
-*/
+
+	void pauseVideo(boolean pause) {
+
+    	float valgtHast = (a.slowmotion) ? 0.25f : 1.0f;
+
+		float hast =  (pause) ? 0.0f : valgtHast ;
+		player.setPlaybackParameters(new PlaybackParameters(hast, 1));
+    }
+
+
 	private String forberedSøgning(){
 
         v.setControllerShowTimeoutMs(1200); /// tiden før knapperne skjules automatisk
@@ -258,17 +255,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			}
 
             try {
-				MediaSource ms1;
-				if (a.loop)
-                ms1 = lavLoopKilde(a.søgeresultat.get(pos).videourl);
-				else
-				ms1 = lavKilde(a.søgeresultat.get(pos).videourl);
+				MediaSource ms1 = lavKilde(a.søgeresultat.get(pos).videourl);
 				p(ms1);
                 p("Videoformat: "+ player.getVideoFormat());
 
 				player.prepare(ms1);
 				//player.setPlaybackSpeed(0.5f);
                 player.setPlayWhenReady(true);
+				if (a.loop) player.setRepeatMode(Player.REPEAT_MODE_ONE);
 				v.setVisibility(View.VISIBLE);
 
 			}
@@ -352,6 +346,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 	}
 
+	/*
 	//-- En mediasource bruges som input til mediaplayeren
 	private LoopingMediaSource lavLoopKilde (Uri u){
 
@@ -363,6 +358,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		return new LoopingMediaSource(ms);
 	}
+	*/
 
 	void tomsøgning (String søgeord){
 
