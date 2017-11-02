@@ -20,6 +20,7 @@ public class Appl extends Application
 	boolean loop = true;
 	boolean slowmotion = false;
 	String aktueltSøgeord = "";
+	long position;
 
 	//-- System
 	public static Appl a;
@@ -34,6 +35,7 @@ public class Appl extends Application
 	String nyUrl = "http://tegnsprog.dk/m/app-indeks/app-indeks.csv";
 	ArrayList<String> tilAutoComplete = new ArrayList();
 	ArrayList<Fund> søgeresultat = new ArrayList();
+
 
 	//int antalSøgninger = 0;
 

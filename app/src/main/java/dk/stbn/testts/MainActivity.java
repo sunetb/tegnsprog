@@ -174,21 +174,27 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		}
 		else if (klikket == loopcb ) {
 			p("Loop-checkbox klikket");
+			a.position = player.getCurrentPosition();
+			p("position: "+a.position);
 			sp.edit().putBoolean("loop", loopcb.isChecked()).commit();
 			a.loop = loopcb.isChecked();
 			if (a.loop){
 				player.setRepeatMode(Player.REPEAT_MODE_ONE);
-				pauseVideo(false);
+				//pauseVideo(false);
+				player.seekTo(a.position);
 				player.setPlayWhenReady(true);
 
-				p(player.getRepeatMode());
+
 
 			}
 				//opdaterUI(false, "whatever", viserposition);
-
-				//player.setPlayWhenReady(true); //Virker rigtig dårligt!!!!
+					//player.setPlayWhenReady(true); //Virker rigtig dårligt!!!!
 			else player.setRepeatMode(Player.REPEAT_MODE_OFF);
-			pauseVideo(true);
+
+
+			p("Repeatmode: " + player.getRepeatMode());
+
+			//pauseVideo(true);
 				//opdaterUI(false, "whatever", viserposition);
 				//player.setPlayWhenReady(false);
 		}
@@ -477,6 +483,62 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		});
 
 
+
+		player.addListener(new ExoPlayer.EventListener() {
+
+			@Override
+			public void onTimelineChanged(Timeline timeline, Object manifest) {
+				p("Timeline: "+timeline);
+			}
+
+			@Override
+			public void onTracksChanged(TrackGroupArray trackGroups, TrackSelectionArray trackSelections) {
+
+			}
+
+			@Override
+			public void onLoadingChanged(boolean isLoading) {
+
+			}
+
+			@Override
+			public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
+
+				if (playbackState == ExoPlayer.STATE_ENDED)
+					if (!a.loop){
+						player.seekTo(0);
+						player.setPlayWhenReady(false);
+					}
+					else {
+						player.seekTo(0);
+						player.setPlayWhenReady(true);
+					}
+				}
+
+			@Override
+			public void onRepeatModeChanged(int repeatMode) {
+				p("repeatmode ændret til: "+repeatMode);
+			}
+
+			@Override
+			public void onPlayerError(ExoPlaybackException error) {
+
+			}
+
+			@Override
+			public void onPositionDiscontinuity() {
+
+			}
+
+			@Override
+			public void onPlaybackParametersChanged(PlaybackParameters playbackParameters) {
+
+			}
+
+
+
+
+		});
 
 	}// END sætLyttere()
 
