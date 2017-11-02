@@ -3,8 +3,7 @@ package dk.stbn.testts;
 import android.content.res.Resources;
 import android.os.*;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.widget.*;
 import android.net.*;
 import android.view.View.*;
@@ -26,8 +25,8 @@ import android.widget.AbsListView.*;
 public class MainActivity extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener, com.google.android.exoplayer2.ui.PlaybackControlView.VisibilityListener, OnLongClickListener, Runnable{
 
 	// -- Views mm
-	SimpleExoPlayer player;
-	SimpleExoPlayerView v;
+	SimpleExoPlayer afsp;
+	SimpleExoPlayerView afspView;
 	ImageButton søgeknap;
 	TextView  loop;
 	CheckBox loopcb, langsomcb;
@@ -35,6 +34,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	AutoCompleteTextView søgefelt;
 	ImageView mere;
 	ArrayAdapter autoSuggest, resultaterListeAdapter;
+
+	private RecyclerView hovedlisten;
+	private RecyclerView.Adapter adapter;
+	//private RecyclerView.LayoutManager mLayoutManager;
+
 
 	// -- Sys
 	Appl a;
@@ -59,6 +63,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	boolean liggendeVisning;
 	int viserposition = 0;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -69,22 +75,30 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		a.main = this; //registrerer aktiviteten som lytter
 		sp = PreferenceManager.getDefaultSharedPreferences(this);
 
-		v = (SimpleExoPlayerView) findViewById(R.id.mainVideoView);
+		afspView = (SimpleExoPlayerView) findViewById(R.id.mainVideoView);
 
-		player = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector(), new DefaultLoadControl());
 
-		v.setPlayer(player);
 
 		søgeknap = (ImageButton) findViewById(R.id.mainButton);
 		søgeknap.setEnabled(false);
 
+		hovedlisten = (RecyclerView) findViewById(R.id.hovedlisten);
+
+		hovedlisten.setHasFixedSize(true);
+
+		//mLayoutManager = new LinearLayoutManager(this);
+		//hovedlisten.setLayoutManager(mLayoutManager);
+
+		adapter = new Hovedliste_adapter(a.søgeresultat, this);
+		hovedlisten.setAdapter(adapter);
+
 		liggendeVisning = liggendeVisning();
-		resultatliste = (ListView) findViewById(R.id.fundliste);
+		//resultatliste = (ListView) findViewById(R.id.fundliste);
 
-		int listelayout = R.layout.listelayout;
+		//int listelayout = R.layout.listelayout;
 
-		if (liggendeVisning) listelayout = R.layout.listelayout_land;
-
+		//if (liggendeVisning) listelayout = R.layout.listelayout_land;
+/*
 		//-- Listen med søgeresultater
 		resultaterListeAdapter = new ArrayAdapter(this, listelayout, R.id.tekst, a.søgeresultat){
 
@@ -124,13 +138,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		//-- Den lille pil som indikerer at der er flere resultater
 		mere = (ImageView) findViewById(R.id.mere);
 		mere.setAlpha(0);
-
+*/
 		søgefelt = (AutoCompleteTextView) findViewById(R.id.søgefelt);
-		loop = (TextView) findViewById(R.id.looptv);
+/*		loop = (TextView) findViewById(R.id.looptv);
 		loopcb = (CheckBox) findViewById(R.id.loopcb);
 		loopcb.setChecked(a.loop);
 		langsomcb = (CheckBox) findViewById(R.id.langsomcb);
-
+*/
 		sætLyttere();
 
 		if (savedInstanceState != null) {
@@ -158,27 +172,27 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 //resultat.setText("Ordet \""+søgeordF+ "\" findes ikke i ordbogen");
             }
 		}
-		else if (klikket == loopcb ) {
+/*		else if (klikket == loopcb ) {
 			p("Loop-checkbox klikket");
-			a.position = player.getCurrentPosition();
+			a.position = afsp.getCurrentPosition();
 			p("position: "+a.position);
 			sp.edit().putBoolean("loop", loopcb.isChecked()).commit();
 			a.loop = loopcb.isChecked();
 			if (a.loop){
-				player.setRepeatMode(Player.REPEAT_MODE_ONE);
-				player.seekTo(a.position);
-				player.setPlayWhenReady(true);
+				afsp.setRepeatMode(Player.REPEAT_MODE_ONE);
+				afsp.seekTo(a.position);
+				afsp.setPlayWhenReady(true);
 			}
-			else player.setRepeatMode(Player.REPEAT_MODE_OFF);
-			p("Repeatmode: " + player.getRepeatMode());
+			else afsp.setRepeatMode(Player.REPEAT_MODE_OFF);
+			p("Repeatmode: " + afsp.getRepeatMode());
 
 		}
 		else if (klikket == langsomcb){
-			p(player.getPlaybackParameters());
+			p(afsp.getPlaybackParameters());
 			a.slowmotion = !a.slowmotion;
 			float hast =  (a.slowmotion) ? 0.25f : 1.0f;
-			player.setPlaybackParameters(new PlaybackParameters(hast, 1));
-		}
+			afsp.setPlaybackParameters(new PlaybackParameters(hast, 1));
+		}*/
 		else if (klikket == søgefelt) {
 			p("søgefelt klikket");
 			søgefelt.setText("");
@@ -191,13 +205,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     	float valgtHast = (a.slowmotion) ? 0.25f : 1.0f;
 
 		float hast =  (pause) ? 0.0f : valgtHast ;
-		player.setPlaybackParameters(new PlaybackParameters(hast, 1));
+		afsp.setPlaybackParameters(new PlaybackParameters(hast, 1));
     }
 
 
 	private String forberedSøgning(){
 
-        v.setControllerShowTimeoutMs(1200); /// tiden før knapperne skjules automatisk
+        afspView.setControllerShowTimeoutMs(1200); /// tiden før knapperne skjules automatisk
         skjulTastatur();
         String søgeordet = søgefelt.getText().toString().toLowerCase().trim();
         p("forberedSøgning søgeord: " + søgeordet);
@@ -220,11 +234,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		tomsøg = tomSøgning;
         if (tomSøgning) {
 			tomsøgning(søgeordInd);
-            player.setPlayWhenReady(false);
+            afsp.setPlayWhenReady(false);
         }
         else {
-			resultaterListeAdapter.notifyDataSetChanged();
-
+			//resultaterListeAdapter.notifyDataSetChanged();
+			adapter.notifyDataSetChanged();
 			//-- Opdaterer synligheden for pilen "vis mere"
 			if (a.søgeresultat.size() < 2 || !a.visPil) {
 				mere.setAlpha(0);
@@ -238,13 +252,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             try {
 				MediaSource ms1 = lavKilde(a.søgeresultat.get(pos).videourl);
 				p(ms1);
-                p("Videoformat: "+ player.getVideoFormat());
-
-				player.prepare(ms1);
-				//player.setPlaybackSpeed(0.5f);
-                player.setPlayWhenReady(true);
-				if (a.loop) player.setRepeatMode(Player.REPEAT_MODE_ONE);
-				v.setVisibility(View.VISIBLE);
+                p("Videoformat: "+ afsp.getVideoFormat());
+				afsp = hovedlisten.getI
+				afsp.prepare(ms1);
+				//afsp.setPlaybackSpeed(0.5f);
+                afsp.setPlayWhenReady(true);
+				if (a.loop) afsp.setRepeatMode(Player.REPEAT_MODE_ONE);
+				afspView.setVisibility(View.VISIBLE);
 
 			}
             catch (Exception e){
@@ -439,7 +453,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			}
 		});
 
-		player.addListener(new ExoPlayer.EventListener() {
+		afsp.addListener(new ExoPlayer.EventListener() {
 
 			@Override
 			public void onTimelineChanged(Timeline timeline, Object manifest) {
@@ -461,12 +475,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 				if (playbackState == ExoPlayer.STATE_ENDED)
 					if (!a.loop){
-						player.seekTo(0);
-						player.setPlayWhenReady(false);
+						afsp.seekTo(0);
+						afsp.setPlayWhenReady(false);
 					}
 					else {
-						player.seekTo(0);
-						player.setPlayWhenReady(true);
+						afsp.seekTo(0);
+						afsp.setPlayWhenReady(true);
 					}
 				}
 
@@ -525,7 +539,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		player.release();
+		afsp.release();
 		a.main = null; // afregistrerer lytter
 		
 	}
@@ -573,7 +587,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		//Intent i = new Intent(this, Test.class);
 		//startActivity(i);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1) {
-			v.animate().scaleX(0.5f).scaleY(0.5f);
+			afspView.animate().scaleX(0.5f).scaleY(0.5f);
 		}
 
 		return true;

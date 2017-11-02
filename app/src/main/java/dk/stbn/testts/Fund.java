@@ -2,6 +2,8 @@ package dk.stbn.testts;
 
 import android.net.Uri;
 
+import com.google.android.exoplayer2.SimpleExoPlayer;
+
 import java.util.ArrayList;
 
 /**
@@ -13,6 +15,7 @@ class Fund {
     Uri videourl;
     Uri billedurl;
     ArrayList<String> ordliste;
+    SimpleExoPlayer afsp;
 
     public Fund(Uri vurl, Uri burl, ArrayList<String> ord){
         videourl=vurl;
