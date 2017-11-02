@@ -1,13 +1,11 @@
 package dk.stbn.testts;
 
 import android.content.res.Resources;
-import android.media.PlaybackParams;
 import android.os.*;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.widget.*;
-
 import android.net.*;
 import android.view.View.*;
 import android.view.*;
@@ -17,10 +15,8 @@ import com.google.android.exoplayer2.*;
 import com.google.android.exoplayer2.ui.*;
 import com.google.android.exoplayer2.trackselection.*;
 import com.google.android.exoplayer2.upstream.*;
-import com.google.android.exoplayer2.util.*;
 import com.google.android.exoplayer2.extractor.*;
 import com.google.android.exoplayer2.source.*;
-
 import android.os.AsyncTask;
 import android.support.v7.app.*;
 import android.widget.AbsListView.*;
@@ -74,18 +70,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		sp = PreferenceManager.getDefaultSharedPreferences(this);
 
 		v = (SimpleExoPlayerView) findViewById(R.id.mainVideoView);
-/*
-		DefaultBandwidthMeter BANDWIDTH_METER = new DefaultBandwidthMeter();
-		AdaptiveTrackSelection.Factory videoTrackSelectionFactory = new AdaptiveTrackSelection.Factory(BANDWIDTH_METER);
-		DefaultTrackSelector trackSelector = new DefaultTrackSelector(videoTrackSelectionFactory);
-		player = ExoPlayerFactory.newSimpleInstance(this, trackSelector, new DefaultLoadControl(),null);
 
-		*/
 		player = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector(), new DefaultLoadControl());
 
-		//player = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector(new AdaptiveVideoTrackSelection.Factory(new DefaultBandwidthMeter())), new DefaultLoadControl());
 		v.setPlayer(player);
-		//v.setControllerShowTimeoutMs(1);
 
 		søgeknap = (ImageButton) findViewById(R.id.mainButton);
 		søgeknap.setEnabled(false);
@@ -151,8 +139,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			viserposition = sp.getInt("position", 0);
 
 			p("Viser position: "+viserposition);
-
-
 		}
 		else velkommen();
 
@@ -180,23 +166,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			a.loop = loopcb.isChecked();
 			if (a.loop){
 				player.setRepeatMode(Player.REPEAT_MODE_ONE);
-				//pauseVideo(false);
 				player.seekTo(a.position);
 				player.setPlayWhenReady(true);
-
-
-
 			}
-				//opdaterUI(false, "whatever", viserposition);
-					//player.setPlayWhenReady(true); //Virker rigtig dårligt!!!!
 			else player.setRepeatMode(Player.REPEAT_MODE_OFF);
-
-
 			p("Repeatmode: " + player.getRepeatMode());
 
-			//pauseVideo(true);
-				//opdaterUI(false, "whatever", viserposition);
-				//player.setPlayWhenReady(false);
 		}
 		else if (klikket == langsomcb){
 			p(player.getPlaybackParameters());
@@ -210,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		}
 		
 	}
-
+	//En slags hack hvis setPlayWhenReady(true/false) ikke kommer til at virke ordentligt
 	void pauseVideo(boolean pause) {
 
     	float valgtHast = (a.slowmotion) ? 0.25f : 1.0f;
@@ -288,9 +263,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		søg("velkommen");
 	}
 
-
-	
-
 	boolean søg (String søgeordInd){
 		a.visPil = true;
 		p("søg("+søgeordInd+")");
@@ -352,20 +324,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 	}
 
-	/*
-	//-- En mediasource bruges som input til mediaplayeren
-	private LoopingMediaSource lavLoopKilde (Uri u){
-
-		DataSource.Factory kilde = new DefaultDataSourceFactory(this, Util.getUserAgent(this, "TsTest"), null);
-		MediaSource ms = new ExtractorMediaSource(
-				u,
-				kilde,
-				new DefaultExtractorsFactory(), null, null);
-
-		return new LoopingMediaSource(ms);
-	}
-	*/
-
 	void tomsøgning (String søgeord){
 
 		a.søgeresultat.clear();
@@ -398,7 +356,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			public void onBytesTransferred(DataSource source, int bytesTransferred) {
 
 			}
-
 			@Override
 			public void onTransferEnd(DataSource source) {
 
@@ -481,8 +438,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 				return false;
 			}
 		});
-
-
 
 		player.addListener(new ExoPlayer.EventListener() {
 
