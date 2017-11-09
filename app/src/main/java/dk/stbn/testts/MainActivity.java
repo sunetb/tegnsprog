@@ -3,6 +3,8 @@ package dk.stbn.testts;
 import android.content.res.Resources;
 import android.os.*;
 import android.preference.PreferenceManager;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.*;
 import android.net.*;
@@ -20,6 +22,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.*;
 import android.widget.AbsListView.*;
 
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener, com.google.android.exoplayer2.ui.PlaybackControlView.VisibilityListener, OnLongClickListener, Runnable{
@@ -77,8 +80,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		afspView = (SimpleExoPlayerView) findViewById(R.id.mainVideoView);
 
-
-
 		søgeknap = (ImageButton) findViewById(R.id.mainButton);
 		søgeknap.setEnabled(false);
 
@@ -91,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		adapter = new Hovedliste_adapter(a.søgeresultat, this);
 		hovedlisten.setAdapter(adapter);
+		hovedlisten.setLayoutManager(new LinearLayoutManager(this));
 
 		liggendeVisning = liggendeVisning();
 		//resultatliste = (ListView) findViewById(R.id.fundliste);
@@ -136,9 +138,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		resultatliste.setAdapter(resultaterListeAdapter);
 
 		//-- Den lille pil som indikerer at der er flere resultater
+		;
+*/
 		mere = (ImageView) findViewById(R.id.mere);
 		mere.setAlpha(0);
-*/
 		søgefelt = (AutoCompleteTextView) findViewById(R.id.søgefelt);
 /*		loop = (TextView) findViewById(R.id.looptv);
 		loopcb = (CheckBox) findViewById(R.id.loopcb);
@@ -211,7 +214,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 	private String forberedSøgning(){
 
-        afspView.setControllerShowTimeoutMs(1200); /// tiden før knapperne skjules automatisk
+//        afspView.setControllerShowTimeoutMs(1200); /// tiden før knapperne skjules automatisk
         skjulTastatur();
         String søgeordet = søgefelt.getText().toString().toLowerCase().trim();
         p("forberedSøgning søgeord: " + søgeordet);
@@ -221,7 +224,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
         søgefelt.setHint(søgeordet);
 
-        if (søgefelt.getText().toString().equals(søgefelt.getHint().toString())) return "";
+        if (søgefelt.getText().toString().equals(søgefelt.getHint().toString())) return ""; //Der blev trykket "Søg" uden at søgeordet var ændret
         søgeknap.setEnabled(false);
         a.søgeresultat.clear();
         return søgeordet.toLowerCase();
@@ -252,11 +255,27 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             try {
 				MediaSource ms1 = lavKilde(a.søgeresultat.get(pos).videourl);
 				p(ms1);
-                p("Videoformat: "+ afsp.getVideoFormat());
-				afsp = hovedlisten.getI
-				afsp.prepare(ms1);
+//                p("Videoformat: "+ afsp.getVideoFormat());
+
+                Fund første = a.søgeresultat.get(0);
+                første.initAfsp();
+                new AsyncTask(){
+					@Override
+					protected Object doInBackground(Object[] objects) {
+						for (int i = 1 ; i <  a.søgeresultat.size(); i++) a.søgeresultat.get(i).initAfsp();
+						return null;
+					}
+
+					@Override
+					protected void onPostExecute(Object o) {
+						super.onPostExecute(o);
+						//adapter.notifyDataSetChanged(); //?
+					}
+				}.execute();
+
+				//afsp.prepare(ms1);
 				//afsp.setPlaybackSpeed(0.5f);
-                afsp.setPlayWhenReady(true);
+                første.afsp.setPlayWhenReady(true);
 				if (a.loop) afsp.setRepeatMode(Player.REPEAT_MODE_ONE);
 				afspView.setVisibility(View.VISIBLE);
 
@@ -389,10 +408,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		søgeknap.setOnClickListener(this);
 		søgeknap.setOnLongClickListener(this);
-		loopcb.setOnClickListener(this);
-		langsomcb.setOnClickListener(this);
+//		loopcb.setOnClickListener(this);
+//		langsomcb.setOnClickListener(this);
 		søgefelt.setOnClickListener(this);
-		loop.setOnClickListener(this);
+//		loop.setOnClickListener(this);
 
 		//-- Søgeknappen på soft-keyboardet
 		søgefelt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -409,7 +428,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		søgefelt.setOnItemClickListener(this); //kun til autocomplete
 
 		//-- Til resultatlisten. Skjuler/viser pilen som angiver mere end ét resultat
-		resultatliste.setOnScrollListener(new OnScrollListener(){
+/*		resultatliste.setOnScrollListener(new OnScrollListener(){
 
 			@Override
 			public void onScrollStateChanged(AbsListView p1, int p2)
@@ -440,7 +459,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 				}
 			}
 		});
-
+*/
+/*
 		//-- Alternativ til at bruge knappen "Mere"
 		resultatliste.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
 
@@ -508,6 +528,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 
 		});
+		*/
 
 	}// END sætLyttere()
 
@@ -592,6 +613,79 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		return true;
 	}
+
+	public class Hovedliste_adapter extends RecyclerView.Adapter<Hovedliste_adapter.ViewHolder> {
+
+		ArrayList<Fund> data;
+		Context c;
+		Appl a = Appl.a;
+
+
+		public class ViewHolder extends RecyclerView.ViewHolder {
+
+			CardView c;
+			com.google.android.exoplayer2.ui.SimpleExoPlayerView playerv;
+			CheckBox loop, hast;
+			TextView  fundtekst;
+			//ImageView pil;
+
+			public ViewHolder(View v) {
+				super(v);
+				c = (CardView) v.findViewById(R.id.kort);
+				playerv = (SimpleExoPlayerView) v.findViewById(R.id.afspillerview);
+				loop = (CheckBox) v.findViewById(R.id.loopcb);
+				hast = (CheckBox) v.findViewById(R.id.langsomcb);
+				fundtekst = (TextView) v.findViewById(R.id.fundtekst);
+				//pil = (ImageView) v.findViewById(R.id.mere);
+
+			}
+		}
+
+		// Provide a suitable constructor (depends on the kind of dataset)
+		public Hovedliste_adapter (ArrayList søgeresultater, Context ctx) {
+			data = søgeresultater;
+			c = ctx;
+		}
+
+		// Create new views (invoked by the layout manager)
+		@Override
+		public Hovedliste_adapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+																int viewType) {
+
+			LinearLayout rod = (LinearLayout) LayoutInflater.from(parent.getContext())
+					.inflate(R.layout.kort, parent, false);
+
+			ViewHolder vh = new ViewHolder(rod);
+			return vh;
+		}
+
+		@Override
+		public void onBindViewHolder(ViewHolder holder, int pos) {
+
+			Fund f = data.get(pos);
+
+
+			holder.playerv.setPlayer(ExoPlayerFactory.newSimpleInstance(c, new DefaultTrackSelector(), new DefaultLoadControl()));
+			//float visPil = a.visPil ? 100 : 0;
+			//holder.pil.setAlpha(visPil);
+/*
+
+        holder.playerv
+        holder.loop
+        holder.hast
+        holder.fundtekst
+
+*/
+
+		}
+
+		// Return the size of your dataset (invoked by the layout manager)
+		@Override
+		public int getItemCount() {
+			return data.size();
+		}
+	}
+
 	void p (Object o){
 		Utill.p("Main."+o);
 	}
