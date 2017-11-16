@@ -1,67 +1,103 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="top"
-	android:orientation="vertical"
-	android:background="@android:color/white">
 
-	<ImageView
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_margin="15dp"
-		android:src="@drawable/logo"
-		/>
-	<View
-		android:layout_width="match_parent"
-		android:layout_height="2px"
-		android:background="@android:color/black"/>
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="0px"
-		android:layout_margin="10dp"
-		android:layout_weight="1"
-		android:background="@android:color/white"
-		android:gravity="center"
-		android:orientation="horizontal">
+    android:background="@android:color/white">
 
-		<AutoCompleteTextView
-			android:id="@+id/søgefelt"
-			android:layout_width="0px"
-			android:layout_height="wrap_content"
-			android:layout_weight="2"
-			android:imeOptions="actionSearch"
-			android:inputType="text"
-			android:text="Skriv søgeord her"
-			/>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-		<View
-			android:layout_width="0px"
-			android:layout_height="match_parent"
-			android:layout_weight="0.3" />
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.104">
 
-		<ImageButton
-			android:id="@+id/mainButton"
-			android:layout_width="0px"
-			android:layout_height="wrap_content"
-			android:layout_weight="2"
-			android:src="@drawable/ic_magnify_white_48dp" />
+        <AutoCompleteTextView
+            android:id="@+id/søgefelt"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:text="Skriv søgeord her" />
 
-	</LinearLayout>
+        <View
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3" />
 
-	<android.support.v7.widget.RecyclerView
-		android:id="@+id/hovedlisten"
-		android:scrollbars="vertical"
-		android:layout_width="match_parent"
-		android:layout_height="0px"
-		android:layout_weight="15"/>
+        <ImageButton
+            android:id="@+id/mainButton"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:src="@drawable/ic_magnify_white_48dp" />
 
-	<ImageView
-		android:layout_width="match_parent"
-		android:layout_height="10px"
-		android:id="@+id/mere"
-		android:src="@drawable/ic_keyboard_arrow_down_black_48dp">
+    </LinearLayout>
 
-	</ImageView>
+    <ImageView
+        android:id="@+id/mere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_keyboard_arrow_down_black_48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/hovedlisten"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/hovedlisten">
+
+    </ImageView>
 
 
-</LinearLayout>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="122dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/hovedlisten"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        app:layout_constraintVertical_bias="0.487" />
+
+
+</android.support.constraint.ConstraintLayout>

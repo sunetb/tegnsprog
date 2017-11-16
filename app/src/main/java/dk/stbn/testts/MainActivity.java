@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	ImageButton søgeknap;
 	TextView  loop;
 	CheckBox loopcb, langsomcb;
-	ListView resultatliste;
+	//ListView resultatliste;
 	AutoCompleteTextView søgefelt;
 	ImageView mere;
 	ArrayAdapter autoSuggest, resultaterListeAdapter;
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	// - Tilstand
 	boolean tomsøg = true;
 	boolean liggendeVisning;
-	int viserposition = 0;
+	//int viserposition = 0;
 
 
 
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		a.main = this; //registrerer aktiviteten som lytter
 		sp = PreferenceManager.getDefaultSharedPreferences(this);
 
-		afspView = (SimpleExoPlayerView) findViewById(R.id.mainVideoView);
+		//afspView = (SimpleExoPlayerView) findViewById(R.id.mainVideoView);
 
 		søgeknap = (ImageButton) findViewById(R.id.mainButton);
 		søgeknap.setEnabled(false);
@@ -153,9 +153,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		if (savedInstanceState != null) {
 
 			this.run(); p("Startet ved skærmvending. Initialiserer autocomplete-listen (sæt adapter)");
-			viserposition = sp.getInt("position", 0);
+			//viserposition = sp.getInt("position", 0);
 
-			p("Viser position: "+viserposition);
+			//p("Viser position: "+viserposition);
 		}
 		else velkommen();
 
@@ -168,9 +168,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	public void onClick(View klikket) {
 
 		if (klikket == søgeknap) {
-			viserposition = 0;
+			//viserposition = 0;
 			String søgeordF = forberedSøgning();
 			boolean søgeResultat = søg(søgeordF);
+
             if (!søgeResultat) {
                 //resultat.setText("Ordet \""+søgeordF+ "\" findes ikke i ordbogen");
             }
@@ -231,13 +232,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	}
 
 
-	private void opdaterUI (boolean tomSøgning, String søgeordInd, int pos){
+	private void opdaterUI (boolean tomSøgning, String søgeordInd){
 
 		p("opdaterUI kaldt! Var søgningen tom?  "+ tomSøgning);
 		tomsøg = tomSøgning;
         if (tomSøgning) {
 			tomsøgning(søgeordInd);
-            afsp.setPlayWhenReady(false);
+            if (afsp != null) afsp.setPlayWhenReady(false);
         }
         else {
 			//resultaterListeAdapter.notifyDataSetChanged();
@@ -252,17 +253,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 				a.visPil = false;
 			}
 
-            try {
-				MediaSource ms1 = lavKilde(a.søgeresultat.get(pos).videourl);
-				p(ms1);
-//                p("Videoformat: "+ afsp.getVideoFormat());
 
-                Fund første = a.søgeresultat.get(0);
-                første.initAfsp();
                 new AsyncTask(){
 					@Override
 					protected Object doInBackground(Object[] objects) {
-						for (int i = 1 ; i <  a.søgeresultat.size(); i++) a.søgeresultat.get(i).initAfsp();
+						for (int i = 1 ; i <  a.søgeresultat.size(); i++) a.søgeresultat.get(i).initAfsp(getApplicationContext());
 						return null;
 					}
 
@@ -275,14 +270,15 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 				//afsp.prepare(ms1);
 				//afsp.setPlaybackSpeed(0.5f);
-                første.afsp.setPlayWhenReady(true);
-				if (a.loop) afsp.setRepeatMode(Player.REPEAT_MODE_ONE);
-				afspView.setVisibility(View.VISIBLE);
+			p("Resultatliste længde: "+a.søgeresultat.size());
+				a.søgeresultat.get(0).initAfsp(this);
+				afsp = a.søgeresultat.get(0).afsp;
 
-			}
-            catch (Exception e){
-                e.printStackTrace();
-			}
+                afsp.setPlayWhenReady(true);
+				if (a.loop) afsp.setRepeatMode(Player.REPEAT_MODE_ONE);
+
+
+
         }
 		søgeknap.setEnabled(true);
 		skjulTastatur();
@@ -347,7 +343,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 				boolean tomsøgning2 = (boolean) o;
 
-                opdaterUI(tomsøgning2, søgeord, viserposition);
+                opdaterUI(tomsøgning2, søgeord);
                 p("Tjekker søgeresultat: ");
                 if (!tomsøgning2) for (Fund f : a.søgeresultat) p(f);
 
@@ -570,7 +566,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		String s = søgefelt.getHint().toString();
 		//t("onsaveinstancestate: "+ s);
 		outState.putString("søgeord", s);
-		outState.putInt("position", viserposition);
+		//outState.putInt("position", viserposition);
 		super.onSaveInstanceState(outState);
 		
 	}
@@ -580,12 +576,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		super.onRestoreInstanceState(savedInstanceState);
 		//////////////////////   TJEK FOR OM TOM SØGNING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 		String s = savedInstanceState.getString("søgeord");
-		viserposition = savedInstanceState.getInt("position");
+		//viserposition = savedInstanceState.getInt("position");
 		if (getString(R.string.hint).equalsIgnoreCase(s))
 			s=  "velkommen";
 		søgefelt.setHint(s);
-		opdaterUI(false, s, viserposition);
-		resultatliste.setSelection(viserposition);
+		opdaterUI(false, s);
+		//resultatliste.setSelection(viserposition);
 	}
 
 	//-- Egnet lytter-inteface
@@ -652,7 +648,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		public Hovedliste_adapter.ViewHolder onCreateViewHolder(ViewGroup parent,
 																int viewType) {
 
-			LinearLayout rod = (LinearLayout) LayoutInflater.from(parent.getContext())
+			CardView rod = (CardView) LayoutInflater.from(parent.getContext())
 					.inflate(R.layout.kort, parent, false);
 
 			ViewHolder vh = new ViewHolder(rod);
@@ -661,11 +657,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		@Override
 		public void onBindViewHolder(ViewHolder holder, int pos) {
-
+			p("onBindViewHolder pos "+pos );
 			Fund f = data.get(pos);
 
 
-			holder.playerv.setPlayer(ExoPlayerFactory.newSimpleInstance(c, new DefaultTrackSelector(), new DefaultLoadControl()));
+			holder.playerv.setPlayer(f.afsp);
+
+
+
 			//float visPil = a.visPil ? 100 : 0;
 			//holder.pil.setAlpha(visPil);
 /*
