@@ -276,9 +276,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
                 afsp.setPlayWhenReady(true);
 				if (a.loop) afsp.setRepeatMode(Player.REPEAT_MODE_ONE);
-
-
-
         }
 		søgeknap.setEnabled(true);
 		skjulTastatur();
