@@ -8,7 +8,7 @@
     <application
         android:name=".Appl"
         android:allowBackup="true"
-        android:icon="@drawable/tsikon"
+        android:icon="@drawable/alfa_ikon"
         android:label="Tegnsprog"
         android:theme="@style/AppTheme">
         <activity
