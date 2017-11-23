@@ -5,6 +5,9 @@ import android.net.Uri;
 import android.os.*;
 import android.preference.PreferenceManager;
 import android.widget.*;
+
+import com.google.android.exoplayer2.PlaybackParameters;
+
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -439,4 +442,13 @@ public class Appl extends Application
     public void releaseAlle() {
 		for (Fund f : søgeresultat) f.afsp.release();
     }
+
+	public void opdaterHastighed() {
+		float hast =  (a.slowmotion) ? 0.25f : 1.0f;
+		for (Fund f : søgeresultat) f.afsp.setPlaybackParameters(new PlaybackParameters(hast, 1));
+	}
+
+	public void opdaterLoop() {
+		for (Fund f : søgeresultat) f.afsp.setPlayWhenReady(true);
+	}
 }

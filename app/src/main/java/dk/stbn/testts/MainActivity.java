@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		loopcb.setChecked(a.loop);
 		langsomcb = (CheckBox) findViewById(R.id.langsomcb);
 		langsom = (TextView) findViewById(R.id.langsomtv);
+
 		sætLyttere();
 
 		if (savedInstanceState != null) {
@@ -138,12 +139,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 //resultat.setText("Ordet \""+søgeordF+ "\" findes ikke i ordbogen");
             }
 		}
-/*		else if (klikket == loopcb ) {
+		else if (klikket == loopcb ) {
 			p("Loop-checkbox klikket");
 			a.position = afsp.getCurrentPosition();
 			p("position: "+a.position);
 			sp.edit().putBoolean("loop", loopcb.isChecked()).commit();
 			a.loop = loopcb.isChecked();
+
 			if (a.loop){
 				afsp.setRepeatMode(Player.REPEAT_MODE_ONE);
 				afsp.seekTo(a.position);
@@ -151,14 +153,17 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			}
 			else afsp.setRepeatMode(Player.REPEAT_MODE_OFF);
 			p("Repeatmode: " + afsp.getRepeatMode());
+			a.opdaterLoop();
 
 		}
-		else if (klikket == langsomcb){
+		else if (klikket == langsomcb || klikket == loop){
 			p(afsp.getPlaybackParameters());
 			a.slowmotion = !a.slowmotion;
+			langsomcb.setChecked(a.slowmotion);
 			float hast =  (a.slowmotion) ? 0.25f : 1.0f;
 			afsp.setPlaybackParameters(new PlaybackParameters(hast, 1));
-		}*/
+			a.opdaterHastighed();
+		}
 		else if (klikket == søgefelt) {
 			p("søgefelt klikket");
 			søgefelt.setText("");
@@ -337,8 +342,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		søgeknap.setOnClickListener(this);
 		//søgeknap.setOnLongClickListener(this);
-//		loopcb.setOnClickListener(this);
-//		langsomcb.setOnClickListener(this);
+		loopcb.setOnClickListener(this);
+		loop.setOnClickListener(this);
+		langsomcb.setOnClickListener(this);
+		langsom.setOnClickListener(this);
+
 		søgefelt.setOnClickListener(this);
 //		loop.setOnClickListener(this);
 
