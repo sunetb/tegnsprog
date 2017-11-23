@@ -16,7 +16,9 @@
         <com.google.android.exoplayer2.ui.SimpleExoPlayerView
             android:id="@+id/afspillerview"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent=".6"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -26,61 +28,22 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <CheckBox
-            android:id="@+id/loopcb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/looptv"
-            app:layout_constraintTop_toBottomOf="@+id/afspillerview"
-            android:layout_marginRight="8dp" />
-
-        <TextView
-            android:id="@+id/looptv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="Loop"
-            app:layout_constraintBottom_toBottomOf="@+id/loopcb"
-            app:layout_constraintEnd_toStartOf="@+id/langsomcb"
-            android:layout_marginRight="8dp" />
-
-        <CheckBox
-            android:id="@+id/langsomcb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/looptv"
-            app:layout_constraintEnd_toStartOf="@+id/langsomtv"
-            android:layout_marginRight="8dp" />
-
-        <TextView
-            android:id="@+id/langsomtv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="Langsom"
-            app:layout_constraintBottom_toBottomOf="@+id/langsomcb"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginRight="8dp" />
-
-
         <TextView
             android:id="@+id/fundtekst"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent=".4"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="18dp"
             android:fadeScrollbars="false"
             android:text="fund"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/afspillerview"
-            app:layout_constraintVertical_bias="0.466">
+            app:layout_constraintTop_toBottomOf="@+id/afspillerview">
 
         </TextView>
 

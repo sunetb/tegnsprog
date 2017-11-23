@@ -25,13 +25,13 @@ import android.widget.AbsListView.*;
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener, com.google.android.exoplayer2.ui.PlaybackControlView.VisibilityListener, OnLongClickListener, Runnable{
+public class MainActivity extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener, com.google.android.exoplayer2.ui.PlaybackControlView.VisibilityListener, Runnable{
 
 	// -- Views mm
 	SimpleExoPlayer afsp;
 	SimpleExoPlayerView afspView;
 	ImageButton søgeknap;
-	TextView  loop;
+	TextView  fundTekst, loop, langsom;
 	CheckBox loopcb, langsomcb;
 	//ListView resultatliste;
 	AutoCompleteTextView søgefelt;
@@ -95,59 +95,21 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		hovedlisten.setLayoutManager(new LinearLayoutManager(this));
 
 		liggendeVisning = liggendeVisning();
+
 		//resultatliste = (ListView) findViewById(R.id.fundliste);
 
 		//int listelayout = R.layout.listelayout;
 
 		//if (liggendeVisning) listelayout = R.layout.listelayout_land;
-/*
-		//-- Listen med søgeresultater
-		resultaterListeAdapter = new ArrayAdapter(this, listelayout, R.id.tekst, a.søgeresultat){
 
-			@NonNull
-			@Override
-			public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-				View rod = super.getView(position, convertView, parent);
-
-				p("getview resultatlisteadapter pos"+position);
-				ImageView iv = (ImageView) rod.findViewById(R.id.billede);
-				iv.setImageResource(R.drawable.kaffef314);
-				TextView t = (TextView) rod.findViewById(R.id.tekst);
-				t.setText(a.søgeresultat.get(position).toString());//søgeresultat.get(position).getTekst());
-				Button b = (Button) rod.findViewById(R.id.knap);
-				b.setOnClickListener(new OnClickListener(){
-
-						@Override
-						public void onClick(View p1) //-- Kan også aktiveres med langt klik
-						{
-							Intent i = new Intent (MainActivity.this, FuldArtikel_akt.class);
-							startActivity(i);
-						}
-						
-						
-					});
-				return rod;
-			}
-
-			@Override
-			public int getCount() {
-				return a.søgeresultat.size();
-			}
-		};
-		resultatliste.setAdapter(resultaterListeAdapter);
-
-		//-- Den lille pil som indikerer at der er flere resultater
-		;
-*/
 		mere = (ImageView) findViewById(R.id.mere);
 		mere.setAlpha(0);
 		søgefelt = (AutoCompleteTextView) findViewById(R.id.søgefelt);
-/*		loop = (TextView) findViewById(R.id.looptv);
+		loop = (TextView) findViewById(R.id.looptv);
 		loopcb = (CheckBox) findViewById(R.id.loopcb);
 		loopcb.setChecked(a.loop);
 		langsomcb = (CheckBox) findViewById(R.id.langsomcb);
-*/
+		langsom = (TextView) findViewById(R.id.langsomtv);
 		sætLyttere();
 
 		if (savedInstanceState != null) {
@@ -277,8 +239,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 afsp.setPlayWhenReady(true);
 				if (a.loop) afsp.setRepeatMode(Player.REPEAT_MODE_ONE);
         }
-		søgeknap.setEnabled(true);
-		skjulTastatur();
+
 
 	}
 
@@ -371,36 +332,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 	}
 
-	MediaSource lavKilde (Uri s){
-
-		HttpDataSource.Factory kilde = new DefaultHttpDataSourceFactory("mig", new TransferListener<DataSource>() {
-			@Override
-			public void onTransferStart(DataSource source, DataSpec dataSpec) {
-			}
-
-			@Override
-			public void onBytesTransferred(DataSource source, int bytesTransferred) {
-
-			}
-			@Override
-			public void onTransferEnd(DataSource source) {
-
-			}
-		});
-
-		MediaSource ms = new ExtractorMediaSource(
-				s,
-				kilde,
-				new DefaultExtractorsFactory(), null, null);
-
-		return ms;
-	}
-
 
 	void sætLyttere(){
 
 		søgeknap.setOnClickListener(this);
-		søgeknap.setOnLongClickListener(this);
+		//søgeknap.setOnLongClickListener(this);
 //		loopcb.setOnClickListener(this);
 //		langsomcb.setOnClickListener(this);
 		søgefelt.setOnClickListener(this);
@@ -420,108 +356,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		søgefelt.setOnItemClickListener(this); //kun til autocomplete
 
-		//-- Til resultatlisten. Skjuler/viser pilen som angiver mere end ét resultat
-/*		resultatliste.setOnScrollListener(new OnScrollListener(){
-
-			@Override
-			public void onScrollStateChanged(AbsListView p1, int p2)
-			{
-				if(p2 == OnScrollListener.SCROLL_STATE_TOUCH_SCROLL){
-					mere.setAlpha(0);
-				}
-			}
-
-			@Override
-			public void onScroll(AbsListView p1, int p2, int p3, int p4)
-			{
-				//Denne metode bliver kaldt hele tiden, dvs ikke kun når brugeren scroller
-			}
-		});
-
-		resultatliste.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				if (position != viserposition) {
-					viserposition = position;
-					sp.edit().putInt("position", position).commit();
-					a.visPil = false;
-					opdaterUI(false, a.søgeresultat.get(position).nøgle, position);
-					//derBlevSøgt = true;
-					t("resultatliste.onItemclick(). visPil? = "+a.visPil);
-
-				}
-			}
-		});
-*/
-/*
-		//-- Alternativ til at bruge knappen "Mere"
-		resultatliste.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
-
-			@Override
-			public boolean onItemLongClick(AdapterView<?> p1, View p2, int p3, long p4)
-			{
-				Intent i = new Intent (MainActivity.this, FuldArtikel_akt.class);
-				startActivity(i);
-				return false;
-			}
-		});
-
-		afsp.addListener(new ExoPlayer.EventListener() {
-
-			@Override
-			public void onTimelineChanged(Timeline timeline, Object manifest) {
-				p("Timeline: "+timeline);
-			}
-
-			@Override
-			public void onTracksChanged(TrackGroupArray trackGroups, TrackSelectionArray trackSelections) {
-
-			}
-
-			@Override
-			public void onLoadingChanged(boolean isLoading) {
-
-			}
-
-			@Override
-			public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-
-				if (playbackState == ExoPlayer.STATE_ENDED)
-					if (!a.loop){
-						afsp.seekTo(0);
-						afsp.setPlayWhenReady(false);
-					}
-					else {
-						afsp.seekTo(0);
-						afsp.setPlayWhenReady(true);
-					}
-				}
-
-			@Override
-			public void onRepeatModeChanged(int repeatMode) {
-				p("repeatmode ændret til: "+repeatMode);
-			}
-
-			@Override
-			public void onPlayerError(ExoPlaybackException error) {
-
-			}
-
-			@Override
-			public void onPositionDiscontinuity() {
-
-			}
-
-			@Override
-			public void onPlaybackParametersChanged(PlaybackParameters playbackParameters) {
-
-			}
-
-
-
-
-		});
-		*/
 
 	}// END sætLyttere()
 
@@ -554,8 +388,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	protected void onDestroy() {
 		super.onDestroy();
 		afsp.release();
+		a.releaseAlle();
 		a.main = null; // afregistrerer lytter
-		
+
 	}
 
 	@Override
@@ -594,19 +429,19 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	/////----- Test / Log / debugging -------//////
 
 
-
+/*
 	//Åbner test-/debug-aktivitet
 	@Override
 	public boolean onLongClick(View p1) {
 		//Intent i = new Intent(this, Test.class);
 		//startActivity(i);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1) {
-			afspView.animate().scaleX(0.5f).scaleY(0.5f);
+			//afspView.animate().scaleX(0.5f).scaleY(0.5f);
 		}
 
 		return true;
 	}
-
+*/
 	public class Hovedliste_adapter extends RecyclerView.Adapter<Hovedliste_adapter.ViewHolder> {
 
 		ArrayList<Fund> data;
@@ -614,11 +449,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		Appl a = Appl.a;
 
 
-		public class ViewHolder extends RecyclerView.ViewHolder {
+		public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
 			CardView c;
 			com.google.android.exoplayer2.ui.SimpleExoPlayerView playerv;
-			CheckBox loop, hast;
 			TextView  fundtekst;
 			//ImageView pil;
 
@@ -626,10 +460,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 				super(v);
 				c = (CardView) v.findViewById(R.id.kort);
 				playerv = (SimpleExoPlayerView) v.findViewById(R.id.afspillerview);
-				loop = (CheckBox) v.findViewById(R.id.loopcb);
-				hast = (CheckBox) v.findViewById(R.id.langsomcb);
 				fundtekst = (TextView) v.findViewById(R.id.fundtekst);
 				//pil = (ImageView) v.findViewById(R.id.mere);
+
+			}
+
+			@Override
+			public void onClick(View view) {
+				final int position = getAdapterPosition();
 
 			}
 		}
@@ -659,6 +497,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 
 			holder.playerv.setPlayer(f.afsp);
+			holder.fundtekst.setText(f.getTekst());
 
 
 

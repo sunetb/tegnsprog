@@ -435,4 +435,8 @@ public class Appl extends Application
 	void p (Object o){
 		Utill.p("Appl."+o);
 	}
+
+    public void releaseAlle() {
+		for (Fund f : søgeresultat) f.afsp.release();
+    }
 }

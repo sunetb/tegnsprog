@@ -30,11 +30,12 @@ class Fund {
     ArrayList<String> ordliste;
     SimpleExoPlayer afsp;
 
-    public Fund(Uri vurl, Uri burl, ArrayList<String> ord){
+    public Fund(Uri vurl, Uri burl, ArrayList<String> ord){ //til senere brug
         videourl=vurl;
         billedurl = burl;
         ordliste = ord;
-}
+    }
+
     public Fund(Uri vurl, ArrayList<String>  ord){
         videourl=vurl;
         ordliste = ord;
@@ -42,7 +43,7 @@ class Fund {
     }
 
     public String getTekst(){
-        String resultatStreng = "";//"Søgeord:      \"" + nøgle + "\"\n\n";
+        String resultatStreng = "Søgeord:      \"" + nøgle + "\"\n\n";
 
         for (String s : ordliste)
             resultatStreng += s + "\n";
