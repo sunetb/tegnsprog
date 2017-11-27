@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dk.stbn.testts"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="0.0.01" >
 
     <uses-sdk
-        android:minSdkVersion="9"
+        android:minSdkVersion="11"
         android:targetSdkVersion="21" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,9 +14,8 @@
         android:name="dk.stbn.testts.Appl"
         android:allowBackup="true"
         android:debuggable="true"
-        android:icon="@drawable/tsikon"
+        android:icon="@drawable/alfa_ikon"
         android:label="Tegnsprog"
-        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
             android:name="dk.stbn.testts.MainActivity"
@@ -30,6 +29,10 @@
         </activity>
         <activity android:name="dk.stbn.testts.Test" />
         <activity android:name="dk.stbn.testts.FuldArtikel_akt" />
+        <activity
+            android:name="dk.stbn.scroll.ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme" />
 
         <meta-data
             android:name="android.support.VERSION"
