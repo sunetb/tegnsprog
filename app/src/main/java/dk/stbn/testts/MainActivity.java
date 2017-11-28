@@ -12,6 +12,8 @@ import android.view.View.*;
 import android.view.*;
 import android.view.inputmethod.*;
 import android.content.*;
+
+import com.crashlytics.android.Crashlytics;
 import com.google.android.exoplayer2.*;
 import com.google.android.exoplayer2.ui.*;
 import com.google.android.exoplayer2.trackselection.*;
@@ -23,6 +25,8 @@ import android.support.v7.app.*;
 import android.widget.AbsListView.*;
 
 import java.util.ArrayList;
+
+import io.fabric.sdk.android.Fabric;
 
 
 public class MainActivity extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener, com.google.android.exoplayer2.ui.PlaybackControlView.VisibilityListener, Runnable{
@@ -77,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         a = Appl.a;
 		a.main = this; //registrerer aktiviteten som lytter
 		sp = PreferenceManager.getDefaultSharedPreferences(this);
-
+		Fabric.with(this, new Crashlytics());
 		//afspView = (SimpleExoPlayerView) findViewById(R.id.mainVideoView);
 
 		søgeknap = (ImageButton) findViewById(R.id.mainButton);
@@ -322,7 +326,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		Fund tom = new Fund(null,null);
 		tom.nøgle = "Din søgning gav ikke noget resultat";
 		a.søgeresultat.add(tom);
-		resultaterListeAdapter.notifyDataSetChanged();
+		//resultaterListeAdapter.notifyDataSetChanged();
 	}
 
 	void skjulTastatur(){

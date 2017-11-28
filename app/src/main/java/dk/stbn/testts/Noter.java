@@ -2,7 +2,7 @@ package dk.stbn.testts;
 
 
 /*
-logik-klasse
+logik-klasse som ikke er Appl?
 IO-klasse?
 data-klasse
 caching?
@@ -11,9 +11,9 @@ Skærmvending:
 
 
 Videafspilning
--slowmo
--sløjt i stående visning
+-sløjt
 
+Netværkslytter
 MEddelelese ved manglende internetforbindelse
 
 

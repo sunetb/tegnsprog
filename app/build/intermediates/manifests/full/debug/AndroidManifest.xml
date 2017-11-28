@@ -10,12 +10,17 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <meta-data
+        android:name="io.fabric.ApiKey"
+        android:value="a473bb17c446dada4b78b47051b2b561970908f7" />
+
     <application
         android:name="dk.stbn.testts.Appl"
         android:allowBackup="true"
         android:debuggable="true"
         android:icon="@drawable/alfa_ikon"
         android:label="Tegnsprog"
+        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
             android:name="dk.stbn.testts.MainActivity"
@@ -37,6 +42,12 @@
         <meta-data
             android:name="android.support.VERSION"
             android:value="25.4.0" />
+
+        <provider
+            android:name="com.crashlytics.android.CrashlyticsInitProvider"
+            android:authorities="dk.stbn.testts.crashlyticsinitprovider"
+            android:exported="false"
+            android:initOrder="100" />
     </application>
 
 </manifest>

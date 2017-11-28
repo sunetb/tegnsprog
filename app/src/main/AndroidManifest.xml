@@ -28,5 +28,8 @@
             android:label="@string/title_activity_scrolling"
             android:theme="@style/AppTheme"></activity>
     </application>
+    <meta-data
+        android:name="io.fabric.ApiKey"
+        android:value="a473bb17c446dada4b78b47051b2b561970908f7"/>
 
 </manifest>
