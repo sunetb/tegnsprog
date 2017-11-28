@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	//ListView resultatliste;
 	AutoCompleteTextView søgefelt;
 	ImageView mere;
-	ArrayAdapter autoSuggest, resultaterListeAdapter;
+	ArrayAdapter autoSuggest; //, resultaterListeAdapter;
 
 	private RecyclerView hovedlisten;
 	private RecyclerView.Adapter adapter;

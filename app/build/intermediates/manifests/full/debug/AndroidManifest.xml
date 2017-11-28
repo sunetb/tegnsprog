@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dk.stbn.testts"
-    android:versionCode="1"
-    android:versionName="0.0.01" >
+    android:versionCode="2"
+    android:versionName="0.0.02" >
 
     <uses-sdk
         android:minSdkVersion="11"
@@ -20,7 +20,6 @@
         android:debuggable="true"
         android:icon="@drawable/alfa_ikon"
         android:label="Tegnsprog"
-        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
             android:name="dk.stbn.testts.MainActivity"
