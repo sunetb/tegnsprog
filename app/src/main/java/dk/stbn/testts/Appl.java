@@ -443,18 +443,24 @@ public class Appl extends Application
 	}
 
     public void releaseAlle() {
-		for (Fund f : søgeresultat) f.afsp.release();
+		for (Fund f : søgeresultat) if (f.afsp != null) f.afsp.release();
     }
 
 	public void opdaterHastighed() {
 		float hast =  (a.slowmotion) ? 0.25f : 1.0f;
-		for (Fund f : søgeresultat) f.afsp.setPlaybackParameters(new PlaybackParameters(hast, 1));
+		for (Fund f : søgeresultat) {
+			if (f.afsp == null) f.initAfsp(this);
+			f.afsp.setPlaybackParameters(new PlaybackParameters(hast, 1));
+		}
 	}
 
 	public void opdaterLoop() {
 
 		for (Fund f : søgeresultat) {
-			if (f.afsp == null) f.initAfsp(this);
+			if (f.afsp == null) {
+				t("afsp var null");
+				f.initAfsp(this);
+			}
 			f.afsp.setPlayWhenReady(true);
 		}
 

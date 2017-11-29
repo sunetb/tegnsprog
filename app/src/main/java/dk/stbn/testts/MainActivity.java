@@ -185,7 +185,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 	private String forberedSøgning(){
 
-//        afspView.setControllerShowTimeoutMs(1200); /// tiden før knapperne skjules automatisk
         skjulTastatur();
         String søgeordet = søgefelt.getText().toString().toLowerCase().trim();
         p("forberedSøgning søgeord: " + søgeordet);
@@ -220,7 +219,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 				mere.setAlpha(0);
 			}
 
-			else	{
+			else {
 				mere.setAlpha(100);
 				a.visPil = false;
 			}
