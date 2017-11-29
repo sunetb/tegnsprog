@@ -134,15 +134,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 	@Override
 	public void onClick(View klikket) {
-	p("onClick");
+	p("onClick "+søgeknap.getId());
 		if (klikket == søgeknap) {
 			//viserposition = 0;
 			String søgeordF = forberedSøgning();
 			boolean søgeResultat = søg(søgeordF);
 			p("onClick på søgeknap: Tom søgning? "+søgeResultat);
-            if (!søgeResultat) {
-              t("Din søgning på: '"+søgeordF+ "' gav ikke noget resultat");  //resultat.setText("Ordet \""+søgeordF+ "\" findes ikke i ordbogen");
-            }
+
 		}
 		else if (klikket == loopcb ) {
 			p("Loop-checkbox klikket");
@@ -198,7 +196,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         søgefelt.setHint(søgeordet);
 
         if (søgefelt.getText().toString().equals(søgefelt.getHint().toString())) return ""; //Der blev trykket "Søg" uden at søgeordet var ændret
-        søgeknap.setEnabled(false);
+        //søgeknap.setEnabled(false);
         a.søgeresultat.clear();
         return søgeordet.toLowerCase();
 	}
@@ -209,8 +207,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		p("opdaterUI kaldt! Var søgningen tom?  "+ tomSøgning);
 		tomsøg = tomSøgning;
         if (tomSøgning) {
+
+
 			tomsøgning(søgeordInd);
-            if (afsp != null) afsp.setPlayWhenReady(false);
+
+
         }
         else {
 			//resultaterListeAdapter.notifyDataSetChanged();
@@ -323,14 +324,15 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	}
 
 	void tomsøgning (String søgeord){
+		t("Din søgning på: '"+søgeord+ "' gav ikke noget resultat");  //resultat.setText("Ordet \""+søgeordF+ "\" findes ikke i ordbogen");
 
 		a.søgeresultat.clear();
-
 		Fund tom = new Fund(null,null);
-		tom.nøgle = "Din søgning gav ikke noget resultat";
+		tom.nøgle = "Søgning på: '"+søgeord+"' gav 0 fund";
 		a.søgeresultat.add(tom);
 		//resultaterListeAdapter.notifyDataSetChanged();
 		adapter.notifyDataSetChanged();
+		if (afsp != null) afsp.setPlayWhenReady(false);
 
 	}
 
