@@ -6,8 +6,10 @@ import android.os.*;
 import android.preference.PreferenceManager;
 import android.widget.*;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.android.exoplayer2.PlaybackParameters;
 
+import io.fabric.sdk.android.Fabric;
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -45,6 +47,7 @@ public class Appl extends Application
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		Fabric.with(this, new Crashlytics());
 		a=this;
 		ms = System.currentTimeMillis();
 		Utill.debugbesked = new ArrayList<>();

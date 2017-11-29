@@ -8,7 +8,7 @@
     <application
         android:name=".Appl"
         android:allowBackup="true"
-        android:icon="@drawable/alfa_ikon"
+        android:icon="@drawable/tsikon"
         android:label="Tegnsprog"
         android:theme="@style/AppTheme">
         <activity
@@ -27,9 +27,11 @@
             android:name="dk.stbn.scroll.ScrollingActivity"
             android:label="@string/title_activity_scrolling"
             android:theme="@style/AppTheme"></activity>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="a473bb17c446dada4b78b47051b2b561970908f7" />
     </application>
-    <meta-data
-        android:name="io.fabric.ApiKey"
-        android:value="a473bb17c446dada4b78b47051b2b561970908f7"/>
+
 
 </manifest>
