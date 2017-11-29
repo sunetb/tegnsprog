@@ -452,6 +452,11 @@ public class Appl extends Application
 	}
 
 	public void opdaterLoop() {
-		for (Fund f : søgeresultat) f.afsp.setPlayWhenReady(true);
+
+		for (Fund f : søgeresultat) {
+			if (f.afsp == null) f.initAfsp(this);
+			f.afsp.setPlayWhenReady(true);
+		}
+
 	}
 }
