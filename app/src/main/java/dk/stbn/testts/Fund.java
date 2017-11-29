@@ -43,6 +43,7 @@ class Fund {
     }
 
     public String getTekst(){
+        if (ordliste == null) return nøgle;
         String resultatStreng = "Søgeord:      \"" + nøgle + "\"\n\n";
 
         for (String s : ordliste)

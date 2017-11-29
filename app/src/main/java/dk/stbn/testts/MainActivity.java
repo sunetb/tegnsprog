@@ -134,14 +134,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 	@Override
 	public void onClick(View klikket) {
-
+	p("onClick");
 		if (klikket == søgeknap) {
 			//viserposition = 0;
 			String søgeordF = forberedSøgning();
 			boolean søgeResultat = søg(søgeordF);
-
+			p("onClick på søgeknap: Tom søgning? "+søgeResultat);
             if (!søgeResultat) {
-                //resultat.setText("Ordet \""+søgeordF+ "\" findes ikke i ordbogen");
+              t("Din søgning på: '"+søgeordF+ "' gav ikke noget resultat");  //resultat.setText("Ordet \""+søgeordF+ "\" findes ikke i ordbogen");
             }
 		}
 		else if (klikket == loopcb ) {
@@ -214,7 +214,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         }
         else {
 			//resultaterListeAdapter.notifyDataSetChanged();
-			adapter.notifyDataSetChanged();
 			//-- Opdaterer synligheden for pilen "vis mere"
 			if (a.søgeresultat.size() < 2 || !a.visPil) {
 				mere.setAlpha(0);
@@ -236,6 +235,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 					@Override
 					protected void onPostExecute(Object o) {
 						super.onPostExecute(o);
+						adapter.notifyDataSetChanged();
+
 						//adapter.notifyDataSetChanged(); //?
 					}
 				}.execute();
@@ -267,7 +268,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		final String søgeord = søgeordInd.trim();
 
 		if (søgeord.equalsIgnoreCase(getString(R.string.hint))) {
-			tomsøgning(søgeord);
+			tomsøgning("Der er ikke tastet noget ord");
 			return true;
 		}
 
@@ -324,10 +325,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	void tomsøgning (String søgeord){
 
 		a.søgeresultat.clear();
+
 		Fund tom = new Fund(null,null);
 		tom.nøgle = "Din søgning gav ikke noget resultat";
 		a.søgeresultat.add(tom);
 		//resultaterListeAdapter.notifyDataSetChanged();
+		adapter.notifyDataSetChanged();
+
 	}
 
 	void skjulTastatur(){
@@ -507,8 +511,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		public void onBindViewHolder(ViewHolder holder, int pos) {
 			p("onBindViewHolder pos "+pos );
 			Fund f = data.get(pos);
-
-
 			holder.playerv.setPlayer(f.afsp);
 			holder.fundtekst.setText(f.getTekst());
 
