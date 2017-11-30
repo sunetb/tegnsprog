@@ -443,7 +443,7 @@ public class Appl extends Application
 	}
 
     public void releaseAlle() {
-		for (Fund f : søgeresultat) f.afsp.release();
+		for (Fund f : søgeresultat) if (f.afsp != null) f.afsp.release();
     }
 
 	public void opdaterHastighed() {
