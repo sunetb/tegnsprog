@@ -8,7 +8,7 @@
     tools:layout_editor_absoluteY="25dp">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/overskrift"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         app:layout_constraintHeight_default="percent"
@@ -37,7 +37,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/overskrift">
 
         <AutoCompleteTextView
             android:id="@+id/søgefelt"

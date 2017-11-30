@@ -25,8 +25,7 @@ import android.support.v7.app.*;
 import android.widget.AbsListView.*;
 
 import java.util.ArrayList;
-
-
+import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener, com.google.android.exoplayer2.ui.PlaybackControlView.VisibilityListener, Runnable{
@@ -39,13 +38,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	CheckBox loopcb, langsomcb;
 	//ListView resultatliste;
 	AutoCompleteTextView søgefelt;
-	ImageView mere;
+	ImageView mere, overskrift;
 	ArrayAdapter autoSuggest; //, resultaterListeAdapter;
 
 	private RecyclerView hovedlisten;
 	private RecyclerView.Adapter adapter;
 	//private RecyclerView.LayoutManager mLayoutManager;
-
+	boolean test = false;
 
 	// -- Sys
 	Appl a;
@@ -115,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		loopcb.setChecked(a.loop);
 		langsomcb = (CheckBox) findViewById(R.id.langsomcb);
 		langsom = (TextView) findViewById(R.id.langsomtv);
-
+		overskrift = (ImageView) findViewById(R.id.overskrift);
 		sætLyttere();
 
 		if (savedInstanceState != null) {
@@ -134,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 	@Override
 	public void onClick(View klikket) {
-	p("onClick "+søgeknap.getId());
+
 		if (klikket == søgeknap) {
 			//viserposition = 0;
 			String søgeordF = forberedSøgning();
@@ -160,7 +159,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		}
 		else if (klikket == langsomcb || klikket == loop){
-			p(afsp.getPlaybackParameters());
 			a.slowmotion = !a.slowmotion;
 			langsomcb.setChecked(a.slowmotion);
 			float hast =  (a.slowmotion) ? 0.25f : 1.0f;
@@ -168,11 +166,19 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			a.opdaterHastighed();
 		}
 		else if (klikket == søgefelt) {
-			p("søgefelt klikket");
 			søgefelt.setText("");
 		}
+		else if (test && (klikket == overskrift)) testSøgning();
 		
 	}
+
+	private void testSøgning() {
+		int i = new Random().nextInt(a.tilAutoComplete.size());
+		String tilfældigtOrd= a.tilAutoComplete.get(i);
+		søgefelt.setText(tilfældigtOrd);
+		søgeknap.performClick();
+	}
+
 	//En slags hack hvis setPlayWhenReady(true/false) ikke kommer til at virke ordentligt
 	void pauseVideo(boolean pause) {
 
@@ -214,7 +220,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
         }
         else {
-			//resultaterListeAdapter.notifyDataSetChanged();
+
 			//-- Opdaterer synligheden for pilen "vis mere"
 			if (a.søgeresultat.size() < 2 || !a.visPil) {
 				mere.setAlpha(0);
@@ -236,7 +242,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 					@Override
 					protected void onPostExecute(Object o) {
 						super.onPostExecute(o);
-						adapter.notifyDataSetChanged();
+						try {
+							adapter.notifyDataSetChanged();
+						}catch (java.lang.IndexOutOfBoundsException e) {p("Fejl: "+e);}
 
 						//adapter.notifyDataSetChanged(); //?
 					}
@@ -269,7 +277,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		final String søgeord = søgeordInd.trim();
 
 		if (søgeord.equalsIgnoreCase(getString(R.string.hint))) {
-			tomsøgning("Der er ikke tastet noget ord");
+			tomsøgning("");
 			return true;
 		}
 
@@ -331,7 +339,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		tom.nøgle = "Søgning på: '"+søgeord+"' gav 0 fund";
 		a.søgeresultat.add(tom);
 		//resultaterListeAdapter.notifyDataSetChanged();
-		adapter.notifyDataSetChanged();
+		try {
+			adapter.notifyDataSetChanged();
+		}catch (java.lang.IndexOutOfBoundsException e) {p("Fejl: "+e);}
 		if (afsp != null) afsp.setPlayWhenReady(false);
 
 	}
@@ -375,6 +385,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		søgefelt.setOnItemClickListener(this); //kun til autocomplete
 
+		if(test) overskrift.setOnClickListener(this);
 
 	}// END sætLyttere()
 
