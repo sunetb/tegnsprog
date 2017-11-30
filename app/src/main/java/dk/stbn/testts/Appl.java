@@ -26,6 +26,7 @@ public class Appl extends Application
 	boolean slowmotion = false;
 	String aktueltSøgeord = "";
 	long position;
+	boolean test = true;
 
 	//-- System
 	public static Appl a;
@@ -47,7 +48,11 @@ public class Appl extends Application
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		Fabric.with(this, new Crashlytics());
+		boolean EMULATOR = Build.PRODUCT.contains("sdk") || Build.MODEL.contains("Emulator");
+		if (!EMULATOR) {
+			Fabric.with(this, new Crashlytics());
+			test = true;
+		}
 		a=this;
 		ms = System.currentTimeMillis();
 		Utill.debugbesked = new ArrayList<>();
@@ -448,7 +453,7 @@ public class Appl extends Application
 
 	public void opdaterHastighed() {
 		float hast =  (a.slowmotion) ? 0.25f : 1.0f;
-		for (Fund f : søgeresultat) f.afsp.setPlaybackParameters(new PlaybackParameters(hast, 1));
+		for (Fund f : søgeresultat) if (f.afsp != null) f.afsp.setPlaybackParameters(new PlaybackParameters(hast, 1));
 	}
 
 	public void opdaterLoop() {

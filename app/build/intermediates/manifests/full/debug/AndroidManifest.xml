@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dk.stbn.testts"
     android:versionCode="5"
-    android:versionName="0.0.05" >
+    android:versionName="p" >
 
     <uses-sdk
         android:minSdkVersion="11"
@@ -16,6 +16,7 @@
         android:debuggable="true"
         android:icon="@drawable/tsikon"
         android:label="Tegnsprog"
+        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
             android:name="dk.stbn.testts.MainActivity"

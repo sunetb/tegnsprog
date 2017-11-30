@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	private RecyclerView hovedlisten;
 	private RecyclerView.Adapter adapter;
 	//private RecyclerView.LayoutManager mLayoutManager;
-	boolean test = false;
 
 	// -- Sys
 	Appl a;
@@ -143,11 +142,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		}
 		else if (klikket == loopcb ) {
 			p("Loop-checkbox klikket");
-			a.position = afsp.getCurrentPosition();
-			p("position: "+a.position);
+
 			sp.edit().putBoolean("loop", loopcb.isChecked()).commit();
 			a.loop = loopcb.isChecked();
-
+			if (afsp == null) return;
+			a.position = afsp.getCurrentPosition();
+			p("position: "+a.position);
 			if (a.loop){
 				afsp.setRepeatMode(Player.REPEAT_MODE_ONE);
 				afsp.seekTo(a.position);
@@ -168,12 +168,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		else if (klikket == søgefelt) {
 			søgefelt.setText("");
 		}
-		else if (test && (klikket == overskrift)) testSøgning();
+		else if (a.test && (klikket == overskrift)) testSøgning();
 		
 	}
 
 	private void testSøgning() {
-		int i = new Random().nextInt(a.tilAutoComplete.size());
+    	int længde =  a.tilAutoComplete.size();
+    	if (længde <= 0) return;
+		int i = new Random().nextInt(længde);
 		String tilfældigtOrd= a.tilAutoComplete.get(i);
 		søgefelt.setText(tilfældigtOrd);
 		søgeknap.performClick();
@@ -243,8 +245,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 					protected void onPostExecute(Object o) {
 						super.onPostExecute(o);
 						try {
+							hovedlisten.getRecycledViewPool().clear();
 							adapter.notifyDataSetChanged();
-						}catch (java.lang.IndexOutOfBoundsException e) {p("Fejl: "+e);}
+						}catch (Exception e) {p("Fejl: "+e);}
 
 						//adapter.notifyDataSetChanged(); //?
 					}
@@ -253,11 +256,15 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 				//afsp.prepare(ms1);
 				//afsp.setPlaybackSpeed(0.5f);
 			p("Resultatliste længde: "+a.søgeresultat.size());
+			if (a.søgeresultat.size() > 0){
 				a.søgeresultat.get(0).initAfsp(this);
+
 				afsp = a.søgeresultat.get(0).afsp;
 
                 afsp.setPlayWhenReady(true);
 				if (a.loop) afsp.setRepeatMode(Player.REPEAT_MODE_ONE);
+			}
+			else p("Fejl: Ikke tom søgning, men søgeresultat var tomt!!!!!");
         }
 
 
@@ -340,8 +347,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		a.søgeresultat.add(tom);
 		//resultaterListeAdapter.notifyDataSetChanged();
 		try {
+			hovedlisten.getRecycledViewPool().clear();
 			adapter.notifyDataSetChanged();
-		}catch (java.lang.IndexOutOfBoundsException e) {p("Fejl: "+e);}
+		}catch (Exception e) {p("Fejl: "+e);} //Bug i Recyclerview. Se fx https://stackoverflow.com/questions/35653439/recycler-view-inconsistency-detected-invalid-view-holder-adapter-positionviewh
 		if (afsp != null) afsp.setPlayWhenReady(false);
 
 	}
@@ -385,7 +393,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		søgefelt.setOnItemClickListener(this); //kun til autocomplete
 
-		if(test) overskrift.setOnClickListener(this);
+		if(a.test) overskrift.setOnClickListener(this);
 
 	}// END sætLyttere()
 
@@ -417,7 +425,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		afsp.release();
+		//afsp.release();
 		a.releaseAlle();
 		a.main = null; // afregistrerer lytter
 
