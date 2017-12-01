@@ -7,7 +7,9 @@ import android.preference.PreferenceManager;
 import android.widget.*;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.PlaybackParameters;
+import com.google.android.exoplayer2.Player;
 
 import io.fabric.sdk.android.Fabric;
 import java.io.*;
@@ -436,33 +438,43 @@ public class Appl extends Application
 		return new Fund(Uri.parse(vUrl), beskrivelser);
 	}
 	
-	
-	
-	void t (String s){
-
-		Toast.makeText(this, s, Toast.LENGTH_LONG).show();
-	}
-	
-	void p (Object o){
-		Utill.p("Appl."+o);
-	}
 
     public void releaseAlle() {
-		for (Fund f : søgeresultat) if (f.afsp != null) f.afsp.release();
+		for (Fund f : søgeresultat)
+			if (f.afsp != null) f.afsp.release();
+			else p("Fejl: releaseAlle gav null object "+søgeresultat.size());
     }
 
 	public void opdaterHastighed() {
 		float hast =  (a.slowmotion) ? 0.25f : 1.0f;
-		for (Fund f : søgeresultat) if (f.afsp != null) f.afsp.setPlaybackParameters(new PlaybackParameters(hast, 1));
+		for (Fund f : søgeresultat)
+			if (f.afsp != null) f.afsp.setPlaybackParameters(new PlaybackParameters(hast, 1));
+			else {
+				String s = "";
+				for (Fund f1 : søgeresultat) s+=f1.nøgle +"\n";
+				p("Fejl: opdaterHastighed gav null object "+s);
+		}
 	}
 
+
+
+	//Sætter alle igang med at spille ??????????????????????????!!!!!!!!!!!!!!!!!!!!!!
 	public void opdaterLoop() {
 
 		for (Fund f : søgeresultat) {
 			if (f.afsp == null) f.initAfsp(this);
-			f.afsp.setPlayWhenReady(true);
+			if (loop) f.afsp.setRepeatMode(Player.REPEAT_MODE_ONE);
+			else f.afsp.setRepeatMode(Player.REPEAT_MODE_OFF);
 		}
 
+	}
+
+	void p (Object o){
+		Utill.p("Appl."+o);
+	}
+	void t (Object o){
+
+		Toast.makeText(this, ""+o, Toast.LENGTH_LONG).show();
 	}
 
 

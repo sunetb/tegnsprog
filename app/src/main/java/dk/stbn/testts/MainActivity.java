@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			p("position: "+a.position);
 			if (a.loop){
 				afsp.setRepeatMode(Player.REPEAT_MODE_ONE);
-				afsp.seekTo(a.position);
+				afsp.seekTo(0);
 				afsp.setPlayWhenReady(true);
 			}
 			else afsp.setRepeatMode(Player.REPEAT_MODE_OFF);
