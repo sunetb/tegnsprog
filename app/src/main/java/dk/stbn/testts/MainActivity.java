@@ -66,7 +66,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	// - Tilstand
 	boolean tomsøg = true;
 	boolean liggendeVisning;
+	boolean aktGenstartet = false;
 	//int viserposition = 0;
+
 
 
 
@@ -74,11 +76,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        p("ONCREATE");
 		setContentView(R.layout.main);
 
         a = Appl.a;
 		a.main = this; //registrerer aktiviteten som lytter
-		sp = PreferenceManager.getDefaultSharedPreferences(this);
+		aktGenstartet = a.dataKlar; //Hvis aktiviteteten lukkes og åbnes igen er data klar og vi skal køre run() for at sætte adabteren på autocompletelisten
+		sp = a.sp;
 
 		//Fabric.with(this, new Crashlytics());
 		//afspView = (SimpleExoPlayerView) findViewById(R.id.mainVideoView);
@@ -90,20 +94,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		hovedlisten.setHasFixedSize(true);
 
-		//mLayoutManager = new LinearLayoutManager(this);
-		//hovedlisten.setLayoutManager(mLayoutManager);
-
 		adapter = new Hovedliste_adapter(a.søgeresultat, this);
 		hovedlisten.setAdapter(adapter);
 		hovedlisten.setLayoutManager(new LinearLayoutManager(this));
 
 		liggendeVisning = liggendeVisning();
-
-		//resultatliste = (ListView) findViewById(R.id.fundliste);
-
-		//int listelayout = R.layout.listelayout;
-
-		//if (liggendeVisning) listelayout = R.layout.listelayout_land;
 
 		mere = (ImageView) findViewById(R.id.mere);
 		mere.setAlpha(0);
@@ -116,9 +111,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		overskrift = (ImageView) findViewById(R.id.overskrift);
 		sætLyttere();
 
-		if (savedInstanceState != null) {
+		if (savedInstanceState != null || aktGenstartet) {
 
-			this.run(); p("Startet ved skærmvending. Initialiserer autocomplete-listen (sæt adapter)");
+			this.run(); p("Startet ved skærmvending. Eller akt har været lukket. Initialiserer autocomplete-listen (sæt adapter)");
+
 			//viserposition = sp.getInt("position", 0);
 
 			//p("Viser position: "+viserposition);
@@ -444,6 +440,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	@Override
 	protected void onRestoreInstanceState(Bundle savedInstanceState) {
 		super.onRestoreInstanceState(savedInstanceState);
+		p("ONRESTOREINSTANCESTATE");
 		//////////////////////   TJEK FOR OM TOM SØGNING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 		String s = savedInstanceState.getString("søgeord");
 		//viserposition = savedInstanceState.getInt("position");
@@ -451,6 +448,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			s=  "velkommen";
 		søgefelt.setHint(s);
 		opdaterUI(false, s);
+
 		//resultatliste.setSelection(viserposition);
 	}
 

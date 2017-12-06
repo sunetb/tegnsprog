@@ -26,9 +26,9 @@ public class Appl extends Application
 	boolean visPil = true;
 	boolean loop = true;
 	boolean slowmotion = false;
-	String aktueltSøgeord = "";
 	long position;
 	boolean test = true;
+	boolean aktLukket = false;
 
 	//-- System
 	public static Appl a;
@@ -74,9 +74,10 @@ public class Appl extends Application
 				p("Data hentet");
 				if (!(main == null)) {
 					main.run();
+					dataKlar = true;
 				}
-				else {
-					p("FEJL Main fandtes ikke da den skulle opdateres");
+				else { ///DÅRLIGT!!! Netværkslytter!!!!
+					p("FEJL Main fandtes ikke da data skulle opdateres");
 					new Handler().postDelayed(new Runnable() {
 						@Override
 						public void run() {
@@ -85,7 +86,7 @@ public class Appl extends Application
 								main.run();
 								dataKlar = true;
 							}
-							else t("FEJL Main fandtes ikke da den skulle opdateres II");
+							else t("FEJL Main fandtes ikke da data skulle opdateres II");
 
 						}
 						}, 1150);
