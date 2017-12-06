@@ -148,6 +148,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 				afsp.setRepeatMode(Player.REPEAT_MODE_ONE);
 				afsp.seekTo(0);
 				afsp.setPlayWhenReady(true);
+
 			}
 			else afsp.setRepeatMode(Player.REPEAT_MODE_OFF);
 			p("Repeatmode: " + afsp.getRepeatMode());
@@ -446,8 +447,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		//viserposition = savedInstanceState.getInt("position");
 		if (getString(R.string.hint).equalsIgnoreCase(s))
 			s=  "velkommen";
-		søgefelt.setHint(s);
-		opdaterUI(false, s);
+		if (s != null) {
+			søgefelt.setHint(s);
+			opdaterUI(false, s);
+		}
+
 
 		//resultatliste.setSelection(viserposition);
 	}

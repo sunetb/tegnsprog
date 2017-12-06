@@ -443,7 +443,7 @@ public class Appl extends Application
     public void releaseAlle() {
 		for (Fund f : søgeresultat)
 			if (f.afsp != null) f.afsp.release();
-			else p("Fejl: releaseAlle gav null object "+søgeresultat.size());
+			else p("Fejl: releaseAlle() gav null object "+søgeresultat.size());
     }
 
 	public void opdaterHastighed() {
@@ -457,13 +457,13 @@ public class Appl extends Application
 		}
 	}
 
-
-
-	//Sætter alle igang med at spille ??????????????????????????!!!!!!!!!!!!!!!!!!!!!!
 	public void opdaterLoop() {
 
 		for (Fund f : søgeresultat) {
-			if (f.afsp == null) f.initAfsp(this);
+			if (f.afsp == null) {
+				f.initAfsp(this);
+				p("opdaterLoop() Fejl: afsp var null");
+			}
 			if (loop) f.afsp.setRepeatMode(Player.REPEAT_MODE_ONE);
 			else f.afsp.setRepeatMode(Player.REPEAT_MODE_OFF);
 		}
