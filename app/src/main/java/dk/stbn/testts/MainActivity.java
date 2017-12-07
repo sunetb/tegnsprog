@@ -242,7 +242,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 			//Først spilles det første fund i listen
 
-			if (a.søgeresultat.size() > 0){
+			if (a.søgeresultat != null && a.søgeresultat.size() > 0){
 				a.søgeresultat.get(0).initAfsp(this);
 
 				afsp = a.søgeresultat.get(0).afsp;
@@ -276,7 +276,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 					p("Resultatliste længde: "+a.søgeresultat.size());
 
 
-					//adapter.notifyDataSetChanged(); //?
+					adapter.notifyDataSetChanged(); //?
 				}
 			}.execute();
         }
@@ -357,7 +357,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		Fund tom = new Fund(null,null);
 		tom.nøgle = "Søgning på: '"+søgeord+"' gav 0 fund";
 		a.søgeresultat.add(tom);
-		//hovedlisten.getRecycledViewPool().clear();
+		hovedlisten.getRecycledViewPool().clear();
 		adapter.notifyItemRangeChanged(0, 1);
 		if (afsp != null) afsp.release();
 
@@ -471,6 +471,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		søgeknap.setEnabled(true);
 		autoSuggest = new ArrayAdapter(this,android.R.layout.simple_list_item_1, a.tilAutoComplete);
 		søgefelt.setAdapter(autoSuggest);
+		velkommen();
 
 	}
 
