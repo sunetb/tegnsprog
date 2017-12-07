@@ -62,23 +62,6 @@
 
     </LinearLayout>
 
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/fl">
-
-    <ImageView
-        android:id="@+id/mere"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_keyboard_arrow_down_black_48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/hovedlisten"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/hovedlisten">
-
-    </ImageView>
-    </FrameLayout>
 
 
     <android.support.constraint.Guideline
@@ -110,6 +93,29 @@
         app:layout_constraintTop_toBottomOf="@+id/guideline" />
 
 
+    <FrameLayout
+        android:id="@+id/fl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:layout_marginStart="168dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/mere"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_arrow_down_black_48dp"
+            app:layout_constraintBottom_toBottomOf="@+id/hovedlisten"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/hovedlisten"
+            app:layout_constraintVertical_bias="1.0">
+
+        </ImageView>
+    </FrameLayout>
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"

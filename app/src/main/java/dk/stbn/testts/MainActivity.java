@@ -32,7 +32,7 @@ import io.fabric.sdk.android.Fabric;
 import io.fabric.sdk.android.Logger;
 
 
-public class MainActivity extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener, com.google.android.exoplayer2.ui.PlaybackControlView.VisibilityListener, Runnable{
+public class MainActivity extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener, PlaybackControlView.VisibilityListener, Runnable, OnScrollChangeListener {
 
 	// -- Views mm
 	SimpleExoPlayer afsp;
@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		adapter = new Hovedliste_adapter(a.søgeresultat, this);
 		hovedlisten.setAdapter(adapter);
 		hovedlisten.setLayoutManager(new LinearLayoutManagerWrapper(this));
-
 		liggendeVisning = liggendeVisning();
 
 		mere = (ImageView) findViewById(R.id.mere);
@@ -106,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		mere.bringToFront();
 		mere.invalidate();
 
-		mere.setAlpha(50);
+		mere.setAlpha(0);
 		søgefelt = (AutoCompleteTextView) findViewById(R.id.søgefelt);
 		loop = (TextView) findViewById(R.id.looptv);
 		loopcb = (CheckBox) findViewById(R.id.loopcb);
@@ -236,7 +235,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			}
 
 			else	{
-				mere.setAlpha(250);
+				mere.setAlpha(100);
 				a.visPil = false;
 			}
 
@@ -280,7 +279,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 				}
 			}.execute();
         }
-		afsp.setPlayWhenReady(true);
 
 	}
 
@@ -401,6 +399,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		søgefelt.setOnItemClickListener(this); //kun til autocomplete
 
 		if(a.test) logo.setOnClickListener(this);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+			hovedlisten.setOnScrollChangeListener(this);
+		}
 
 	}// END sætLyttere()
 
@@ -475,6 +476,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 	}
 
+	@Override
+	public void onScrollChange(View view, int i, int i1, int i2, int i3) {
+		mere.setAlpha(0);
+	}
+
 
 	/////----- Test / Log / debugging -------//////
 
@@ -519,7 +525,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			@Override
 			public void onClick(View view) {
 				final int position = getAdapterPosition();
-				Toast.makeText(getApplicationContext(), "video nr "+ position +" klikket", Toast.LENGTH_LONG ).show();
+				Toast.makeText(getApplicationContext(), "Tegn nr "+ position +" klikket. \nFunktionen er endnu ikke implemteret", Toast.LENGTH_LONG ).show();
 
 			}
 		}
@@ -547,7 +553,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			holder.playerv.setPlayer(f.afsp);
 			holder.overskrift.setText(f.nøgle + " ("+f.index+")");
 			holder.fundtekst.setText(f.getTekst());
-			//holder.playerv.setControllerShowTimeoutMs(2); /// tiden før knapperne skjules automatisk. ??? Gør at videoen ikke starter???
+
 
 
 
@@ -562,19 +568,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		}
 	}
 
-	//undhttps://stackoverflow.com/questions/31759171/recyclerview-and-java-lang-indexoutofboundsexception-inconsistency-detected-in
+	//fra https://stackoverflow.com/questions/31759171/recyclerview-and-java-lang-indexoutofboundsexception-inconsistency-detected-in
 	public class LinearLayoutManagerWrapper extends LinearLayoutManager {
 
 		public LinearLayoutManagerWrapper(Context context) {
 			super(context);
-		}
-
-		public LinearLayoutManagerWrapper(Context context, int orientation, boolean reverseLayout) {
-			super(context, orientation, reverseLayout);
-		}
-
-		public LinearLayoutManagerWrapper(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-			super(context, attrs, defStyleAttr, defStyleRes);
 		}
 
 		@Override
