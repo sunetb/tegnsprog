@@ -17,33 +17,62 @@
             android:id="@+id/afspillerview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent=".6"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:background="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@+id/fundtekstOverskrift"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent=".6"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_chainStyle="spread_inside">
+
+        </com.google.android.exoplayer2.ui.SimpleExoPlayerView>
+
+
+        <TextView
+            android:id="@+id/fundtekstOverskrift"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fadeScrollbars="false"
+            android:gravity="center_vertical"
+            android:text="overskrift"
+            android:textSize="18dip"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/fundtekst"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent=".06"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/afspillerview"
+            app:layout_constraintVertical_bias="0.0">
+
+        </TextView>
 
 
         <TextView
             android:id="@+id/fundtekst"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent=".4"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="8dp"
             android:fadeScrollbars="false"
             android:text="fund"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/fundtekstOverskrift"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent=".34"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/afspillerview">
+            app:layout_constraintTop_toBottomOf="@+id/fundtekstOverskrift">
 
         </TextView>
 

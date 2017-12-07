@@ -28,11 +28,10 @@ public class Appl extends Application
 	boolean slowmotion = false;
 	long position;
 	boolean test = true;
-	boolean aktLukket = false;
+	public int spillerNu = -1;
 
 	//-- System
 	public static Appl a;
-	static long ms;
 	Runnable main;
 
 
@@ -44,20 +43,20 @@ public class Appl extends Application
 	ArrayList<String> tilAutoComplete = new ArrayList();
 	ArrayList<Fund> søgeresultat = new ArrayList();
 
-
-	//int antalSøgninger = 0;
-
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		Utill.tid = System.currentTimeMillis();
+		Utill.debugbesked = new ArrayList<>();
+		p("ONCREATE");
 		boolean EMULATOR = Build.PRODUCT.contains("sdk") || Build.MODEL.contains("Emulator");
 		if (!EMULATOR) {
 			Fabric.with(this, new Crashlytics());
 			test = true;
 		}
 		a=this;
-		ms = System.currentTimeMillis();
-		Utill.debugbesked = new ArrayList<>();
+
+
 		sp= PreferenceManager.getDefaultSharedPreferences(this);
 		loop = sp.getBoolean("loop", true);
 
@@ -71,12 +70,12 @@ public class Appl extends Application
 
 			@Override
 			protected void onPostExecute(Object resultat){
-				p("Data hentet");
+				p("Søgeindeks hentet");
 				if (!(main == null)) {
 					main.run();
 					dataKlar = true;
 				}
-				else { ///DÅRLIGT!!! Netværkslytter!!!!
+				else { /// M I D L E R TI D I G T !!! Netværkslytter skal ind i stedet!!!!
 					p("FEJL Main fandtes ikke da data skulle opdateres");
 					new Handler().postDelayed(new Runnable() {
 						@Override
@@ -466,6 +465,7 @@ public class Appl extends Application
 			}
 			if (loop) f.afsp.setRepeatMode(Player.REPEAT_MODE_ONE);
 			else f.afsp.setRepeatMode(Player.REPEAT_MODE_OFF);
+			p("opdaterloop() player "+ f.nøgle + " "+f.index + " sat til loop? "+loop);
 		}
 
 	}

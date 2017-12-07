@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 class Fund {
     String nøgle;
+    String index;
     Uri videourl;
     Uri billedurl;
     ArrayList<String> ordliste;
@@ -44,7 +45,7 @@ class Fund {
 
     public String getTekst(){
         if (ordliste == null) return nøgle;
-        String resultatStreng = "Fund:      \"" + nøgle + "\"\n\n";
+        String resultatStreng = "";
 
         for (String s : ordliste)
             resultatStreng += s + "\n";
@@ -53,8 +54,10 @@ class Fund {
     }
 
     void initAfsp(Context c){
+        p("initAfsp plev kaldt");
         afsp = ExoPlayerFactory.newSimpleInstance(c, new DefaultTrackSelector(), new DefaultLoadControl());
         afsp.prepare(lavKilde(videourl));
+        if (afsp == null) p("initAfsp: Fejl: afsp var allerede null");
     }
 
     public String toString () {
@@ -87,5 +90,7 @@ class Fund {
         return ms;
     }
 
-
+    void p (Object o){
+        Utill.p("Fund."+o);
+    }
 }
