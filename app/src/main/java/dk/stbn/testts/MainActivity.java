@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.AttributeSet;
 import android.widget.*;
 import android.net.*;
 import android.view.View.*;
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		adapter = new Hovedliste_adapter(a.søgeresultat, this);
 		hovedlisten.setAdapter(adapter);
-		hovedlisten.setLayoutManager(new LinearLayoutManager(this));
+		hovedlisten.setLayoutManager(new LinearLayoutManagerWrapper(this));
 
 		liggendeVisning = liggendeVisning();
 
@@ -241,11 +242,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 					@Override
 					protected void onPostExecute(Object o) {
 						super.onPostExecute(o);
-						try {
-							hovedlisten.getRecycledViewPool().clear();
-							adapter.notifyDataSetChanged();
-						}catch (Exception e) {p("Fejl: "+e);}
-
+						hovedlisten.getRecycledViewPool().clear();
+						adapter.notifyItemRangeChanged(0, a.søgeresultat.size()-1);
 						//adapter.notifyDataSetChanged(); //?
 					}
 				}.execute();
@@ -336,17 +334,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	}
 
 	void tomsøgning (String søgeord){
-		t("Din søgning på: '"+søgeord+ "' gav ikke noget resultat");  //resultat.setText("Ordet \""+søgeordF+ "\" findes ikke i ordbogen");
+		//t("Din søgning på: '"+søgeord+ "' gav ikke noget resultat");  //resultat.setText("Ordet \""+søgeordF+ "\" findes ikke i ordbogen");
 
 		a.søgeresultat.clear();
 		Fund tom = new Fund(null,null);
 		tom.nøgle = "Søgning på: '"+søgeord+"' gav 0 fund";
 		a.søgeresultat.add(tom);
-		//resultaterListeAdapter.notifyDataSetChanged();
-		try {
-			hovedlisten.getRecycledViewPool().clear();
-			adapter.notifyDataSetChanged();
-		}catch (Exception e) {p("Fejl: "+e);} //Bug i Recyclerview. Se fx https://stackoverflow.com/questions/35653439/recycler-view-inconsistency-detected-invalid-view-holder-adapter-positionviewh
+		hovedlisten.getRecycledViewPool().clear();
+		adapter.notifyItemRangeChanged(0, a.søgeresultat.size());
 		if (afsp != null) afsp.setPlayWhenReady(false);
 
 	}
@@ -424,6 +419,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		super.onDestroy();
 		//afsp.release();
 		a.releaseAlle();
+
 		a.main = null; // afregistrerer lytter
 
 	}
@@ -556,6 +552,36 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		@Override
 		public int getItemCount() {
 			return data.size();
+		}
+	}
+
+	//undhttps://stackoverflow.com/questions/31759171/recyclerview-and-java-lang-indexoutofboundsexception-inconsistency-detected-in
+	public class LinearLayoutManagerWrapper extends LinearLayoutManager {
+
+		public LinearLayoutManagerWrapper(Context context) {
+			super(context);
+		}
+
+		public LinearLayoutManagerWrapper(Context context, int orientation, boolean reverseLayout) {
+			super(context, orientation, reverseLayout);
+		}
+
+		public LinearLayoutManagerWrapper(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+			super(context, attrs, defStyleAttr, defStyleRes);
+		}
+
+		@Override
+		public boolean supportsPredictiveItemAnimations() {
+			return false;
+		}
+
+		@Override
+		public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
+			try {
+				super.onLayoutChildren(recycler, state);
+			} catch (IndexOutOfBoundsException e) {
+				p("Fejl: IndexOutOfBoundsException");
+			}
 		}
 	}
 
