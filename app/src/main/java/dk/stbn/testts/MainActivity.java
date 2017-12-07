@@ -28,11 +28,12 @@ import android.widget.AbsListView.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+import dk.stbn.testts.lytter.Lytter;
 import io.fabric.sdk.android.Fabric;
 import io.fabric.sdk.android.Logger;
 
 
-public class MainActivity extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener, PlaybackControlView.VisibilityListener, Runnable, OnScrollChangeListener {
+public class MainActivity extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener, PlaybackControlView.VisibilityListener, Lytter, OnScrollChangeListener {
 
 	// -- Views mm
 	SimpleExoPlayer afsp;
@@ -117,13 +118,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		if (savedInstanceState != null || aktGenstartet) {
 
-			this.run(); p("Startet ved skærmvending. Eller akt har været lukket. Initialiserer autocomplete-listen (sæt adapter)");
+			grunddataHentet(); p("Startet ved skærmvending. Eller akt har været lukket. Initialiserer autocomplete-listen (sæt adapter)");
 
 			//viserposition = sp.getInt("position", 0);
 
 			//p("Viser position: "+viserposition);
 		}
-		else velkommen();
+
 
 		skjulTastatur();
 
@@ -240,11 +241,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			}
 
 			//Først spilles det første fund i listen
+			p("Søgeresultat size1: "+a.søgeresultat.size());
 
 			if (a.søgeresultat != null && a.søgeresultat.size() > 0){
-				a.søgeresultat.get(0).initAfsp(this);
+				p("Søgeresultat size2: "+a.søgeresultat.size());
+				Fund f= a.søgeresultat.get(0);
+				f.initAfsp(this);
 
-				afsp = a.søgeresultat.get(0).afsp;
+				afsp = f.afsp;
 				if (a.loop) afsp.setRepeatMode(Player.REPEAT_MODE_ONE);
 				float hast = (a.slowmotion) ? 0.25f : 1.0f;
 				afsp.setPlaybackParameters(new PlaybackParameters(hast, 1));
@@ -257,27 +261,28 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			}
 
 			//Derefter initialiseres alle andre afspillere i listen
-			new AsyncTask(){
-				@Override
-				protected Object doInBackground(Object[] objects) {
-					for (int i = 1 ; i <  a.søgeresultat.size(); i++) a.søgeresultat.get(i).initAfsp(getApplicationContext());
-					return null;
-				}
+			if (a.søgeresultat.size() > 1) {
+				new AsyncTask() {
+					@Override
+					protected Object doInBackground(Object[] objects) {
+						for (int i = 1; i < a.søgeresultat.size(); i++)
+							a.søgeresultat.get(i).initAfsp(getApplicationContext());
+						return null;
+					}
 
-				@Override
-				protected void onPostExecute(Object o) {
-					super.onPostExecute(o);
-					hovedlisten.getRecycledViewPool().clear();
-					adapter.notifyItemRangeChanged(0, a.søgeresultat.size()-1);
-					søgeknap.setEnabled(true);
-					a.opdaterLoop();
-					a.opdaterHastighed();
-					p("Resultatliste længde: "+a.søgeresultat.size());
-
-
-					adapter.notifyDataSetChanged(); //?
-				}
-			}.execute();
+					@Override
+					protected void onPostExecute(Object o) {
+						super.onPostExecute(o);
+						a.opdaterLoop();
+						a.opdaterHastighed();
+						p("Resultatliste længde: " + a.søgeresultat.size());
+					}
+				}.execute();
+			}
+			hovedlisten.getRecycledViewPool().clear();
+			adapter.notifyItemRangeChanged(0, a.søgeresultat.size() - 1);
+			adapter.notifyDataSetChanged();
+			søgeknap.setEnabled(true);
         }
 
 	}
@@ -319,8 +324,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                     return true;
                 }
 
-				p("ordet: " + søgeord + " blev fundet i søgeindeks");
-				p("Indgang fundet: " + fundet);
+				p("søg() ordet: " + søgeord + " blev fundet i søgeindeks");
+				p("søg(): Indgang fundet: " + fundet + "  index: "+fundet.index.size());
 				for (String s : fundet.index) {
 					p("   index: " + s);
 					Fund f = a.hentArtikel(s);//baseUrlArtikler+s+".html");
@@ -468,11 +473,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 	//-- Eget lytter-inteface
 	@Override
-	public void run() {
+	public void grunddataHentet() {
 		søgeknap.setEnabled(true);
 		autoSuggest = new ArrayAdapter(this,android.R.layout.simple_list_item_1, a.tilAutoComplete);
 		søgefelt.setAdapter(autoSuggest);
 		velkommen();
+
 
 	}
 

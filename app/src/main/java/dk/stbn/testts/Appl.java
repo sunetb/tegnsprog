@@ -11,6 +11,7 @@ import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.PlaybackParameters;
 import com.google.android.exoplayer2.Player;
 
+import dk.stbn.testts.lytter.Lytter;
 import io.fabric.sdk.android.Fabric;
 import java.io.*;
 import java.net.*;
@@ -32,7 +33,7 @@ public class Appl extends Application
 
 	//-- System
 	public static Appl a;
-	Runnable main;
+	Lytter main;
 
 
 	//-- Data
@@ -64,7 +65,7 @@ public class Appl extends Application
 
             @Override
             protected Object doInBackground(Object[] params) {
-				hentSøgeindeks2(glosseurl);
+				hentSøgeindeks2(nyUrl);
 				return null;
 			}
 
@@ -72,17 +73,17 @@ public class Appl extends Application
 			protected void onPostExecute(Object resultat){
 				p("Søgeindeks hentet");
 				if (!(main == null)) {
-					main.run();
+					main.grunddataHentet();
 					dataKlar = true;
 				}
-				else { /// M I D L E R TI D I G T !!! Netværkslytter skal ind i stedet!!!!
+				else { /// M I D L E R T I D I G T !!! Netværkslytter skal ind i stedet!!!!
 					p("FEJL Main fandtes ikke da data skulle opdateres");
 					new Handler().postDelayed(new Runnable() {
 						@Override
 						public void run() {
 
 							if (!(main == null)) {
-								main.run();
+								main.grunddataHentet();
 								dataKlar = true;
 							}
 							else t("FEJL Main fandtes ikke da data skulle opdateres II");
@@ -101,7 +102,7 @@ public class Appl extends Application
 	public void hentSøgeindeks2(String u) {
 
 		try { // Henter fil
-			InputStream is = new URL(nyUrl).openStream();
+			InputStream is = new URL(u).openStream();
 			is = new BufferedInputStream(is);
 			is.mark(1);
 			if (is.read() == 0xef) {
@@ -148,7 +149,7 @@ public class Appl extends Application
 				String [] ix = indgangSA[1].split(";");
 				//p("Array længde: "+ix.length);
 				ArrayList<String> ix2 = new ArrayList();
-				String temp= "";
+
 				for (int j = 0; j < ix.length; j++) {
 					String gammel = "";					//tjek for dubletter
 					if (j>0) gammel = ix[j-1].trim();
