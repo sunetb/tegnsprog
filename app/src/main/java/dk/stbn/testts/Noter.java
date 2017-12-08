@@ -7,19 +7,29 @@ IO-klasse?
 data-klasse
 caching?
 
-Skærmvending:
-
+Liggende visning
 
 Videafspilning
--sløjt
+-controlview væk og play/pause ved klik på video
 
-Netværkslytter
-MEddelelese ved manglende internetforbindelse
+Netværkslytter: Meddelelse ved manglende internetforbindelse
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%Brugertest""""""""""""""""""""""""""""2
+Afspil alle til/fra. Evt i indstillinger
 
-Jeg tænkte også at det kunne være rart for brugeren at få at vide at der ikke var noget fund
-Når jeg afspiller et resultat og slå loop fra, får jeg ikke  mulighed for at afspille igen – dvs. jeg kan manøvrere play, tilbage osv.-knapperne, men videovinduet er tomt når der afspilles.
+Vis fuld artikel
+
+Test-interface:
+    -mail
+    -
+
+
+
+Nice to have:
+    -hold og før horisontalt på video viser frames
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%Brugertest%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 Når jeg søger med * , får jeg intet resultat.
 
