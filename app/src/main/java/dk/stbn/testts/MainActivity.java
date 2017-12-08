@@ -1,5 +1,7 @@
 package dk.stbn.testts;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.*;
 import android.preference.PreferenceManager;
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	// -- Sys
 	Appl a;
 	SharedPreferences sp;
+	Context ctx;
 
 	// -- Data
 	//String baseUrlVideo = "http://tegnsprog.dk/video/t/"; //+" t_"+vNr+".mp4"		kaffe = 317
@@ -83,10 +86,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		setContentView(R.layout.main);
 
         a = Appl.a;
-		a.main = this; //registrerer aktiviteten som lytter
+        ctx = this;
+		a.lyttere.add(this); //registrerer aktiviteten som lytter
 		aktGenstartet = a.dataKlar; //Hvis aktiviteteten lukkes og åbnes igen er data klar og vi skal køre run() for at sætte adapteren på autocompletelisten
 		sp = a.sp;
-
 		søgeknap = (ImageButton) findViewById(R.id.mainButton);
 		søgeknap.setEnabled(false);
 
@@ -129,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		skjulTastatur();
 
 		p("onCreate færdig");
+
     }
 
 	@Override
@@ -403,10 +407,20 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		søgefelt.setOnItemClickListener(this); //kun til autocomplete
 
+		søgeknap.setOnLongClickListener(new OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View view) {
+
+				testDialog("Vil du starte test/debug-skærmen?", "TEST/DEBUG");
+				return false;
+			}
+		});
+
 		if(a.test) logo.setOnClickListener(this);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 			hovedlisten.setOnScrollChangeListener(this);
 		}
+
 
 	}// END sætLyttere()
 
@@ -441,7 +455,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		//afsp.release();
 		a.releaseAlle();
 
-		a.main = null; // afregistrerer lytter
+		a.lyttere.remove(this); // afregistrerer lytter
 
 	}
 
@@ -560,12 +574,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			holder.overskrift.setText(f.nøgle + " ("+f.index+")");
 			holder.fundtekst.setText(f.getTekst());
 
-
-
-
-
-
-
 		}
 
 		@Override
@@ -595,6 +603,50 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			}
 		}
 	}
+	boolean klikket = false;
+	private void testDialog (String besked, String overskrift) {
+
+
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+		alertDialogBuilder.setTitle(overskrift);
+		alertDialogBuilder
+				.setMessage(besked)
+				.setCancelable(true)
+				.setPositiveButton("Ja",new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,int id) {
+						t("dialog");
+						klikket = true;
+						startActivity(new Intent(ctx, Test.class));
+						dialog.cancel();
+					}
+				})
+				.setNegativeButton("Nej",new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,int id) {
+						klikket = true;
+						dialog.cancel();
+					}
+		});
+
+		AlertDialog alertDialog = alertDialogBuilder.create();
+		if (klikket) {
+			//doKeepDialog(alertDialogBuilder);
+			klikket = false;
+		}
+		alertDialog.show();
+	}
+
+
+
+	//Bevarer dialog ved skærmvending tilpasset fra http://stackoverflow.com/questions/8537518/the-method-getwindow-is-undefined-for-the-type-alertdialog-builder
+	private static void doKeepDialog(AlertDialog.Builder dialog){
+		AlertDialog dlg = dialog.show();
+		WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+		lp.copyFrom(dlg.getWindow().getAttributes());
+		lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+		lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+		dlg.getWindow().setAttributes(lp);
+	}
+
 
 	void p (Object o){
 		Utill.p("Main."+o);

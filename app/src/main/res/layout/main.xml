@@ -13,7 +13,7 @@
         android:layout_height="0dp"
         android:src="@drawable/logo"
         app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent=".10"
+        app:layout_constraintHeight_percent=".09"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,7 +32,7 @@
         app:layout_constraintBottom_toTopOf="@+id/hovedlisten"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent=".10"
+        app:layout_constraintHeight_percent=".09"
         app:layout_constraintHorizontal_bias="0.935"
         app:layout_constraintStart_toEndOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,12 +82,13 @@
         android:id="@+id/hovedlisten"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:scrollbars="vertical"
+        android:layout_marginBottom="8dp"
 
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent=".80"
+        app:layout_constraintHeight_percent=".78"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline" />
@@ -100,7 +101,8 @@
         android:layout_marginBottom="40dp"
         android:layout_marginStart="168dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="168dp">
 
         <ImageView
             android:id="@+id/mere"
@@ -120,7 +122,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:alpha="0.5"
+        android:alpha="0.6"
         android:background="@color/cardview_light_background"
         android:gravity="center_vertical"
         android:orientation="horizontal"

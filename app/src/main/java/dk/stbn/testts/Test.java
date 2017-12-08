@@ -1,13 +1,19 @@
 package dk.stbn.testts;
 
 import android.app.*;
+import android.content.Intent;
 import android.os.*;
 import android.view.*;
 import android.widget.*;
 
-public class Test extends Activity {
+import java.util.Date;
 
-	//TextView testTv;
+import dk.stbn.testts.lytter.Lytter;
+
+public class Test extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener, Lytter{
+
+	TextView overskrift, nulstil, mail;
+	Button nulst, mailknap;
 	ListView lv;
 	ArrayAdapter ar;
 	Appl a;
@@ -18,10 +24,14 @@ public class Test extends Activity {
 		// TODO: Implement this method
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.testmliste);
-		//t("onCreate kaldt i Test");
 		a = Appl.a;
-		//testTv = (TextView) findViewById(R.id.testTv);
+		overskrift = (TextView) findViewById(R.id.overskr);
+		overskrift.append(" | App-version: "+a.versionsnr());
+		nulstil = (TextView) findViewById(R.id.tx_nulstil);
 		lv = (ListView) findViewById(R.id.testlistview);
+		//lv.setOnItemClickListener(this);
+		a.lyttere.add(this);
+
 		
 		ar = new ArrayAdapter(this, android.R.layout.simple_list_item_1, Utill.debugbesked){
 			@Override
@@ -38,42 +48,12 @@ public class Test extends Activity {
 		};
 		
 		lv.setAdapter(ar);
-		
-		//t("Textview id: "+ testTv.getId());
-		
-		
-		/*String udtekst = "Start på log \n";
-		udtekst += Utill.debugbesked;
-		udtekst += "=-=-=-=-=-=-=-=-=-=\n";
-		udtekst += "start længde: "+a.søgeindeks.size()+" \n";
-		
-		for (Indgang i : a.søgeindeks) udtekst+=(i.toString() +"\n");
-		
-		testTv.setText(udtekst);
-		
-		
-		
-		new AsyncTask() {
 
-            @Override
-            protected Object doInBackground(Object[] params) {
-				try{
-				for (Indgang i : a.søgeindeks) Utill.debugbesked.add(i.toString());
-				}
-				catch (Exception e){t(""+e);}
-				return null;
-			}
+		nulst = (Button) findViewById(R.id.knap_nulstil);
+		nulst.setOnClickListener(this);
+		mailknap = (Button) findViewById(R.id.knap_);
+		mailknap.setOnClickListener(this);
 
-			@Override
-			protected void onPostExecute(Object resultat){
-				lv.setAdapter(autoSuggest);
-				autoSuggest.notifyDataSetChanged();
-				t("liste skrevet");
-				p("liste skrevet");
-			}
-
-		}.execute();
-		*/
 	}
 	
 	void p (Object o){
@@ -83,5 +63,48 @@ public class Test extends Activity {
 	void t (String s){
 
 		Toast.makeText(this, s, Toast.LENGTH_LONG).show();
+	}
+
+	@Override
+	public void onClick(View view) {
+		if (view == nulst) {
+			a.nulstilTilstandHeavy();
+			ar.notifyDataSetChanged();
+			lv.setAdapter(ar);
+
+
+			nulstil.setText("genindlæser data, vent venligst..");
+		}
+		if (view == mailknap){
+			String log = ""+ new Date() + Build.MANUFACTURER + " - " + Build.MODEL;
+			for (String s : Utill.debugbesked) log += "\n" + s;
+
+			Intent intent = new Intent(Intent.ACTION_SEND);
+			intent.setType("text/html");
+			intent.putExtra(Intent.EXTRA_EMAIL, "sunetb@gmail.com");
+			intent.putExtra(Intent.EXTRA_SUBJECT, "Tegnsprogsapp logbesked");
+			intent.putExtra(Intent.EXTRA_TEXT, log);
+
+			startActivity(Intent.createChooser(intent, "Send Email"));
+		}
+
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+		//ar.notifyDataSetChanged();
+	}
+
+	@Override
+	public void grunddataHentet() {
+		ar.notifyDataSetChanged();
+		nulstil.setText("Data genindlæst færdig!");
+
+	}
+
+	@Override
+	protected void onDestroy() {
+		a.lyttere.remove(this);
+		super.onDestroy();
 	}
 }

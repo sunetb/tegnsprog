@@ -1,6 +1,8 @@
 package dk.stbn.testts;
 import android.app.*;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.*;
 import android.preference.PreferenceManager;
@@ -33,7 +35,7 @@ public class Appl extends Application
 
 	//-- System
 	public static Appl a;
-	Lytter main;
+
 
 
 	//-- Data
@@ -44,27 +46,37 @@ public class Appl extends Application
 	ArrayList<String> tilAutoComplete = new ArrayList();
 	ArrayList<Fund> søgeresultat = new ArrayList();
 
+
+	//-- Lyttersystem
+
+	ArrayList<Lytter> lyttere = new ArrayList();
+	void givBesked () { for (Lytter l : lyttere) l.grunddataHentet();}
+
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		init("ONCREATE");
+		
+	}
+
+	void init(String kaldtFra){
 		Utill.tid = System.currentTimeMillis();
-		Utill.debugbesked = new ArrayList<>();
-		p("ONCREATE");
+		if (kaldtFra.equals("ONCREATE")) Utill.debugbesked = new ArrayList<>();
+		p(kaldtFra);
 		boolean EMULATOR = Build.PRODUCT.contains("sdk") || Build.MODEL.contains("Emulator");
 		if (!EMULATOR) {
 			Fabric.with(this, new Crashlytics());
 			test = true;
 		}
 		a=this;
-
-
 		sp= PreferenceManager.getDefaultSharedPreferences(this);
 		loop = sp.getBoolean("loop", true);
 
 		new AsyncTask() {
 
-            @Override
-            protected Object doInBackground(Object[] params) {
+			@Override
+			protected Object doInBackground(Object[] params) {
 				hentSøgeindeks2(nyUrl);
 				return null;
 			}
@@ -72,8 +84,8 @@ public class Appl extends Application
 			@Override
 			protected void onPostExecute(Object resultat){
 				p("Søgeindeks hentet");
-				if (!(main == null)) {
-					main.grunddataHentet();
+				if (!(lyttere.size() == 0)) {
+					givBesked();
 					dataKlar = true;
 				}
 				else { /// M I D L E R T I D I G T !!! Netværkslytter skal ind i stedet!!!!
@@ -82,21 +94,20 @@ public class Appl extends Application
 						@Override
 						public void run() {
 
-							if (!(main == null)) {
-								main.grunddataHentet();
+							if (!(lyttere.size() == 0)) {
+								givBesked();
 								dataKlar = true;
 							}
 							else t("FEJL Main fandtes ikke da data skulle opdateres II");
 
 						}
-						}, 1150);
+					}, 1150);
 				}
 
 
 			}
 
 		}.execute();
-		
 	}
 
 	public void hentSøgeindeks2(String u) {
@@ -436,7 +447,7 @@ public class Appl extends Application
 			p(ex);
 			p(ex.getMessage());
 		}
-
+		p("hentArtikel færdig");
 		return new Fund(Uri.parse(vUrl), beskrivelser);
 	}
 	
@@ -472,6 +483,18 @@ public class Appl extends Application
 
 	}
 
+	String versionsnr(){
+		PackageInfo pInfo = null;
+		try {
+			pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+		} catch (PackageManager.NameNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return "Version: " + pInfo.versionName + "|" + pInfo.versionCode ;
+
+	}
+
 	void p (Object o){
 		Utill.p("Appl."+o);
 	}
@@ -481,4 +504,12 @@ public class Appl extends Application
 	}
 
 
+	public void nulstilTilstandLight() {
+
+	}
+	//** Kaldes fra Test: 'kører oncreate' igen
+	public void nulstilTilstandHeavy() {
+		init("HEAVY NULSTIL");
+
+}
 }
