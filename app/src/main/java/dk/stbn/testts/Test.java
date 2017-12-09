@@ -34,7 +34,7 @@ public class Test extends Activity implements View.OnClickListener, Lytter{
 		format = (CheckBox) findViewById(R.id.skiftformat);
 		videoformat = (TextView) findViewById(R.id.tx_format);
 		lv = (ListView) findViewById(R.id.testlistview);
-
+		mail = (TextView) findViewById(R.id.tx_mail);
 		//lv.setOnItemClickListener(this); //Crasher
 
 

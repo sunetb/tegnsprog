@@ -16,6 +16,7 @@
         android:debuggable="true"
         android:icon="@drawable/tsikon"
         android:label="Tegnsprog"
+        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
             android:name="dk.stbn.testts.MainActivity"
