@@ -7,6 +7,6 @@ package dk.stbn.testts.lytter;
 public interface  Lytter {
 
     void grunddataHentet();
-
+    void logOpdateret();
 
 }

@@ -492,7 +492,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		autoSuggest = new ArrayAdapter(this,android.R.layout.simple_list_item_1, a.tilAutoComplete);
 		søgefelt.setAdapter(autoSuggest);
 		velkommen();
+	}
 
+	@Override
+	public void logOpdateret() {
 
 	}
 
@@ -540,6 +543,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 				overskrift = (TextView) v.findViewById(R.id.fundtekstOverskrift);
 				fundtekst = (TextView) v.findViewById(R.id.fundtekst);
 				fundtekst.setOnClickListener(this);
+				playerv.setControllerShowTimeoutMs(1500);
+				p("autoshow? "+ playerv.getControllerAutoShow());
+				p("hide on touch? "+ playerv.getControllerHideOnTouch());
+				playerv.hideController();
+				playerv.setControllerAutoShow(false);
 			}
 
 			@Override

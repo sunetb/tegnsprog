@@ -6,9 +6,11 @@
 	<TextView
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
-		android:layout_weight="1"
-		android:textSize="16dip"
-		android:text="Test/debug-indstillinger"
+		android:layout_weight="0.5"
+		android:gravity="center_horizontal"
+		android:textSize="20dip"
+		android:text="Test/debug"
+		android:textStyle="bold"
 		android:id="@+id/overskr"/>
 
 	<LinearLayout
@@ -42,19 +44,36 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:id="@+id/knap_"
-				android:text="ingen funktion"/>
+				android:text="Send log"/>
 			<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="Endnu ingen funktion.."/>
+				android:text="Send mail til udvikler"/>
+		</LinearLayout>
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_weight="1"
+			android:orientation="horizontal">
+			<CheckBox
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/skiftformat"
+				/>
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/tx_format"
+				android:text="Skift mellem WEBM og MP4 videoformat. Nu er valgt: "/>
+
+
 		</LinearLayout>
 
 	</LinearLayout>
-
     <ListView
 		android:layout_width="fill_parent"
 		android:layout_height="0px"
-		android:layout_weight="7"
+		android:layout_weight="8"
 		android:id="@+id/testlistview"
 		/>
 </LinearLayout>

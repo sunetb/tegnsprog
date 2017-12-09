@@ -2,20 +2,30 @@ package dk.stbn.testts;
 
 import android.content.Context;
 import android.net.Uri;
+import android.view.Surface;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
+import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.Format;
+import com.google.android.exoplayer2.PlaybackParameters;
+import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.Timeline;
+import com.google.android.exoplayer2.decoder.DecoderCounters;
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.source.TrackGroupArray;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
+import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DataSpec;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.upstream.HttpDataSource;
 import com.google.android.exoplayer2.upstream.TransferListener;
+import com.google.android.exoplayer2.video.VideoRendererEventListener;
 
 import java.util.ArrayList;
 
@@ -55,8 +65,88 @@ class Fund {
 
     void initAfsp(Context c){
         p("initAfsp plev kaldt");
-        afsp = ExoPlayerFactory.newSimpleInstance(c, new DefaultTrackSelector(), new DefaultLoadControl());
+        afsp = ExoPlayerFactory.newSimpleInstance(c, new DefaultTrackSelector());//, new DefaultLoadControl());
         afsp.prepare(lavKilde(videourl));
+        afsp.addListener(new Player.EventListener() {
+            @Override
+            public void onTimelineChanged(Timeline timeline, Object manifest) {
+
+            }
+
+            @Override
+            public void onTracksChanged(TrackGroupArray trackGroups, TrackSelectionArray trackSelections) {
+
+            }
+
+            @Override
+            public void onLoadingChanged(boolean isLoading) {
+
+            }
+
+            @Override
+            public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
+                p("Fra onPlayerStateChanged: playback state: "+playbackState);
+            }
+
+            @Override
+            public void onRepeatModeChanged(int repeatMode) {
+
+            }
+
+            @Override
+            public void onPlayerError(ExoPlaybackException error) {
+                p("Fejl fra onPlaybackError");
+            }
+
+            @Override
+            public void onPositionDiscontinuity() {
+
+            }
+
+            @Override
+            public void onPlaybackParametersChanged(PlaybackParameters playbackParameters) {
+
+            }
+        });
+        afsp.setVideoDebugListener(new VideoRendererEventListener() {
+            @Override
+            public void onVideoEnabled(DecoderCounters counters) {
+                p("onVideoEnabled");
+            }
+
+            @Override
+            public void onVideoDecoderInitialized(String decoderName, long initializedTimestampMs, long initializationDurationMs) {
+                p("onVideoDecoderInitialized");
+            }
+
+            @Override
+            public void onVideoInputFormatChanged(Format format) {
+
+            }
+
+            @Override
+            public void onDroppedFrames(int count, long elapsedMs) {
+                p("onDroppedFrames");
+            }
+
+            @Override
+            public void onVideoSizeChanged(int width, int height, int unappliedRotationDegrees, float pixelWidthHeightRatio) {
+
+            }
+
+            @Override
+            public void onRenderedFirstFrame(Surface surface) {
+
+            }
+
+            @Override
+            public void onVideoDisabled(DecoderCounters counters) {
+
+            }
+        });
+        p("VideoDecoderCounters: "+afsp.getVideoDecoderCounters());
+        p("Videoformat: "+afsp.getVideoFormat());
+
         if (afsp == null) p("initAfsp: Fejl: afsp var allerede null");
     }
 
@@ -81,12 +171,12 @@ class Fund {
 
             }
         });
-
+        if (kilde == null) p("Fejl kilde i lavKilde() var null!");
         MediaSource ms = new ExtractorMediaSource(
                 s,
                 kilde,
                 new DefaultExtractorsFactory(), null, null);
-
+        if (ms == null) p("Fejl mediasource i lavKilde() var null!");
         return ms;
     }
 

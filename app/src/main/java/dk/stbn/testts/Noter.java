@@ -20,7 +20,9 @@ Vis fuld artikel
 
 Test-interface:
     -mail
-    -
+    -webm/mp4
+    -log
+    -nulstil
 
 
 

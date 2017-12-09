@@ -67,6 +67,7 @@
             android:layout_marginTop="2dp"
             android:fadeScrollbars="false"
             android:text="fund"
+            android:textSize="12dip"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/fundtekstOverskrift"
             app:layout_constraintHeight_default="percent"
@@ -75,7 +76,6 @@
             app:layout_constraintTop_toBottomOf="@+id/fundtekstOverskrift">
 
         </TextView>
-
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

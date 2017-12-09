@@ -33,8 +33,12 @@ public class Appl extends Application
 	boolean test = true;
 	public int spillerNu = -1;
 
+	//** Hentes webm eller mp4 i hentArtikel()
+	boolean webm = false;
+
 	//-- System
 	public static Appl a;
+
 
 
 
@@ -49,7 +53,7 @@ public class Appl extends Application
 
 	//-- Lyttersystem
 
-	ArrayList<Lytter> lyttere = new ArrayList();
+	ArrayList<Lytter> lyttere;
 	void givBesked () { for (Lytter l : lyttere) l.grunddataHentet();}
 
 
@@ -61,17 +65,22 @@ public class Appl extends Application
 	}
 
 	void init(String kaldtFra){
+		a=this;
 		Utill.tid = System.currentTimeMillis();
-		if (kaldtFra.equals("ONCREATE")) Utill.debugbesked = new ArrayList<>();
 		p(kaldtFra);
+		lyttere = new ArrayList();
+
+
 		boolean EMULATOR = Build.PRODUCT.contains("sdk") || Build.MODEL.contains("Emulator");
 		if (!EMULATOR) {
 			Fabric.with(this, new Crashlytics());
 			test = true;
 		}
-		a=this;
+
 		sp= PreferenceManager.getDefaultSharedPreferences(this);
 		loop = sp.getBoolean("loop", true);
+		if (android.os.Build.VERSION.SDK_INT == 22) webm = true; //MP4-udgaverne af videoerne understøttes ikke på android 5.1 = API 22
+		else webm = sp.getBoolean("format", true);
 
 		new AsyncTask() {
 
@@ -341,15 +350,15 @@ public class Appl extends Application
 			vUrl = tempUrl.substring(0,slutIndeks);
 			p("videourl::::::::::::::::::::::::::::::::"+vUrl);
 
-			///////////////Eksperiment med webm
-			int underscore = vUrl.lastIndexOf("_")+1;
-			int sidstepunktum = vUrl.lastIndexOf(".");
+			if (webm) {
+				int underscore = vUrl.lastIndexOf("_") + 1;
+				int sidstepunktum = vUrl.lastIndexOf(".");
 
-			String indeksnr = vUrl.substring(underscore,sidstepunktum);
-			p("indeksnr: "+indeksnr);
-			vUrl = "http://m.tegnsprog.dk/video/mobil/t-webm/t_"+indeksnr+".webm";
-			p(vUrl);
-
+				String indeksnr = vUrl.substring(underscore, sidstepunktum);
+				p("indeksnr: " + indeksnr);
+				vUrl = "http://m.tegnsprog.dk/video/mobil/t-webm/t_" + indeksnr + ".webm";
+				p(vUrl);
+			}
 
 
 
@@ -491,7 +500,7 @@ public class Appl extends Application
 			e.printStackTrace();
 		}
 
-		return "Version: " + pInfo.versionName + "|" + pInfo.versionCode ;
+		return pInfo.versionName;
 
 	}
 
