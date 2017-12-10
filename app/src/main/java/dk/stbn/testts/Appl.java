@@ -25,6 +25,7 @@ public class Appl extends Application
 	/// As x
 
 	//-- Tilstand
+	String aktueltSøgeord = "";
 	boolean dataKlar = false;
 	boolean visPil = true;
 	boolean loop = true;
@@ -32,7 +33,7 @@ public class Appl extends Application
 	long position;
 	boolean test = true;
 	public int spillerNu = -1;
-
+	public boolean genstartetFraTestAkt = false;
 	//** Hentes webm eller mp4 i hentArtikel()
 	boolean webm = false;
 
@@ -54,7 +55,10 @@ public class Appl extends Application
 	//-- Lyttersystem
 
 	ArrayList<Lytter> lyttere;
+
+
 	void givBesked () { for (Lytter l : lyttere) l.grunddataHentet();}
+
 
 
 	@Override

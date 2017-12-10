@@ -32,7 +32,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:id="@+id/tx_nulstil"
-				android:text="Nulstiller appens tilstand"/>
+				android:text="Nulstiller tilstandsdata (crasher måske)"/>
 		</LinearLayout>
 		<LinearLayout
 			android:layout_width="match_parent"

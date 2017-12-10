@@ -22,7 +22,6 @@ public class Test extends Activity implements View.OnClickListener, Lytter{
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
-		// TODO: Implement this method
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.testmliste);
 		a = Appl.a;
@@ -83,6 +82,7 @@ public class Test extends Activity implements View.OnClickListener, Lytter{
 			ar.notifyDataSetChanged();
 			lv.setAdapter(ar);
 			nulstil.setText("genindlæser data, vent venligst..");
+			a.genstartetFraTestAkt = true;
 		}
 		else if (view == mailknap){
 			String log = ""+ new Date() + Build.MANUFACTURER + " - " + Build.MODEL + " API: "+android.os.Build.VERSION.SDK_INT + " app ver. "+a.versionsnr();
@@ -124,6 +124,7 @@ public class Test extends Activity implements View.OnClickListener, Lytter{
 	@Override
 	protected void onDestroy() {
 		a.lyttere.remove(this);
+		startActivity(new Intent(this, MainActivity.class));
 		super.onDestroy();
 	}
 }

@@ -1,16 +1,11 @@
 package dk.stbn.testts;
 
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.*;
-import android.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.AttributeSet;
 import android.widget.*;
-import android.net.*;
 import android.view.View.*;
 import android.view.*;
 import android.view.inputmethod.*;
@@ -19,13 +14,9 @@ import android.content.*;
 
 import com.google.android.exoplayer2.*;
 import com.google.android.exoplayer2.ui.*;
-import com.google.android.exoplayer2.trackselection.*;
-import com.google.android.exoplayer2.upstream.*;
-import com.google.android.exoplayer2.extractor.*;
-import com.google.android.exoplayer2.source.*;
+
 import android.os.AsyncTask;
 import android.support.v7.app.*;
-import android.widget.AbsListView.*;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -301,9 +292,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	void søg (String søgeordInd){
 		a.visPil = true;
 		p("søg("+søgeordInd+")");
+
 		//a.antalSøgninger++; // Bruges til at tjekke om onScroll er blevet kaldt når lytteren sættes eller om brugeren rent faktisk har scrollet (alternativ til onTouch)
 		final String søgeord = søgeordInd.trim();
-
+		a.aktueltSøgeord = søgeord;
 		if (søgeord.equalsIgnoreCase(getString(R.string.hint))) {
 			tomsøgning("");
 			return;
@@ -491,7 +483,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		søgeknap.setEnabled(true);
 		autoSuggest = new ArrayAdapter(this,android.R.layout.simple_list_item_1, a.tilAutoComplete);
 		søgefelt.setAdapter(autoSuggest);
-		velkommen();
+
+		if (a.genstartetFraTestAkt) {
+			a.genstartetFraTestAkt = false;
+			søg(a.aktueltSøgeord);
+		}
+		else velkommen();
 	}
 
 	@Override
@@ -544,8 +541,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 				fundtekst = (TextView) v.findViewById(R.id.fundtekst);
 				fundtekst.setOnClickListener(this);
 				playerv.setControllerShowTimeoutMs(1500);
-				p("autoshow? "+ playerv.getControllerAutoShow());
-				p("hide on touch? "+ playerv.getControllerHideOnTouch());
 				playerv.hideController();
 				playerv.setControllerAutoShow(false);
 			}
@@ -626,6 +621,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 						klikket = true;
 						startActivity(new Intent(ctx, Test.class));
 						dialog.cancel();
+						finish();
 					}
 				})
 				.setNegativeButton("Nej",new DialogInterface.OnClickListener() {
