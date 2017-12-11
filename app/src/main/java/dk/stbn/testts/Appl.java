@@ -30,7 +30,7 @@ public class Appl extends Application
 	boolean visPil = true;
 	boolean loop = true;
 	boolean slowmotion = false;
-	long position;
+	long position = 0;
 	boolean test = true;
 	public int spillerNu = -1;
 	public boolean genstartetFraTestAkt = false;
@@ -64,6 +64,7 @@ public class Appl extends Application
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		lyttere = new ArrayList();
 		init("ONCREATE");
 		
 	}
@@ -72,7 +73,7 @@ public class Appl extends Application
 		a=this;
 		Utill.tid = System.currentTimeMillis();
 		p(kaldtFra);
-		lyttere = new ArrayList();
+
 
 
 		boolean EMULATOR = Build.PRODUCT.contains("sdk") || Build.MODEL.contains("Emulator");
@@ -522,6 +523,21 @@ public class Appl extends Application
 	}
 	//** Kaldes fra Test: 'kører oncreate' igen
 	public void nulstilTilstandHeavy() {
+		p("HEAVY NULSTIL");
+		//aktueltSøgeord = "";
+		dataKlar = false;
+		visPil = true;
+		loop = true;
+		slowmotion = false;
+		position = 0;
+		test = true;
+		spillerNu = -1;
+		genstartetFraTestAkt = false;
+		webm = false;
+		søgeindeks.clear();
+		tilAutoComplete.clear();
+		//søgeresultat.clear();
+
 		init("HEAVY NULSTIL");
 
 }

@@ -359,6 +359,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		hovedlisten.getRecycledViewPool().clear();
 		adapter.notifyItemRangeChanged(0, 1);
 		if (afsp != null) afsp.release();
+		søgeknap.setEnabled(true);
 
 	}
 
@@ -474,6 +475,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			søgefelt.setHint(s);
 			opdaterUI(false, s);
 		}
+		else tomsøgning(a.aktueltSøgeord);
 
 	}
 

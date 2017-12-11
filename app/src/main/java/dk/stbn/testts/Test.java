@@ -111,6 +111,7 @@ public class Test extends Activity implements View.OnClickListener, Lytter{
 
 	@Override
 	public void grunddataHentet() {
+		p("grunddataHentet()");
 		ar.notifyDataSetChanged();
 		nulstil.setText("Data genindlæst færdig!");
 
