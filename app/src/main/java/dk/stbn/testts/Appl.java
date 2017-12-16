@@ -503,6 +503,7 @@ public class Appl extends Application
 			pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
 		} catch (PackageManager.NameNotFoundException e) {
 			e.printStackTrace();
+			p(e);
 		}
 
 		return pInfo.versionName;

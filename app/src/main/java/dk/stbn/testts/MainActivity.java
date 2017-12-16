@@ -26,7 +26,7 @@ import io.fabric.sdk.android.Fabric;
 import io.fabric.sdk.android.Logger;
 
 
-public class MainActivity extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener, PlaybackControlView.VisibilityListener, Lytter, OnScrollChangeListener {
+public class MainActivity extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener, PlaybackControlView.VisibilityListener, Lytter {
 
 	// -- Views mm
 	SimpleExoPlayer afsp;
@@ -410,9 +410,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		});
 
 		if(a.test) logo.setOnClickListener(this);
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-			hovedlisten.setOnScrollChangeListener(this);
-		}
+		//if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+			hovedlisten.addOnScrollListener(new RecyclerView.OnScrollListener() {
+				@Override
+				public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+					super.onScrollStateChanged(recyclerView, newState);
+					mere.setAlpha(0);
+
+				}
+			});
+		//}
 
 
 	}// END sætLyttere()
@@ -466,7 +473,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	protected void onRestoreInstanceState(Bundle savedInstanceState) {
 		super.onRestoreInstanceState(savedInstanceState);
 		p("ONRESTOREINSTANCESTATE");
-		//////////////////////   TJEK FOR OM TOM SØGNING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+		//////////////////////  HUSK TJEK FOR OM TOM SØGNING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 		String s = savedInstanceState.getString("søgeord");
 		//viserposition = savedInstanceState.getInt("position");
 		if (getString(R.string.hint).equalsIgnoreCase(s))
@@ -498,17 +505,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 	}
 
-	@Override
-	public void onScrollChange(View view, int i, int i1, int i2, int i3) {
-		mere.setAlpha(0);
-	}
 
 
 	/////----- Test / Log / debugging -------//////
 
 
 /*
-	//Åbner test-/debug-aktivitet
 	@Override
 	public boolean onLongClick(View p1) {
 		//Intent i = new Intent(this, Test.class);
@@ -604,7 +606,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			try {
 				super.onLayoutChildren(recycler, state);
 			} catch (IndexOutOfBoundsException e) {
-				p("Fejl: IndexOutOfBoundsException");
+				p("Fejl: LLManagerWrapper IndexOutOfBoundsException "+e.getMessage());
+				e.printStackTrace();
 			}
 		}
 	}
