@@ -116,10 +116,14 @@ public class Test extends Activity implements View.OnClickListener, Lytter{
 		nulstil.setText("Data genindlæst færdig!");
 
 	}
-
 	@Override
 	public void logOpdateret() {
 		ar.notifyDataSetChanged();
+	}
+
+	@Override
+	public void netværksændring(boolean forbundet) {
+		p("netværksstatus: har netværk? "+forbundet);
 	}
 
 	@Override

@@ -1,11 +1,18 @@
 package dk.stbn.testts;
 import android.app.*;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.*;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.*;
 
 import com.crashlytics.android.Crashlytics;
@@ -36,6 +43,10 @@ public class Appl extends Application
 	public boolean genstartetFraTestAkt = false;
 	//** Hentes webm eller mp4 i hentArtikel()
 	boolean webm = false;
+	boolean harNetværk = false;
+	static BroadcastReceiver netværksstatus;
+	IntentFilter netfilter;
+	boolean dataHentet = false;
 
 	//-- System
 	public static Appl a;
@@ -55,24 +66,49 @@ public class Appl extends Application
 	//-- Lyttersystem
 
 	ArrayList<Lytter> lyttere;
-
-
 	void givBesked () { for (Lytter l : lyttere) l.grunddataHentet();}
+	void givBesked (boolean forbundet) { for (Lytter l : lyttere) l.netværksændring(forbundet);}
 
 
 
 	@Override
 	public void onCreate() {
 		super.onCreate();
+
 		lyttere = new ArrayList();
+
 		init("ONCREATE");
-		
+
+		netværksstatus = new BroadcastReceiver() {
+
+			@Override
+			public void onReceive(Context context, Intent intent) {
+				Log.d("xxx", this + " " + intent);
+				Bundle b = intent.getExtras();
+
+				Toast.makeText(context, this + " " + intent, Toast.LENGTH_LONG).show();
+				// Se http://developer.android.com/training/monitoring-device-state/connectivity-monitoring.html
+				// for flere muligheder
+				p("ÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆ ");
+				ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+				NetworkInfo netInfo = cm.getActiveNetworkInfo();
+				harNetværk = (netInfo != null && netInfo.isConnected());
+
+				givBesked(netInfo != null && netInfo.isConnected());
+			}
+
+
+		};
 	}
 
 	void init(String kaldtFra){
 		a=this;
 		Utill.tid = System.currentTimeMillis();
 		p(kaldtFra);
+
+		netfilter = new IntentFilter();
+		netfilter.addCategory(Intent.CATEGORY_DEFAULT);
+		netfilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
 
 
 
@@ -86,7 +122,12 @@ public class Appl extends Application
 		loop = sp.getBoolean("loop", true);
 		if (android.os.Build.VERSION.SDK_INT == 22) webm = true; //MP4-udgaverne af videoerne understøttes ikke på android 5.1 = API 22
 		else webm = sp.getBoolean("format", true);
+		if (harNetværk)
+			hentDataAsync();
+		else
+	}
 
+	void hentDataAsync(){
 		new AsyncTask() {
 
 			@Override
@@ -101,27 +142,13 @@ public class Appl extends Application
 				if (!(lyttere.size() == 0)) {
 					givBesked();
 					dataKlar = true;
+					dataHentet = true;
 				}
-				else { /// M I D L E R T I D I G T !!! Netværkslytter skal ind i stedet!!!!
-					p("FEJL Main fandtes ikke da data skulle opdateres");
-					new Handler().postDelayed(new Runnable() {
-						@Override
-						public void run() {
-
-							if (!(lyttere.size() == 0)) {
-								givBesked();
-								dataKlar = true;
-							}
-							else t("FEJL Main fandtes ikke da data skulle opdateres II");
-
-						}
-					}, 1150);
-				}
-
 
 			}
 
 		}.execute();
+
 	}
 
 	public void hentSøgeindeks2(String u) {
@@ -510,7 +537,8 @@ public class Appl extends Application
 
 	}
 
-	void p (Object o){
+
+		void p (Object o){
 		Utill.p("Appl."+o);
 	}
 	void t (Object o){

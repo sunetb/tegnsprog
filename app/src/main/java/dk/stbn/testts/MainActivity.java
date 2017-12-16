@@ -5,6 +5,7 @@ import android.os.*;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.*;
 import android.view.View.*;
 import android.view.*;
@@ -75,9 +76,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         super.onCreate(savedInstanceState);
         p("ONCREATE");
 		setContentView(R.layout.main);
-
-        a = Appl.a;
-        ctx = this;
+		a = Appl.a;
+		registerReceiver(a.netværksstatus, a.netfilter);
+		ctx = this;
 		a.lyttere.add(this); //registrerer aktiviteten som lytter
 		aktGenstartet = a.dataKlar; //Hvis aktiviteteten lukkes og åbnes igen er data klar og vi skal køre run() for at sætte adapteren på autocompletelisten
 		sp = a.sp;
@@ -107,7 +108,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		loopcb.setChecked(a.loop);
 		langsomcb = (CheckBox) findViewById(R.id.langsomcb);
 		langsom = (TextView) findViewById(R.id.langsomtv);
+		langsomcb.setChecked(a.slowmotion);
 		logo = (ImageView) findViewById(R.id.overskriftLogo);
+
 		sætLyttere();
 
 		if (savedInstanceState != null || aktGenstartet) {
@@ -167,15 +170,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		
 	}
 
-	void pause(){
-    	afsp.setPlayWhenReady(false);
-    	a.spillerNu = -1;
 
-
-	}
-	void play (){
-
-	}
 
 	//** Til abetest
 	private void testSøgning() {
@@ -451,12 +446,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	
 	@Override
 	protected void onDestroy() {
-		super.onDestroy();
-		//afsp.release();
 		a.releaseAlle();
-
 		a.lyttere.remove(this); // afregistrerer lytter
-
+		unregisterReceiver(a.netværksstatus);
+		super.onDestroy();
 	}
 
 	@Override
@@ -505,6 +498,15 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 	}
 
+	@Override
+	public void netværksændring(boolean forbundet) {
+		if (!forbundet){
+			//visdrejehjul();
+			infodialog("Tjek dine netværksindstillinger", "Ingen netværksfobindelse");
+		}
+
+
+	}
 
 
 	/////----- Test / Log / debugging -------//////
@@ -611,6 +613,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			}
 		}
 	}
+
 	boolean klikket = false;
 	private void testDialog (String besked, String overskrift) {
 
@@ -644,7 +647,26 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		alertDialog.show();
 	}
 
+	private void infodialog (String besked, String overskrift) {
 
+
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+		alertDialogBuilder.setTitle(overskrift);
+		alertDialogBuilder
+				.setMessage(besked)
+				.setCancelable(true)
+				.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,int id) {
+
+						dialog.cancel();
+
+					}
+				});
+
+
+		AlertDialog alertDialog = alertDialogBuilder.create();
+		alertDialog.show();
+	}
 
 	//Bevarer dialog ved skærmvending tilpasset fra http://stackoverflow.com/questions/8537518/the-method-getwindow-is-undefined-for-the-type-alertdialog-builder
 	private static void doKeepDialog(AlertDialog.Builder dialog){
@@ -655,6 +677,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 		dlg.getWindow().setAttributes(lp);
 	}
+
+
+
 
 
 	void p (Object o){
