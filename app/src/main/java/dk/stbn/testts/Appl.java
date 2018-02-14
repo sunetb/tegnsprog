@@ -22,23 +22,25 @@ import com.google.android.exoplayer2.Player;
 
 import dk.stbn.testts.lytter.Lytter;
 import io.fabric.sdk.android.Fabric;
+import io.fabric.sdk.android.Logger;
+
 import java.io.*;
 import java.net.*;
 import java.util.*;
 
-public class Appl extends Application
+public class Appl extends Application implements Lytter
 {
 	/// Aide
 	/// As x
 
 	//-- Tilstand
-	String aktueltSøgeord = "";
+	String aktueltSøgeord = "velkommen";
 	boolean dataKlar = false;
 	boolean visPil = true;
 	boolean loop = true;
 	boolean slowmotion = false;
 	long position = 0;
-	boolean test = true;
+	boolean test = false;
 	public int spillerNu = -1;
 	public boolean genstartetFraTestAkt = false;
 	//** Hentes webm eller mp4 i hentArtikel()
@@ -47,9 +49,11 @@ public class Appl extends Application
 	static BroadcastReceiver netværksstatus;
 	IntentFilter netfilter;
 	boolean dataHentet = false;
+	boolean nystartet = true; //sættes til false i søg() i Main
 
 	//-- System
 	public static Appl a;
+	Context ctx;
 
 
 
@@ -74,41 +78,24 @@ public class Appl extends Application
 	@Override
 	public void onCreate() {
 		super.onCreate();
-
+		ctx = this.getApplicationContext();
+		a=this;
 		lyttere = new ArrayList();
+		lyttere.add(this);
+		sætNetværkslytter();
+		sp= PreferenceManager.getDefaultSharedPreferences(this);
 
-		init("ONCREATE");
-
-		netværksstatus = new BroadcastReceiver() {
-
-			@Override
-			public void onReceive(Context context, Intent intent) {
-				Log.d("xxx", this + " " + intent);
-				Bundle b = intent.getExtras();
-
-				Toast.makeText(context, this + " " + intent, Toast.LENGTH_LONG).show();
-				// Se http://developer.android.com/training/monitoring-device-state/connectivity-monitoring.html
-				// for flere muligheder
-				p("ÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆ ");
-				ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-				NetworkInfo netInfo = cm.getActiveNetworkInfo();
-				harNetværk = (netInfo != null && netInfo.isConnected());
-
-				givBesked(netInfo != null && netInfo.isConnected());
-			}
+		//init("ONCREATE");
 
 
-		};
+
+
 	}
 
 	void init(String kaldtFra){
-		a=this;
-		Utill.tid = System.currentTimeMillis();
-		p(kaldtFra);
 
-		netfilter = new IntentFilter();
-		netfilter.addCategory(Intent.CATEGORY_DEFAULT);
-		netfilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+		Utill.tid = System.currentTimeMillis();
+		p("Appl.init() kaldt fra "+kaldtFra);
 
 
 
@@ -116,15 +103,51 @@ public class Appl extends Application
 		if (!EMULATOR) {
 			Fabric.with(this, new Crashlytics());
 			test = true;
+			Logger fLog = Fabric.getLogger();
+			fLog.d("test", "test");
 		}
 
-		sp= PreferenceManager.getDefaultSharedPreferences(this);
+
 		loop = sp.getBoolean("loop", true);
 		if (android.os.Build.VERSION.SDK_INT == 22) webm = true; //MP4-udgaverne af videoerne understøttes ikke på android 5.1 = API 22
-		else webm = sp.getBoolean("format", true);
-		if (harNetværk)
-			hentDataAsync();
-		else
+		else webm = sp.getBoolean("format", true); //andre kan frit vælge i indstillinger
+		p("Har vi netværk? "+harNetværk);
+		if (harNetværk)	hentDataAsync();
+		else givBesked (false);
+
+	}
+
+	void sætNetværkslytter(){
+
+		p("Netværkslytter sættes ");
+		netfilter = new IntentFilter();
+		netfilter.addCategory(Intent.CATEGORY_DEFAULT);
+		netfilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+
+		netværksstatus = new BroadcastReceiver() {
+
+			@Override
+			public void onReceive(Context context, Intent intent) {
+				p( this + " " + intent);
+				Bundle b = intent.getExtras();
+
+				Toast.makeText(context, this + " " + intent, Toast.LENGTH_LONG).show();
+				// Se http://developer.android.com/training/monitoring-device-state/connectivity-monitoring.html
+				// for flere muligheder
+
+				ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+				NetworkInfo netInfo = cm.getActiveNetworkInfo();
+				harNetværk = (netInfo != null && netInfo.isConnected());
+
+
+				givBesked(harNetværk);
+
+				p("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPNetværk: onRecieve() "+ harNetværk);
+			}
+
+
+		};
+		registerReceiver(netværksstatus, netfilter);
 	}
 
 	void hentDataAsync(){
@@ -132,6 +155,7 @@ public class Appl extends Application
 
 			@Override
 			protected Object doInBackground(Object[] params) {
+				p("Kalder henSøgeindeks2()");
 				hentSøgeindeks2(nyUrl);
 				return null;
 			}
@@ -223,6 +247,7 @@ public class Appl extends Application
 			ex.printStackTrace();
 			p(ex);
 			p(ex.getMessage());
+			givBesked(false);
 		}
 
 
@@ -487,13 +512,33 @@ public class Appl extends Application
 			ex.printStackTrace();
 			p(ex);
 			p(ex.getMessage());
+			nulNetBeskedFraBraggrund();
+
 		}
 		p("hentArtikel færdig");
 		return new Fund(Uri.parse(vUrl), beskrivelser);
 	}
-	
 
-    public void releaseAlle() {
+	private void nulNetBeskedFraBraggrund() {
+
+		//Async med tom doInBackground, for at få kaldt givBesked() i forgrunden
+
+		new AsyncTask() {
+			@Override
+			protected Object doInBackground(Object[] objects) {
+				return null;
+			}
+
+			@Override
+			protected void onPostExecute(Object o) {
+				super.onPostExecute(o);
+				givBesked(false);
+			}
+		}.execute();
+	}
+
+
+	public void releaseAlle() {
 		for (Fund f : søgeresultat)
 			if (f.afsp != null) f.afsp.release();
 			else p("Fejl: releaseAlle() gav null object "+søgeresultat.size());
@@ -514,7 +559,7 @@ public class Appl extends Application
 
 		for (Fund f : søgeresultat) {
 			if (f.afsp == null) {
-				f.initAfsp(this);
+				f.initAfsp(ctx);
 				p("opdaterLoop() Fejl: afsp var null");
 			}
 			if (loop) f.afsp.setRepeatMode(Player.REPEAT_MODE_ONE);
@@ -538,12 +583,12 @@ public class Appl extends Application
 	}
 
 
-		void p (Object o){
+	void p (Object o){
 		Utill.p("Appl."+o);
 	}
 	void t (Object o){
 
-		Toast.makeText(this, ""+o, Toast.LENGTH_LONG).show();
+		Toast.makeText(ctx, ""+o, Toast.LENGTH_LONG).show();
 	}
 
 
@@ -554,6 +599,7 @@ public class Appl extends Application
 	public void nulstilTilstandHeavy() {
 		p("HEAVY NULSTIL");
 		//aktueltSøgeord = "";
+		dataHentet = false;
 		dataKlar = false;
 		visPil = true;
 		loop = true;
@@ -569,5 +615,21 @@ public class Appl extends Application
 
 		init("HEAVY NULSTIL");
 
-}
+	}
+
+	@Override
+	public void grunddataHentet() {
+
+	}
+
+	@Override
+	public void logOpdateret() {
+
+	}
+
+	@Override
+	public void netværksændring(boolean forbundet) {
+		p("netværksændring callback kaldt");
+		if (harNetværk && nystartet) init("Appl.netværksændring");
+	}
 }

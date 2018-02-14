@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	private RecyclerView hovedlisten;
 	private RecyclerView.Adapter adapter;
 
+	AlertDialog netværksdialog;
 
 	// -- Sys
 	Appl a;
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         p("ONCREATE");
 		setContentView(R.layout.main);
 		a = Appl.a;
-		registerReceiver(a.netværksstatus, a.netfilter);
+
 		ctx = this;
 		a.lyttere.add(this); //registrerer aktiviteten som lytter
 		aktGenstartet = a.dataKlar; //Hvis aktiviteteten lukkes og åbnes igen er data klar og vi skal køre run() for at sætte adapteren på autocompletelisten
@@ -88,8 +89,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		hovedlisten = (RecyclerView) findViewById(R.id.hovedlisten);
 
 		//hovedlisten.setHasFixedSize(true);
-		Logger fLog = Fabric.getLogger();
-		fLog.d("test", "test");
+
 		adapter = new Hovedliste_adapter(a.søgeresultat, this);
 		hovedlisten.setAdapter(adapter);
 		hovedlisten.setLayoutManager(new LinearLayoutManagerWrapper(this));
@@ -286,6 +286,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 	void søg (String søgeordInd){
 		a.visPil = true;
+		a.nystartet = false;
+		if (!a.harNetværk){
+			netværksdialog = infodialog("Tjek dine netværksindstillinger", "Ingen netværksforbindelse");
+			return;
+		}
 		p("søg("+søgeordInd+")");
 
 		//a.antalSøgninger++; // Bruges til at tjekke om onScroll er blevet kaldt når lytteren sættes eller om brugeren rent faktisk har scrollet (alternativ til onTouch)
@@ -448,13 +453,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	protected void onDestroy() {
 		a.releaseAlle();
 		a.lyttere.remove(this); // afregistrerer lytter
-		unregisterReceiver(a.netværksstatus);
+		//unregisterReceiver(a.netværksstatus);
 		super.onDestroy();
 	}
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
-		String s = søgefelt.getHint().toString();
+		String s= "";
+		if (søgefelt.getHint() != null) s = søgefelt.getHint().toString();
 		//t("onsaveinstancestate: "+ s);
 		outState.putString("søgeord", s);
 		//outState.putInt("position", viserposition);
@@ -482,6 +488,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	//-- Eget lytter-inteface
 	@Override
 	public void grunddataHentet() {
+    	p("Grunddata hentet");
 		søgeknap.setEnabled(true);
 		autoSuggest = new ArrayAdapter(this,android.R.layout.simple_list_item_1, a.tilAutoComplete);
 		søgefelt.setAdapter(autoSuggest);
@@ -502,14 +509,20 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	public void netværksændring(boolean forbundet) {
 		if (!forbundet){
 			//visdrejehjul();
-			infodialog("Tjek dine netværksindstillinger", "Ingen netværksfobindelse");
+			netværksdialog = infodialog("Tjek dine netværksindstillinger", "Ingen netværksforbindelse");
+
+		}
+		else {
+			if (netværksdialog != null) netværksdialog.dismiss();
+			p("Nu forbundet til netværk");
+			if (a.nystartet && a.dataHentet) grunddataHentet();
+
+			søgeknap.setEnabled(true);
 		}
 
 
 	}
 
-
-	/////----- Test / Log / debugging -------//////
 
 
 /*
@@ -647,7 +660,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		alertDialog.show();
 	}
 
-	private void infodialog (String besked, String overskrift) {
+	private AlertDialog infodialog (String besked, String overskrift) {
 
 
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -666,6 +679,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 		AlertDialog alertDialog = alertDialogBuilder.create();
 		alertDialog.show();
+		return alertDialog;
 	}
 
 	//Bevarer dialog ved skærmvending tilpasset fra http://stackoverflow.com/questions/8537518/the-method-getwindow-is-undefined-for-the-type-alertdialog-builder
