@@ -175,6 +175,7 @@ public class Appl extends Application implements Lytter
 
 	}
 
+	//Kaldes kun i baggrunden
 	public void hentSøgeindeks2(String u) {
 
 		try { // Henter fil
@@ -247,108 +248,12 @@ public class Appl extends Application implements Lytter
 			ex.printStackTrace();
 			p(ex);
 			p(ex.getMessage());
-			givBesked(false);
+			nulNetBeskedFraBraggrund();
 		}
 
 
 	}
-	
-	public void hentSøgeindeks(String u) {
 
-		try { // Henter fil
-			InputStream is = new URL(u).openStream();
-			is = new BufferedInputStream(is);
-			is.mark(1);
-			if (is.read() == 0xef) {
-				is.read();
-				is.read();
-
-			} else {
-				is.reset();
-			}
-			p("######## hentSøgeindeks() =#=#=#=#=#=#=#=#=#=#=#=");
-			byte[] contents = new byte[1024];
-			String heleIndholdet = "";
-			int bytesRead = 0;
-			//bytesRead = is.read(contents); //skipper første linie
-			//bytesRead = is.read(contents); //skipper anden linie
-
-			//--Først hentes al tekst ind i én stor streng
-
-			while((bytesRead = is.read(contents)) != -1) {
-				String linie = new String(contents, 0, bytesRead);
-				heleIndholdet += linie;
-				//p("\nLinie_______________________________: "+linie);
-
-
-			}
-			
-			//-- Så konverteres strengen (oprindeligt et javascript-array med elementer af formen: "kaffe|386|1093")
-			//p("Efter while: " + (System.currentTimeMillis() - ms));
-			String [] temp = heleIndholdet.split(",");
-			boolean begynd = false;
-			for (String s : temp) {
-				//s = s.replaceAll("\"", "");
-
-				//-- Først skal vi finde søgeordet:
-				int ixStreg = s.indexOf("|");
-				//p("IND: " + s);
-				String søgeord ="";
-				if (ixStreg > 0) {
-					søgeord = s.substring(2,ixStreg);
-					//p("Søgeord: "+søgeord);
-
-					s = s.substring(ixStreg+1,s.length());
-
-					//--- Så skal vi finde indeksnumrene
-					ArrayList<String> index = new ArrayList<>();
-
-					//String [] udarray = s.split("|"); //-- Virker af en eller anden grund ikke. Heller ikke med escape\
-					String indeksnummer ="";
-
-					for (int i = 0; i < s.length(); i++) {
-						String tegn = s.substring(i,i+1);
-						if ((tegn != null)) {
-							//p(str+ " _ "+ str.codePointAt(0));
-							if (tegn.codePointAt(0) == 124 || tegn.codePointAt(0) == 34){ // | eller "
-								index.add(indeksnummer);
-								indeksnummer = "";
-								if (tegn.codePointAt(0) == 34) break;
-							}
-
-							else indeksnummer += tegn;
-
-						}
-					}
-					//p("Efter for indre: " + (System.currentTimeMillis() - ms));
-					
-					Indgang indgang = new Indgang(søgeord, index);
-					a.søgeindeks.add(indgang);
-					//p("UD:  " + indgang.toString());
-				}
-			}
-			//p("Efter for ydre " + (System.currentTimeMillis() - ms));
-
-			Indgang første = søgeindeks.get(0);
-			p("________tjekker første indgang "+første);
-			første.søgeord = første.søgeord.substring(34);
-			p(første);
-
-			//tjekIndgang("i tirsdags");
-			//tjekIndgang("kaffe");
-
-			//--Tjek Indgang i søgenindeks
-//p("--------------------tjekker---søgeindeks---------------------");
-			//for (Indgang i : søgeindeks) p(i);
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			p(ex);
-			p(ex.getMessage());
-		}
-
-
-	}
 	
 	void tjekIndgang (String søgeord){
 		for (int i = 0; i<søgeindeks.size(); i++) {
@@ -363,6 +268,7 @@ public class Appl extends Application implements Lytter
 
 	}
 
+	//Kaldes kun fra baggrund
 	public Fund hentArtikel(String u) {
 		p("hentArtikel("+u+")");
 		String vUrl = "";
@@ -586,6 +492,7 @@ public class Appl extends Application implements Lytter
 	void p (Object o){
 		Utill.p("Appl."+o);
 	}
+
 	void t (Object o){
 
 		Toast.makeText(ctx, ""+o, Toast.LENGTH_LONG).show();
