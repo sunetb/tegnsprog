@@ -559,9 +559,37 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 				overskrift = (TextView) v.findViewById(R.id.fundtekstOverskrift);
 				fundtekst = (TextView) v.findViewById(R.id.fundtekst);
 				fundtekst.setOnClickListener(this);
-				playerv.setControllerShowTimeoutMs(1500);
-				playerv.hideController();
+				//playerv.setControllerShowTimeoutMs(1500);
+				//playerv.hideController();
 				playerv.setControllerAutoShow(false);
+
+
+				//Deaktiverer controls
+				playerv.hideController();
+				playerv.setControllerVisibilityListener(new PlaybackControlView.VisibilityListener() {
+					@Override
+					public void onVisibilityChange(int i) {
+						if(i == 0) {
+							playerv.hideController();
+						}
+					}
+				});
+
+				playerv.setOnTouchListener(new OnTouchListener() {
+					@Override
+					public boolean onTouch(View view, MotionEvent motionEvent) {
+						if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+
+							//pauser hvis den spiller, spiller hvis den er pauset
+							SimpleExoPlayer p = playerv.getPlayer();
+							boolean pause = p.getPlayWhenReady();
+							p.setPlayWhenReady(!pause);
+						}
+
+
+						return true; //Sender ikke touch videre
+					}
+				});
 			}
 
 			@Override
