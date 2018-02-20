@@ -32,11 +32,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	// -- Views mm
 	SimpleExoPlayer afsp;
 	ImageButton søgeknap;
-	TextView  loop, langsom;
+	TextView  loop, langsom, flereFund;
 	CheckBox loopcb, langsomcb;
 	AutoCompleteTextView søgefelt;
 	ImageView mere, logo;
 	ArrayAdapter autoSuggest;
+	FrameLayout fl;
 
 	private RecyclerView hovedlisten;
 	private RecyclerView.Adapter adapter;
@@ -95,13 +96,20 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		hovedlisten.setLayoutManager(new LinearLayoutManagerWrapper(this));
 		liggendeVisning = liggendeVisning();
 
-		mere = (ImageView) findViewById(R.id.mere);
-		//FrameLayout glFrame=(FrameLayout) findViewById(R.id.fl);
-//		glFrame.addView(mere);
-		mere.bringToFront();
-		mere.invalidate();
+		//mere = (ImageView) findViewById(R.id.mere);
 
-		mere.setAlpha(0);
+		//mere.bringToFront();
+		//mere.invalidate();
+
+		//mere.setAlpha(0);
+		fl = (FrameLayout) findViewById(R.id.fl);
+		fl.bringToFront();
+		fl.invalidate();
+
+		fl.setAlpha(0);
+		flereFund = (TextView) findViewById(R.id.antalFund);
+
+
 		søgefelt = (AutoCompleteTextView) findViewById(R.id.søgefelt);
 		loop = (TextView) findViewById(R.id.looptv);
 		loopcb = (CheckBox) findViewById(R.id.loopcb);
@@ -222,13 +230,17 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 			//-- Opdaterer synligheden for pilen "vis mere"
 			if (a.søgeresultat.size() < 2 || !a.visPil) {
-				mere.setAlpha(0);
+				//mere.setAlpha(0);
+				fl.setAlpha(0);
+
 			}
 
 			else	{
-				mere.setAlpha(100);
+				//mere.setAlpha(100);
+				fl.setAlpha(0.9f);
 				a.visPil = false;
 			}
+			flereFund.setText("Antal fund: "+a.søgeresultat.size());
 
 			//Først spilles det første fund i listen
 			p("Søgeresultat size1: "+a.søgeresultat.size());
@@ -415,8 +427,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 				@Override
 				public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
 					super.onScrollStateChanged(recyclerView, newState);
-					mere.setAlpha(0);
-
+					//mere.setAlpha(0);
+					fl.setAlpha(0);
 				}
 			});
 		//}
