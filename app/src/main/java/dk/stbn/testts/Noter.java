@@ -5,29 +5,30 @@ package dk.stbn.testts;
 logik-klasse som ikke er Appl?
 IO-klasse?
 data-klasse
-caching?
+caching? Evt gemme Velkommen.. Og søgeindeks?
 
 Liggende visning
 
-Videafspilning
--controlview væk og play/pause ved klik på video
+div videofejl(
+lillebitte (3011), hej (3077)
 
-Netværkslytter: Meddelelse ved manglende internetforbindelse
 
-Afspil alle til/fra. Evt i indstillinger
+Net fra, start app, indekslisten hentes ikke ved genetableret forbindelse
 
-Vis fuld artikel
-
-Test-interface:
-    -mail
-    -webm/mp4
-    -log
-    -nulstil
-
+0.1.3 Håndtering af svigtende netforbindelse
+0.1.4 Forsøg på automatisk detektering af fejl i videoafspilning og skift af format (webm/mp4)
+0.1.5 Fuld artikel (design: mock-up)
+0.1.6 liggende vising (design)
+0.1.7 Fuld artikel (design)
+0.1.8 Liggende visning implementeret
+0.1.9 Søgning med *
+0.2.0 Beta: Fuld artikel implementeret
 
 
 Nice to have:
-    -hold og før horisontalt på video viser frames
+    -Hold og før horisontalt på video scroller i pausede frames
+    -Afspil alle automatisk, til/fra. Evt i indstilling
+    -Seekbar
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%Brugertest%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -41,4 +42,5 @@ Når jeg søger med * , får jeg intet resultat.
 */
 public class Noter
 {
+
 }

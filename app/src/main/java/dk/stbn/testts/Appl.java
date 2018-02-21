@@ -46,7 +46,8 @@ public class Appl extends Application implements Lytter
 	//** Hentes webm eller mp4 i hentArtikel()
 	boolean webm = false;
 	boolean harNetværk = false;
-	static BroadcastReceiver netværksstatus;
+	boolean netværkTabt = false;
+	BroadcastReceiver netværksstatus;
 	IntentFilter netfilter;
 	boolean dataHentet = false;
 	boolean nystartet = true; //sættes til false i søg() i Main

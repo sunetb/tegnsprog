@@ -9,7 +9,10 @@ public class Utill
 	
 	static ArrayList<String> debugbesked = new ArrayList();
 	static long tid;
-
+	static String changelog = "" +
+			"Dialogboks ved manglende netværk\n"+
+			"Gentager mislykket søgning ved svigtende netværk\n"
+			;
 
 
 	static void p(Object o){
