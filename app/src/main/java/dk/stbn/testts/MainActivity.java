@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	private RecyclerView.Adapter adapter;
 
 	AlertDialog netværksdialog;
+	ProgressBar vent;
 
 	// -- Sys
 	Appl a;
@@ -84,6 +85,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 		a.lyttere.add(this); //registrerer aktiviteten som lytter
 		aktGenstartet = a.dataKlar; //Hvis aktiviteteten lukkes og åbnes igen er data klar og vi skal køre run() for at sætte adapteren på autocompletelisten
 		sp = a.sp;
+
+		vent = (ProgressBar) findViewById(R.id.progressBar);
+		vent.setVisibility(View.GONE);
 		søgeknap = (ImageButton) findViewById(R.id.mainButton);
 		søgeknap.setEnabled(false);
 
@@ -458,14 +462,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 	@Override
 	public void onVisibilityChange(int p1)	{
-		//Toast.makeText(this, "Visibility "+p1, Toast.LENGTH_LONG).show();
+		p("Visibility "+p1);
 	}
 	
 	@Override
 	protected void onDestroy() {
 		a.releaseAlle();
-		a.lyttere.remove(this); // afregistrerer lytter
-		//unregisterReceiver(a.netværksstatus);
+		a.lyttere.remove(this);// afregistrerer lytter
+		a.nystartet = true; //Når Appl overlever, kaldes init ikke igen
 		super.onDestroy();
 	}
 
@@ -520,15 +524,15 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 	@Override
 	public void netværksændring(boolean forbundet) {
 		if (!forbundet){
-			//visdrejehjul();
-			netværksdialog = infodialog("Tjek dine netværksindstillinger", "Ingen netværksforbindelse");
+			vent.setVisibility(View.VISIBLE);
+			netværksdialog = infodialog("Tjek dine netværksindstillinger. Tryk evt. på Søg-knappen for at prøve igen", "Ingen netværksforbindelse");
 
 		}
 		else {
 			if (netværksdialog != null) netværksdialog.dismiss();
 			p("Nu forbundet til netværk");
 			if (a.nystartet && a.dataHentet) grunddataHentet();
-
+			vent.setVisibility(View.GONE);
 			søgeknap.setEnabled(true);
 		}
 
@@ -633,8 +637,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 			p("onBindViewHolder pos "+pos );
 			Fund f = data.get(pos);
 			holder.playerv.setPlayer(f.afsp);
-			holder.overskrift.setText(f.nøgle + " ("+f.index+")");
-			holder.fundtekst.setText(f.getTekst());
+			holder.overskrift.setText(f.nøgle);
+			if (f.index != null) {
+				holder.overskrift.append(" ("+f.index+")");
+				holder.fundtekst.setText(f.getTekst());
+			}
+			else holder.fundtekst.setText("");
+
 
 		}
 

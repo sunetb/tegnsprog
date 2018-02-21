@@ -128,10 +128,13 @@ public class Appl extends Application implements Lytter
 
 			@Override
 			public void onReceive(Context context, Intent intent) {
-				p( this + " " + intent);
 				Bundle b = intent.getExtras();
 
-				Toast.makeText(context, this + " " + intent, Toast.LENGTH_LONG).show();
+				for (String key : b.keySet()) {
+					p( key + " => " + b.get(key));
+				}
+				//p("Bundle: "+b.keySet());
+				//Toast.makeText(context, this + " " + intent, Toast.LENGTH_LONG).show();
 				// Se http://developer.android.com/training/monitoring-device-state/connectivity-monitoring.html
 				// for flere muligheder
 
@@ -142,7 +145,7 @@ public class Appl extends Application implements Lytter
 
 				givBesked(harNetværk);
 
-				p("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPNetværk: onRecieve() "+ harNetværk);
+				p("Netværk: onRecieve() "+ harNetværk);
 			}
 
 
