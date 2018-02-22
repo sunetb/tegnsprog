@@ -643,6 +643,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
                 //TODO: skelne mellem stående og liggende visning
 
+                //TODO: gøre det samme ved scroll
+
                 float højde = (float) Resources.getSystem().getDisplayMetrics().heightPixels/10;
                 int tid = 400;
 

@@ -12,7 +12,8 @@ public class Utill
 	static String changelog = "\n" +
 			"Dialogboks ved manglende netværk\n"+
 			"Gentager mislykket søgning ved svigtende netværk\n"+
-			"Fikset crash på Anroid 4/Kitkat"
+			"Fikset crash på Android 4.2.2/Kitkat (?)\n"+
+			"Animation ved klik på tekst under video"
 			;
 
 
