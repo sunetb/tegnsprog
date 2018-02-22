@@ -9,11 +9,9 @@ public class Utill
 	
 	static ArrayList<String> debugbesked = new ArrayList();
 	static long tid;
-	static String changelog = "\n" +
-			"Dialogboks ved manglende netværk\n"+
-			"Gentager mislykket søgning ved svigtende netværk\n"+
-			"Fikset crash på Android 4.2.2/Kitkat (?)\n"+
-			"Animation ved klik på tekst under video"
+	static String changelog = "\n"+
+            "Hvis parentes i glossen, bliver kun glossen med stort\n"+
+            ""
 			;
 
 

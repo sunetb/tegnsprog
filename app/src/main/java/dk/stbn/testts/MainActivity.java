@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         //Viser brugeren en dialog hvis han/hun kører en nyligt opdateret verison af appen
         String gemtVersionsNr = a.sp.getString("versionsnr", "helt ny");
         String versionsnummer = a.versionsnr();
+        p("Gemt versionsnr: "+ gemtVersionsNr + "  Aktuelt versioinsnr: "+versionsnummer);
         if (gemtVersionsNr.equals("helt ny")) a.sp.edit().putString("versionsnr", versionsnummer).commit();
         else if(!versionsnummer.equals(gemtVersionsNr) ) {
             infodialog("Nyeste ændringer: \n"+ Utill.changelog, "Du har netop installeret den nyeste version: "+a.versionsnr());
@@ -200,15 +201,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         søgeknap.performClick();
     }
 
-    //En slags hack hvis setPlayWhenReady(true/false) ikke kommer til at virke ordentligt
-    void pauseVideo(boolean pause) {
-
-        float valgtHast = (a.slowmotion) ? 0.25f : 1.0f;
-
-        float hast = (pause) ? 0.0f : valgtHast;
-        afsp.setPlaybackParameters(new PlaybackParameters(hast, 1));
-    }
-
 
     private String forberedSøgning() {
 
@@ -224,7 +216,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         if (søgefelt.getText().toString().equals(søgefelt.getHint().toString()))
             return ""; //Der blev trykket "Søg" uden at søgeordet var ændret
         søgeknap.setEnabled(false);
-        //a.søgeresultat.clear();
+
         return søgeordet.toLowerCase();
     }
 
@@ -524,12 +516,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     @Override
     public void netværksændring(boolean forbundet) {
         if (!forbundet) {
-            //vent.setVisibility(View.VISIBLE);
-            //netværksdialog = infodialog("Tjek dine netværksindstillinger. Tryk evt. på Søg-knappen for at prøve igen", "Ingen netværksforbindelse");
             manglerNetværk();
-
-
-        } else {
+        }
+        else {
             if (netværksdialog != null) netværksdialog.dismiss();
             if (!a.nystartet) t("Nu forbundet til netværk");
             if (a.nystartet && a.dataHentet) grunddataHentet(); //ikke så pænt at aktivere lytteren herfra...
@@ -543,8 +532,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 søg(søgeordVedMistetForbindelse);
                 p("Genetableret forbindelse. Søger på: "+ søgeordVedMistetForbindelse);
             }
-
-
         }
 
 
@@ -563,22 +550,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             }
         });
         pDialog.show();
-
     }
 
 
-    /*
-        @Override
-        public boolean onLongClick(View p1) {
-            //Intent i = new Intent(this, Test.class);
-            //startActivity(i);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1) {
-                //afspView.animate().scaleX(0.5f).scaleY(0.5f);
-            }
-
-            return true;
-        }
-    */
 
     //////////////////////////_______________________ADAPTER_______________________/////////////////////////////////
 
@@ -598,16 +572,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
             public ViewHolder(View v) {
                 super(v);
-                c = (CardView) v.findViewById(R.id.kort);
-                playerv = (SimpleExoPlayerView) v.findViewById(R.id.afspillerview);
+                c = v.findViewById(R.id.kort);
+                playerv = v.findViewById(R.id.afspillerview);
                 playerv.setOnClickListener(this); //Virker ikke
-                overskrift = (TextView) v.findViewById(R.id.fundtekstOverskrift);
-                fundtekst = (TextView) v.findViewById(R.id.fundtekst);
+                overskrift = v.findViewById(R.id.fundtekstOverskrift);
+                fundtekst = v.findViewById(R.id.fundtekst);
                 fundtekst.setOnClickListener(this);
-                //playerv.setControllerShowTimeoutMs(1500);
-                //playerv.hideController();
                 playerv.setControllerAutoShow(false);
-
 
                 //Deaktiverer controls
                 playerv.hideController();
@@ -652,9 +623,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
                         søgebar.animate().scaleY(1.0f).setDuration(tid);
                         hovedlisten.animate().translationY(0.0f).setDuration(tid).start();//  translationY(0.5f);
-                        //hovedlisten.startAnimation(animationTilbage);
                 }
-
                 else {
                     søgebar.animate().scaleY(0.0f).setDuration(tid);
                     hovedlisten.animate().translationY(-højde).setDuration(tid).start();//  translationY(0.5f);
@@ -686,7 +655,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             p("onBindViewHolder pos " + pos);
             Fund f = data.get(pos);
             holder.playerv.setPlayer(f.afsp);
-            holder.overskrift.setText(f.nøgle.toUpperCase());
+
+            int parentes = f.nøgle.indexOf("(");
+            if (parentes >0) {
+                String overskriftDel1 = f.nøgle.substring(0, parentes).toUpperCase();
+                String overskriftDel2 = f.nøgle.substring(parentes);
+                holder.overskrift.setText(overskriftDel1 + overskriftDel2);
+            }
+            else holder.overskrift.setText(f.nøgle.toUpperCase());
             if (f.index != null) {
                 holder.overskrift.append(" (" + f.index + ")");
                 holder.fundtekst.setText(f.getTekst());
