@@ -16,8 +16,8 @@ lillebitte (3011), hej (3077)
 Net fra, start app, indekslisten hentes ikke ved genetableret forbindelse
 
 0.1.3 Håndtering af svigtende netforbindelse
-0.1.4 Forsøg på automatisk detektering af fejl i videoafspilning og skift af format (webm/mp4)
-0.1.5 Fuld artikel (design: mock-up)
+0.1.4 Fuld artikel (design: mock-up)
+0.1.5 Forsøg på automatisk detektering af fejl i videoafspilning og skift af format (webm/mp4)
 0.1.6 liggende vising (design)
 0.1.7 Fuld artikel (design)
 0.1.8 Liggende visning implementeret
