@@ -7,6 +7,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.animation.TranslateAnimation;
 import android.widget.*;
 import android.view.View.*;
 import android.view.*;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     ImageView mere, logo;
     ArrayAdapter autoSuggest;
     FrameLayout fl;
+    LinearLayout søgebar;
 
     private RecyclerView hovedlisten;
     private RecyclerView.Adapter adapter;
@@ -71,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     boolean liggendeVisning;
     boolean aktGenstartet = false;
     String søgeordVedMistetForbindelse = "";
+    boolean søgebarLille = false;
 
     //int viserposition = 0;
 
@@ -94,8 +97,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
         hovedlisten = (RecyclerView) findViewById(R.id.hovedlisten);
 
-        //hovedlisten.setHasFixedSize(true);
-
+        søgebar = findViewById(R.id.søgebar);
         adapter = new Hovedliste_adapter(a.søgeresultat, this);
         hovedlisten.setAdapter(adapter);
         hovedlisten.setLayoutManager(new LinearLayoutManagerWrapper(this));
@@ -618,6 +620,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                     }
                 });
 
+                //Håndterer "klik" på video
                 playerv.setOnTouchListener(new OnTouchListener() {
                     @Override
                     public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -628,17 +631,35 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                             boolean pause = p.getPlayWhenReady();
                             p.setPlayWhenReady(!pause);
                         }
-
-
                         return true; //Sender ikke touch videre
                     }
                 });
             }
 
+            //Håndterer klik på cardview
             @Override
             public void onClick(View view) {
                 final int position = getAdapterPosition();
-                Toast.makeText(getApplicationContext(), "Tegn nr " + position + " klikket. \nFunktionen er endnu ikke implemteret", Toast.LENGTH_LONG).show();
+
+                TranslateAnimation animation = new TranslateAnimation(0.0f, 0.0f,
+                        0.0f, -100.0f);          //  new TranslateAnimation(xFrom,xTo, yFrom,yTo)
+                animation.setDuration(1000);  // animation duration
+                //animation.setRepeatCount(0);  // animation repeat count
+                //animation.setRepeatMode(-0);   // repeat animation (left to right, right to left )
+                //animation.setFillAfter(true);
+
+
+                if(søgebarLille){
+                        søgebar.animate().scaleY(1.0f);
+                        hovedlisten.animate().translationY(1.0f);//  translationY(0.5f);
+                    }
+
+                    else {
+                        søgebar.animate().scaleY(0.0f);
+                        hovedlisten.startAnimation(animation);
+                    }
+                    søgebarLille = !søgebarLille;
+
 
             }
         }
@@ -664,7 +685,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             p("onBindViewHolder pos " + pos);
             Fund f = data.get(pos);
             holder.playerv.setPlayer(f.afsp);
-            holder.overskrift.setText(f.nøgle);
+            holder.overskrift.setText(f.nøgle.toUpperCase());
             if (f.index != null) {
                 holder.overskrift.append(" (" + f.index + ")");
                 holder.fundtekst.setText(f.getTekst());

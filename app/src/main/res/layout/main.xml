@@ -14,11 +14,11 @@
         android:src="@drawable/logo"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent=".09"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="@+id/søgebar"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/søgebar"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
@@ -72,7 +72,7 @@
         android:layout_marginTop="122dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/hovedlisten"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintEnd_toStartOf="@+id/søgebar"
         app:layout_constraintGuide_begin="122dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
