@@ -641,26 +641,25 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             public void onClick(View view) {
                 final int position = getAdapterPosition();
 
-                TranslateAnimation animation = new TranslateAnimation(0.0f, 0.0f,
-                        0.0f, -100.0f);          //  new TranslateAnimation(xFrom,xTo, yFrom,yTo)
-                animation.setDuration(1000);  // animation duration
-                //animation.setRepeatCount(0);  // animation repeat count
-                //animation.setRepeatMode(-0);   // repeat animation (left to right, right to left )
-                //animation.setFillAfter(true);
+                //TODO: skelne mellem stående og liggende visning
 
+                float højde = (float) Resources.getSystem().getDisplayMetrics().heightPixels/10;
+                int tid = 400;
 
                 if(søgebarLille){
-                        søgebar.animate().scaleY(1.0f);
-                        hovedlisten.animate().translationY(1.0f);//  translationY(0.5f);
-                    }
 
-                    else {
-                        søgebar.animate().scaleY(0.0f);
-                        hovedlisten.startAnimation(animation);
-                    }
-                    søgebarLille = !søgebarLille;
+                        søgebar.animate().scaleY(1.0f).setDuration(tid);
+                        hovedlisten.animate().translationY(0.0f).setDuration(tid).start();//  translationY(0.5f);
+                        //hovedlisten.startAnimation(animationTilbage);
+                }
 
+                else {
+                    søgebar.animate().scaleY(0.0f).setDuration(tid);
+                    hovedlisten.animate().translationY(-højde).setDuration(tid).start();//  translationY(0.5f);
+                    t("Kommer snart: Detaljeret visning/fuld artikel");
 
+                }
+                søgebarLille = !søgebarLille;
             }
         }
 
