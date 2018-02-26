@@ -439,14 +439,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         });
 
         if (a.test) logo.setOnClickListener(this);
-        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
         hovedlisten.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                //mere.setAlpha(0);
-                //fl.setAlpha(0);
-                fl.animate().alpha(0).setDuration(500);
+
+                fl.animate().alpha(0).setDuration(700);
             }
         });
         //}

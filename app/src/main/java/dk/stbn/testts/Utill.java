@@ -11,7 +11,8 @@ public class Utill
 	static long tid;
 	static String changelog = "\n"+
             "Caching af søgeord\n"+
-			"Videre med håndtering af netværks- og andre fejl"
+			"Videre med håndtering af netværks- og andre fejl\n"+
+			"Forbedret visning af antal fund"
 			;
 
 
