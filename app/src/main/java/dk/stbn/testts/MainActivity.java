@@ -445,7 +445,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 //mere.setAlpha(0);
-                fl.setAlpha(0);
+                //fl.setAlpha(0);
+                fl.animate().alpha(0).setDuration(500);
             }
         });
         //}
