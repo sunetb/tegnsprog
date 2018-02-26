@@ -255,7 +255,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 fl.setAlpha(0.9f);
                 a.visPil = false;
             }
-            flereFund.setText("Antal fund: " + a.søgeresultat.size());
+            flereFund.setText("" + a.søgeresultat.size());
 
             //Først spilles det første fund i listen
             p("Søgeresultat size1: " + a.søgeresultat.size());
@@ -532,7 +532,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     @Override
     public void netværksændring(boolean forbundet) {
         if (!forbundet) {
-            manglerNetværk();
+           if  (!a.nystartet) manglerNetværk();
         }
         else {
             if (netværksdialog != null) netværksdialog.dismiss();
@@ -597,156 +597,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         */
     }
 
-
-
-/////////////////////////////_______________________ADAPTER_______________________/////////////////////////////////
-
-    public class Hovedliste_adapter extends RecyclerView.Adapter<Hovedliste_adapter.ViewHolder> {
-
-        ArrayList<Fund> data;
-        Context c;
-        Appl a = Appl.a;
-
-
-        public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-            CardView c;
-            com.google.android.exoplayer2.ui.SimpleExoPlayerView playerv;
-            TextView overskrift;
-            TextView fundtekst;
-
-            public ViewHolder(View v) {
-                super(v);
-                c = v.findViewById(R.id.kort);
-                playerv = v.findViewById(R.id.afspillerview);
-                playerv.setOnClickListener(this); //Virker ikke
-                overskrift = v.findViewById(R.id.fundtekstOverskrift);
-                fundtekst = v.findViewById(R.id.fundtekst);
-                fundtekst.setOnClickListener(this);
-                playerv.setControllerAutoShow(false);
-
-                //Deaktiverer controls
-                playerv.hideController();
-                playerv.setControllerVisibilityListener(new PlaybackControlView.VisibilityListener() {
-                    @Override
-                    public void onVisibilityChange(int i) {
-                        if (i == 0) {
-                            playerv.hideController();
-                        }
-                    }
-                });
-
-                //Håndterer "klik" på video
-                playerv.setOnTouchListener(new OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View view, MotionEvent motionEvent) {
-                        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-
-                            //pauser hvis den spiller, spiller hvis den er pauset
-                            SimpleExoPlayer p = playerv.getPlayer();
-                            if (p == null) p("FEJL: Player var null i onTouch");
-                            else {
-                                boolean pause = p.getPlayWhenReady();
-                                p.setPlayWhenReady(!pause);
-                            }
-                        }
-                        return true; //Sender ikke touch videre
-                    }
-                });
-            }
-
-            //Håndterer klik på cardview
-            @Override
-            public void onClick(View view) {
-                final int position = getAdapterPosition();
-
-                //TODO: skelne mellem stående og liggende visning
-
-                //TODO: gøre det samme ved scroll
-
-                float højde = (float) Resources.getSystem().getDisplayMetrics().heightPixels/10;
-                int tid = 400;
-
-                if(søgebarLille){
-
-                        søgebar.animate().scaleY(1.0f).setDuration(tid);
-                        hovedlisten.animate().translationY(0.0f).setDuration(tid).start();//  translationY(0.5f);
-                }
-                else {
-                    søgebar.animate().scaleY(0.0f).setDuration(tid);
-                    hovedlisten.animate().translationY(-højde).setDuration(tid).start();//  translationY(0.5f);
-                    t("Kommer snart: Detaljeret visning/fuld artikel");
-
-                }
-                søgebarLille = !søgebarLille;
-            }
-        }
-
-        public Hovedliste_adapter(ArrayList søgeresultater, Context ctx) {
-            data = søgeresultater;
-            c = ctx;
-        }
-
-        @Override
-        public Hovedliste_adapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                                int viewType) {
-
-            CardView rod = (CardView) LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.kort, parent, false);
-
-            ViewHolder vh = new ViewHolder(rod);
-            return vh;
-        }
-
-        @Override
-        public void onBindViewHolder(ViewHolder holder, int pos) {
-            p("onBindViewHolder pos " + pos);
-            Fund f = data.get(pos);
-            holder.playerv.setPlayer(f.afsp);
-
-            int parentes = f.nøgle.indexOf("(");
-            if (parentes >0) {
-                String overskriftDel1 = f.nøgle.substring(0, parentes).toUpperCase();
-                String overskriftDel2 = f.nøgle.substring(parentes);
-                holder.overskrift.setText(overskriftDel1 + overskriftDel2);
-            }
-            else holder.overskrift.setText(f.nøgle.toUpperCase());
-            if (f.index != null) {
-                holder.overskrift.append(" (" + f.index + ")");
-                holder.fundtekst.setText(f.getTekst());
-            } else holder.fundtekst.setText("");
-
-
-        }
-
-        @Override
-        public int getItemCount() {
-            return data.size();
-        }
-    }
-
-    //fra https://stackoverflow.com/questions/31759171/recyclerview-and-java-lang-indexoutofboundsexception-inconsistency-detected-in
-    public class LinearLayoutManagerWrapper extends LinearLayoutManager {
-
-        public LinearLayoutManagerWrapper(Context context) {
-            super(context);
-        }
-
-        @Override
-        public boolean supportsPredictiveItemAnimations() {
-            return false;
-        }
-
-        @Override
-        public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
-            try {
-                super.onLayoutChildren(recycler, state);
-            } catch (IndexOutOfBoundsException e) {
-                p("Fejl: LLManagerWrapper IndexOutOfBoundsException " + e.getMessage());
-                e.printStackTrace();
-            }
-        }
-    }
 
     boolean klikket = false;
 
@@ -830,4 +680,155 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     }
 
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////_______________________ADAPTER_______________________/////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public class Hovedliste_adapter extends RecyclerView.Adapter<Hovedliste_adapter.ViewHolder> {
+
+        ArrayList<Fund> data;
+        Context c;
+        Appl a = Appl.a;
+
+
+        public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+            CardView c;
+            com.google.android.exoplayer2.ui.SimpleExoPlayerView playerv;
+            TextView overskrift;
+            TextView fundtekst;
+
+            public ViewHolder(View v) {
+                super(v);
+                c = v.findViewById(R.id.kort_udvidet);
+                playerv = v.findViewById(R.id.afspillerview);
+                playerv.setOnClickListener(this); //Virker ikke
+                overskrift = v.findViewById(R.id.fundtekstOverskrift);
+                fundtekst = v.findViewById(R.id.fundtekst);
+                fundtekst.setOnClickListener(this);
+                playerv.setControllerAutoShow(false);
+
+                //Deaktiverer controls
+                playerv.hideController();
+                playerv.setControllerVisibilityListener(new PlaybackControlView.VisibilityListener() {
+                    @Override
+                    public void onVisibilityChange(int i) {
+                        if (i == 0) {
+                            playerv.hideController();
+                        }
+                    }
+                });
+
+                //Håndterer "klik" på video
+                playerv.setOnTouchListener(new OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View view, MotionEvent motionEvent) {
+                        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+
+                            //pauser hvis den spiller, spiller hvis den er pauset
+                            SimpleExoPlayer p = playerv.getPlayer();
+                            if (p == null) p("FEJL: Player var null i onTouch");
+                            else {
+                                boolean pause = p.getPlayWhenReady();
+                                p.setPlayWhenReady(!pause);
+                            }
+                        }
+                        return true; //Sender ikke touch videre
+                    }
+                });
+            }
+
+            //Håndterer klik på cardview
+            @Override
+            public void onClick(View view) {
+                final int position = getAdapterPosition();
+
+                //TODO: skelne mellem stående og liggende visning
+
+                //TODO: gøre det samme ved scroll
+
+                float højde = (float) Resources.getSystem().getDisplayMetrics().heightPixels/10;
+                int tid = 400;
+
+                if(søgebarLille){
+
+                        søgebar.animate().scaleY(1.0f).setDuration(tid);
+                        hovedlisten.animate().translationY(0.0f).setDuration(tid).start();//  translationY(0.5f);
+                }
+                else {
+                    søgebar.animate().scaleY(0.0f).setDuration(tid);
+                    hovedlisten.animate().translationY(-højde).setDuration(tid).start();//  translationY(0.5f);
+                    t("Kommer snart: Detaljeret visning/fuld artikel");
+
+                }
+                søgebarLille = !søgebarLille;
+            }
+        }
+
+        public Hovedliste_adapter(ArrayList søgeresultater, Context ctx) {
+            data = søgeresultater;
+            c = ctx;
+        }
+
+        @Override
+        public Hovedliste_adapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                                int viewType) {
+
+            CardView rod = (CardView) LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.kort_udvidet, parent, false);
+
+            ViewHolder vh = new ViewHolder(rod);
+            return vh;
+        }
+
+        @Override
+        public void onBindViewHolder(ViewHolder holder, int pos) {
+            p("onBindViewHolder pos " + pos);
+            Fund f = data.get(pos);
+            holder.playerv.setPlayer(f.afsp);
+
+            int parentes = f.nøgle.indexOf("(");
+            if (parentes >0) {
+                String overskriftDel1 = f.nøgle.substring(0, parentes).toUpperCase();
+                String overskriftDel2 = f.nøgle.substring(parentes);
+                holder.overskrift.setText(overskriftDel1 + overskriftDel2);
+            }
+            else holder.overskrift.setText(f.nøgle.toUpperCase());
+            if (f.index != null) {
+                holder.overskrift.append(" (" + f.index + ")");
+                holder.fundtekst.setText(f.getTekst());
+            } else holder.fundtekst.setText("");
+
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return data.size();
+        }
+    }
+
+    //fra https://stackoverflow.com/questions/31759171/recyclerview-and-java-lang-indexoutofboundsexception-inconsistency-detected-in
+    public class LinearLayoutManagerWrapper extends LinearLayoutManager {
+
+        public LinearLayoutManagerWrapper(Context context) {
+            super(context);
+        }
+
+        @Override
+        public boolean supportsPredictiveItemAnimations() {
+            return false;
+        }
+
+        @Override
+        public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
+            try {
+                super.onLayoutChildren(recycler, state);
+            } catch (IndexOutOfBoundsException e) {
+                p("Fejl: LLManagerWrapper IndexOutOfBoundsException " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+    }
 }
