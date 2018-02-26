@@ -183,7 +183,18 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             a.slowmotion = !a.slowmotion;
             langsomcb.setChecked(a.slowmotion);
             float hast = (a.slowmotion) ? 0.25f : 1.0f;
-            afsp.setPlaybackParameters(new PlaybackParameters(hast, 1));
+            if (afsp != null)
+                afsp.setPlaybackParameters(new PlaybackParameters(hast, 1));
+            else {
+                final float hast1 = hast;
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (afsp != null) afsp.setPlaybackParameters(new PlaybackParameters(hast1, 1));
+                        else p("Fejl: i onClick langsom/loop: Afspiller var null");
+                    }
+                }, 150); //din kode køres om 50 milisekunder
+            }
             a.opdaterHastighed();
         } else if (klikket == søgefelt) {
             søgefelt.setText("");
