@@ -1,4 +1,5 @@
 package dk.stbn.testts;
+import android.annotation.SuppressLint;
 import android.app.*;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -73,7 +74,7 @@ public class Appl extends Application implements Lytter
 	ArrayList<Lytter> lyttere;
 	void givBesked () { for (Lytter l : lyttere) l.grunddataHentet();}
 	void givBesked (boolean forbundet) { for (Lytter l : lyttere) l.netværksændring(forbundet);}
-
+	void givBesked (String fejl) { for (Lytter l : lyttere) l.fejlmeddelelse(fejl);}
 
 
 	@Override
@@ -154,13 +155,21 @@ public class Appl extends Application implements Lytter
 		registerReceiver(netværksstatus, netfilter);
 	}
 
+	@SuppressLint("StaticFieldLeak")
 	void hentDataAsync(){
 		new AsyncTask() {
 
 			@Override
 			protected Object doInBackground(Object[] params) {
 				p("Kalder henSøgeindeks2()");
-				hentSøgeindeks2(nyUrl);
+
+				try {
+					hentSøgeindeks2(nyUrl);
+				}
+				catch (Exception e){
+					e.printStackTrace();
+					langsomNetBeskedFraBraggrund();
+				}
 				return null;
 			}
 
@@ -183,39 +192,45 @@ public class Appl extends Application implements Lytter
 	public void hentSøgeindeks2(String u) {
 
 		try { // Henter fil
-			InputStream is = new URL(u).openStream();
-			is = new BufferedInputStream(is);
-			is.mark(1);
-			if (is.read() == 0xef) {
-				is.read();
-				is.read();
 
-			} else {
-				is.reset();
-			}
-			p("######## hentSøgeindeks() =#=#=#=#=#=#=#=#=#=#=#=");
-			byte[] contents = new byte[1024];
 			String heleIndholdet = "";
-			int bytesRead = 0;
 
-			//bytesRead = is.read(contents); //skipper første linie
-			//bytesRead = is.read(contents); //skipper anden linie
+			if (sp.getBoolean("cachedSøgeindeks", false)){
+				//todo: tjek om der er ny version..
+				heleIndholdet = sp.getString("søgeindeks", "");
 
-			//--Først hentes al tekst ind i én stor streng
+			}
+			else {
+				InputStream is = new URL(u).openStream();
+				is = new BufferedInputStream(is);
+				is.mark(1);
+				if (is.read() == 0xef) {
+					is.read();
+					is.read();
 
-			while((bytesRead = is.read(contents)) != -1) {
+				} else {
+					is.reset();
+				}
+				p("######## hentSøgeindeks() ");
+				byte[] contents = new byte[1024];
+
+				int bytesRead = 0;
+
+				//--Først hentes al tekst ind i én stor streng
+
+				while ((bytesRead = is.read(contents)) != -1) {
 
 
-				String linie =  new String(contents, 0, bytesRead, "iso-8859-1");
-				//char [] chars = linie.toCharArray();
-				/*for (int i = 0; i < chars.length; i++){
-					char c = chars[i];
-					p(linie.substring(i,i+1)+ " : "+ Character.getNumericValue(c)+ " : " +contents[i]);
-				}*/
+					String linie = new String(contents, 0, bytesRead, "iso-8859-1");
 
-				//String linie =  new String(contents, "UTF-8");
-				heleIndholdet += linie;
-				//p("\nLinie_______________________________: "+linie);
+					heleIndholdet += linie;
+
+				}
+
+				sp.edit().
+						putString("søgeindeks", heleIndholdet).
+						putBoolean("cachedSøgeindeks", true).
+						commit();
 
 
 			}
@@ -447,6 +462,23 @@ public class Appl extends Application implements Lytter
 		}.execute();
 	}
 
+	private void langsomNetBeskedFraBraggrund() {
+
+		//Async med tom doInBackground, for at få kaldt givBesked() i forgrunden
+
+		new AsyncTask() {
+			@Override
+			protected Object doInBackground(Object[] objects) {
+				return null;
+			}
+
+			@Override
+			protected void onPostExecute(Object o) {
+				super.onPostExecute(o);
+				givBesked("Nettet er meget langsomt. Prøv evt. igen senere");
+			}
+		}.execute();
+	}
 
 	public void releaseAlle() {
 		for (Fund f : søgeresultat)
@@ -542,5 +574,10 @@ public class Appl extends Application implements Lytter
 	public void netværksændring(boolean forbundet) {
 		p("netværksændring callback kaldt");
 		if (harNetværk && nystartet) init("Appl.netværksændring");
+	}
+
+	@Override
+	public void fejlmeddelelse(String besked) {
+		//Bruges ikke her
 	}
 }

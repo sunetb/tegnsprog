@@ -3,6 +3,7 @@ package dk.stbn.testts;
 import android.app.ProgressDialog;
 import android.content.res.Resources;
 import android.os.*;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -217,6 +218,20 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             return ""; //Der blev trykket "Søg" uden at søgeordet var ændret
         søgeknap.setEnabled(false);
 
+
+        pDialog = new ProgressDialog(ctx);
+        pDialog.setMessage("Søger...");
+        pDialog.setCancelable(false);
+        pDialog.setCanceledOnTouchOutside(false);
+        /*pDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Søger...", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (a.netværksstatus == null) a.init("Main (brugeren har trykket");
+                //Andet?
+            }
+        });*/
+        pDialog.show();
+
         return søgeordet.toLowerCase();
     }
 
@@ -277,6 +292,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                         a.opdaterLoop();
                         a.opdaterHastighed();
                         p("Resultatliste længde: " + a.søgeresultat.size());
+
                     }
                 }.execute();
             }
@@ -355,7 +371,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 opdaterUI(tomsøgning, søgeord);
                 if (!tomsøgning) for (Fund f : a.søgeresultat) p("Tjekker fund: " + f);
                 //else tomsøgning(søgeord);
-
+                pDialog.dismiss();
             }
         }.execute();
 
@@ -537,7 +553,35 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
     }
 
+    @Override
+    public void fejlmeddelelse(String besked) {
+        Snackbar mySnackbar = Snackbar.make(findViewById(R.id.mainlayout), besked, Snackbar.LENGTH_LONG);
+        mySnackbar.setAction("genopfrisk", new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+                a.nulstilTilstandHeavy();
+
+            }
+        });
+        mySnackbar.show();
+    }
+
     void manglerNetværk(){
+
+        Snackbar mySnackbar = Snackbar.make(findViewById(R.id.mainlayout),"Ingen neværksforbindelse", Snackbar.LENGTH_LONG);
+        mySnackbar.setAction("prøv igen", new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+//sæt netværkslytter igen og kald init
+                if (a.netværksstatus == null) {
+                    a.sætNetværkslytter();
+                    a.init("Main (brugeren har trykket");
+                }
+            }
+        });
+        mySnackbar.show();
+        /*
         pDialog = new ProgressDialog(ctx);
         pDialog.setMessage("Ingen netværksforbindelse...");
         pDialog.setCancelable(false);
@@ -550,11 +594,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             }
         });
         pDialog.show();
+        */
     }
 
 
 
-    //////////////////////////_______________________ADAPTER_______________________/////////////////////////////////
+/////////////////////////////_______________________ADAPTER_______________________/////////////////////////////////
 
     public class Hovedliste_adapter extends RecyclerView.Adapter<Hovedliste_adapter.ViewHolder> {
 

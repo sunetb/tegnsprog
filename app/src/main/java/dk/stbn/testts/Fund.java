@@ -95,7 +95,9 @@ class Fund {
 
             @Override
             public void onPlayerError(ExoPlaybackException error) {
+
                 p("Fejl fra onPlaybackError");
+                Appl.a.givBesked("Afspilningsfejl");
             }
 
             @Override

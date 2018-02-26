@@ -10,8 +10,8 @@ public class Utill
 	static ArrayList<String> debugbesked = new ArrayList();
 	static long tid;
 	static String changelog = "\n"+
-            "Hvis der er parentes i nøglen, vises kun glossen med stort\n"+
-            "Forsøgt at håndtere crash (21 feb nullpointer Main.631 onTouch)"
+            "Caching af søgeord\n"+
+			"Videre med håndtering af netværks- og andre fejl"
 			;
 
 

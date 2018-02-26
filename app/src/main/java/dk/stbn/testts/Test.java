@@ -127,6 +127,11 @@ public class Test extends Activity implements View.OnClickListener, Lytter{
 	}
 
 	@Override
+	public void fejlmeddelelse(String besked) {
+
+	}
+
+	@Override
 	protected void onDestroy() {
 		a.lyttere.remove(this);
 		startActivity(new Intent(this, MainActivity.class));

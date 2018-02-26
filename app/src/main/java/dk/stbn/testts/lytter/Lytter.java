@@ -9,5 +9,6 @@ public interface  Lytter {
     void grunddataHentet();
     void logOpdateret();
     void netværksændring(boolean forbundet);
+    void fejlmeddelelse (String besked);
 
 }
