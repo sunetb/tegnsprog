@@ -234,13 +234,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         pDialog.setMessage("Søger...");
         pDialog.setCancelable(false);
         pDialog.setCanceledOnTouchOutside(false);
-        /*pDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Søger...", new DialogInterface.OnClickListener() {
+        pDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Annuller", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (a.netværksstatus == null) a.init("Main (brugeren har trykket");
-                //Andet?
+                pDialog.dismiss();
+                //todo...
             }
-        });*/
+        });
         pDialog.show();
 
         return søgeordet.toLowerCase();
@@ -324,7 +324,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
     void søg(String søgeordInd) {
         a.visPil = true;
-        a.nystartet = false;
+
         if (!a.harNetværk) {
             manglerNetværk();
             søgeordVedMistetForbindelse = søgeordInd;
@@ -382,7 +382,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 opdaterUI(tomsøgning, søgeord);
                 if (!tomsøgning) for (Fund f : a.søgeresultat) p("Tjekker fund: " + f);
                 //else tomsøgning(søgeord);
-                pDialog.dismiss();
+                if (pDialog.isShowing()) pDialog.dismiss();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        a.nystartet = false;
+                    }
+                }, 50); //din kode køres om 50 milisekunder
+                //;
             }
         }.execute();
 
@@ -440,6 +447,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
         søgefelt.setOnItemClickListener(this); //kun til autocomplete
 
+        //Aktiverer debug-skærm
         søgeknap.setOnLongClickListener(new OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -449,8 +457,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             }
         });
 
+        //Til abetest
         if (a.test) logo.setOnClickListener(this);
 
+        //Fjerner den gule boble med antal fund
         hovedlisten.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -459,7 +469,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 fl.animate().alpha(0).setDuration(700);
             }
         });
-        //}
+
 
 
     }// END sætLyttere()
@@ -587,7 +597,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 //sæt netværkslytter igen og kald init
                 if (a.netværksstatus == null) {
                     a.sætNetværkslytter();
-                    a.init("Main (brugeren har trykket");
+                    a.init("Main snackbar (brugeren har trykket)");
                 }
             }
         });

@@ -1,6 +1,6 @@
 package dk.stbn.testts;
 import android.annotation.SuppressLint;
-import android.app.*;
+import android.app.Application;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -11,23 +11,28 @@ import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.*;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
-import android.widget.*;
+import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
-import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.PlaybackParameters;
 import com.google.android.exoplayer2.Player;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.lang.reflect.Type;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import dk.stbn.testts.lytter.Lytter;
 import io.fabric.sdk.android.Fabric;
 import io.fabric.sdk.android.Logger;
-
-import java.io.*;
-import java.net.*;
-import java.util.*;
 
 public class Appl extends Application implements Lytter
 {
@@ -41,7 +46,7 @@ public class Appl extends Application implements Lytter
 	boolean loop = true;
 	boolean slowmotion = false;
 	long position = 0;
-	boolean test = false;
+	boolean test = true;
 	public int spillerNu = -1;
 	public boolean genstartetFraTestAkt = false;
 	//** Hentes webm eller mp4 i hentArtikel()
@@ -104,7 +109,7 @@ public class Appl extends Application implements Lytter
 		boolean EMULATOR = Build.PRODUCT.contains("sdk") || Build.MODEL.contains("Emulator");
 		if (!EMULATOR) {
 			Fabric.with(this, new Crashlytics());
-			test = true;
+			test = false;
 			Logger fLog = Fabric.getLogger();
 			fLog.d("test", "test");
 		}
@@ -199,6 +204,12 @@ public class Appl extends Application implements Lytter
 				//todo: tjek om der er ny version..
 				heleIndholdet = sp.getString("søgeindeks", "");
 
+
+				Type type = new TypeToken<ArrayList<Indgang>>() {}.getType();
+				søgeindeks = new Gson().fromJson(sp.getString("søgeindeks", null), type);
+				Type type2 = new TypeToken<ArrayList<String>>() {}.getType();
+				tilAutoComplete = new Gson().fromJson(sp.getString("tilAutoComplete", null), type2);
+
 			}
 			else {
 				InputStream is = new URL(u).openStream();
@@ -233,33 +244,43 @@ public class Appl extends Application implements Lytter
 						commit();
 
 
-			}
 
-			String [] linjesplit = heleIndholdet.split("\n");
-			//p("Array længde: "+linjesplit.length);
-			for (int i = 0; i < linjesplit.length; i++){
-				String indgangS = linjesplit[i];
-				//p("Ind__"+indgangS);
-				String [] indgangSA = indgangS.split("\t");
-				String søgeordet = indgangSA[0];
-				String [] ix = indgangSA[1].split(";");
-				//p("Array længde: "+ix.length);
-				ArrayList<String> ix2 = new ArrayList();
 
-				for (int j = 0; j < ix.length; j++) {
-					String gammel = "";					//tjek for dubletter
-					if (j>0) gammel = ix[j-1].trim();
+				String [] linjesplit = heleIndholdet.split("\n");
+				p("Array længde: "+linjesplit.length);
+				for (int i = 0; i < linjesplit.length; i++) {
+					String indgangS = linjesplit[i];
+					p("indgangS: " + indgangS.length());
+					p("Ind__" + indgangS);
+					String[] indgangSA = indgangS.split("\t");
+					if (indgangSA.length < 2) break;
+					p("IndgangSA: " + indgangSA.length);
+					String søgeordet = indgangSA[0];
+					String[] ix = indgangSA[1].split(";");
+					p("Array længde: " + ix.length);
+					ArrayList<String> ix2 = new ArrayList();
 
-					String s = ix[j].trim();
+					for (int j = 0; j < ix.length; j++) {
+						String gammel = "";                    //tjek for dubletter
+						if (j > 0) gammel = ix[j - 1].trim();
 
-					if(!gammel.equalsIgnoreCase(s)) ix2.add(s); // add kun hvis den ikke findes i forvejen
+						String s = ix[j].trim();
+
+						if (!gammel.equalsIgnoreCase(s))
+							ix2.add(s); // add kun hvis den ikke findes i forvejen
+					}
+					//p("Ud1___"+søgeordet+ " "+ix2);
+					Indgang indgang = new Indgang(søgeordet.trim(), ix2);
+					søgeindeks.add(indgang);
+					tilAutoComplete.add(søgeordet);
+					//p("Ud2___"+indgang);
+
 				}
-				//p("Ud1___"+søgeordet+ " "+ix2);
-				Indgang indgang = new Indgang(søgeordet.trim(), ix2);
-				søgeindeks.add(indgang);
-				tilAutoComplete.add(søgeordet);
-				//p("Ud2___"+indgang);
 
+				//gem
+				sp.edit().putString("søgeindeks", new Gson().toJson(søgeindeks))
+						.putString("tilAutoComplete", new Gson().toJson(tilAutoComplete))
+						.apply();
 			}
 
 

@@ -12,7 +12,8 @@ public class Utill
 	static String changelog = "\n"+
             "Caching af søgeord\n"+
 			"Videre med håndtering af netværks- og andre fejl\n"+
-			"Forbedret visning af antal fund"
+			"Forbedret visning af antal fund\n"+
+			"Fikset nyt crash: Nullpointer i Main.onClick: loop/langsom afsp var null"
 			;
 
 
