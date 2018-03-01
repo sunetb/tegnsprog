@@ -42,20 +42,10 @@
         tools:context="dk.stbn.scroll.ScrollingActivity"
         >
 
-        <TextView
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:text="
-DTU Diplom i Ballerup har et tværfagligt og praksis-orienteret fokus. Derfor har vi hele tiden erhvervslivet i kikkerten. Vi inspirerer unge mennesker og gør dem parate til deres første arbejde og ikke mindst parate til fremtidens udfordringer.  Afdelingen for Informatik udbyder kurser til diplomingeniøruddannelserne og til Center for Videreuddannelse. Den afholder ca. 100 kurser om året og samarbejder med industrien om en række forskellige innovationsprojekter.
-
-DTU er et teknisk eliteuniversitet med international rækkevidde og standard. Vores mission er at udvikle og nyttiggøre naturvidenskab og teknisk videnskab til gavn for samfundet. 11.000 studerende uddanner sig her til fremtiden, og 5.800 medarbejdere har hver dag fokus på uddannelse, forskning, innovation og forskningsbaseret rådgivning, som bidrager til øget vækst og velfærd. DTU stiller krav og giver muligheder uanset hvor i organisationen, man arbejder. Vi står for høj faglighed, kollegial respekt og ansvarlig handlefrihed.
-DTU Diplom i Ballerup har et tværfagligt og praksis-orienteret fokus. Derfor har vi hele tiden erhvervslivet i kikkerten. Vi inspirerer unge mennesker og gør dem parate til deres første arbejde og ikke mindst parate til fremtidens udfordringer.  Afdelingen for Informatik udbyder kurser til diplomingeniøruddannelserne og til Center for Videreuddannelse. Den afholder ca. 100 kurser om året og samarbejder med industrien om en række forskellige innovationsprojekter.
-
-DTU er et teknisk eliteuniversitet med international rækkevidde og standard. Vores mission er at udvikle og nyttiggøre naturvidenskab og teknisk videnskab til gavn for samfundet. 11.000 studerende uddanner sig her til fremtiden, og 5.800 medarbejdere har hver dag fokus på uddannelse, forskning, innovation og forskningsbaseret rådgivning, som bidrager til øget vækst og velfærd. DTU stiller krav og giver muligheder uanset hvor i organisationen, man arbejder. Vi står for høj faglighed, kollegial respekt og ansvarlig handlefrihed.
-DTU Diplom i Ballerup har et tværfagligt og praksis-orienteret fokus. Derfor har vi hele tiden erhvervslivet i kikkerten. Vi inspirerer unge mennesker og gør dem parate til deres første arbejde og ikke mindst parate til fremtidens udfordringer.  Afdelingen for Informatik udbyder kurser til diplomingeniøruddannelserne og til Center for Videreuddannelse. Den afholder ca. 100 kurser om året og samarbejder med industrien om en række forskellige innovationsprojekter.
-
-DTU er et teknisk eliteuniversitet med international rækkevidde og standard. Vores mission er at udvikle og nyttiggøre naturvidenskab og teknisk videnskab til gavn for samfundet. 11.000 studerende uddanner sig her til fremtiden, og 5.800 medarbejdere har hver dag fokus på uddannelse, forskning, innovation og forskningsbaseret rådgivning, som bidrager til øget vækst og velfærd. DTU stiller krav og giver muligheder uanset hvor i organisationen, man arbejder. Vi står for høj faglighed, kollegial respekt og ansvarlig handlefrihed."/>
-
+        <RatingBar
+            android:id="@+id/ratingBar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </android.support.v4.widget.NestedScrollView>
 
 

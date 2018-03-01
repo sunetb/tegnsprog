@@ -10,7 +10,8 @@ public class Utill
 	static ArrayList<String> debugbesked = new ArrayList();
 	static long tid;
 	static String changelog = "\n"+
-            "Caching af søgeord\n"+
+			"Fikset at status-dialog ved søgning, bliver, ved to tryk på Søg\n"+
+            "Fuldstændig caching af søgeord\n"+
 			"Videre med håndtering af netværks- og andre fejl\n"+
 			"Forbedret visning af antal fund\n"+
 			"Fikset nyt crash: Nullpointer i Main.onClick: loop/langsom afsp var null"
