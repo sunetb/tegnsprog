@@ -3,10 +3,12 @@ package dk.stbn.testts;
 import android.app.ProgressDialog;
 import android.content.res.Resources;
 import android.os.*;
+import android.support.constraint.ConstraintSet;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.animation.TranslateAnimation;
 import android.widget.*;
@@ -690,10 +692,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             com.google.android.exoplayer2.ui.SimpleExoPlayerView playerv;
             TextView overskrift;
             TextView fundtekst;
+            boolean udfoldet = false;
 
             public ViewHolder(View v) {
                 super(v);
-                c = v.findViewById(R.id.kort_udvidet);
+                c = v.findViewById(R.id.kort);
                 playerv = v.findViewById(R.id.afspillerview);
                 playerv.setOnClickListener(this); //Virker ikke
                 overskrift = v.findViewById(R.id.fundtekstOverskrift);
@@ -743,19 +746,41 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 float højde = (float) Resources.getSystem().getDisplayMetrics().heightPixels/10;
                 int tid = 400;
 
-                if(søgebarLille){
+                udfoldet = !udfoldet;
 
-                        søgebar.animate().scaleY(1.0f).setDuration(tid);
-                        hovedlisten.animate().translationY(0.0f).setDuration(tid).start();//  translationY(0.5f);
-
-                }
-                else {
+                if(udfoldet) {
                     søgebar.animate().scaleY(0.0f).setDuration(tid);
                     hovedlisten.animate().translationY(-højde).setDuration(tid).start();//  translationY(0.5f);
                     t("Kommer snart: Detaljeret visning/fuld artikel");
 
+
+
                 }
-                søgebarLille = !søgebarLille;
+                else {
+
+                    søgebar.animate().scaleY(1.0f).setDuration(tid);
+                    hovedlisten.animate().translationY(0.0f).setDuration(tid).start();//  translationY(0.5f);
+
+/*
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                        TransitionManager.beginDelayedTransition((CardView) findViewById(R.id.kort));
+                        ConstraintSet constraintSet1 = new ConstraintSet();
+                        constraintSet1.clone(ctx,R.id.kort_lille);
+
+                        ConstraintSet constraintSet2 = new ConstraintSet();
+                        constraintSet1.clone(ctx,R.id.kort_stor);
+                        if ()
+                        ConstraintSet constraint = if (changed) constraintSet1 else constraintSet2
+                        constraint.applyTo(constraintLayout)
+
+                    }
+
+*/
+
+
+                }
+
+                //søgebarLille = !søgebarLille;
             }
         }
 
@@ -769,7 +794,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                                                                 int viewType) {
 
             CardView rod = (CardView) LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.kort_udvidet, parent, false);
+                    .inflate(R.layout.kort, parent, false);
 
             ViewHolder vh = new ViewHolder(rod);
             return vh;
