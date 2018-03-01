@@ -747,6 +747,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
                         søgebar.animate().scaleY(1.0f).setDuration(tid);
                         hovedlisten.animate().translationY(0.0f).setDuration(tid).start();//  translationY(0.5f);
+
                 }
                 else {
                     søgebar.animate().scaleY(0.0f).setDuration(tid);

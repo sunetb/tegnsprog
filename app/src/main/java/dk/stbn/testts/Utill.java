@@ -16,6 +16,8 @@ public class Utill
 			"Forbedret visning af antal fund\n"+
 			"Fikset nyt crash: Nullpointer i Main.onClick: loop/langsom afsp var null"
 			;
+	static String atGøre = "";
+
 
 
 	static void p(Object o){

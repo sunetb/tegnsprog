@@ -49,7 +49,8 @@ public class Appl extends Application implements Lytter
 	boolean test = true;
 	public int spillerNu = -1;
 	public boolean genstartetFraTestAkt = false;
-	//** Hentes webm eller mp4 i hentArtikel()
+
+	//--Hentes webm eller mp4 i hentArtikel()
 	boolean webm = false;
 	boolean harNetværk = false;
 	boolean netværkTabt = false;
