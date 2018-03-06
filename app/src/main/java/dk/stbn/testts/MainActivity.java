@@ -522,6 +522,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
     }
 
+    @Override
+    protected void onStop() {
+        dismisSøgDialog();
+        super.onStop();
+
+    }
+
     //-- Eget lytter-inteface
     @Override
     public void grunddataHentet() {

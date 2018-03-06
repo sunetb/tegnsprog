@@ -66,7 +66,12 @@ class Fund {
     void initAfsp(Context c){
         p("initAfsp plev kaldt");
         afsp = ExoPlayerFactory.newSimpleInstance(c, new DefaultTrackSelector());//, new DefaultLoadControl());
-        afsp.prepare(lavKilde(videourl));
+        try {
+            afsp.prepare(lavKilde(videourl));
+        }catch (Exception e) {
+            e.printStackTrace();
+            p("Fejl ved afsp.prepare() "+e.getMessage());
+        }
         afsp.addListener(new Player.EventListener() {
             @Override
             public void onTimelineChanged(Timeline timeline, Object manifest) {
@@ -85,7 +90,7 @@ class Fund {
 
             @Override
             public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-                p("Fra onPlayerStateChanged: playback state: "+playbackState);
+                //p("Fra onPlayerStateChanged: playback state: "+playbackState);
             }
 
             @Override
@@ -96,7 +101,7 @@ class Fund {
             @Override
             public void onPlayerError(ExoPlaybackException error) {
 
-                p("Fejl fra onPlaybackError");
+                p("Fejl fra onPlaybackError: "+ nøgle + " " +error);
 
                 Appl.a.givBesked("Afspilningsfejl");
             }
@@ -114,6 +119,7 @@ class Fund {
         afsp.setVideoDebugListener(new VideoRendererEventListener() {
             @Override
             public void onVideoEnabled(DecoderCounters counters) {
+
                 p("onVideoEnabled");
             }
 
@@ -129,7 +135,8 @@ class Fund {
 
             @Override
             public void onDroppedFrames(int count, long elapsedMs) {
-                p("onDroppedFrames");
+
+                p("fejl onDroppedFrames "+nøgle + " "+ index);
             }
 
             @Override

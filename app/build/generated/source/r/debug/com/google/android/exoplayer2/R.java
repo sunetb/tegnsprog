@@ -7,7 +7,11 @@
 package com.google.android.exoplayer2;
 
 public final class R {
+    private R() {}
+
     public static final class attr {
+        private attr() {}
+
         public static final int ad_marker_color = 0x7f030022;
         public static final int ad_marker_width = 0x7f030023;
         public static final int auto_show = 0x7f030033;
@@ -35,13 +39,19 @@ public final class R {
         public static final int use_controller = 0x7f0301aa;
     }
     public static final class color {
+        private color() {}
+
         public static final int exo_edit_mode_background_color = 0x7f05003a;
     }
     public static final class dimen {
+        private dimen() {}
+
         public static final int exo_media_button_height = 0x7f06007b;
         public static final int exo_media_button_width = 0x7f06007c;
     }
     public static final class drawable {
+        private drawable() {}
+
         public static final int exo_controls_fastforward = 0x7f070063;
         public static final int exo_controls_next = 0x7f070064;
         public static final int exo_controls_pause = 0x7f070065;
@@ -54,6 +64,8 @@ public final class R {
         public static final int exo_edit_mode_logo = 0x7f07006c;
     }
     public static final class id {
+        private id() {}
+
         public static final int all = 0x7f08001e;
         public static final int exo_artwork = 0x7f080048;
         public static final int exo_content_frame = 0x7f080049;
@@ -82,10 +94,14 @@ public final class R {
         public static final int texture_view = 0x7f0800e4;
     }
     public static final class layout {
+        private layout() {}
+
         public static final int exo_playback_control_view = 0x7f0a002a;
         public static final int exo_simple_player_view = 0x7f0a002b;
     }
     public static final class string {
+        private string() {}
+
         public static final int exo_controls_fastforward_description = 0x7f0d0023;
         public static final int exo_controls_next_description = 0x7f0d0024;
         public static final int exo_controls_pause_description = 0x7f0d0025;
@@ -98,6 +114,8 @@ public final class R {
         public static final int exo_controls_stop_description = 0x7f0d002c;
     }
     public static final class style {
+        private style() {}
+
         public static final int ExoMediaButton = 0x7f0e00b0;
         public static final int ExoMediaButton_FastForward = 0x7f0e00b1;
         public static final int ExoMediaButton_Next = 0x7f0e00b2;
@@ -107,6 +125,8 @@ public final class R {
         public static final int ExoMediaButton_Rewind = 0x7f0e00b6;
     }
     public static final class styleable {
+        private styleable() {}
+
         public static final int[] AspectRatioFrameLayout = { 0x7f03013e };
         public static final int AspectRatioFrameLayout_resize_mode = 0;
         public static final int[] DefaultTimeBar = { 0x7f030022, 0x7f030023, 0x7f03003a, 0x7f030045, 0x7f03012d, 0x7f03012e, 0x7f030144, 0x7f030145, 0x7f030146, 0x7f030147, 0x7f0301a3, 0x7f0301a7 };

@@ -203,7 +203,8 @@ public class Appl extends Application implements Lytter
 
 			if (sp.getBoolean("cachedSøgeindeks", false)){
 				//todo: tjek om der er ny version..
-				heleIndholdet = sp.getString("søgeindeks", "");
+				//heleIndholdet = sp.getString("søgeindeks", "");
+				p("hentSøgeindeks() henter data fra cache");
 
 
 				Type type = new TypeToken<ArrayList<Indgang>>() {}.getType();
@@ -223,7 +224,7 @@ public class Appl extends Application implements Lytter
 				} else {
 					is.reset();
 				}
-				p("######## hentSøgeindeks() ");
+				p("hentSøgeindeks() henter data fra net");
 				byte[] contents = new byte[1024];
 
 				int bytesRead = 0;
@@ -248,17 +249,17 @@ public class Appl extends Application implements Lytter
 
 
 				String [] linjesplit = heleIndholdet.split("\n");
-				p("Array længde: "+linjesplit.length);
+				//p("Array længde: "+linjesplit.length);
 				for (int i = 0; i < linjesplit.length; i++) {
 					String indgangS = linjesplit[i];
-					p("indgangS: " + indgangS.length());
-					p("Ind__" + indgangS);
+					//p("indgangS: " + indgangS.length());
+					//p("Ind__" + indgangS);
 					String[] indgangSA = indgangS.split("\t");
 					if (indgangSA.length < 2) break;
-					p("IndgangSA: " + indgangSA.length);
+					//p("IndgangSA: " + indgangSA.length);
 					String søgeordet = indgangSA[0];
 					String[] ix = indgangSA[1].split(";");
-					p("Array længde: " + ix.length);
+					//p("Array længde: " + ix.length);
 					ArrayList<String> ix2 = new ArrayList();
 
 					for (int j = 0; j < ix.length; j++) {
