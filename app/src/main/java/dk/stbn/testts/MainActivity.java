@@ -524,9 +524,27 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
     @Override
     protected void onStop() {
+        p("onStop()");
         dismisSøgDialog();
+        p(a.netværksstatus);
+        p("netværkslytter = null? " + (a.netværksstatus== null));
+        try {
+            unregisterReceiver(a.netværksstatus);
+            p("netværkslytter = null? " + (a.netværksstatus== null));
+
+        }catch (java.lang.IllegalArgumentException e){e.printStackTrace();}
+
+        a.netværksstatus = null;
         super.onStop();
 
+        //todo:  sending message to a Handler on a dead thread: Luk alt ned i Appl som henviser til exoplayer/views Eller flyt tilbage i main
+
+    }
+
+    @Override
+    protected void onStart() {
+        if(a.netværksstatus == null) a.sætNetværkslytter();
+        super.onStart();
     }
 
     //-- Eget lytter-inteface
@@ -555,7 +573,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         }
         else {
             if (netværksdialog != null) netværksdialog.dismiss();
-            if (!a.nystartet) t("Nu forbundet til netværk");
+            //if (!a.nystartet) t("Nu forbundet til netværk");
             if (a.nystartet && a.dataHentet) grunddataHentet(); //ikke så pænt at aktivere lytteren herfra...
 
             søgeknap.setEnabled(true);

@@ -86,8 +86,13 @@ public class Test extends Activity implements View.OnClickListener, Lytter{
 		}
 		else if (view == mailknap){
 			String log = ""+ new Date() + Build.MANUFACTURER + " - " + Build.MODEL + " API: "+android.os.Build.VERSION.SDK_INT + " app ver. "+a.versionsnr();
-			for (String s : Utill.debugbesked) log += "\n" + s;
-
+			if (Utill.debugbesked.size() < 10000) //sikrer at der ikke overføres for mange dat med intentet
+				for (String s : Utill.debugbesked) log += "\n" + s;
+			else{
+				for (int i = 0 ; i < 500; i++) log += "\n" + Utill.debugbesked.get(i); //tager de 500 første
+				int j = Utill.debugbesked.size();
+				for (int i = 0 ; i < 500; i++) log += "\n" + Utill.debugbesked.get((j-500)+i); //..og de 500 sidste
+			}
 			Intent intent = new Intent(Intent.ACTION_SEND);
 			intent.setType("text/html");
 			intent.putExtra(Intent.EXTRA_EMAIL, "sunetb@gmail.com");
