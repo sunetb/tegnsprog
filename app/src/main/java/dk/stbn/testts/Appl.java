@@ -49,9 +49,7 @@ public class Appl extends Application implements Lytter
 	boolean test = true;
 	public int spillerNu = -1;
 	public boolean genstartetFraTestAkt = false;
-
-	//--Hentes webm eller mp4 i hentArtikel()
-	boolean webm = false;
+	boolean webm = false;//--Hentes webm eller mp4 i hentArtikel()
 	boolean harNetværk = false;
 	boolean netværkTabt = false;
 	BroadcastReceiver netværksstatus;
@@ -90,7 +88,7 @@ public class Appl extends Application implements Lytter
 		a=this;
 		lyttere = new ArrayList();
 		lyttere.add(this);
-		sætNetværkslytter();
+		sætNetværkslytter("Appl.oncreate");
 		sp= PreferenceManager.getDefaultSharedPreferences(this);
 
 		//init("ONCREATE");
@@ -125,9 +123,9 @@ public class Appl extends Application implements Lytter
 
 	}
 
-	void sætNetværkslytter(){
+	void sætNetværkslytter(String kaldtFra){
 
-		p("Netværkslytter sættes ");
+		p("Netværkslytter sættes. Kaldt fra "+kaldtFra);
 		netfilter = new IntentFilter();
 		netfilter.addCategory(Intent.CATEGORY_DEFAULT);
 		netfilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
@@ -338,7 +336,7 @@ public class Appl extends Application implements Lytter
 			while((bytesRead = is.read(contents)) != -1) {
 				String linie = new String(contents, 0, bytesRead);
 				heleIndholdet += linie;
-				
+
 
 
 			}
@@ -559,6 +557,20 @@ public class Appl extends Application implements Lytter
 
 
 	public void nulstilTilstandLight() {
+		aktueltSøgeord = "velkommen";
+		dataKlar = false;
+		visPil = true;
+		loop = true;
+		slowmotion = false;
+		position = 0;
+		test = true;
+		int spillerNu = -1;
+		genstartetFraTestAkt = false;
+		webm = false;//--Hentes webm eller mp4 i hentArtikel()
+		harNetværk = false;
+		netværkTabt = false;
+		dataHentet = false;
+		nystartet = true; //sættes til false i søg() i Main
 
 	}
 	//** Kaldes fra Test: 'kører oncreate' igen

@@ -112,7 +112,11 @@ public class Test extends Activity implements View.OnClickListener, Lytter{
 
 	}
 
-
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		p("onactivityresult");
+	}
 
 	@Override
 	public void grunddataHentet() {

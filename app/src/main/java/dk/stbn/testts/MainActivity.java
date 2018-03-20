@@ -76,9 +76,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     boolean liggendeVisning;
     boolean aktGenstartet = false;
     String søgeordVedMistetForbindelse = ""; //ikke nødvendigvis det samme som a.akuteltsøgeord
-    boolean søgebarLille = false;
 
+    boolean [] erCardViewUdfoldet = new boolean [15];
+    int tæller = 0;
+    int tæller2 = 0;
     //int viserposition = 0;
+
 
 
     @Override
@@ -87,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         p("ONCREATE");
         setContentView(R.layout.main);
         a = Appl.a;
-
+        for (boolean b : erCardViewUdfoldet) p(b);
         ctx = this;
         a.lyttere.add(this); //registrerer aktiviteten som lytter
         aktGenstartet = a.dataKlar; //Hvis aktiviteteten lukkes og åbnes igen er data klar og vi skal køre run() for at sætte adapteren på autocompletelisten
@@ -148,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
         if (klikket == søgeknap) {
             String søgeordF = forberedSøgning();
-            søg(søgeordF);
+            søg(søgeordF, "onClick");
         } else if (klikket == loopcb) {
             p("Loop-checkbox klikket");
 
@@ -240,8 +243,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 
     private void opdaterUI(boolean tomSøgning, String søgeordInd) {
-
-        p("opdaterUI kaldt! Var søgningen tom?  " + tomSøgning);
+        tæller++;
+        p("opdaterUI kaldt! "+tæller +" Var søgningen tom?  " + tomSøgning);
         tomsøg = tomSøgning;
         dismisSøgDialog ();
         if (tomSøgning) {
@@ -308,21 +311,23 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
     //-- Starter i velkomst-tilstand og viser videoen med tegnet "Velkommen"
     void velkommen() {
+
+
         søgefelt.setHint(getString(R.string.hint));
         forberedSøgning();
-        søg("velkommen");
+        søg("velkommen", "velkommen");
     }
 
-    void søg(String søgeordInd) {
+    void søg(String søgeordInd, String kaldtFra) {
         a.visPil = true;
 
         if (!a.harNetværk) {
             manglerNetværk();
             søgeordVedMistetForbindelse = søgeordInd;
-            //netværksdialog = infodialog("Tjek dine netværksindstillinger", "Ingen netværksforbindelse");
             return;
         }
-        p("søg(" + søgeordInd + ")");
+
+        p("søg(" + søgeordInd + "):  Kaldt fra: "+kaldtFra);
 
         final String søgeord = søgeordInd.trim();
         a.aktueltSøgeord = søgeord;
@@ -384,12 +389,18 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     }
 
     void dismisSøgDialog () {
+
+
         if (pDialog == null)  {
             p("pdialog var null");
             //pDialog.dismiss();
         }
         else if (pDialog.isShowing()) {
             p("pdialog var isshowing");
+            pDialog.dismiss();
+        }
+        else {
+            p("pdialog ??");
             pDialog.dismiss();
         }
     }
@@ -473,7 +484,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         TextView t = (TextView) view;
         String s = forberedSøgning();
         p("onItemClick: fra TV: " + t.getText().toString() + "  |  Fra forbered: " + s);
-        søg(t.getText().toString());
+        søg(t.getText().toString(), "onItemClick");
     }
 
     private boolean liggendeVisning() {
@@ -514,9 +525,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         //viserposition = savedInstanceState.getInt("position");
         if (getString(R.string.hint).equalsIgnoreCase(s))
             s = "velkommen";
-        if (s != null) {
+        if (s != null && !a.nystartet) {
             søgefelt.setHint(s);
-            søg(s);
+            søg(s, "onRestoreInstancestate");
         }
         else tomsøgning(a.aktueltSøgeord);
 
@@ -535,6 +546,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         }catch (java.lang.IllegalArgumentException e){e.printStackTrace();}
 
         a.netværksstatus = null;
+
+        //a.nulstilTilstandLight();
         super.onStop();
 
         //todo:  sending message to a Handler on a dead thread: Luk alt ned i Appl som henviser til exoplayer/views Eller flyt tilbage i main
@@ -543,21 +556,22 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
     @Override
     protected void onStart() {
-        if(a.netværksstatus == null) a.sætNetværkslytter();
+        //a.sætNetværkslytter("Main.onStart()");
         super.onStart();
     }
 
     //-- Eget lytter-inteface
     @Override
     public void grunddataHentet() {
-        p("Grunddata hentet");
+        tæller2++;
+        p("Grunddata hentet  "+tæller2);
         søgeknap.setEnabled(true);
         autoSuggest = new ArrayAdapter(this, android.R.layout.simple_list_item_1, a.tilAutoComplete);
         søgefelt.setAdapter(autoSuggest);
 
         if (a.genstartetFraTestAkt) {
             a.genstartetFraTestAkt = false;
-            søg(a.aktueltSøgeord);
+            søg(a.aktueltSøgeord, "grunddataHentet");
         } else velkommen();
     }
 
@@ -569,9 +583,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     @Override
     public void netværksændring(boolean forbundet) {
         if (!forbundet) {
+            p("netværksændring: ikke forbundet");
            if  (!a.nystartet) manglerNetværk();
+
         }
         else {
+            p("netværksændring: forbundet");
             if (netværksdialog != null) netværksdialog.dismiss();
             //if (!a.nystartet) t("Nu forbundet til netværk");
             if (a.nystartet && a.dataHentet) grunddataHentet(); //ikke så pænt at aktivere lytteren herfra...
@@ -582,7 +599,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
             //Hvis brugeren har forsøgt at søge mens forbindelsen var nede: lav ny søgning
             if (!a.nystartet && !søgeordVedMistetForbindelse.equals(a.aktueltSøgeord)) {
-                søg(søgeordVedMistetForbindelse);
+                søg(søgeordVedMistetForbindelse, "mistet forbindelse");
                 p("Genetableret forbindelse. Søger på: "+ søgeordVedMistetForbindelse);
             }
         }
@@ -607,7 +624,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             @Override
             public void onClick(View v) {
                 if (a.netværksstatus == null) {
-                    a.sætNetværkslytter();
+                    a.sætNetværkslytter("Main.manglerNetværk()");
                     a.init("Main snackbar (brugeren har trykket)");
                 }
             }
@@ -718,15 +735,22 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             TextView overskrift;
             TextView fundtekst;
             boolean udfoldet = false;
+            ImageView iven, ivto, ivtre; //kun til mockup
 
             public ViewHolder(View v) {
                 super(v);
-                c = v.findViewById(R.id.kort);
+               // c = v.findViewById(R.id.kort);
                 playerv = v.findViewById(R.id.afspillerview);
                 playerv.setOnClickListener(this); //Virker ikke
                 overskrift = v.findViewById(R.id.fundtekstOverskrift);
                 fundtekst = v.findViewById(R.id.fundtekst);
                 fundtekst.setOnClickListener(this);
+                iven = v.findViewById(R.id.udvidet1);
+                ivto = v.findViewById(R.id.udvidet2);
+                ivtre = v.findViewById(R.id.udvidet3);
+
+                p("ViewHolder imgviews: "+ iven.getId());
+
                 playerv.setControllerAutoShow(false);
 
                 //Deaktiverer controls
@@ -766,48 +790,69 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
                 //TODO: skelne mellem stående og liggende visning
 
-                //TODO: gøre det samme ved scroll
+                //TODO: gøre det s8amme ved scroll
 
                 float højde = (float) Resources.getSystem().getDisplayMetrics().heightPixels/10;
                 int tid = 400;
 
-                udfoldet = !udfoldet;
+                erCardViewUdfoldet[position] = !erCardViewUdfoldet[position];
 
-                if(udfoldet) {
+                udfoldet = erCardViewUdfoldet[position];
+
+                boolean alleKollapset = true;
+
+                for (boolean b : erCardViewUdfoldet)
+                    if (b) alleKollapset=false;
+
+
+                //-- Klapper søgebaren ind og ud
+                //todo: skal også klappes ind og ud ved scroll: scroll op: kollaps, scroll ned: udvid
+                if(alleKollapset) {
+
                     søgebar.animate().scaleY(0.0f).setDuration(tid);
-                    hovedlisten.animate().translationY(-højde).setDuration(tid).start();//  translationY(0.5f);
+                    hovedlisten.animate().translationY(-højde).setDuration(tid).start();
                     t("Kommer snart: Detaljeret visning/fuld artikel");
-
-
-
                 }
                 else {
-
                     søgebar.animate().scaleY(1.0f).setDuration(tid);
-                    hovedlisten.animate().translationY(0.0f).setDuration(tid).start();//  translationY(0.5f);
-
-/*
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                        TransitionManager.beginDelayedTransition((CardView) findViewById(R.id.kort));
-                        ConstraintSet constraintSet1 = new ConstraintSet();
-                        constraintSet1.clone(ctx,R.id.kort_lille);
-
-                        ConstraintSet constraintSet2 = new ConstraintSet();
-                        constraintSet1.clone(ctx,R.id.kort_stor);
-                        if ()
-                        ConstraintSet constraint = if (changed) constraintSet1 else constraintSet2
-                        constraint.applyTo(constraintLayout)
-
-                    }
-
-*/
-
-
+                    hovedlisten.animate().translationY(0.0f).setDuration(tid).start();
                 }
 
-                //søgebarLille = !søgebarLille;
+               if (udfoldet){
+                    skjul();
+               }
+               else{
+                    vis();
+
+               }
             }
-        }
+
+            void vis (){
+                float højde = (float) Resources.getSystem().getDisplayMetrics().heightPixels/20;
+                int tid = 400;
+                //p("Vis");
+                iven.setVisibility(View.VISIBLE);
+                ivto.setVisibility(View.VISIBLE);
+                ivtre.setVisibility(View.VISIBLE);
+                fundtekst.animate().scaleY(0f).setDuration(tid).start();
+                iven.animate().scaleY(1f).setDuration(tid).start();
+
+
+            }
+            void skjul () {
+                p("Skjul");
+                float højde = (float) Resources.getSystem().getDisplayMetrics().heightPixels/20;
+                int tid = 400;
+                //p("Vis");
+
+                fundtekst.animate().scaleY(1f).setDuration(tid).start();
+                iven.animate().scaleY(0f).setDuration(tid).start();
+
+                ivto.setVisibility(View.GONE);
+                ivtre.setVisibility(View.GONE);
+
+            }
+        }// ViewHolder
 
         public Hovedliste_adapter(ArrayList søgeresultater, Context ctx) {
             data = søgeresultater;
@@ -822,6 +867,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                     .inflate(R.layout.kort, parent, false);
 
             ViewHolder vh = new ViewHolder(rod);
+
             return vh;
         }
 
@@ -850,6 +896,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         public int getItemCount() {
             return data.size();
         }
+
+
     }
 
     //fra https://stackoverflow.com/questions/31759171/recyclerview-and-java-lang-indexoutofboundsexception-inconsistency-detected-in

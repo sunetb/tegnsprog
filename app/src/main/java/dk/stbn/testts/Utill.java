@@ -10,8 +10,8 @@ public class Utill
 	static ArrayList<String> debugbesked = new ArrayList();
 	static long tid;
 	static String changelog = "\n"+
-			"Fikset crash: \"View not attached to window manager\"\n"+
-            "\n"+
+			"Fikset crash (View not attached to window manager)\n"+
+            "Fikset crash ved send mail\n"+
 			"\n"+
 			"\n"+
 			""

@@ -4140,17 +4140,19 @@ public final class R {
     public static final int tx_mail=0x7f0800f4;
     public static final int tx_nulstil=0x7f0800f5;
     public static final int udvidet1=0x7f0800f6;
-    public static final int udvidet2=0x7f0800f7;
-    public static final int udvidet3=0x7f0800f8;
-    public static final int udvidet4=0x7f0800f9;
-    public static final int uniform=0x7f0800fa;
-    public static final int up=0x7f0800fb;
-    public static final int useLogo=0x7f0800fc;
-    public static final int view_offset_helper=0x7f0800fd;
-    public static final int visible=0x7f0800fe;
-    public static final int withText=0x7f0800ff;
-    public static final int wrap=0x7f080100;
-    public static final int wrap_content=0x7f080101;
+    public static final int udvidet1_2=0x7f0800f7;
+    public static final int udvidet2=0x7f0800f8;
+    public static final int udvidet2_2=0x7f0800f9;
+    public static final int udvidet3=0x7f0800fa;
+    public static final int udvidet3_2=0x7f0800fb;
+    public static final int uniform=0x7f0800fc;
+    public static final int up=0x7f0800fd;
+    public static final int useLogo=0x7f0800fe;
+    public static final int view_offset_helper=0x7f0800ff;
+    public static final int visible=0x7f080100;
+    public static final int withText=0x7f080101;
+    public static final int wrap=0x7f080102;
+    public static final int wrap_content=0x7f080103;
   }
   public static final class integer {
     public static final int abc_config_activityDefaultDur=0x7f090000;

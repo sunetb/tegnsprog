@@ -75,7 +75,7 @@
         </TextView>
 
         <ImageView
-            android:id="@+id/udvidet1"
+            android:id="@+id/udvidet1_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -86,7 +86,7 @@
             app:srcCompat="@drawable/udvidet_a" />
 
         <ImageView
-            android:id="@+id/udvidet2"
+            android:id="@+id/udvidet2_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -99,7 +99,7 @@
             app:srcCompat="@drawable/udvidet_b" />
 
         <ImageView
-            android:id="@+id/udvidet4"
+            android:id="@+id/udvidet3_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@+id/udvidet2"
