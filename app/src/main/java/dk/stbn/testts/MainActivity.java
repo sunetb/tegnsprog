@@ -1,5 +1,6 @@
 package dk.stbn.testts;
 
+import android.animation.ValueAnimator;
 import android.app.ProgressDialog;
 import android.content.res.Resources;
 import android.os.*;
@@ -10,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.TransitionManager;
 import android.util.Log;
+import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.*;
 import android.view.View.*;
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     ArrayAdapter autoSuggest;
     FrameLayout fl;
     LinearLayout søgebar;
-
+    Button sendmail;
     private RecyclerView hovedlisten;
     private RecyclerView.Adapter adapter;
 
@@ -87,60 +89,75 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        p("ONCREATE");
-        setContentView(R.layout.main);
+        p("ONCREATE "+ "Liggende? "+liggendeVisning());
+
+        int i  = R.layout.main;
+        if (liggendeVisning()) i = R.layout.mainland;
+
+        setContentView(i);
         a = Appl.a;
-        for (boolean b : erCardViewUdfoldet) p(b);
+        //for (boolean b : erCardViewUdfoldet) p(b);
         ctx = this;
         a.lyttere.add(this); //registrerer aktiviteten som lytter
         aktGenstartet = a.dataKlar; //Hvis aktiviteteten lukkes og åbnes igen er data klar og vi skal køre run() for at sætte adapteren på autocompletelisten
         sp = a.sp; //SharefPreferences
 
-        //Views mm
-        vent = findViewById(R.id.progressBar);
-        vent.setVisibility(View.GONE);
-        søgeknap = findViewById(R.id.mainButton);
-        søgeknap.setEnabled(false);
-        hovedlisten = findViewById(R.id.hovedlisten);
-        søgebar = findViewById(R.id.søgebar);
-        adapter = new Hovedliste_adapter(a.søgeresultat, this);
-        hovedlisten.setAdapter(adapter);
-        hovedlisten.setLayoutManager(new LinearLayoutManagerWrapper(this));
-        liggendeVisning = liggendeVisning();
-        fl = findViewById(R.id.fl);
-        fl.bringToFront();
-        fl.invalidate();
-        fl.setAlpha(0);
-        flereFund = findViewById(R.id.antalFund);
-        søgefelt = findViewById(R.id.søgefelt);
-        loop = findViewById(R.id.looptv);
-        loopcb = findViewById(R.id.loopcb);
-        loopcb.setChecked(a.loop);
-        langsomcb = findViewById(R.id.langsomcb);
-        langsom = findViewById(R.id.langsomtv);
-        langsomcb.setChecked(a.slowmotion);
-        logo = findViewById(R.id.overskriftLogo);
+        //Midlertidigt, indtil liggende visning kommer
 
-        sætLyttere();
+        if (!liggendeVisning()) {
+            //Views mm
+            vent = findViewById(R.id.progressBar);
+            vent.setVisibility(View.GONE);
+            søgeknap = findViewById(R.id.mainButton);
+            søgeknap.setEnabled(false);
+            hovedlisten = findViewById(R.id.hovedlisten);
+            søgebar = findViewById(R.id.søgebar);
+            adapter = new Hovedliste_adapter(a.søgeresultat, this);
+            hovedlisten.setAdapter(adapter);
+            hovedlisten.setLayoutManager(new LinearLayoutManagerWrapper(this));
+            liggendeVisning = liggendeVisning();
+            //fl er besked om flere fund
+            fl = findViewById(R.id.fl);
+            fl.bringToFront();
+            fl.invalidate();
+            fl.setAlpha(0);
+            flereFund = findViewById(R.id.antalFund);
+            søgefelt = findViewById(R.id.søgefelt);
+            loop = findViewById(R.id.looptv);
+            loopcb = findViewById(R.id.loopcb);
+            loopcb.setChecked(a.loop);
+            langsomcb = findViewById(R.id.langsomcb);
+            langsom = findViewById(R.id.langsomtv);
+            langsomcb.setChecked(a.slowmotion);
+            logo = findViewById(R.id.overskriftLogo);
 
-        if (savedInstanceState != null || aktGenstartet) {
+            sætLyttere();
 
-            grunddataHentet();
-            p("Startet ved skærmvending. Eller akt har været lukket. Initialiserer autocomplete-listen (sæt adapter)");
 
+
+
+            if (savedInstanceState != null || aktGenstartet) {
+
+                grunddataHentet();
+                p("Startet ved skærmvending. Eller akt har været lukket. Initialiserer autocomplete-listen (sæt adapter)");
+
+            }
+
+            //--Viser en dialog hvis brugeren kører en nyligt opdateret version af appen
+            String gemtVersionsNr = a.sp.getString("versionsnr", "helt ny");
+            String versionsnummer = a.versionsnr();
+            p("Gemt versionsnr: "+ gemtVersionsNr + "  Aktuelt versioinsnr: "+versionsnummer);
+            if (gemtVersionsNr.equals("helt ny")) a.sp.edit().putString("versionsnr", versionsnummer).commit();
+            else if(!versionsnummer.equals(gemtVersionsNr) ) {
+                infodialog("Nyeste ændringer: \n"+ Utill.changelog, "Du har netop installeret den nyeste version: "+a.versionsnr());
+                a.sp.edit().putString("versionsnr", versionsnummer).commit();
+            }
+            skjulTastatur();
         }
-
-        //--Viser en dialog hvis brugeren kører en nyligt opdateret version af appen
-        String gemtVersionsNr = a.sp.getString("versionsnr", "helt ny");
-        String versionsnummer = a.versionsnr();
-        p("Gemt versionsnr: "+ gemtVersionsNr + "  Aktuelt versioinsnr: "+versionsnummer);
-        if (gemtVersionsNr.equals("helt ny")) a.sp.edit().putString("versionsnr", versionsnummer).commit();
-        else if(!versionsnummer.equals(gemtVersionsNr) ) {
-            infodialog("Nyeste ændringer: \n"+ Utill.changelog, "Du har netop installeret den nyeste version: "+a.versionsnr());
-            a.sp.edit().putString("versionsnr", versionsnummer).commit();
+        else {
+            sendmail = findViewById(R.id.mail);
+            sendmail.setOnClickListener(this);
         }
-
-        skjulTastatur();
 
         p("onCreate færdig");
 
@@ -148,6 +165,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
     @Override
     public void onClick(View klikket) {
+
+        if (liggendeVisning()){  //midlertidigt indtil liggende visning kommer
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/html");
+            intent.putExtra(Intent.EXTRA_EMAIL, "sunetb@gmail.com");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Vedrørende tegnsprogsapp");
+            return;
+        }
 
         if (klikket == søgeknap) {
             String søgeordF = forberedSøgning();
@@ -522,6 +547,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         p("ONRESTOREINSTANCESTATE");
         //////////////////////  HUSK TJEK FOR OM TOM SØGNING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         String s = savedInstanceState.getString("søgeord");
+        if (liggendeVisning()) return;
         //viserposition = savedInstanceState.getInt("position");
         if (getString(R.string.hint).equalsIgnoreCase(s))
             s = "velkommen";
@@ -529,7 +555,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             søgefelt.setHint(s);
             søg(s, "onRestoreInstancestate");
         }
-        else tomsøgning(a.aktueltSøgeord);
+        else  tomsøgning(a.aktueltSøgeord);
 
     }
 
@@ -563,6 +589,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     //-- Eget lytter-inteface
     @Override
     public void grunddataHentet() {
+        if (liggendeVisning()) return;
+
         tæller2++;
         p("Grunddata hentet  "+tæller2);
         søgeknap.setEnabled(true);
@@ -593,7 +621,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             //if (!a.nystartet) t("Nu forbundet til netværk");
             if (a.nystartet && a.dataHentet) grunddataHentet(); //ikke så pænt at aktivere lytteren herfra...
 
-            søgeknap.setEnabled(true);
+            if (!liggendeVisning()) søgeknap.setEnabled(true);
 
             p(a.aktueltSøgeord);
 
@@ -790,14 +818,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
                 //TODO: skelne mellem stående og liggende visning
 
-                //TODO: gøre det s8amme ved scroll
+                //TODO: gøre det samme ved scroll
 
                 float højde = (float) Resources.getSystem().getDisplayMetrics().heightPixels/10;
                 int tid = 400;
 
-                erCardViewUdfoldet[position] = !erCardViewUdfoldet[position];
-
-                udfoldet = erCardViewUdfoldet[position];
+                  udfoldet = erCardViewUdfoldet[position];
 
                 boolean alleKollapset = true;
 
@@ -812,12 +838,18 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                     søgebar.animate().scaleY(0.0f).setDuration(tid);
                     hovedlisten.animate().translationY(-højde).setDuration(tid).start();
                     t("Kommer snart: Detaljeret visning/fuld artikel");
+
                 }
                 else {
                     søgebar.animate().scaleY(1.0f).setDuration(tid);
                     hovedlisten.animate().translationY(0.0f).setDuration(tid).start();
+
                 }
 
+                erCardViewUdfoldet[position] = !erCardViewUdfoldet[position];
+
+
+/* Hov glemte at oprette git-gren til næste skridt med animation
                if (udfoldet){
                     skjul();
                }
@@ -825,17 +857,22 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                     vis();
 
                }
-            }
 
+*/           }
             void vis (){
                 float højde = (float) Resources.getSystem().getDisplayMetrics().heightPixels/20;
                 int tid = 400;
                 //p("Vis");
-                iven.setVisibility(View.VISIBLE);
-                ivto.setVisibility(View.VISIBLE);
-                ivtre.setVisibility(View.VISIBLE);
-                fundtekst.animate().scaleY(0f).setDuration(tid).start();
-                iven.animate().scaleY(1f).setDuration(tid).start();
+               // iven.setVisibility(View.VISIBLE);
+                //ivto.setVisibility(View.VISIBLE);
+               // ivtre.setVisibility(View.VISIBLE);
+               // fundtekst.animate().scaleY(0f).setDuration(tid).start();
+               // iven.animate().scaleY(1f).setDuration(tid).start();
+
+                collapse(fundtekst, 400, 0);
+                expand(iven, 400 , (int) højde/3 );
+                expand(ivto, 400 , (int) højde/3 );
+                expand(ivtre, 400 , (int) højde/3 );
 
 
             }
@@ -845,12 +882,49 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 int tid = 400;
                 //p("Vis");
 
-                fundtekst.animate().scaleY(1f).setDuration(tid).start();
-                iven.animate().scaleY(0f).setDuration(tid).start();
+                //fundtekst.animate().scaleY(1f).setDuration(tid).start();
+                //iven.animate().scaleY(0f).setDuration(tid).start();
 
-                ivto.setVisibility(View.GONE);
-                ivtre.setVisibility(View.GONE);
+                //ivto.setVisibility(View.GONE);
+                //ivtre.setVisibility(View.GONE);
+                expand(fundtekst, 400, (int) højde);
+                collapse(iven, 400 , 0 );
+                collapse(ivto, 400 , 0 );
+                collapse(ivtre, 400 , 0);
+            }
 
+            public  void expand(final View v, int duration, int targetHeight) {
+
+                int prevHeight  = v.getHeight();
+
+                v.setVisibility(View.VISIBLE);
+                ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, targetHeight);
+                valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        v.getLayoutParams().height = (int) animation.getAnimatedValue();
+                        v.requestLayout();
+                    }
+                });
+                valueAnimator.setInterpolator(new DecelerateInterpolator());
+                valueAnimator.setDuration(duration);
+                valueAnimator.start();
+            }
+
+            public  void collapse(final View v, int duration, int targetHeight) {
+                int prevHeight  = v.getHeight();
+                ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, targetHeight);
+                valueAnimator.setInterpolator(new DecelerateInterpolator());
+                valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        v.getLayoutParams().height = (int) animation.getAnimatedValue();
+                        v.requestLayout();
+                    }
+                });
+                valueAnimator.setInterpolator(new DecelerateInterpolator());
+                valueAnimator.setDuration(duration);
+                valueAnimator.start();
             }
         }// ViewHolder
 
