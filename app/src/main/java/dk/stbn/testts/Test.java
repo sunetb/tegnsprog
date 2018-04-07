@@ -95,7 +95,7 @@ public class Test extends Activity implements View.OnClickListener, Lytter{
 			}
 			Intent intent = new Intent(Intent.ACTION_SEND);
 			intent.setType("text/html");
-			intent.putExtra(Intent.EXTRA_EMAIL, "sunetb@gmail.com");
+			intent.putExtra(Intent.EXTRA_EMAIL  , new String[]{"sunetb@gmail.com"});
 			intent.putExtra(Intent.EXTRA_SUBJECT, "Tegnsprogsapp logbesked");
 			intent.putExtra(Intent.EXTRA_TEXT, log);
 

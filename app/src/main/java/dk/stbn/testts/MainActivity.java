@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { //fejl1: setHint på søgefelt virker som setText. Fejl2: Søgning nulstilles ikke hvis Appl overlever at appen lukkes
         super.onCreate(savedInstanceState);
         p("ONCREATE "+ "Liggende? "+liggendeVisning());
 
@@ -169,14 +169,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         if (liggendeVisning()){  //midlertidigt indtil liggende visning kommer
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/html");
-            intent.putExtra(Intent.EXTRA_EMAIL, "sunetb@gmail.com");
+            intent.putExtra(Intent.EXTRA_EMAIL  , new String[]{"sunetb@gmail.com"});
             intent.putExtra(Intent.EXTRA_SUBJECT, "Vedrørende tegnsprogsapp");
+            startActivity(Intent.createChooser(intent, "Send Email"));
             return;
         }
 
         if (klikket == søgeknap) {
             String søgeordF = forberedSøgning();
-            søg(søgeordF, "onClick");
+            if (!søgeordF.equals("")) søg(søgeordF, "onClick");
+
         } else if (klikket == loopcb) {
             p("Loop-checkbox klikket");
 
@@ -233,18 +235,18 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
         skjulTastatur();
         String søgeordet = søgefelt.getText().toString().toLowerCase().trim();
+
         p("forberedSøgning søgeord: " + søgeordet);
 
-        søgefelt.setText("");
-        if (søgeordet.equals("")) søgeordet = søgefelt.getHint().toString();
-
-        søgefelt.setHint(søgeordet);
-
         //--Der blev trykket "Søg" uden at søgeordet var ændret
-        if (søgefelt.getText().toString().equals(søgefelt.getHint().toString())){
+        if (søgeordet.equals("")) {
             t("Skriv/vælg noget i søgefeltet");
             return "";
         }
+
+        //søgeordet = søgefelt.getHint().toString();
+        søgefelt.setText("");
+        søgefelt.setHint(søgeordet);
 
         søgeknap.setEnabled(false);
 
@@ -271,7 +273,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         tæller++;
         p("opdaterUI kaldt! "+tæller +" Var søgningen tom?  " + tomSøgning);
         tomsøg = tomSøgning;
-        dismisSøgDialog ();
+        dismisSøgDialog();
         if (tomSøgning) {
             p("Tomsøgning");
             tomsøgning(søgeordInd);
@@ -330,6 +332,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             adapter.notifyItemRangeChanged(0, a.søgeresultat.size() - 1);
             adapter.notifyDataSetChanged();
             søgeknap.setEnabled(true);
+            søgefelt.setHint(a.aktueltSøgeord);
         }
 
     }
@@ -528,13 +531,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         a.releaseAlle();
         a.lyttere.remove(this);// afregistrerer lytter
         a.nystartet = true; //Når Appl overlever, kaldes init ikke igen
+        a.aktivitetHarLevet = true;
         super.onDestroy();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         String s = "";
-        if (søgefelt.getHint() != null) s = søgefelt.getHint().toString();
+        if (søgefelt != null && søgefelt.getHint() != null) s = søgefelt.getHint().toString();
         //t("onsaveinstancestate: "+ s);
         outState.putString("søgeord", s);
         //outState.putInt("position", viserposition);
@@ -555,7 +559,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             søgefelt.setHint(s);
             søg(s, "onRestoreInstancestate");
         }
-        else  tomsøgning(a.aktueltSøgeord);
+        //else  tomsøgning(a.aktueltSøgeord);
 
     }
 
@@ -600,7 +604,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         if (a.genstartetFraTestAkt) {
             a.genstartetFraTestAkt = false;
             søg(a.aktueltSøgeord, "grunddataHentet");
-        } else velkommen();
+        }
+        else if (a.søgeresultat.size() == 0) {
+            p("grunddataHentet kalder velkommen() søgeresultat size: "+a.søgeresultat.size());
+            velkommen();
+        }
+        else opdaterUI(false, a.aktueltSøgeord);
     }
 
     @Override

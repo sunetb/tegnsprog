@@ -56,6 +56,7 @@ public class Appl extends Application implements Lytter
 	IntentFilter netfilter;
 	boolean dataHentet = false;
 	boolean nystartet = true; //sættes til false i søg() i Main
+	boolean aktivitetHarLevet = false;
 
 	//-- System
 	public static Appl a;

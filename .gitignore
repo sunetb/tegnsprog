@@ -1,6 +1,8 @@
 # Built application files
 /build
 /app/build
+build/
+app/build/
 
 # Files for the ART/Dalvik VM
 *.dex
