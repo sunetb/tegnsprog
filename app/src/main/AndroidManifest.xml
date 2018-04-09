@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="dk.stbn.testts">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -23,12 +22,6 @@
             </intent-filter>
         </activity>
         <activity android:name="dk.stbn.testts.Test" />
-        <activity android:name="dk.stbn.testts.FuldArtikel_akt" />
-        <activity
-            android:name="dk.stbn.scroll.ScrollingActivity"
-            android:label="@string/title_activity_scrolling"
-            android:theme="@style/AppTheme"></activity>
-
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="a473bb17c446dada4b78b47051b2b561970908f7" />
