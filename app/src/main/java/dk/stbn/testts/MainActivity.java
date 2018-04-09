@@ -490,7 +490,21 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 fl.animate().alpha(0).setDuration(700);
             }
 
-         });
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                //View v = hovedlisten.getLayoutManager().;
+               // if (v != null) p("position: "+hovedlisten.getLayoutManager().getFocusedChild().getId());
+                if (dy >= 0) {
+                    p("scroll op          y:"+dy + "  x:"+dx);
+                    //bør lave en if som ser om den allerede er klappet sammen
+                    fl.animate().alpha(0).setDuration(700);
+                } else {// else if (vi er nået toppen)
+                    p("scroll ned         y:"+dy + "  x:"+dx);
+                }
+            }
+        });
+
 
 
 
@@ -836,6 +850,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                     søgebar.animate().scaleY(0.0f).setDuration(tid);
                     hovedlisten.animate().translationY(-højde).setDuration(tid).start();
                     t("Kommer snart: Detaljeret visning/fuld artikel");
+                    //todo: touchdelegate
 
                 }
                 else {
@@ -847,7 +862,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 erCardViewUdfoldet[position] = !erCardViewUdfoldet[position];
 
 
-/* Hov glemte at oprette git-gren til næste skridt med animation
                if (udfoldet){
                     skjul();
                }
@@ -856,7 +870,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
                }
 
-*/           }
+           }
             void vis (){
                 float højde = (float) Resources.getSystem().getDisplayMetrics().heightPixels/20;
                 int tid = 400;
