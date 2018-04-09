@@ -811,7 +811,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
 
                             //pauser hvis den spiller, spiller hvis den er pauset
-                            SimpleExoPlayer p = playerv.getPlayer();
+                            Player p = playerv.getPlayer();
                             if (p == null) p("FEJL: Player var null i onTouch");
                             else {
                                 boolean pause = p.getPlayWhenReady();

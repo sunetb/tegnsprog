@@ -73,8 +73,10 @@ class Fund {
             p("Fejl ved afsp.prepare() "+e.getMessage());
         }
         afsp.addListener(new Player.EventListener() {
+
+
             @Override
-            public void onTimelineChanged(Timeline timeline, Object manifest) {
+            public void onTimelineChanged(Timeline timeline, Object manifest, int reason) {
 
             }
 
@@ -99,6 +101,11 @@ class Fund {
             }
 
             @Override
+            public void onShuffleModeEnabledChanged(boolean shuffleModeEnabled) {
+
+            }
+
+            @Override
             public void onPlayerError(ExoPlaybackException error) {
 
                 p("Fejl fra onPlaybackError: "+ nøgle + " " +error);
@@ -107,12 +114,19 @@ class Fund {
             }
 
             @Override
-            public void onPositionDiscontinuity() {
+            public void onPositionDiscontinuity(int reason) {
+
+            }
+
+
+
+            @Override
+            public void onPlaybackParametersChanged(PlaybackParameters playbackParameters) {
 
             }
 
             @Override
-            public void onPlaybackParametersChanged(PlaybackParameters playbackParameters) {
+            public void onSeekProcessed() {
 
             }
         });
