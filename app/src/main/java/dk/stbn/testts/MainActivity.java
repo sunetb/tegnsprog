@@ -686,6 +686,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                         klikket = true;
                         startActivity(new Intent(ctx, Test.class));
                         dialog.cancel();
+
+                        //virker dårligt
                         finish();
                     }
                 })

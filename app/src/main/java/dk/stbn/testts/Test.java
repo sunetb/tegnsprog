@@ -100,7 +100,7 @@ public class Test extends Activity implements View.OnClickListener, Lytter{
 			intent.putExtra(Intent.EXTRA_TEXT, log);
 
 			startActivity(Intent.createChooser(intent, "Send Email"));
-			mail.setText("Mail er sendt");
+			//mail.setText("Mail er sendt");
 		}
 		else if (view == format){
 			a.webm = !a.webm;

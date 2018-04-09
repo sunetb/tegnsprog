@@ -29,8 +29,14 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+                lintOptions {
+                    disable 'MissingTranslation'
+                    checkReleaseBuilds false
+                    abortOnError false
+                }
+                minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
         }
     }
 }
