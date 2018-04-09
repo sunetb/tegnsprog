@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     boolean [] erCardViewUdfoldet = new boolean [15];
     int tæller = 0;
     int tæller2 = 0;
-    //int viserposition = 0;
+
 
 
 
@@ -91,73 +91,65 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         super.onCreate(savedInstanceState);
         p("ONCREATE "+ "Liggende? "+liggendeVisning());
 
-        int i  = R.layout.main;
-        if (liggendeVisning()) i = R.layout.mainland;
-
-        setContentView(i);
+        setContentView(R.layout.main);
         a = Appl.a;
-        //for (boolean b : erCardViewUdfoldet) p(b);
         ctx = this;
         a.lyttere.add(this); //registrerer aktiviteten som lytter
         aktGenstartet = a.dataKlar; //Hvis aktiviteteten lukkes og åbnes igen er data klar og vi skal køre run() for at sætte adapteren på autocompletelisten
         sp = a.sp; //SharefPreferences
 
-        //Midlertidigt, indtil liggende visning kommer
 
-        if (!liggendeVisning()) {
-            //Views mm
-            vent = findViewById(R.id.progressBar);
-            vent.setVisibility(View.GONE);
-            søgeknap = findViewById(R.id.mainButton);
-            søgeknap.setEnabled(false);
-            hovedlisten = findViewById(R.id.hovedlisten);
-            søgebar = findViewById(R.id.søgebar);
-            adapter = new Hovedliste_adapter(a.søgeresultat, this);
-            hovedlisten.setAdapter(adapter);
-            hovedlisten.setLayoutManager(new LinearLayoutManagerWrapper(this));
-            liggendeVisning = liggendeVisning();
-            //fl er besked om flere fund
-            fl = findViewById(R.id.fl);
-            fl.bringToFront();
-            fl.invalidate();
-            fl.setAlpha(0);
-            flereFund = findViewById(R.id.antalFund);
-            søgefelt = findViewById(R.id.søgefelt);
-            loop = findViewById(R.id.looptv);
-            loopcb = findViewById(R.id.loopcb);
-            loopcb.setChecked(a.loop);
-            langsomcb = findViewById(R.id.langsomcb);
-            langsom = findViewById(R.id.langsomtv);
-            langsomcb.setChecked(a.slowmotion);
-            logo = findViewById(R.id.overskriftLogo);
+        if (liggendeVisning()) return; //Midlertidigt, indtil liggende visning kommer
 
-            sætLyttere();
+        //Views mm
+        vent = findViewById(R.id.progressBar);
+        vent.setVisibility(View.GONE);
+        søgeknap = findViewById(R.id.mainButton);
+        søgeknap.setEnabled(false);
+        hovedlisten = findViewById(R.id.hovedlisten);
+        søgebar = findViewById(R.id.søgebar);
+        adapter = new Hovedliste_adapter(a.søgeresultat, this);
+        hovedlisten.setAdapter(adapter);
+        hovedlisten.setLayoutManager(new LinearLayoutManagerWrapper(this));
+        liggendeVisning = liggendeVisning();
+        //fl er besked om flere fund
+        fl = findViewById(R.id.fl);
+        fl.bringToFront();
+        fl.invalidate();
+        fl.setAlpha(0);
+        flereFund = findViewById(R.id.antalFund);
+        søgefelt = findViewById(R.id.søgefelt);
+        loop = findViewById(R.id.looptv);
+        loopcb = findViewById(R.id.loopcb);
+        loopcb.setChecked(a.loop);
+        langsomcb = findViewById(R.id.langsomcb);
+        langsom = findViewById(R.id.langsomtv);
+        langsomcb.setChecked(a.slowmotion);
+        logo = findViewById(R.id.overskriftLogo);
 
-
+        sætLyttere();
 
 
-            if (savedInstanceState != null || aktGenstartet) {
 
-                grunddataHentet();
-                p("Startet ved skærmvending. Eller akt har været lukket. Initialiserer autocomplete-listen (sæt adapter)");
 
-            }
+        if (savedInstanceState != null || aktGenstartet) {
 
-            //--Viser en dialog hvis brugeren kører en nyligt opdateret version af appen
-            String gemtVersionsNr = a.sp.getString("versionsnr", "helt ny");
-            String versionsnummer = a.versionsnr();
-            p("Gemt versionsnr: "+ gemtVersionsNr + "  Aktuelt versioinsnr: "+versionsnummer);
-            if (gemtVersionsNr.equals("helt ny")) a.sp.edit().putString("versionsnr", versionsnummer).commit();
-            else if(!versionsnummer.equals(gemtVersionsNr) ) {
-                infodialog("Nyeste ændringer: \n"+ Utill.changelog, "Du har netop installeret den nyeste version: "+a.versionsnr());
-                a.sp.edit().putString("versionsnr", versionsnummer).commit();
-            }
-            skjulTastatur();
+            grunddataHentet();
+            p("Startet ved skærmvending. Eller akt har været lukket. Initialiserer autocomplete-listen (sæt adapter)");
+
         }
-        else {
-            sendmail = findViewById(R.id.mail);
-            sendmail.setOnClickListener(this);
+
+        //--Viser en dialog hvis brugeren kører en nyligt opdateret version af appen
+        String gemtVersionsNr = a.sp.getString("versionsnr", "helt ny");
+        String versionsnummer = a.versionsnr();
+        p("Gemt versionsnr: "+ gemtVersionsNr + "  Aktuelt versioinsnr: "+versionsnummer);
+        if (gemtVersionsNr.equals("helt ny")) a.sp.edit().putString("versionsnr", versionsnummer).commit();
+        else if(!versionsnummer.equals(gemtVersionsNr) ) {
+            infodialog("Nyeste ændringer: \n"+ Utill.changelog, "Du har netop installeret den nyeste version: "+a.versionsnr());
+            a.sp.edit().putString("versionsnr", versionsnummer).commit();
         }
+        skjulTastatur();
+
 
         p("onCreate færdig");
 
@@ -167,6 +159,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     public void onClick(View klikket) {
 
         if (liggendeVisning()){  //midlertidigt indtil liggende visning kommer
+            sendmail = findViewById(R.id.mail);
+            sendmail.setOnClickListener(this);
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/html");
             intent.putExtra(Intent.EXTRA_EMAIL  , new String[]{"sunetb@gmail.com"});
@@ -244,7 +238,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             return "";
         }
 
-        //søgeordet = søgefelt.getHint().toString();
         søgefelt.setText("");
         søgefelt.setHint(søgeordet);
 
@@ -267,7 +260,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
         return søgeordet.toLowerCase();
     }
-
 
     private void opdaterUI(boolean tomSøgning, String søgeordInd) {
         tæller++;
@@ -339,7 +331,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
     //-- Starter i velkomst-tilstand og viser videoen med tegnet "Velkommen"
     void velkommen() {
-
 
         søgefelt.setHint(getString(R.string.hint));
         forberedSøgning();
@@ -421,7 +412,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
         if (pDialog == null)  {
             p("pdialog var null");
-            //pDialog.dismiss();
         }
         else if (pDialog.isShowing()) {
             p("pdialog var isshowing");
@@ -491,7 +481,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         //Til abetest
         if (a.test) logo.setOnClickListener(this);
 
-        //Fjerner den gule boble med antal fund
+        //Fjerner den gule boble med antal fund (
         hovedlisten.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -499,7 +489,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
                 fl.animate().alpha(0).setDuration(700);
             }
-        });
+
+         });
 
 
 
@@ -539,7 +530,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     protected void onSaveInstanceState(Bundle outState) {
         String s = "";
         if (søgefelt != null && søgefelt.getHint() != null) s = søgefelt.getHint().toString();
-        //t("onsaveinstancestate: "+ s);
         outState.putString("søgeord", s);
         //outState.putInt("position", viserposition);
         super.onSaveInstanceState(outState);
@@ -549,7 +539,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         p("ONRESTOREINSTANCESTATE");
-        //////////////////////  HUSK TJEK FOR OM TOM SØGNING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+        //////////////////////  HUSK TJEK FOR OM TOM SØGNING når liggende kommer!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         String s = savedInstanceState.getString("søgeord");
         if (liggendeVisning()) return;
         //viserposition = savedInstanceState.getInt("position");
@@ -559,7 +549,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             søgefelt.setHint(s);
             søg(s, "onRestoreInstancestate");
         }
-        //else  tomsøgning(a.aktueltSøgeord);
+
 
     }
 
@@ -576,18 +566,15 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         }catch (java.lang.IllegalArgumentException e){e.printStackTrace();}
 
         a.netværksstatus = null;
-
-        //a.nulstilTilstandLight();
         super.onStop();
 
-        //todo:  sending message to a Handler on a dead thread: Luk alt ned i Appl som henviser til exoplayer/views Eller flyt tilbage i main
+
 
     }
 
     @Override
     protected void onStart() {
-        //a.sætNetværkslytter("Main.onStart()");
-        super.onStart();
+       super.onStart();
     }
 
     //-- Eget lytter-inteface

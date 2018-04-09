@@ -10,11 +10,8 @@ public class Utill
 	static ArrayList<String> debugbesked = new ArrayList();
 	static long tid;
 	static String changelog = "\n"+
-			"Fikset crash ved send mail\n"+
-			"Forud-udfyldt mailadresse til udvikler\n"+
-			"Midlertidigt skærmbillede i liggende visning\n"+
-			"Hvis man lukker appen og vender tilbage kort efter, husker den ens seneste søgning\n"+
-			"Hvis man trykker Søg igen når man lige har søgt, får man et hint"
+			"Forbedret midlertidige liggende layout\n"+
+			"\n"
 			;
 	static String atGøre = "fiks";
 
