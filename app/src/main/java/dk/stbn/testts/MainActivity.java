@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.*;
 import android.view.View.*;
@@ -78,10 +79,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     boolean liggendeVisning;
     boolean aktGenstartet = false;
     String søgeordVedMistetForbindelse = ""; //ikke nødvendigvis det samme som a.akuteltsøgeord
+    int viserposition = 0;
 
     boolean [] erCardViewUdfoldet = new boolean [15];
-    int tæller = 0;
-    int tæller2 = 0;
+    //int tæller = 0;
+    //int tæller2 = 0;
 
 
 
@@ -262,8 +264,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     }
 
     private void opdaterUI(boolean tomSøgning, String søgeordInd) {
-        tæller++;
-        p("opdaterUI kaldt! "+tæller +" Var søgningen tom?  " + tomSøgning);
+
+        p("opdaterUI kaldt!  Var søgningen tom?  " + tomSøgning);
         tomsøg = tomSøgning;
         dismisSøgDialog();
         if (tomSøgning) {
@@ -271,7 +273,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             tomsøgning(søgeordInd);
         } else {
 
-            //-- Opdaterer synligheden for pilen "vis mere" og antal fund
+            //-- Opdaterer synligheden for antal fund
             if (a.søgeresultat.size() < 2 || !a.visPil) {
                fl.setAlpha(0);
 
@@ -481,7 +483,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         //Til abetest
         if (a.test) logo.setOnClickListener(this);
 
-        //Fjerner den gule boble med antal fund (
+        //Fjerner den gule boble med antal fund
         hovedlisten.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -493,14 +495,27 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                //View v = hovedlisten.getLayoutManager().;
-               // if (v != null) p("position: "+hovedlisten.getLayoutManager().getFocusedChild().getId());
+
+                int synligtElement = ((LinearLayoutManager)recyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
+
                 if (dy >= 0) {
                     p("scroll op          y:"+dy + "  x:"+dx);
-                    //bør lave en if som ser om den allerede er klappet sammen
-                    fl.animate().alpha(0).setDuration(700);
-                } else {// else if (vi er nået toppen)
-                    p("scroll ned         y:"+dy + "  x:"+dx);
+
+                    if (dy != 0) {
+                        float scroll = dy;
+                        //søgebar.animate().scaleY(1-(scroll/10));//søgebaren animeres væk når der scrolles nedad
+                        søgebar.animate()
+                                .translationY(-søgebar.getHeight()-logo.getHeight())
+                                .setInterpolator(new LinearInterpolator())
+                                .setDuration(180);
+                    }
+
+                } else if (synligtElement == 0){
+                    p("scroll ned         y:"+dy + "  x:"+dx + " Viser position: "+viserposition);
+                    søgebar.animate()
+                            .translationY(0)
+                            .setInterpolator(new LinearInterpolator())
+                            .setDuration(180);
                 }
             }
         });
@@ -595,9 +610,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     @Override
     public void grunddataHentet() {
         if (liggendeVisning()) return;
-
-        tæller2++;
-        p("Grunddata hentet  "+tæller2);
         søgeknap.setEnabled(true);
         autoSuggest = new ArrayAdapter(this, android.R.layout.simple_list_item_1, a.tilAutoComplete);
         søgefelt.setAdapter(autoSuggest);
@@ -830,12 +842,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
                 //TODO: skelne mellem stående og liggende visning
 
-                //TODO: gøre det samme ved scroll
+                //TODO: gøre det samme ved scroll op
 
                 float højde = (float) Resources.getSystem().getDisplayMetrics().heightPixels/10;
                 int tid = 400;
 
-                  udfoldet = erCardViewUdfoldet[position];
+                udfoldet = erCardViewUdfoldet[position];
 
                 boolean alleKollapset = true;
 
