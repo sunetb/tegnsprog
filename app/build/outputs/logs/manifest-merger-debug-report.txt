@@ -1,60 +1,61 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-38:12
-INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-38:12
-INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-38:12
-INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-38:12
-MERGED from [com.android.support:design:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/10960cce0ab1647a0dea224f14a9cd42/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-v4:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/bd34740e2cb72c82c495822f6ec138df/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:appcompat-v7:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/4ff7bed961812c62f532b3ab69e9d2c7/AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.android.exoplayer:exoplayer:r2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-r2.5.0.aar/3f9ab00d2dd247609ad7e57cd04917ab/AndroidManifest.xml:17:1-25:12
-MERGED from [com.android.support:cardview-v7:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.2.aar/f21546d3eb8469b2ee77302aacadbb21/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:recyclerview-v7:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.0.2.aar/8c24e8d41e01252e603eb1d4a6019a86/AndroidManifest.xml:17:1-22:12
+ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-31:12
+INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-31:12
+INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-31:12
+INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-31:12
+MERGED from [com.android.support:design:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/design-27.1.0.aar/68b37307e755908073c4e26efc7cc95c/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-v4:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.0.aar/a6ed4968a54dcb4a789d09ac1b7aa199/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/e50f93bc4c6bcb3d56a075a72341e9b8/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.0.aar/4a7f61045dfc0ce76d83f77936a6cdb1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.0.aar/3488c9dc139436dc55cbcbd6c0cc6a03/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.0.aar/e33e6882858ae0c06dd4cc4640cf4973/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.0.aar/245b8330484e2adc46eac8c13758bd69/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.0.aar/9c1c323b50c23ab85c0c4170dc7b42cc/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.exoplayer:exoplayer:2.7.3] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-2.7.3.aar/d1ce8e45fac606aaea831a98836e001d/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:cardview-v7:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.1.0.aar/9d03ac1857e7bd1e9bf580d7fc6b3be9/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.0-beta3] /home/sune/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0-beta3.aar/63b2d4f64f7546a269b37c21e0e5566c/AndroidManifest.xml:2:1-11:12
 MERGED from [com.crashlytics.sdk.android:crashlytics:2.8.0] /home/sune/.gradle/caches/transforms-1/files-1.1/crashlytics-2.8.0.aar/ce0c85d3e7e16e6de3a8e8c87a01b350/AndroidManifest.xml:2:1-19:12
 MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/crashlytics-core-2.5.0.aar/237101326772442cab2f827967990bcb/AndroidManifest.xml:45:1-56:12
 MERGED from [com.crashlytics.sdk.android:answers:1.4.1] /home/sune/.gradle/caches/transforms-1/files-1.1/answers-1.4.1.aar/0cf3571609da1661b687f96fbe6a5275/AndroidManifest.xml:2:1-13:12
-MERGED from [com.android.support:transition:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/transition-27.0.2.aar/a78c4c054e0d6d46263379f8bd5c26d0/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-media-compat:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/b45092c82b000784e9aa745672e15be5/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-fragment:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/2bc5a9b60dfaa3638211e835841225b7/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:animated-vector-drawable:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.2.aar/1bf42dc311eed9495d5308b9177f4ef4/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-ui:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.2.aar/036e99f3f72a5e009997b35d09f93ccd/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-vector-drawable:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.2.aar/3d7a3762b83b1bc5d424f3568fa42e49/AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.android.exoplayer:exoplayer-dash:r2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-dash-r2.5.0.aar/829fa7e49f6141f0f59b4d68c90f7b66/AndroidManifest.xml:17:1-25:12
-MERGED from [com.android.support:support-core-utils:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.2.aar/5511bff7462313e8110e397db85f76d7/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-compat:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/346ee1b5b4fa0ac488dea252f44f4bfc/AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.android.exoplayer:exoplayer-hls:r2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-hls-r2.5.0.aar/6e7ce926c40780536202a06d52759c02/AndroidManifest.xml:17:1-25:12
-MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:r2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-smoothstreaming-r2.5.0.aar/6f847218e014855e12c0c6051f4b1728/AndroidManifest.xml:17:1-25:12
-MERGED from [com.google.android.exoplayer:exoplayer-ui:r2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-ui-r2.5.0.aar/ad0b335242f429322b8c4177b651975b/AndroidManifest.xml:17:1-25:12
-MERGED from [com.google.android.exoplayer:exoplayer-core:r2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-core-r2.5.0.aar/cb9d8af793c57cd16c8e9704e87a504e/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:transition:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/transition-27.1.0.aar/8a8743146b67377d1d266d099ee04836/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.0.aar/99614cfd5ba8dfcbfcc2d6693605d286/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.0.aar/e5e83ebf2f56c8cbccdb93213bfb5a4f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.0.aar/333124e03d8497c922914fea2ed34dfc/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.exoplayer:exoplayer-dash:2.7.3] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-dash-2.7.3.aar/504188267b67b8ad65cbf9c09ef13592/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-hls:2.7.3] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-hls-2.7.3.aar/35be13c25c270453f6b19cfc07d5dcbd/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.7.3] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-smoothstreaming-2.7.3.aar/77eecc2a31ec7bb7b6a7d0369d34469f/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-ui:2.7.3] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-ui-2.7.3.aar/b661232434b14719f229ee09e7ccd741/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.7.3] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-core-2.7.3.aar/8decae11be9aa1a2a33eba2f66b882d1/AndroidManifest.xml:17:1-24:12
 MERGED from [com.crashlytics.sdk.android:beta:1.2.7] /home/sune/.gradle/caches/transforms-1/files-1.1/beta-1.2.7.aar/221827fc26cc75f52258aeece399b243/AndroidManifest.xml:2:1-13:12
 MERGED from [io.fabric.sdk.android:fabric:1.4.1] /home/sune/.gradle/caches/transforms-1/files-1.1/fabric-1.4.1.aar/1f960bd2819e6ec24b2227c10a3901d8/AndroidManifest.xml:22:1-33:12
-MERGED from [android.arch.lifecycle:runtime:1.0.3] /home/sune/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/2664955287c0abe221a602c259c9a47d/AndroidManifest.xml:17:1-24:12
-INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-38:12
-INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-38:12
-INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-38:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/550a3fb5d8e18b6556f0f3853d8d6080/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/ae3a6041cfec791d00cb1e14973cc7e6/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/9571b29eedf539547214caf9c53f48bb/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/19b1c629418951a02ab69077c16ad647/AndroidManifest.xml:17:1-22:12
+INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-31:12
+INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-31:12
+INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-31:12
 	package
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:4:5-29
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:3:5-29
 		INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
 		INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-38:12
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-31:12
 		INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
-	xmlns:tools
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-38:12
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:1-31:12
 		INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:2:11-69
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:6:5-79
+ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:5:5-79
 	android:name
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:6:22-76
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:5:22-76
 uses-permission#android.permission.INTERNET
-ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:7:5-67
+ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:6:5-67
 MERGED from [com.crashlytics.sdk.android:crashlytics:2.8.0] /home/sune/.gradle/caches/transforms-1/files-1.1/crashlytics-2.8.0.aar/ce0c85d3e7e16e6de3a8e8c87a01b350/AndroidManifest.xml:9:5-67
 MERGED from [com.crashlytics.sdk.android:crashlytics:2.8.0] /home/sune/.gradle/caches/transforms-1/files-1.1/crashlytics-2.8.0.aar/ce0c85d3e7e16e6de3a8e8c87a01b350/AndroidManifest.xml:9:5-67
 MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/crashlytics-core-2.5.0.aar/237101326772442cab2f827967990bcb/AndroidManifest.xml:52:5-67
@@ -66,9 +67,9 @@ MERGED from [com.crashlytics.sdk.android:beta:1.2.7] /home/sune/.gradle/caches/t
 MERGED from [io.fabric.sdk.android:fabric:1.4.1] /home/sune/.gradle/caches/transforms-1/files-1.1/fabric-1.4.1.aar/1f960bd2819e6ec24b2227c10a3901d8/AndroidManifest.xml:29:5-67
 MERGED from [io.fabric.sdk.android:fabric:1.4.1] /home/sune/.gradle/caches/transforms-1/files-1.1/fabric-1.4.1.aar/1f960bd2819e6ec24b2227c10a3901d8/AndroidManifest.xml:29:5-67
 	android:name
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:7:22-64
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:6:22-64
 application
-ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:9:5-35:19
+ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:8:5-28:19
 MERGED from [com.android.support.constraint:constraint-layout:1.1.0-beta3] /home/sune/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0-beta3.aar/63b2d4f64f7546a269b37c21e0e5566c/AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.0-beta3] /home/sune/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0-beta3.aar/63b2d4f64f7546a269b37c21e0e5566c/AndroidManifest.xml:9:5-20
 MERGED from [com.crashlytics.sdk.android:crashlytics:2.8.0] /home/sune/.gradle/caches/transforms-1/files-1.1/crashlytics-2.8.0.aar/ce0c85d3e7e16e6de3a8e8c87a01b350/AndroidManifest.xml:11:5-17:19
@@ -82,71 +83,67 @@ MERGED from [com.crashlytics.sdk.android:beta:1.2.7] /home/sune/.gradle/caches/t
 MERGED from [io.fabric.sdk.android:fabric:1.4.1] /home/sune/.gradle/caches/transforms-1/files-1.1/fabric-1.4.1.aar/1f960bd2819e6ec24b2227c10a3901d8/AndroidManifest.xml:31:5-20
 MERGED from [io.fabric.sdk.android:fabric:1.4.1] /home/sune/.gradle/caches/transforms-1/files-1.1/fabric-1.4.1.aar/1f960bd2819e6ec24b2227c10a3901d8/AndroidManifest.xml:31:5-20
 	android:label
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:13:9-34
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:12:9-34
 	android:icon
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:12:9-40
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:11:9-40
 	android:allowBackup
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:11:9-35
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:10:9-35
 	android:theme
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:14:9-40
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:13:9-40
 	android:name
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:10:9-43
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:9:9-43
 activity#dk.stbn.testts.MainActivity
-ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:15:9-24:20
+ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:14:9-23:20
 	android:label
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:17:13-45
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:16:13-45
 	android:windowSoftInputMode
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:18:13-52
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:17:13-52
 	android:name
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:16:13-55
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:15:13-55
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:19:13-23:29
+ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:18:13-22:29
 action#android.intent.action.MAIN
-ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:20:17-69
+ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:19:17-69
 	android:name
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:20:25-66
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:19:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:22:17-77
+ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:21:17-77
 	android:name
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:22:27-74
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:21:27-74
 activity#dk.stbn.testts.Test
-ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:25:9-56
+ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:24:9-56
 	android:name
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:25:19-53
-activity#dk.stbn.testts.FuldArtikel_akt
-ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:26:9-67
-	android:name
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:26:19-64
-activity#dk.stbn.scroll.ScrollingActivity
-ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:27:9-30:56
-	android:label
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:29:13-61
-	android:theme
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:30:13-44
-	android:name
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:28:13-60
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:24:19-53
 meta-data#io.fabric.ApiKey
-ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:32:9-34:72
+ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:25:9-27:72
 	android:value
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:34:13-69
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:27:13-69
 	android:name
-		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:33:13-44
+		ADDED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml:26:13-44
 uses-sdk
 INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
 INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
-MERGED from [com.android.support:design:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/10960cce0ab1647a0dea224f14a9cd42/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:design:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/10960cce0ab1647a0dea224f14a9cd42/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/bd34740e2cb72c82c495822f6ec138df/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/bd34740e2cb72c82c495822f6ec138df/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/4ff7bed961812c62f532b3ab69e9d2c7/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/4ff7bed961812c62f532b3ab69e9d2c7/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.exoplayer:exoplayer:r2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-r2.5.0.aar/3f9ab00d2dd247609ad7e57cd04917ab/AndroidManifest.xml:21:5-23:41
-MERGED from [com.google.android.exoplayer:exoplayer:r2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-r2.5.0.aar/3f9ab00d2dd247609ad7e57cd04917ab/AndroidManifest.xml:21:5-23:41
-MERGED from [com.android.support:cardview-v7:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.2.aar/f21546d3eb8469b2ee77302aacadbb21/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.2.aar/f21546d3eb8469b2ee77302aacadbb21/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.0.2.aar/8c24e8d41e01252e603eb1d4a6019a86/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.0.2.aar/8c24e8d41e01252e603eb1d4a6019a86/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/design-27.1.0.aar/68b37307e755908073c4e26efc7cc95c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/design-27.1.0.aar/68b37307e755908073c4e26efc7cc95c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.0.aar/a6ed4968a54dcb4a789d09ac1b7aa199/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.0.aar/a6ed4968a54dcb4a789d09ac1b7aa199/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/e50f93bc4c6bcb3d56a075a72341e9b8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/e50f93bc4c6bcb3d56a075a72341e9b8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.0.aar/4a7f61045dfc0ce76d83f77936a6cdb1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.0.aar/4a7f61045dfc0ce76d83f77936a6cdb1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.0.aar/3488c9dc139436dc55cbcbd6c0cc6a03/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.0.aar/3488c9dc139436dc55cbcbd6c0cc6a03/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.0.aar/e33e6882858ae0c06dd4cc4640cf4973/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.0.aar/e33e6882858ae0c06dd4cc4640cf4973/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.0.aar/245b8330484e2adc46eac8c13758bd69/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.0.aar/245b8330484e2adc46eac8c13758bd69/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.0.aar/9c1c323b50c23ab85c0c4170dc7b42cc/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.0.aar/9c1c323b50c23ab85c0c4170dc7b42cc/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.exoplayer:exoplayer:2.7.3] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-2.7.3.aar/d1ce8e45fac606aaea831a98836e001d/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer:2.7.3] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-2.7.3.aar/d1ce8e45fac606aaea831a98836e001d/AndroidManifest.xml:20:5-22:41
+MERGED from [com.android.support:cardview-v7:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.1.0.aar/9d03ac1857e7bd1e9bf580d7fc6b3be9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.1.0.aar/9d03ac1857e7bd1e9bf580d7fc6b3be9/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support.constraint:constraint-layout:1.1.0-beta3] /home/sune/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0-beta3.aar/63b2d4f64f7546a269b37c21e0e5566c/AndroidManifest.xml:5:5-7:41
 MERGED from [com.android.support.constraint:constraint-layout:1.1.0-beta3] /home/sune/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0-beta3.aar/63b2d4f64f7546a269b37c21e0e5566c/AndroidManifest.xml:5:5-7:41
 MERGED from [com.crashlytics.sdk.android:crashlytics:2.8.0] /home/sune/.gradle/caches/transforms-1/files-1.1/crashlytics-2.8.0.aar/ce0c85d3e7e16e6de3a8e8c87a01b350/AndroidManifest.xml:7:5-43
@@ -155,38 +152,36 @@ MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.5.0] /home/sune/.gra
 MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/crashlytics-core-2.5.0.aar/237101326772442cab2f827967990bcb/AndroidManifest.xml:50:5-43
 MERGED from [com.crashlytics.sdk.android:answers:1.4.1] /home/sune/.gradle/caches/transforms-1/files-1.1/answers-1.4.1.aar/0cf3571609da1661b687f96fbe6a5275/AndroidManifest.xml:7:5-43
 MERGED from [com.crashlytics.sdk.android:answers:1.4.1] /home/sune/.gradle/caches/transforms-1/files-1.1/answers-1.4.1.aar/0cf3571609da1661b687f96fbe6a5275/AndroidManifest.xml:7:5-43
-MERGED from [com.android.support:transition:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/transition-27.0.2.aar/a78c4c054e0d6d46263379f8bd5c26d0/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/transition-27.0.2.aar/a78c4c054e0d6d46263379f8bd5c26d0/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/b45092c82b000784e9aa745672e15be5/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/b45092c82b000784e9aa745672e15be5/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/2bc5a9b60dfaa3638211e835841225b7/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/2bc5a9b60dfaa3638211e835841225b7/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.2.aar/1bf42dc311eed9495d5308b9177f4ef4/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.2.aar/1bf42dc311eed9495d5308b9177f4ef4/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.2.aar/036e99f3f72a5e009997b35d09f93ccd/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.2.aar/036e99f3f72a5e009997b35d09f93ccd/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.2.aar/3d7a3762b83b1bc5d424f3568fa42e49/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.2.aar/3d7a3762b83b1bc5d424f3568fa42e49/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.exoplayer:exoplayer-dash:r2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-dash-r2.5.0.aar/829fa7e49f6141f0f59b4d68c90f7b66/AndroidManifest.xml:21:5-23:41
-MERGED from [com.google.android.exoplayer:exoplayer-dash:r2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-dash-r2.5.0.aar/829fa7e49f6141f0f59b4d68c90f7b66/AndroidManifest.xml:21:5-23:41
-MERGED from [com.android.support:support-core-utils:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.2.aar/5511bff7462313e8110e397db85f76d7/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.2.aar/5511bff7462313e8110e397db85f76d7/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/346ee1b5b4fa0ac488dea252f44f4bfc/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.0.2] /home/sune/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/346ee1b5b4fa0ac488dea252f44f4bfc/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.exoplayer:exoplayer-hls:r2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-hls-r2.5.0.aar/6e7ce926c40780536202a06d52759c02/AndroidManifest.xml:21:5-23:41
-MERGED from [com.google.android.exoplayer:exoplayer-hls:r2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-hls-r2.5.0.aar/6e7ce926c40780536202a06d52759c02/AndroidManifest.xml:21:5-23:41
-MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:r2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-smoothstreaming-r2.5.0.aar/6f847218e014855e12c0c6051f4b1728/AndroidManifest.xml:21:5-23:41
-MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:r2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-smoothstreaming-r2.5.0.aar/6f847218e014855e12c0c6051f4b1728/AndroidManifest.xml:21:5-23:41
-MERGED from [com.google.android.exoplayer:exoplayer-ui:r2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-ui-r2.5.0.aar/ad0b335242f429322b8c4177b651975b/AndroidManifest.xml:21:5-23:41
-MERGED from [com.google.android.exoplayer:exoplayer-ui:r2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-ui-r2.5.0.aar/ad0b335242f429322b8c4177b651975b/AndroidManifest.xml:21:5-23:41
-MERGED from [com.google.android.exoplayer:exoplayer-core:r2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-core-r2.5.0.aar/cb9d8af793c57cd16c8e9704e87a504e/AndroidManifest.xml:21:5-23:41
-MERGED from [com.google.android.exoplayer:exoplayer-core:r2.5.0] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-core-r2.5.0.aar/cb9d8af793c57cd16c8e9704e87a504e/AndroidManifest.xml:21:5-23:41
+MERGED from [com.android.support:transition:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/transition-27.1.0.aar/8a8743146b67377d1d266d099ee04836/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/transition-27.1.0.aar/8a8743146b67377d1d266d099ee04836/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.0.aar/99614cfd5ba8dfcbfcc2d6693605d286/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.0.aar/99614cfd5ba8dfcbfcc2d6693605d286/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.0.aar/e5e83ebf2f56c8cbccdb93213bfb5a4f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.0.aar/e5e83ebf2f56c8cbccdb93213bfb5a4f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.0.aar/333124e03d8497c922914fea2ed34dfc/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.0.aar/333124e03d8497c922914fea2ed34dfc/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.exoplayer:exoplayer-dash:2.7.3] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-dash-2.7.3.aar/504188267b67b8ad65cbf9c09ef13592/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-dash:2.7.3] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-dash-2.7.3.aar/504188267b67b8ad65cbf9c09ef13592/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-hls:2.7.3] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-hls-2.7.3.aar/35be13c25c270453f6b19cfc07d5dcbd/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-hls:2.7.3] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-hls-2.7.3.aar/35be13c25c270453f6b19cfc07d5dcbd/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.7.3] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-smoothstreaming-2.7.3.aar/77eecc2a31ec7bb7b6a7d0369d34469f/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.7.3] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-smoothstreaming-2.7.3.aar/77eecc2a31ec7bb7b6a7d0369d34469f/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-ui:2.7.3] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-ui-2.7.3.aar/b661232434b14719f229ee09e7ccd741/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-ui:2.7.3] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-ui-2.7.3.aar/b661232434b14719f229ee09e7ccd741/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.7.3] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-core-2.7.3.aar/8decae11be9aa1a2a33eba2f66b882d1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.7.3] /home/sune/.gradle/caches/transforms-1/files-1.1/exoplayer-core-2.7.3.aar/8decae11be9aa1a2a33eba2f66b882d1/AndroidManifest.xml:20:5-22:41
 MERGED from [com.crashlytics.sdk.android:beta:1.2.7] /home/sune/.gradle/caches/transforms-1/files-1.1/beta-1.2.7.aar/221827fc26cc75f52258aeece399b243/AndroidManifest.xml:7:5-43
 MERGED from [com.crashlytics.sdk.android:beta:1.2.7] /home/sune/.gradle/caches/transforms-1/files-1.1/beta-1.2.7.aar/221827fc26cc75f52258aeece399b243/AndroidManifest.xml:7:5-43
 MERGED from [io.fabric.sdk.android:fabric:1.4.1] /home/sune/.gradle/caches/transforms-1/files-1.1/fabric-1.4.1.aar/1f960bd2819e6ec24b2227c10a3901d8/AndroidManifest.xml:27:5-43
 MERGED from [io.fabric.sdk.android:fabric:1.4.1] /home/sune/.gradle/caches/transforms-1/files-1.1/fabric-1.4.1.aar/1f960bd2819e6ec24b2227c10a3901d8/AndroidManifest.xml:27:5-43
-MERGED from [android.arch.lifecycle:runtime:1.0.3] /home/sune/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/2664955287c0abe221a602c259c9a47d/AndroidManifest.xml:20:5-22:41
-MERGED from [android.arch.lifecycle:runtime:1.0.3] /home/sune/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/2664955287c0abe221a602c259c9a47d/AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/550a3fb5d8e18b6556f0f3853d8d6080/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/550a3fb5d8e18b6556f0f3853d8d6080/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/ae3a6041cfec791d00cb1e14973cc7e6/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/ae3a6041cfec791d00cb1e14973cc7e6/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/9571b29eedf539547214caf9c53f48bb/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/9571b29eedf539547214caf9c53f48bb/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/19b1c629418951a02ab69077c16ad647/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /home/sune/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/19b1c629418951a02ab69077c16ad647/AndroidManifest.xml:20:5-44
 INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
 INJECTED from /home/sune/Dropbox/aapps/TestTs/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion

@@ -1,8 +1,12 @@
 # Built application files
+/*/build/
 /build
-/app/build
 build/
+/app/build
 app/build/
+
+# Crashlytics configuations
+com_crashlytics_export_strings.xml
 
 # Files for the ART/Dalvik VM
 *.dex
@@ -43,13 +47,24 @@ captures/
 .idea/misc.xml
 .idea/dictionaries
 .idea/libraries
+.idea/.name
+.idea/compiler.xml
+.idea/copyright/profiles_settings.xml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/scopes/scope_settings.xml
+
 
 # Keystore files
 # Uncomment the following line if you do not want to check your keystore files in.
-#*.jks
+*.jks
 
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild
+
+# Signing files
+.signing/
 
 # Other
 Andet/
