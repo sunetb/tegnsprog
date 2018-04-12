@@ -504,10 +504,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                     if (dy != 0) {
                         float scroll = dy;
                         //søgebar.animate().scaleY(1-(scroll/10));//søgebaren animeres væk når der scrolles nedad
+                        logo.bringToFront();
+                        logo.invalidate();
+                        søgebar.invalidate();
                         søgebar.animate()
                                 .translationY(-søgebar.getHeight()-logo.getHeight())
                                 .setInterpolator(new LinearInterpolator())
-                                .setDuration(180);
+                                .setDuration(780);
                     }
 
                 } else if (synligtElement == 0){
@@ -515,14 +518,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                     søgebar.animate()
                             .translationY(0)
                             .setInterpolator(new LinearInterpolator())
-                            .setDuration(180);
+                            .setDuration(780);
                 }
             }
         });
-
-
-
-
     }// END sætLyttere()
 
 
@@ -995,6 +994,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             return data.size();
         }
 
+        // for at animationen af søgebaren også følger scroll når der scrolles hurtigt.
+        // fra https://stackoverflow.com/questions/28181307/how-to-animate-recyclerview-on-scroll-like-google-plus-google-newsstand
+        @Override
+        public void onViewDetachedFromWindow(ViewHolder holder) {
+            //p("onViewDetachedFromWindow");
+            super.onViewDetachedFromWindow(holder);
+            holder.itemView.clearAnimation();
+        }
 
     }
 
