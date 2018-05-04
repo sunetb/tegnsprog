@@ -1,9 +1,9 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/mainlayout"
     android:background="@android:color/white"
     tools:layout_editor_absoluteY="25dp">
 
@@ -11,33 +11,32 @@
         android:id="@+id/overskriftLogo"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
         android:src="@drawable/logo"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent=".09"
         app:layout_constraintStart_toStartOf="@+id/søgebar"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:id="@+id/søgebar"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:layout_weight="1"
         android:background="@android:color/white"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/hovedlisten"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent=".10"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/overskriftLogo"
-        app:layout_constraintVertical_bias="1.0">
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.089">
 
         <AutoCompleteTextView
             android:id="@+id/søgefelt"
@@ -62,28 +61,14 @@
 
     </LinearLayout>
 
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="9dp"
-        android:layout_marginRight="9dp"
-        android:layout_marginTop="122dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/hovedlisten"
-        app:layout_constraintEnd_toStartOf="@+id/søgebar"
-        app:layout_constraintGuide_begin="122dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
 
+        android:layout_marginBottom="8dp"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,89 +76,87 @@
         app:layout_constraintHeight_percent=".40"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guideline" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/hovedlisten"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
+        android:paddingTop="2dp"
         android:scrollbarSize="10dp"
         android:scrollbars="vertical"
+        android:translationZ="-2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent=".77"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guideline" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@android:color/holo_green_light"/>
 
 
     <FrameLayout
         android:id="@+id/fl"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="34dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="30dp"
         android:alpha="0.9"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent=".25"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent=".25"
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.445"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hovedlisten"
         app:layout_constraintVertical_bias="0.952"
-        >
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".25">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/gulrund"/>
+            android:src="@drawable/gulrund" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:layout_height="0dp"
             android:gravity="center_vertical"
-            >
+            android:orientation="vertical">
 
             <TextView
-                android:layout_marginTop="10dp"
                 android:id="@+id/antalFund"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:gravity="center_horizontal"
                 android:text="X"
-                android:textSize="18dip"
-                android:layout_gravity="center_horizontal"/>
+                android:textSize="18dip" />
+
             <TextView
 
                 android:id="@+id/antalFundTekst"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="-10dp"
                 android:gravity="center_horizontal"
                 android:text="tegn fundet\n Rul ned"
-                android:textSize="14dip"
-                android:layout_gravity="center_horizontal"/>
+                android:textSize="14dip" />
 
             <ImageView
-                android:layout_marginTop="0dp"
                 android:id="@+id/mere"
-                android:scaleX="1.1"
-                android:scaleY="1.1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_keyboard_arrow_down_black_48dp"
-            >
+                android:layout_marginTop="0dp"
+                android:scaleX="1.1"
+                android:scaleY="1.1"
+                android:src="@drawable/ic_keyboard_arrow_down_black_48dp">
 
             </ImageView>
         </LinearLayout>
@@ -235,5 +218,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>

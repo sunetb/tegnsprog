@@ -4,13 +4,11 @@ import android.animation.ValueAnimator;
 import android.app.ProgressDialog;
 import android.content.res.Resources;
 import android.os.*;
-import android.support.constraint.ConstraintSet;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.transition.TransitionManager;
-import android.util.Log;
+import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
@@ -31,8 +29,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import dk.stbn.testts.lytter.Lytter;
-import io.fabric.sdk.android.Fabric;
-import io.fabric.sdk.android.Logger;
 
 
 public class MainActivity extends AppCompatActivity implements OnClickListener, AdapterView.OnItemClickListener, PlaybackControlView.VisibilityListener, Lytter {
@@ -82,8 +78,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     int viserposition = 0;
 
     boolean [] erCardViewUdfoldet = new boolean [15];
-    //int tæller = 0;
-    //int tæller2 = 0;
+    int søgeOgLogoHøjde;
 
 
 
@@ -113,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         adapter = new Hovedliste_adapter(a.søgeresultat, this);
         hovedlisten.setAdapter(adapter);
         hovedlisten.setLayoutManager(new LinearLayoutManagerWrapper(this));
+
         liggendeVisning = liggendeVisning();
         //fl er besked om flere fund
         fl = findViewById(R.id.fl);
@@ -129,7 +125,19 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         langsomcb.setChecked(a.slowmotion);
         logo = findViewById(R.id.overskriftLogo);
 
-        sætLyttere();
+
+        //Højden er stadig nul, hvis ikke vi venter lidt:
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //p("HØJDE: "+(søgebar.getHeight() + logo.getHeight()));
+                                        // Left, Top, Right, Bottom
+                hovedlisten.setPadding(2,søgebar.getHeight() + logo.getHeight(), 2, 0);
+                initHøjde(søgebar.getHeight() + logo.getHeight());
+            }
+        }, 10);
+
+         sætLyttere();
 
 
 
@@ -215,7 +223,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
     }
 
-
+    private void initHøjde (int h) {
+        søgeOgLogoHøjde = h;
+    }
     //** Til abetest
     private void testSøgning() {
         int længde = a.tilAutoComplete.size();
@@ -457,15 +467,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         søgefelt.setOnClickListener(this);
 
         //-- Søgeknappen på soft-keyboardet
-        søgefelt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    søgeknap.performClick();
-                    return true;
-                }
-                return false;
+        søgefelt.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                søgeknap.performClick();
+                return true;
             }
+            return false;
         });
 
         søgefelt.setOnItemClickListener(this); //kun til autocomplete
@@ -503,14 +510,26 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
                     if (dy != 0) {
                         float scroll = dy;
-                        //søgebar.animate().scaleY(1-(scroll/10));//søgebaren animeres væk når der scrolles nedad
                         logo.bringToFront();
                         logo.invalidate();
                         søgebar.invalidate();
+                        søgebar.bringToFront();
                         søgebar.animate()
                                 .translationY(-søgebar.getHeight()-logo.getHeight())
                                 .setInterpolator(new LinearInterpolator())
                                 .setDuration(780);
+                        logo.animate()
+                                .translationY(-logo.getHeight())
+                                .setInterpolator(new LinearInterpolator())
+                                .setDuration(780);
+                        hovedlisten.clearAnimation();
+
+                        ValueAnimator animator = ValueAnimator.ofInt(hovedlisten.getPaddingTop(), 0);
+                        animator.addUpdateListener(valueAnimator -> hovedlisten.setPadding(2, 2, 2, 0));
+                        animator.setDuration(700);
+                        animator.setInterpolator(new LinearInterpolator());
+                        animator.start();
+
                     }
 
                 } else if (synligtElement == 0){
@@ -519,6 +538,27 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                             .translationY(0)
                             .setInterpolator(new LinearInterpolator())
                             .setDuration(780);
+                    logo.animate()
+                            .translationY(0)
+                            .setInterpolator(new LinearInterpolator())
+                            .setDuration(780);
+/*
+                   // Valueanimator opfører sig anderledes end view-animation:
+                   //Virker ikke: hovedlisten.clearAnimation();
+                    ValueAnimator animator = ValueAnimator.ofInt(hovedlisten.getPaddingTop(), søgeOgLogoHøjde);
+                    animator.addUpdateListener(valueAnimator -> hovedlisten.setPadding(2, søgeOgLogoHøjde, 2, 0));
+                    animator.setDuration(700);
+                    animator.setInterpolator(new LinearInterpolator());//Virker ikke
+                    animator.start();
+*/
+
+                    TranslateAnimation moveleft = new TranslateAnimation(Animation.ABSOLUTE, 0.0f,
+                            Animation.ABSOLUTE, 2.0f, Animation.ABSOLUTE,
+                            0.0f, Animation.ABSOLUTE, 0.0f);
+
+                    moveleft.setDuration(500);
+                    moveleft.setFillAfter(true);
+
                 }
             }
         });
