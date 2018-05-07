@@ -1,5 +1,6 @@
 package dk.stbn.testts;
 
+import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.app.ProgressDialog;
 import android.content.res.Resources;
@@ -8,26 +9,19 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
-import android.view.animation.TranslateAnimation;
 import android.widget.*;
 import android.view.View.*;
 import android.view.*;
 import android.view.inputmethod.*;
 import android.content.*;
-
-
 import com.google.android.exoplayer2.*;
 import com.google.android.exoplayer2.ui.*;
-
 import android.os.AsyncTask;
 import android.support.v7.app.*;
-
 import java.util.ArrayList;
 import java.util.Random;
-
 import dk.stbn.testts.lytter.Lytter;
 
 
@@ -127,14 +121,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
 
         //Højden er stadig nul, hvis ikke vi venter lidt:
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                //p("HØJDE: "+(søgebar.getHeight() + logo.getHeight()));
-                                        // Left, Top, Right, Bottom
-                hovedlisten.setPadding(2,søgebar.getHeight() + logo.getHeight(), 2, 0);
-                initHøjde(søgebar.getHeight() + logo.getHeight());
-            }
+        new Handler().postDelayed(() -> {
+            //p("HØJDE: "+(søgebar.getHeight() + logo.getHeight()));
+                                    // Left, Top, Right, Bottom
+            hovedlisten.setPadding(2,søgebar.getHeight() + logo.getHeight(), 2, 0);
+            initHøjde(søgebar.getHeight() + logo.getHeight());
         }, 10);
 
          sætLyttere();
@@ -496,7 +487,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
 
-                fl.animate().alpha(0).setDuration(700);
+                fl.animate().alpha(0).setDuration(700);//skjuler den gule boble "Flere fund"
             }
 
             @Override
@@ -525,9 +516,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                         hovedlisten.clearAnimation();
 
                         ValueAnimator animator = ValueAnimator.ofInt(hovedlisten.getPaddingTop(), 0);
-                        animator.addUpdateListener(valueAnimator -> hovedlisten.setPadding(2, 2, 2, 0));
+
+                        animator.addUpdateListener(valueAnimator -> {
+                            //p("Animation clock. Value: "+ valueAnimator.getAnimatedValue());
+                            int i = Integer.valueOf(valueAnimator.getAnimatedValue().toString());//Mærkeligt!!
+                            hovedlisten.setPadding(2, i, 2, 0);
+                        });
                         animator.setDuration(700);
-                        animator.setInterpolator(new LinearInterpolator());
                         animator.start();
 
                     }
@@ -542,23 +537,61 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                             .translationY(0)
                             .setInterpolator(new LinearInterpolator())
                             .setDuration(780);
-/*
+                    LinearLayoutManager layoutManager = (LinearLayoutManager) hovedlisten
+                            .getLayoutManager();
                    // Valueanimator opfører sig anderledes end view-animation:
                    //Virker ikke: hovedlisten.clearAnimation();
-                    ValueAnimator animator = ValueAnimator.ofInt(hovedlisten.getPaddingTop(), søgeOgLogoHøjde);
-                    animator.addUpdateListener(valueAnimator -> hovedlisten.setPadding(2, søgeOgLogoHøjde, 2, 0));
-                    animator.setDuration(700);
-                    animator.setInterpolator(new LinearInterpolator());//Virker ikke
-                    animator.start();
-*/
+                    ValueAnimator animator = ValueAnimator.ofInt(2, søgeOgLogoHøjde);
+                    animator.addUpdateListener(valueAnimator -> {
+                        int i = Integer.valueOf(valueAnimator.getAnimatedValue().toString());//Mærkeligt!!
+                        hovedlisten.setPadding(2, i, 2, 0);
 
+                    });
+                    animator.addListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animator) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animator) {
+
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animator) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animator) {
+
+                        }
+                    });
+
+                    animator.setDuration(700);
+                    animator.start();//hovedlisten.scrollTo(0,0);
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+
+
+                            LinearLayoutManager layoutManager = (LinearLayoutManager) hovedlisten
+                                    .getLayoutManager();
+                            layoutManager.scrollToPositionWithOffset(0, 0); //animeres ikke
+                            //.smoothScrollToPosition(hovedlisten, new RecyclerView.State(), 1);//animeres men går i loop fordi onScrolled kaldes
+                        }
+                    }, 700);
+
+/*IKKE TESTET:
                     TranslateAnimation moveleft = new TranslateAnimation(Animation.ABSOLUTE, 0.0f,
                             Animation.ABSOLUTE, 2.0f, Animation.ABSOLUTE,
                             0.0f, Animation.ABSOLUTE, 0.0f);
 
                     moveleft.setDuration(500);
                     moveleft.setFillAfter(true);
-
+*/
                 }
             }
         });
