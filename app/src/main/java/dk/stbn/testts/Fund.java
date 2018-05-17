@@ -4,9 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.view.Surface;
 
-import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlaybackException;
-import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.PlaybackParameters;
@@ -55,12 +53,12 @@ class Fund {
 
     public String getTekst(){
         if (ordliste == null) return nøgle;
-        String resultatStreng = "";
+        StringBuilder resultatStreng = new StringBuilder();
 
         for (String s : ordliste)
-            resultatStreng += s + "\n";
+            resultatStreng.append(s).append("\n");
 
-        return resultatStreng;
+        return resultatStreng.toString();
     }
 
     void initAfsp(Context c){

@@ -15,7 +15,8 @@
         android:layout_weight="5"
         android:src="@drawable/ic_launcher"
         android:layout_gravity="top"
-        android:layout_marginRight="8dp"/>
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp" />
     <TextView
         android:id="@+id/tekst"
         android:layout_width="0px"

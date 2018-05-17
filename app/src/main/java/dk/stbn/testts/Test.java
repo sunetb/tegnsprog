@@ -85,26 +85,26 @@ public class Test extends Activity implements View.OnClickListener, Lytter{
 			a.genstartetFraTestAkt = true;
 		}
 		else if (view == mailknap){
-			String log = ""+ new Date() + Build.MANUFACTURER + " - " + Build.MODEL + " API: "+android.os.Build.VERSION.SDK_INT + " app ver. "+a.versionsnr();
+			StringBuilder log = new StringBuilder("" + new Date() + Build.MANUFACTURER + " - " + Build.MODEL + " API: " + Build.VERSION.SDK_INT + " app ver. " + a.versionsnr());
 			if (Utill.debugbesked.size() < 10000) //sikrer at der ikke overføres for mange dat med intentet
-				for (String s : Utill.debugbesked) log += "\n" + s;
+				for (String s : Utill.debugbesked) log.append("\n").append(s);
 			else{
-				for (int i = 0 ; i < 500; i++) log += "\n" + Utill.debugbesked.get(i); //tager de 500 første
+				for (int i = 0 ; i < 500; i++) log.append("\n").append(Utill.debugbesked.get(i)); //tager de 500 første
 				int j = Utill.debugbesked.size();
-				for (int i = 0 ; i < 500; i++) log += "\n" + Utill.debugbesked.get((j-500)+i); //..og de 500 sidste
+				for (int i = 0 ; i < 500; i++) log.append("\n").append(Utill.debugbesked.get((j - 500) + i)); //..og de 500 sidste
 			}
 			Intent intent = new Intent(Intent.ACTION_SEND);
 			intent.setType("text/html");
 			intent.putExtra(Intent.EXTRA_EMAIL  , new String[]{"sunetb@gmail.com"});
 			intent.putExtra(Intent.EXTRA_SUBJECT, "Tegnsprogsapp logbesked");
-			intent.putExtra(Intent.EXTRA_TEXT, log);
+			intent.putExtra(Intent.EXTRA_TEXT, log.toString());
 
 			startActivity(Intent.createChooser(intent, "Send Email"));
 			//mail.setText("Mail er sendt");
 		}
 		else if (view == format){
 			a.webm = !a.webm;
-			a.sp.edit().putBoolean("format", a.webm).commit();
+			a.sp.edit().putBoolean("format", a.webm).apply();
 			if (a.webm) videoformat.setText("Videoformat valgt: WEBM");
 			else videoformat.setText("Videoformat valgt: MP4");
 		}

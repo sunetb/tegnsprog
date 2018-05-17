@@ -198,7 +198,7 @@ public class Appl extends Application implements Lytter
 
 		try { // Henter fil
 
-			String heleIndholdet = "";
+			StringBuilder heleIndholdet = new StringBuilder();
 
 			if (sp.getBoolean("cachedSøgeindeks", false)){
 				//todo: tjek om der er ny version..
@@ -235,19 +235,19 @@ public class Appl extends Application implements Lytter
 
 					String linie = new String(contents, 0, bytesRead, "iso-8859-1");
 
-					heleIndholdet += linie;
+					heleIndholdet.append(linie);
 
 				}
 
 				sp.edit().
-						putString("søgeindeks", heleIndholdet).
+						putString("søgeindeks", heleIndholdet.toString()).
 						putBoolean("cachedSøgeindeks", true).
-						commit();
+						apply();
 
 
 
 
-				String [] linjesplit = heleIndholdet.split("\n");
+				String [] linjesplit = heleIndholdet.toString().split("\n");
 				//p("Array længde: "+linjesplit.length);
 				for (int i = 0; i < linjesplit.length; i++) {
 					String indgangS = linjesplit[i];
@@ -329,14 +329,14 @@ public class Appl extends Application implements Lytter
 			}
 			p("#=#=#=#=#=#=#=#= hentArtikel() =#=#=#=#=#=#=#=#=#=#=#");
 			byte[] contents = new byte[1024];
-			String heleIndholdet = "";
+			StringBuilder heleIndholdet = new StringBuilder();
 			int bytesRead = 0;
 			//bytesRead = is.read(contents); //skipper første linie
 			//bytesRead = is.read(contents); //skipper anden linie
 
 			while((bytesRead = is.read(contents)) != -1) {
 				String linie = new String(contents, 0, bytesRead);
-				heleIndholdet += linie;
+				heleIndholdet.append(linie);
 
 
 
@@ -513,8 +513,8 @@ public class Appl extends Application implements Lytter
 		for (Fund f : søgeresultat)
 			if (f.afsp != null) f.afsp.setPlaybackParameters(new PlaybackParameters(hast, 1));
 			else {
-				String s = "";
-				for (Fund f1 : søgeresultat) s+=f1.nøgle +"\n";
+				StringBuilder s = new StringBuilder();
+				for (Fund f1 : søgeresultat) s.append(f1.nøgle).append("\n");
 				p("Fejl: opdaterHastighed gav null object "+s);
 		}
 	}

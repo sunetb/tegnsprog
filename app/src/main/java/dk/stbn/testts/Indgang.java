@@ -18,9 +18,9 @@ public class Indgang {
 
 	public String toString () {
 
-		String udskriv = søgeord;
-		for (String s : index) udskriv += "|"+s;
-		return udskriv;
+		StringBuilder udskriv = new StringBuilder(søgeord);
+		for (String s : index) udskriv.append("|").append(s);
+		return udskriv.toString();
 
 	}
 

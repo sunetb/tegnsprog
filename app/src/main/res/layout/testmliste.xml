@@ -8,7 +8,7 @@
 		android:layout_height="0dp"
 		android:layout_weight="0.5"
 		android:gravity="center_horizontal"
-		android:textSize="20dip"
+		android:textSize="20sp"
 		android:text="Test/debug"
 		android:textStyle="bold"
 		android:id="@+id/overskr"/>
